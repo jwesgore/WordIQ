@@ -6,28 +6,21 @@
 //
 
 import SwiftUI
-func makeList(size: Int) -> [WordleGuess]{
-    var WordleGuesses = [WordleGuess]()
-    while WordleGuesses.count < size {
-        WordleGuesses.append(WordleGuess())
-    }
-    return WordleGuesses
-}
 
 struct ContentView: View {
-    @State var message: String = ""
-    var WordleGuesses = makeList(size: 6)
+    @StateObject var wordleViewModel = WordleViewModel(boardSize: 6)
+    @StateObject var keyboardViewModel = KeyboardViewModel()
     
     var body: some View {
-        
         VStack {
-            GameBoard(rowGuesses: WordleGuesses)
+            GameBoard(wordleViewModel: wordleViewModel)
                 .padding()
-            Keyboard {
-                newMessage in self.message = newMessage
-            }
+            
+            KeyboardView (keyboardViewModel: keyboardViewModel)
         }
-        .padding()
+        .onAppear() {
+            keyboardViewModel.addObserver(observer: wordleViewModel)
+        }
     }
 }
 

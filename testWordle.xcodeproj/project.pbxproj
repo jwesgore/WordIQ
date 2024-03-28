@@ -22,6 +22,7 @@
 		4B3388C82BB5F3F900A10A27 /* KeyboardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3388C72BB5F3F900A10A27 /* KeyboardModel.swift */; };
 		4B3388CA2BB5F62700A10A27 /* KeyboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3388C92BB5F62700A10A27 /* KeyboardViewModel.swift */; };
 		4B3388CE2BB61E7800A10A27 /* words.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4B3388CD2BB61E7800A10A27 /* words.txt */; };
+		4B3388D02BB6337300A10A27 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3388CF2BB6337300A10A27 /* Enums.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,7 @@
 		4B3388C72BB5F3F900A10A27 /* KeyboardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardModel.swift; sourceTree = "<group>"; };
 		4B3388C92BB5F62700A10A27 /* KeyboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewModel.swift; sourceTree = "<group>"; };
 		4B3388CD2BB61E7800A10A27 /* words.txt */ = {isa = PBXFileReference; explicitFileType = text; fileEncoding = 4; path = words.txt; sourceTree = "<group>"; };
+		4B3388CF2BB6337300A10A27 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +155,7 @@
 				4B3388BD2BB4C1C800A10A27 /* WordleWords.swift */,
 				4B3388C72BB5F3F900A10A27 /* KeyboardModel.swift */,
 				4B3388CD2BB61E7800A10A27 /* words.txt */,
+				4B3388CF2BB6337300A10A27 /* Enums.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -308,6 +311,7 @@
 			files = (
 				4B3388C82BB5F3F900A10A27 /* KeyboardModel.swift in Sources */,
 				4B3388BE2BB4C1C800A10A27 /* WordleWords.swift in Sources */,
+				4B3388D02BB6337300A10A27 /* Enums.swift in Sources */,
 				4B3388932BB4B36400A10A27 /* ContentView.swift in Sources */,
 				4B3388C52BB5ED5300A10A27 /* WordleViewModel.swift in Sources */,
 				4B3388C12BB4C4F600A10A27 /* GameBoard.swift in Sources */,

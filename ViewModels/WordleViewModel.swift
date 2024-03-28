@@ -51,6 +51,8 @@ class WordleViewModel : ObservableObject, KeyboardObserver {
             print("Correct Word!")
             return
         }
+        var letterComparison = wordleWords.isSimilarWord(currentGuess.word)
+        
         // if it is not the correct word, goto next guess
         self.nextGuess()
     }

@@ -14,12 +14,9 @@ class WordleGuess: Identifiable{
     var wordSize: Int
     
     init(word: String = "", wordSize: Int = 5){
-        
         self.word = word
         self.wordSize = wordSize
         self.decomposedWord = [String](repeating: " ", count: wordSize)
-        
-        print(self.id)
     }
     
     func printInfo() {

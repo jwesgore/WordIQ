@@ -39,6 +39,26 @@ class WordleWords {
         return false
     }
     
+    func isSimilarWord(_ guess: String) -> [LetterComparison] {
+        let guessLowerCase = guess.lowercased()
+        var letterComparision = [LetterComparison]()
+        
+        for (index, char1) in selectedWord.enumerated() {
+            let char2 = guessLowerCase[guessLowerCase.index(guessLowerCase.startIndex, offsetBy: index)]
+            
+            if char1 == char2 {
+                letterComparision.append(LetterComparison.samePosition)
+            }
+            else if selectedWord.contains(char2) {
+                letterComparision.append(LetterComparison.differentPosition)
+            }
+            else {
+                letterComparision.append(LetterComparison.wrongLetter)
+            }
+        }
+        return letterComparision
+    }
+    
     func compare(guess: WordleGuess) {
         
     }

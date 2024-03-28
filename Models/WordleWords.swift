@@ -7,11 +7,10 @@
 
 import Foundation
 
-class WordleWord {
-    var word: String
-    
-    init(word:String) {
-        self.word = word
+class WordleWords {
+  
+    func isValidWord() -> Bool {
+        return false
     }
     
     func compare(guess: WordleGuess) {

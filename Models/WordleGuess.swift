@@ -9,7 +9,7 @@ import Foundation
 
 class WordleGuess: Identifiable{
     let id = UUID()
-    var decomposedWord: [Character]
+    var decomposedWord: [String]
     var word: String
     var wordSize: Int
     
@@ -17,7 +17,7 @@ class WordleGuess: Identifiable{
         
         self.word = word
         self.wordSize = wordSize
-        self.decomposedWord = [Character](repeating: " ", count: wordSize)
+        self.decomposedWord = [String](repeating: " ", count: wordSize)
         
         print(self.id)
     }
@@ -34,7 +34,7 @@ class WordleGuess: Identifiable{
         if word.count >= wordSize || letter.count > 1 {
             return
         }
-        decomposedWord[word.count] = Character(letter)
+        decomposedWord[word.count] = letter
         word.append(letter)
         self.printInfo()
     }
@@ -45,17 +45,16 @@ class WordleGuess: Identifiable{
             return
         }
         word.removeLast()
-        decomposedWord[word.count] = Character(" ")
+        decomposedWord[word.count] = " "
         self.printInfo()
     }
     
-    func submitGuess() {
-        // return if current guess is too short
+    func isValidInput() -> Bool {
+        // return False if current guess is too short
         if word.count < wordSize {
-            print("Guess is too short")
-            return
+            return false
         }
-        print("Submitting")
+        return true
     }
 }
 

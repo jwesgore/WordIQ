@@ -9,30 +9,62 @@ import Foundation
 
 class WordleViewModel : ObservableObject, KeyboardObserver {
     @Published var currentGuess: WordleGuess
-    var allGuesses: [WordleGuess] = []
+    @Published var allGuesses: [WordleGuess]
     var boardSize: Int
     var currentPosition: Int = 0
     
     var keyboardModel: KeyboardModel = KeyboardModel()
+    var wordleWords: WordleWords = WordleWords()
     
     init(boardSize: Int) {
         self.boardSize = boardSize
-        while allGuesses.count < boardSize {
-            allGuesses.append(WordleGuess())
+        var buildGuesses = [WordleGuess]()
+        while buildGuesses.count < boardSize {
+            buildGuesses.append(WordleGuess())
         }
-        self.currentGuess = self.allGuesses[self.currentPosition]
+        self.allGuesses = buildGuesses
+        self.currentGuess = buildGuesses[0]
     }
     
+    func nextGuess(){
+        // make sure not to go beyond the boardsize
+        if currentPosition + 1 == boardSize{
+            return
+        }
+        self.currentPosition += 1
+        self.currentGuess = allGuesses[self.currentPosition]
+    }
+    
+    // Check currentGuess for validity
+    func submitGuess(){
+        // is current guess long enough to be an input
+        if !currentGuess.isValidInput() {
+            return
+        }
+        // is it a valid word
+        if !wordleWords.isValidWord() {
+            
+        }
+        // is it the correct word
+        
+        // if it is not the correct word, goto next guess
+        self.nextGuess()
+    }
+    
+    // What to do when a key is pressed
     func keyPressed(_ pressedKey: String) {
         if keyboardModel.letters.contains(pressedKey) {
             self.currentGuess.addLetter(letter: pressedKey)
+            self.allGuesses[currentPosition] = self.currentGuess
             return
         }
         switch pressedKey {
         case "Enter":
-            self.currentGuess.submitGuess()
+            self.allGuesses[currentPosition] = self.currentGuess
+            self.submitGuess()
         case "Del":
             self.currentGuess.removeLetter()
+            self.allGuesses[currentPosition] = self.currentGuess
         default:
             return
         }

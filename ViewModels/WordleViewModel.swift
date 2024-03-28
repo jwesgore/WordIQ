@@ -42,11 +42,15 @@ class WordleViewModel : ObservableObject, KeyboardObserver {
             return
         }
         // is it a valid word
-        if !wordleWords.isValidWord() {
-            
+        if !wordleWords.isValidWord(currentGuess.word) {
+            print("Not a valid word")
+            return
         }
         // is it the correct word
-        
+        if wordleWords.isCorrectWord(currentGuess.word) {
+            print("Correct Word!")
+            return
+        }
         // if it is not the correct word, goto next guess
         self.nextGuess()
     }

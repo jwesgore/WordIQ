@@ -14,6 +14,10 @@
 		4B3388A22BB4B36600A10A27 /* testWordleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3388A12BB4B36600A10A27 /* testWordleTests.swift */; };
 		4B3388AC2BB4B36600A10A27 /* testWordleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3388AB2BB4B36600A10A27 /* testWordleUITests.swift */; };
 		4B3388AE2BB4B36600A10A27 /* testWordleUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3388AD2BB4B36600A10A27 /* testWordleUITestsLaunchTests.swift */; };
+		4B3388BB2BB4C13300A10A27 /* WordleGuess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3388BA2BB4C13300A10A27 /* WordleGuess.swift */; };
+		4B3388BE2BB4C1C800A10A27 /* WordleWord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3388BD2BB4C1C800A10A27 /* WordleWord.swift */; };
+		4B3388C12BB4C4F600A10A27 /* GameBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3388C02BB4C4F600A10A27 /* GameBoard.swift */; };
+		4B3388C32BB4DD9400A10A27 /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3388C22BB4DD9400A10A27 /* Keyboard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +48,10 @@
 		4B3388A72BB4B36600A10A27 /* testWordleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = testWordleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B3388AB2BB4B36600A10A27 /* testWordleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testWordleUITests.swift; sourceTree = "<group>"; };
 		4B3388AD2BB4B36600A10A27 /* testWordleUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testWordleUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		4B3388BA2BB4C13300A10A27 /* WordleGuess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordleGuess.swift; sourceTree = "<group>"; };
+		4B3388BD2BB4C1C800A10A27 /* WordleWord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordleWord.swift; sourceTree = "<group>"; };
+		4B3388C02BB4C4F600A10A27 /* GameBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameBoard.swift; sourceTree = "<group>"; };
+		4B3388C22BB4DD9400A10A27 /* Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keyboard.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +82,8 @@
 		4B3388842BB4B36400A10A27 = {
 			isa = PBXGroup;
 			children = (
+				4B3388BF2BB4C4CC00A10A27 /* Structs */,
+				4B3388BC2BB4C16D00A10A27 /* Classes */,
 				4B33888F2BB4B36400A10A27 /* testWordle */,
 				4B3388A02BB4B36600A10A27 /* testWordleTests */,
 				4B3388AA2BB4B36600A10A27 /* testWordleUITests */,
@@ -125,6 +135,24 @@
 				4B3388AD2BB4B36600A10A27 /* testWordleUITestsLaunchTests.swift */,
 			);
 			path = testWordleUITests;
+			sourceTree = "<group>";
+		};
+		4B3388BC2BB4C16D00A10A27 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				4B3388BA2BB4C13300A10A27 /* WordleGuess.swift */,
+				4B3388BD2BB4C1C800A10A27 /* WordleWord.swift */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		4B3388BF2BB4C4CC00A10A27 /* Structs */ = {
+			isa = PBXGroup;
+			children = (
+				4B3388C02BB4C4F600A10A27 /* GameBoard.swift */,
+				4B3388C22BB4DD9400A10A27 /* Keyboard.swift */,
+			);
+			path = Structs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,8 +285,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B3388BE2BB4C1C800A10A27 /* WordleWord.swift in Sources */,
 				4B3388932BB4B36400A10A27 /* ContentView.swift in Sources */,
+				4B3388C12BB4C4F600A10A27 /* GameBoard.swift in Sources */,
 				4B3388912BB4B36400A10A27 /* testWordleApp.swift in Sources */,
+				4B3388C32BB4DD9400A10A27 /* Keyboard.swift in Sources */,
+				4B3388BB2BB4C13300A10A27 /* WordleGuess.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

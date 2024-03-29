@@ -6,22 +6,25 @@
 //
 
 import Foundation
+import SwiftUI
 
 class WordleGuess: Identifiable{
     let id = UUID()
-    var decomposedWord: [String]
+    var letters = [[Letter: Any]]()
     var word: String
     var wordSize: Int
     
     init(word: String = "", wordSize: Int = 5){
         self.word = word
         self.wordSize = wordSize
-        self.decomposedWord = [String](repeating: " ", count: wordSize)
+        for _ in 1...wordSize {
+            self.letters.append([Letter.letter: " ", Letter.backgroundColor : Color.white])
+        }
     }
     
     func printInfo() {
         print(self.id)
-        print(self.decomposedWord)
+        print(self.letters)
         print(self.word)
     }
     
@@ -31,7 +34,7 @@ class WordleGuess: Identifiable{
         if word.count >= wordSize || letter.count > 1 {
             return
         }
-        decomposedWord[word.count] = letter
+        letters[word.count][Letter.letter] = letter
         word.append(letter)
         self.printInfo()
     }
@@ -42,7 +45,7 @@ class WordleGuess: Identifiable{
             return
         }
         word.removeLast()
-        decomposedWord[word.count] = " "
+        letters[word.count][Letter.letter] = " "
         self.printInfo()
     }
     
@@ -52,6 +55,20 @@ class WordleGuess: Identifiable{
             return false
         }
         return true
+    }
+    
+    func updateBackground(letterComparison: [LetterComparison]) {
+        
+        for i in 0..<letterComparison.count {
+            switch letterComparison[i] {
+            case LetterComparison.differentPosition:
+                letters[i][Letter.backgroundColor] = Color.yellow
+            case LetterComparison.samePosition:
+                letters[i][Letter.backgroundColor] = Color.green
+            default:
+                letters[i][Letter.backgroundColor] = Color.white
+            }
+        }
     }
 }
 

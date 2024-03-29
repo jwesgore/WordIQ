@@ -53,6 +53,7 @@ class WordleViewModel : ObservableObject, KeyboardObserver {
         }
         var letterComparison = wordleWords.isSimilarWord(currentGuess.word)
         
+        currentGuess.updateBackground(letterComparison: letterComparison)
         // if it is not the correct word, goto next guess
         self.nextGuess()
     }

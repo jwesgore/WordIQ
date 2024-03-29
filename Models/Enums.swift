@@ -12,3 +12,8 @@ enum LetterComparison{
     case differentPosition
     case samePosition
 }
+
+enum Letter{
+    case letter
+    case backgroundColor
+}

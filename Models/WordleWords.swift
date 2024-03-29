@@ -41,10 +41,13 @@ class WordleWords {
     
     func isSimilarWord(_ guess: String) -> [LetterComparison] {
         let guessLowerCase = guess.lowercased()
+        var guessLetters = [Character]()
         var letterComparision = [LetterComparison]()
         
+        // initial pass
         for (index, char1) in selectedWord.enumerated() {
             let char2 = guessLowerCase[guessLowerCase.index(guessLowerCase.startIndex, offsetBy: index)]
+            guessLetters.append(char2)
             
             if char1 == char2 {
                 letterComparision.append(LetterComparison.samePosition)
@@ -56,6 +59,55 @@ class WordleWords {
                 letterComparision.append(LetterComparison.wrongLetter)
             }
         }
+        
+        // cleanup
+        // some words may still show that a letter is misplaced if the correct letter has already been identified
+        for (index, value) in letterComparision.enumerated() {
+            // skip if letter is wrong letter (doesn't matter anyway)
+            if value == LetterComparison.wrongLetter {
+                continue
+            }
+            
+            // how many times does this letter show up in the selectedWord
+            var numberOfOccurances = selectedWord.filter { $0 == guessLetters[index] }.count
+            var numberOfFlagsCorrect = 0
+            var numberOfFlagsDifferent = 0
+            
+            for i in index..<selectedWord.count {
+                
+                if guessLetters[index] != guessLetters[i] {
+                    continue
+                }
+                if letterComparision[i] == LetterComparison.differentPosition{
+                    numberOfFlagsDifferent += 1
+                }
+                else {
+                    numberOfFlagsCorrect += 1
+                }
+            }
+            
+            if numberOfOccurances >= (numberOfFlagsDifferent + numberOfFlagsCorrect) {
+                continue
+            }
+            
+            for (i, v) in selectedWord.reversed().enumerated() {
+                let adjustedIndex = selectedWord.count - 1 - i
+                if guessLetters[index] != guessLetters[adjustedIndex] {
+                    continue
+                }
+                if letterComparision[adjustedIndex] == LetterComparison.samePosition {
+                    continue
+                }
+                
+                letterComparision[adjustedIndex] = LetterComparison.wrongLetter
+                numberOfFlagsDifferent -= 1
+                
+                if numberOfOccurances >= (numberOfFlagsDifferent + numberOfFlagsCorrect) {
+                    break
+                }
+            }
+        }
+        
         return letterComparision
     }
     

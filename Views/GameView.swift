@@ -9,16 +9,14 @@ import Foundation
 import SwiftUI
 
 struct GameSquare: View {
-    var letter: [Letter: Any]
+    var letter: String
+    var backgroundColor: Color
     
     let sideLength: CGFloat = 50
     let cornerRadiusSize: CGFloat = 8
     
     var body: some View {
-        let content = letter[Letter.letter] as? String ?? ""
-        let backgroundColor = letter[Letter.backgroundColor] as? Color ?? Color.white
-        
-        Text(content)
+        Text(letter)
             .frame(width:sideLength, height: sideLength)
             .background(backgroundColor)
             .overlay(
@@ -30,28 +28,25 @@ struct GameSquare: View {
 }
 
 struct GameRow: View {
-    var letters: [[Letter: Any]]
-    
+    @Binding var guess: GuessWord
     var body: some View {
+        let wordLength = guess.wordLength
         HStack {
-            ForEach(letters.indices, id: \.self) { index in
-                GameSquare(letter: letters[index])
+            ForEach(0..<wordLength, id: \.self) { index in
+                GameSquare(letter: guess.letters[index], backgroundColor: guess.backgroundColors[index])
             }
         }
     }
 }
 
 struct GameBoard: View {
-    @ObservedObject var wordleViewModel: WordleViewModel
+    @ObservedObject var wordleViewModel: GameViewModel
     
     var body: some View {
         VStack {
-            ForEach(wordleViewModel.allGuesses){ guess in
-                GameRow(letters: guess.letters)
+            ForEach($wordleViewModel.allGuesses){ guess in
+                GameRow(guess: guess)
             }
         }
     }
 }
-
-
-

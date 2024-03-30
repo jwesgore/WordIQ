@@ -19,6 +19,12 @@ struct KeyboardElement: View {
             self.viewModel.keyPressed(key: value)
         }
         .font(.system(size: fontSize))
+        .background(Color.white)
+        .padding(4)
+        .overlay(
+            RoundedRectangle(cornerRadius: 8)
+                .stroke(Color.gray, lineWidth: 1)
+        )
     }
 }
 

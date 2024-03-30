@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject var wordleViewModel = WordleViewModel(boardSize: 6)
+    @StateObject var wordleViewModel = GameViewModel(boardSize: 6, wordLength: 5)
     @StateObject var keyboardViewModel = KeyboardViewModel()
     
     var body: some View {

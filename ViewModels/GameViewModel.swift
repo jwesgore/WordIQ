@@ -7,20 +7,20 @@
 
 import Foundation
 
-class WordleViewModel : ObservableObject, KeyboardObserver {
-    @Published var currentGuess: WordleGuess
-    @Published var allGuesses: [WordleGuess]
+class GameViewModel : ObservableObject, KeyboardObserver {
+    @Published var currentGuess: GuessWord
+    @Published var allGuesses: [GuessWord]
     var boardSize: Int
     var currentPosition: Int = 0
     
     var keyboardModel: KeyboardModel = KeyboardModel()
-    var wordleWords: WordleWords = WordleWords()
+    var wordleWords: WordsCollection = WordsCollection(wordLength: 5)
     
-    init(boardSize: Int) {
+    init(boardSize: Int, wordLength: Int) {
         self.boardSize = boardSize
-        var buildGuesses = [WordleGuess]()
+        var buildGuesses = [GuessWord]()
         while buildGuesses.count < boardSize {
-            buildGuesses.append(WordleGuess())
+            buildGuesses.append(GuessWord(wordLength: wordLength))
         }
         self.allGuesses = buildGuesses
         self.currentGuess = buildGuesses[0]
@@ -37,23 +37,22 @@ class WordleViewModel : ObservableObject, KeyboardObserver {
     
     // Check currentGuess for validity
     func submitGuess(){
-        // is current guess long enough to be an input
-        if !currentGuess.isValidInput() {
-            return
-        }
-        // is it a valid word
-        if !wordleWords.isValidWord(currentGuess.word) {
+        let guessWord = currentGuess.getWord()
+        // is current guess long enough to be an input and is it in the list of valid words
+        if !wordleWords.isValidWord(guessWord) {
             print("Not a valid word")
             return
         }
+        
+        let letterComparison = wordleWords.isSimilarWord(guessWord)
+        currentGuess.setBackgrounds(letterComparison: letterComparison)
+        
         // is it the correct word
-        if wordleWords.isCorrectWord(currentGuess.word) {
+        if wordleWords.isCorrectWord(guessWord) {
             print("Correct Word!")
             return
         }
-        var letterComparison = wordleWords.isSimilarWord(currentGuess.word)
-        
-        currentGuess.updateBackground(letterComparison: letterComparison)
+        print(currentGuess.backgroundColors)
         // if it is not the correct word, goto next guess
         self.nextGuess()
     }

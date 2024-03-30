@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct GameOver: View {
-    @State var model: GameOverModel
-    @State var offset: CGFloat = 1000
+    @ObservedObject var model: GameOverModel
     
     let cornerRadius: CGFloat = 20
     
@@ -57,7 +56,6 @@ struct GameOver: View {
                             .fontWeight(.medium)
                     }
                     .tint(.black)
-                    
                 }
                 Spacer()
             }
@@ -65,15 +63,13 @@ struct GameOver: View {
         }
         .shadow(radius: cornerRadius)
         .padding(30)
-        .offset(x: 0, y: offset)
+        .offset(x: 0, y: model.offset)
         .onAppear {
-            withAnimation(.spring) {
-                offset = 0
-            }
+            model.open()
         }
     }
 }
 
-//#Preview {
-//    GameOver(model:GameOverModel(titleText: "Game Over", bodyText: "fsdaklfbhsdfb sdafbsdao fsda uasdb fasdfsadjfb asdf ", buttonText: "Play Again"))
-//}
+#Preview {
+    GameOver(model:GameOverModel(titleText: "Game Over", bodyText: "fsdaklfbhsdfb sdafbsdao fsda uasdb fasdfsadjfb asdf ", buttonText: "Play Again"))
+}

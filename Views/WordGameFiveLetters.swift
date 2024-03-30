@@ -13,7 +13,6 @@ struct WordGameFiveLetters: View {
     @StateObject var gameOverModel = GameOverModel()
     
     var body: some View {
-        @State var gameOver: Bool = gameOverModel.isActive
         ZStack{
             VStack {
                 GameBoard(gameViewModel: gameViewModel)
@@ -26,8 +25,9 @@ struct WordGameFiveLetters: View {
                 gameOverModel.addObserver(observer: gameViewModel)
                 gameViewModel.addObserver(observer: gameOverModel)
             }
-            if gameOver {
+            if gameOverModel.isActive {
                 GameOver(model: gameOverModel)
+                    .zIndex(/*@START_MENU_TOKEN@*/1.0/*@END_MENU_TOKEN@*/)
             }
         }
     }

@@ -14,7 +14,7 @@ class GameOverModel: ObservableObject, GameViewModelObserver {
     @Published var bodyText: String
     @Published var buttonText: String
     @Published var isActive: Bool
-    var offset: CGFloat = 1000
+    @Published var offset: CGFloat = 1000
     var observers = [GameOverObserver]()
     
     init(titleText: String = "Game Over" , bodyText: String = "Placeholder", buttonText: String = "Play Again") {
@@ -29,7 +29,7 @@ class GameOverModel: ObservableObject, GameViewModelObserver {
     }
     
     func open() {
-        withAnimation(.spring()) {
+        withAnimation(.spring(response:0.8, dampingFraction: 0.7)) {
             offset = 0
         }
     }
@@ -41,7 +41,7 @@ class GameOverModel: ObservableObject, GameViewModelObserver {
     }
     
     func close() {
-        withAnimation(.spring()) {
+        withAnimation(.spring(response:1.2).delay(0.2)) {
             offset = 1000
             isActive = false
         }

@@ -40,11 +40,11 @@ struct GameRow: View {
 }
 
 struct GameBoard: View {
-    @ObservedObject var gameViewModel: GameViewModel
+    @ObservedObject var wordleViewModel: GameViewModel
     
     var body: some View {
         VStack {
-            ForEach($gameViewModel.allGuesses){ guess in
+            ForEach($wordleViewModel.allGuesses){ guess in
                 GameRow(guess: guess)
             }
         }

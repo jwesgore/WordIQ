@@ -31,6 +31,8 @@ class WordsCollection {
     // change the selected word for another round
     func updateSelectedWord() {
         self.selectedWord = words.randomElement()!
+        print(self.selectedWord.word)
+        print(self.selectedWord.letters)
     }
     
     // check if the guess is the correct length and in the list of valid words

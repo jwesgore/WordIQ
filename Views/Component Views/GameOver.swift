@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct GameOver: View {
-    @ObservedObject var model: GameOverModel
+    @ObservedObject var model: GameOverVM
     
     let cornerRadius: CGFloat = 20
     
@@ -24,7 +24,7 @@ struct GameOver: View {
             
             // Button
             Button {
-                model.button()
+                model.buttonPressed()
                 model.close()
             } label: {
                 ZStack{
@@ -64,12 +64,9 @@ struct GameOver: View {
         .shadow(radius: cornerRadius)
         .padding(30)
         .offset(x: 0, y: model.offset)
-        .onAppear {
-            model.open()
-        }
     }
 }
 
 #Preview {
-    GameOver(model:GameOverModel(titleText: "Game Over", bodyText: "fsdaklfbhsdfb sdafbsdao fsda uasdb fasdfsadjfb asdf ", buttonText: "Play Again"))
+    GameOver(model:GameOverVM(titleText: "Game Over", bodyText: "fsdaklfbhsdfb sdafbsdao fsda uasdb fasdfsadjfb asdf ", buttonText: "Play Again"))
 }

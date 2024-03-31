@@ -8,14 +8,17 @@
 import Foundation
 import SwiftUI
 
-class GuessWord: Identifiable, Equatable {
+class GuessWord: Identifiable, Equatable, ObservableObject {
 
+    let id: UUID
     var wordLength: Int
     var word: String
-    var letters: [String]
-    var backgroundColors: [Color]
+    @Published var letters: [String]
+    @Published var backgroundColors: [Color]
     
     init(wordLength: Int) {
+        self.id = UUID()
+        
         self.wordLength = wordLength
         self.word = ""
         self.letters = [String](repeating: " ", count: wordLength)

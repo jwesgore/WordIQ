@@ -9,8 +9,8 @@ import Foundation
 import SwiftUI
 
 struct GameSquare: View {
-    var letter: String
-    var backgroundColor: Color
+    @Binding var letter: String
+    @Binding var backgroundColor: Color
     
     let sideLength: CGFloat = 50
     let cornerRadiusSize: CGFloat = 8
@@ -28,25 +28,29 @@ struct GameSquare: View {
 }
 
 struct GameRow: View {
-    @Binding var guess: GuessWord
+    @ObservedObject var guess: GuessWord
     var body: some View {
         let wordLength = guess.wordLength
         HStack {
-            ForEach(0..<wordLength, id: \.self) { index in
-                GameSquare(letter: guess.letters[index], backgroundColor: guess.backgroundColors[index])
+            ForEach(0..<wordLength) { index in
+                GameSquare(letter: $guess.letters[index], backgroundColor: $guess.backgroundColors[index])
             }
         }
     }
 }
 
 struct GameBoard: View {
-    @ObservedObject var gameViewModel: GameViewModel
+    @ObservedObject var gameViewModel: GameboardVM
     
     var body: some View {
         VStack {
-            ForEach($gameViewModel.allGuesses){ guess in
+            ForEach(gameViewModel.guesses){ guess in
                 GameRow(guess: guess)
             }
         }
     }
+}
+
+#Preview{
+    GameBoard(gameViewModel: GameboardVM(boardSize: 6, wordLength: 5))
 }

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 enum LetterComparison{
     case wrongLetter
@@ -13,7 +14,8 @@ enum LetterComparison{
     case samePosition
 }
 
-enum Letter{
+enum KeyboardEntryType {
+    case enter
+    case delete
     case letter
-    case backgroundColor
 }

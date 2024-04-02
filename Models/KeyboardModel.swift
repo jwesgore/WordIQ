@@ -25,11 +25,12 @@ class KeyboardKey: ObservableObject {
     var frameWidth: CGFloat
     @Published var backgroundColor: Color
     
-    init(_ view: any View, value: String, frameHeight: CGFloat = 50, frameWidth: CGFloat = 35) {
+    init(_ view: any View, value: String, frameHeightMultiplier: CGFloat = 0.06, frameWidthMultiplier: CGFloat = 0.085) {
         self.view = view
         self.value = value
-        self.frameHeight = frameHeight
-        self.frameWidth = frameWidth
+        //self.frameHeight = frameHeight
+        self.frameHeight = UIScreen.main.bounds.height * frameHeightMultiplier
+        self.frameWidth = UIScreen.main.bounds.width * frameWidthMultiplier
         self.backgroundColor = Color(UIColor.systemBackground)
     }
 }

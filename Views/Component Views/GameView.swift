@@ -11,17 +11,19 @@ import SwiftUI
 struct GameSquare: View {
     @Binding var letter: String
     @Binding var backgroundColor: Color
+    @Binding var borderColor: Color
     
-    let sideLength: CGFloat = 50
+    let sideLength: CGFloat
     let cornerRadiusSize: CGFloat = 8
     
     var body: some View {
         Text(letter)
+            .font(.system(size: sideLength / 2.5))
             .frame(width:sideLength, height: sideLength)
             .background(backgroundColor)
             .overlay(
                 RoundedRectangle(cornerRadius: cornerRadiusSize)
-                    .stroke(Color.black, lineWidth: 2)
+                    .stroke(borderColor, lineWidth: 2)
             )
             .clipShape(RoundedRectangle(cornerRadius: cornerRadiusSize))
     }
@@ -30,10 +32,9 @@ struct GameSquare: View {
 struct GameRow: View {
     @ObservedObject var guess: GuessWord
     var body: some View {
-        let wordLength = guess.wordLength
         HStack {
-            ForEach(0..<wordLength) { index in
-                GameSquare(letter: $guess.letters[index], backgroundColor: $guess.backgroundColors[index])
+            ForEach(0..<guess.wordLength, id: \.self) { index in
+                GameSquare(letter: $guess.letters[index], backgroundColor: $guess.backgroundColors[index], borderColor: $guess.borderColor, sideLength: guess.boxSize)
             }
         }
     }
@@ -48,6 +49,7 @@ struct GameBoard: View {
                 GameRow(guess: guess)
             }
         }
+        .frame(maxWidth: .infinity)
     }
 }
 

@@ -13,6 +13,9 @@ class GuessWord: Identifiable, Equatable, ObservableObject {
     let id: UUID
     var wordLength: Int
     var word: String
+    var boxSize: CGFloat
+    
+    @Published var borderColor: Color
     @Published var letters: [String]
     @Published var backgroundColors: [Color]
     
@@ -23,6 +26,10 @@ class GuessWord: Identifiable, Equatable, ObservableObject {
         self.word = ""
         self.letters = [String](repeating: " ", count: wordLength)
         self.backgroundColors = [Color](repeating: Color(UIColor.systemBackground), count: wordLength)
+        
+        self.boxSize = 0.8 * (UIScreen.main.bounds.width / Double(wordLength))
+        
+        self.borderColor = Color.gray
     }
     
     static func == (lhs: GuessWord, rhs: GuessWord) -> Bool {

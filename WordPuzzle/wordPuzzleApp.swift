@@ -8,10 +8,12 @@
 import SwiftUI
 
 @main
-struct testWordleApp: App {
+struct wordPuzzleApp: App {
     var body: some Scene {
         WindowGroup {
-            WordGameFiveLetters()
+            SplashScreenView()
+            
+            //WordGameFiveLetters()
         }
     }
 }

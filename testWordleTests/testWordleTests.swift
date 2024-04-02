@@ -6,9 +6,9 @@
 //
 
 import XCTest
-@testable import testWordle
+@testable import wordGame
 
-final class testWordleTests: XCTestCase {
+final class wordGameTests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.

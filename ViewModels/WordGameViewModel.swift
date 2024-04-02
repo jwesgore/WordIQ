@@ -23,7 +23,7 @@ class WordGameVM: ObservableObject, KeyboardVMObserver, GameOverVMObserver {
     
     var observers: [WordGameVMObserver]
     
-    init(boardSize: Int, wordLength: Int) {
+    init(boardSize: Int, wordLength: Int, wordsFile: String) {
         self.boardSize = boardSize
         self.wordLength = wordLength
         
@@ -32,7 +32,7 @@ class WordGameVM: ObservableObject, KeyboardVMObserver, GameOverVMObserver {
         self.gameOverVM = GameOverVM()
         
         self.gameboardVM = GameboardVM(boardSize: boardSize, wordLength: wordLength)
-        self.wordsCollection = WordsCollection(wordLength: wordLength)
+        self.wordsCollection = WordsCollection(wordLength: wordLength, wordFileName: wordsFile)
         
         self.observers = [WordGameVMObserver]()
         

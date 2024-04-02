@@ -11,7 +11,7 @@ class WordsCollection {
     var words = [Word]()
     var selectedWord: Word
     
-    init(wordLength: Int, wordFileName: String = "words") {
+    init(wordLength: Int, wordFileName: String) {
         // read words file and load each word into the "words" array as a Word object
         if let fileURL = Bundle.main.url(forResource: wordFileName, withExtension: "txt") {
             if let fileContents = try? String(contentsOf: fileURL) {

@@ -13,6 +13,10 @@ class KeyboardVM : ObservableObject, WordGameVMObserver {
     var observers = [KeyboardVMObserver]()
     var pressedKey: String = " "
     
+    let letterKeyWidthMultiplier = 0.085
+    let funcKeyWidthMultiplier = 0.13
+    let keyHeightMultiplier = 0.06
+    
     @Published var topRow = [KeyboardKey]()
     @Published var middleRow = [KeyboardKey]()
     @Published var bottomRow = [KeyboardKey]()
@@ -25,11 +29,11 @@ class KeyboardVM : ObservableObject, WordGameVMObserver {
             middleRow.append(KeyboardKey(Text(letter), value: letter))
         }
         // bottom row
-        bottomRow.append(KeyboardKey(Image(systemName: "arrow.turn.down.right"), value: "Enter", frameWidth: 52))
+        bottomRow.append(KeyboardKey(Image(systemName: "arrow.turn.down.right"), value: "Enter", frameHeightMultiplier: keyHeightMultiplier, frameWidthMultiplier: funcKeyWidthMultiplier))
         for letter in keyboardModel.bottomRowLetters {
-            bottomRow.append(KeyboardKey(Text(letter), value: letter))
+            bottomRow.append(KeyboardKey(Text(letter), value: letter, frameHeightMultiplier: keyHeightMultiplier, frameWidthMultiplier: letterKeyWidthMultiplier))
         }
-        bottomRow.append(KeyboardKey(Image(systemName: "arrow.backward"), value: "Delete", frameWidth: 52))
+        bottomRow.append(KeyboardKey(Image(systemName: "arrow.backward"), value: "Delete", frameHeightMultiplier: keyHeightMultiplier, frameWidthMultiplier: funcKeyWidthMultiplier))
     }
     
     func keyPressed(key: String) {

@@ -1,35 +1,27 @@
-//
-//  WordleGuess.swift
-//  testWordle
-//
-//  Created by Wesley Gore on 3/27/24.
-//
-
 import Foundation
 import SwiftUI
 
 class GuessWord: Identifiable, Equatable, ObservableObject {
-
+    
     let id: UUID
     var wordLength: Int
     var word: String
-    var boxSize: CGFloat
-    
-    @Published var borderColor: Color
-    @Published var letters: [String]
-    @Published var backgroundColors: [Color]
+    @Published var letters: [Letter]
     
     init(wordLength: Int) {
+        let edgeLength = 0.8 * (UIScreen.main.bounds.width / Double(wordLength))
+        
         self.id = UUID()
         
         self.wordLength = wordLength
         self.word = ""
-        self.letters = [String](repeating: " ", count: wordLength)
-        self.backgroundColors = [Color](repeating: Color(UIColor.systemBackground), count: wordLength)
-        
-        self.boxSize = 0.8 * (UIScreen.main.bounds.width / Double(wordLength))
-        
-        self.borderColor = Color.gray
+        self.letters = (0..<wordLength).map { _ in
+            Letter(value: "",
+                   backgroundColor: LetterBackgroundColor().standard,
+                   borderColor: BorderColor().inactive,
+                   width: edgeLength,
+                   height: edgeLength)
+        }
     }
     
     static func == (lhs: GuessWord, rhs: GuessWord) -> Bool {
@@ -45,7 +37,9 @@ class GuessWord: Identifiable, Equatable, ObservableObject {
         if word.count >= wordLength || letter.count > 1 {
             return
         }
-        letters[word.count] = letter
+        
+        letters[word.count].value = letter
+        letters[word.count].borderColor = BorderColor().active
         word.append(letter)
         printInfo()
     }
@@ -55,17 +49,23 @@ class GuessWord: Identifiable, Equatable, ObservableObject {
             return
         }
         word.removeLast()
-        letters[word.count] = " "
+        letters[word.count].value = " "
+        letters[word.count].borderColor = BorderColor().inactive
         printInfo()
     }
     
     func setBackgrounds(letterComparison: [LetterComparison]) {
         for i in 0..<letterComparison.count {
+            //letters[i].degrees = 360.0
+            letters[i].borderColor = BorderColor().clear
             if letterComparison[i] == LetterComparison.differentPosition {
-                backgroundColors[i] = Color.yellow
+                letters[i].backgroundColor = LetterBackgroundColor().contains
             }
             else if letterComparison[i] == LetterComparison.samePosition {
-                backgroundColors[i] = Color.green
+                letters[i].backgroundColor = LetterBackgroundColor().correct
+            }
+            else {
+                letters[i].backgroundColor = LetterBackgroundColor().incorrect
             }
         }
     }

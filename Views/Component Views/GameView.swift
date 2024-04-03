@@ -9,23 +9,23 @@ import Foundation
 import SwiftUI
 
 struct GameSquare: View {
-    @Binding var letter: String
-    @Binding var backgroundColor: Color
-    @Binding var borderColor: Color
+    @ObservedObject var letter: Letter
     
-    let sideLength: CGFloat
     let cornerRadiusSize: CGFloat = 8
     
     var body: some View {
-        Text(letter)
-            .font(.system(size: sideLength / 2.5))
-            .frame(width:sideLength, height: sideLength)
-            .background(backgroundColor)
+        Text(letter.value)
+            .font(.system(size: letter.width / 2.5))
+            .frame(width:letter.width, height: letter.height)
+            .background(letter.backgroundColor)
             .overlay(
                 RoundedRectangle(cornerRadius: cornerRadiusSize)
-                    .stroke(borderColor, lineWidth: 2)
+                    .stroke(letter.borderColor, lineWidth: 4)
             )
             .clipShape(RoundedRectangle(cornerRadius: cornerRadiusSize))
+            .rotation3DEffect( Angle(degrees: letter.degrees), axis: (x: 0, y:1, z:0)
+            )
+            .animation(.easeInOut(duration: 1.0), value: letter.degrees == 0.0)
     }
 }
 
@@ -34,7 +34,7 @@ struct GameRow: View {
     var body: some View {
         HStack {
             ForEach(0..<guess.wordLength, id: \.self) { index in
-                GameSquare(letter: $guess.letters[index], backgroundColor: $guess.backgroundColors[index], borderColor: $guess.borderColor, sideLength: guess.boxSize)
+                GameSquare(letter: guess.letters[index])
             }
         }
     }

@@ -23,10 +23,8 @@ class GameboardVM: ObservableObject, WordGameVMObserver {
         self.guesses = (0..<boardSize).map { _ in GuessWord(wordLength: wordLength) }
         
         self.currentPosition = 0
-        
-        self.guesses[self.currentPosition].borderColor = Color.black
     }
-
+    
     func addObserver(observer: GameViewModelObserver) {
         observers.append(observer)
     }
@@ -40,7 +38,6 @@ class GameboardVM: ObservableObject, WordGameVMObserver {
         if currentPosition == boardSize {
             return false
         }
-        guesses[currentPosition].borderColor = Color.black
         return true
     }
     
@@ -59,13 +56,11 @@ class GameboardVM: ObservableObject, WordGameVMObserver {
     func gameOver() {
         self.currentPosition = 0
         self.guesses = (0..<boardSize).map { _ in GuessWord(wordLength: wordLength) }
-        guesses[currentPosition].borderColor = Color.black
     }
     
     func setBackground(guess: Word, letterComparison: [LetterComparison]) {
         guesses[currentPosition].setBackgrounds(letterComparison: letterComparison)
     }
-    
 }
 
 protocol GameViewModelObserver {

@@ -14,6 +14,7 @@ struct GameOver: View {
     
     var body: some View {
         VStack {
+            
             // Title
             Text(model.titleText)
                 .padding()

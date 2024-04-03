@@ -8,12 +8,27 @@
 import Foundation
 import SwiftUI
 
+struct BorderColor {
+    let active = Color("BCActive")
+    let inactive = Color("BCInactive")
+    let clear = Color(.clear)
+}
+
+struct LetterBackgroundColor {
+    let correct = Color("Correct")
+    let incorrect = Color("Incorrect")
+    let contains = Color("Contains")
+    let standard = Color("Standard")
+}
+
 /// Superclass used to define common parrameters for base level UI elements such as letter in a word or a key on a keyboard
 class BaseComponent: ObservableObject {
     @Published var backgroundColor: Color
     @Published var borderColor: Color
     @Published var width: CGFloat
     @Published var height: CGFloat
+    
+    @Published var degrees = 0.0
     
     init(backgroundColor: Color, borderColor: Color, width: CGFloat, height: CGFloat) {
         self.backgroundColor = backgroundColor

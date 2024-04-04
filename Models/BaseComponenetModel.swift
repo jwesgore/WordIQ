@@ -28,8 +28,6 @@ class BaseComponent: ObservableObject {
     @Published var width: CGFloat
     @Published var height: CGFloat
     
-    @Published var degrees = 0.0
-    
     init(backgroundColor: Color, borderColor: Color, width: CGFloat, height: CGFloat) {
         self.backgroundColor = backgroundColor
         self.borderColor = borderColor

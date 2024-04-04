@@ -7,6 +7,7 @@ class GuessWord: Identifiable, Equatable, ObservableObject {
     var wordLength: Int
     var word: String
     @Published var letters: [Letter]
+    @Published var submitted = false
     
     init(wordLength: Int) {
         let edgeLength = 0.8 * (UIScreen.main.bounds.width / Double(wordLength))
@@ -56,7 +57,7 @@ class GuessWord: Identifiable, Equatable, ObservableObject {
     
     func setBackgrounds(letterComparison: [LetterComparison]) {
         for i in 0..<letterComparison.count {
-            //letters[i].degrees = 360.0
+            
             letters[i].borderColor = BorderColor().clear
             if letterComparison[i] == LetterComparison.differentPosition {
                 letters[i].backgroundColor = LetterBackgroundColor().contains

@@ -1,13 +1,14 @@
-//
-//  GameRow.swift
-//  testWordle
-//
-//  Created by Wesley Gore on 3/27/24.
-//
+/// All views in this file are used to make the entire play area
+///
+/// File contents:
+///     - Gameboard
+///     - GameRow
+///     - Gamequare
 
 import Foundation
 import SwiftUI
 
+/// View of the entire gameboard containing multiple guess words
 struct GameBoard: View {
     @ObservedObject var gameViewModel: GameboardVM
     
@@ -21,6 +22,8 @@ struct GameBoard: View {
     }
 }
 
+/// View of each row on the board containing a single guess word
+/// This view controls the animation that changes the background of the squares
 struct GameRow: View {
     @ObservedObject var guess: GuessWord
     let animationDuration: Double = 0.5
@@ -29,16 +32,16 @@ struct GameRow: View {
         HStack {
             ForEach(0..<guess.wordLength, id: \.self) { index in
                 GameSquare(letter: guess.letters[index])
-                    .animation(.easeInOut(duration: animationDuration).delay(Double(index) * 0.1), value:guess.submitted)
+                    .animation(.easeInOut(duration: animationDuration).delay(Double(index) * 0.125), value:guess.submitted)
             }
         }
     }
 }
 
+/// View of each letter of a guess word
+/// This view controls the animation of all the letters fading in and out
 struct GameSquare: View {
     @ObservedObject var letter: Letter
-    
-    let cornerRadiusSize: CGFloat = 8
     
     var body: some View {
         Text(letter.value)
@@ -47,10 +50,10 @@ struct GameSquare: View {
             .frame(width:letter.width, height: letter.height)
             .background(letter.backgroundColor)
             .overlay(
-                RoundedRectangle(cornerRadius: cornerRadiusSize)
+                RoundedRectangle(cornerRadius: letter.cornerRadius)
                     .stroke(letter.borderColor, lineWidth: 4)
             )
-            .clipShape(RoundedRectangle(cornerRadius: cornerRadiusSize))
+            .clipShape(RoundedRectangle(cornerRadius: letter.cornerRadius))
     }
 }
 

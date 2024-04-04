@@ -1,48 +1,21 @@
-//
-//  Keyboard.swift
-//  testWordle
-//
-//  Created by Wesley Gore on 3/27/24.
-//
-
 import Foundation
 import SwiftUI
 
-struct KeyboardElement: View {
-    @ObservedObject var key: KeyboardKey
-    var viewModel: KeyboardVM
-    
-    let fontSize: CGFloat = 15
-    let corenerRadius: CGFloat = 8
-    
-    var body: some View {
-        Button (action: {
-            viewModel.keyPressed(key: key.value)
-        }, label: {
-            if let textView = key.view as? Text {
-                textView
-                    .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, maxHeight: .infinity)
-            } else if let imageView = key.view as? Image {
-                imageView
-                    .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, maxHeight: .infinity)
-            }
-        })
-        .font(.system(size: fontSize))
-        .fontWeight(.semibold)
-        .foregroundColor(.black)
-        .padding(1)
-        .frame(width: key.frameWidth, height: key.frameHeight)
-        .background(key.backgroundColor)
-        .overlay(
-            RoundedRectangle(cornerRadius: corenerRadius)
-                .stroke(Color.gray, lineWidth: 1)
-        )
-        .clipShape(RoundedRectangle(cornerRadius: corenerRadius))
+/// View of the entire keyboard containing a top, middle, and bottom row
+struct KeyboardView: View {
+    @ObservedObject var keyboardViewModel: KeyboardVM
+    var body: some View{
+        VStack{
+            KeyboardRow(rowElements: keyboardViewModel.topRow, viewModel: keyboardViewModel)
+            KeyboardRow(rowElements: keyboardViewModel.middleRow, viewModel: keyboardViewModel)
+            KeyboardRow(rowElements: keyboardViewModel.bottomRow, viewModel: keyboardViewModel)
+        }
     }
 }
 
+/// View of a single row of the keyboard
 struct KeyboardRow: View {
-    var rowElements: [KeyboardKey]
+    var rowElements: [BaseComponent]
     let viewModel: KeyboardVM
     
     var body: some View {
@@ -55,20 +28,43 @@ struct KeyboardRow: View {
     }
 }
 
-struct KeyboardView: View {
-    @ObservedObject var keyboardViewModel: KeyboardVM
-   
-    var body: some View{
+/// View of a single key on a keyboard
+struct KeyboardElement: View {
+    @ObservedObject var key: BaseComponent
+    var viewModel: KeyboardVM
     
-        VStack{
-            KeyboardRow(rowElements: keyboardViewModel.topRow, viewModel: keyboardViewModel)
-                .frame(maxWidth: .infinity)
-            KeyboardRow(rowElements: keyboardViewModel.middleRow, viewModel: keyboardViewModel)
-                .frame(maxWidth: .infinity)
-            KeyboardRow(rowElements: keyboardViewModel.bottomRow, viewModel: keyboardViewModel)
-                .frame(maxWidth: .infinity)
+    var body: some View {
+        let buttonView = ImageOrText(component: key)
+    
+        Button (action: {
+            viewModel.keyPressed(key: key.value)
+        }, label: {
+            buttonView
+                .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, maxHeight: .infinity)
+        })
+        .font(.system(size: key.fontSize))
+        .fontWeight(.semibold)
+        .foregroundColor(.black)
+        .padding(1)
+        .frame(width: key.width, height: key.height)
+        .background(key.backgroundColor)
+        .overlay(
+            RoundedRectangle(cornerRadius: key.cornerRadius)
+                .stroke(Color.gray, lineWidth: 1)
+        )
+        .clipShape(RoundedRectangle(cornerRadius: key.cornerRadius))
+    }
+}
+
+extension KeyboardElement {
+    @ViewBuilder
+    func ImageOrText(component: BaseComponent) -> some View {
+        if let x = component as? Letter {
+            x.view
         }
-      
+        else if let x = component as? Function {
+            x.view
+        }
     }
 }
 

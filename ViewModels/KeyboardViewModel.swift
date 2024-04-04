@@ -1,10 +1,3 @@
-//
-//  KeyboardViewModel.swift
-//  testWordle
-//
-//  Created by Wesley Gore on 3/28/24.
-//
-
 import Foundation
 import SwiftUI
 
@@ -17,23 +10,50 @@ class KeyboardVM : ObservableObject, WordGameVMObserver {
     let funcKeyWidthMultiplier = 0.13
     let keyHeightMultiplier = 0.06
     
-    @Published var topRow = [KeyboardKey]()
-    @Published var middleRow = [KeyboardKey]()
-    @Published var bottomRow = [KeyboardKey]()
+    @Published var topRow = [BaseComponent]()
+    @Published var middleRow = [BaseComponent]()
+    @Published var bottomRow = [BaseComponent]()
  
     init() {
+        let height = UIScreen.main.bounds.height * keyHeightMultiplier
+        let letterWidth = UIScreen.main.bounds.width * letterKeyWidthMultiplier
+        let funtionWidth = UIScreen.main.bounds.width * funcKeyWidthMultiplier
+        
         for letter in keyboardModel.topRowLetters {
-            topRow.append(KeyboardKey(Text(letter), value: letter))
+            topRow.append(Letter(value: letter,
+                                 backgroundColor: LetterBackgroundColor().standard,
+                                 borderColor: BorderColor().inactive,
+                                 width: letterWidth,
+                                 height: height))
         }
+        
         for letter in keyboardModel.middleRowLetters {
-            middleRow.append(KeyboardKey(Text(letter), value: letter))
+            middleRow.append(Letter(value: letter,
+                                 backgroundColor: LetterBackgroundColor().standard,
+                                 borderColor: BorderColor().inactive,
+                                 width: letterWidth,
+                                 height: height))
         }
-        // bottom row
-        bottomRow.append(KeyboardKey(Image(systemName: "arrow.turn.down.right"), value: "Enter", frameHeightMultiplier: keyHeightMultiplier, frameWidthMultiplier: funcKeyWidthMultiplier))
+        
+        bottomRow.append(Function(value: FunctionImages().enter,
+                                backgroundColor: LetterBackgroundColor().standard,
+                                borderColor: BorderColor().inactive,
+                                width: funtionWidth,
+                                height: height))
+        
         for letter in keyboardModel.bottomRowLetters {
-            bottomRow.append(KeyboardKey(Text(letter), value: letter, frameHeightMultiplier: keyHeightMultiplier, frameWidthMultiplier: letterKeyWidthMultiplier))
+            bottomRow.append(Letter(value: letter,
+                                 backgroundColor: LetterBackgroundColor().standard,
+                                 borderColor: BorderColor().inactive,
+                                 width: letterWidth,
+                                 height: height))
         }
-        bottomRow.append(KeyboardKey(Image(systemName: "arrow.backward"), value: "Delete", frameHeightMultiplier: keyHeightMultiplier, frameWidthMultiplier: funcKeyWidthMultiplier))
+        
+        bottomRow.append(Function(value: FunctionImages().delete,
+                                backgroundColor: LetterBackgroundColor().standard,
+                                borderColor: BorderColor().inactive,
+                                width: funtionWidth,
+                                height: height))
     }
     
     func keyPressed(key: String) {
@@ -54,7 +74,7 @@ class KeyboardVM : ObservableObject, WordGameVMObserver {
     // WordGameVM functions
     func gameOver() {
         for row in [topRow, middleRow, bottomRow] {
-            for letter in row {letter.backgroundColor = Color(UIColor.systemBackground)}
+            for letter in row {letter.backgroundColor = LetterBackgroundColor().standard}
         }
     }
     
@@ -66,16 +86,16 @@ class KeyboardVM : ObservableObject, WordGameVMObserver {
             if map[letter] == nil {
                 switch comparison {
                 case LetterComparison.samePosition:
-                    map[letter] = Color.green
+                    map[letter] = LetterBackgroundColor().correct
                 case LetterComparison.differentPosition:
-                    map[letter] = Color.yellow
+                    map[letter] = LetterBackgroundColor().contains
                 case LetterComparison.wrongLetter:
-                    map[letter] = Color(UIColor.lightGray)
+                    map[letter] = LetterBackgroundColor().incorrect
                 }
             } 
             else {
-                if map[letter] == Color.yellow && comparison == LetterComparison.samePosition {
-                    map[letter] = Color.green
+                if map[letter] == LetterBackgroundColor().contains && comparison == LetterComparison.samePosition {
+                    map[letter] = LetterBackgroundColor().correct
                 }
             }
         }
@@ -84,8 +104,8 @@ class KeyboardVM : ObservableObject, WordGameVMObserver {
         for row in [topRow, middleRow, bottomRow] {
             for letter in row {
                 // If key is already green, grayed out, or not even in the guess, just skip it
-                if letter.backgroundColor == Color.green ||
-                    letter.backgroundColor == Color(UIColor.lightGray) ||
+                if letter.backgroundColor == LetterBackgroundColor().correct ||
+                    letter.backgroundColor == LetterBackgroundColor().incorrect ||
                     !guess.letters.contains(letter.value.lowercased()) {
                     continue
                 }

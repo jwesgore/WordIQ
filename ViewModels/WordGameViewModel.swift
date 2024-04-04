@@ -97,10 +97,10 @@ class WordGameVM: ObservableObject, KeyboardVMObserver, GameOverVMObserver {
         if keyboardModel.letters.contains(key) {
             gameboardVM.keyPressed(key: key, entryType: KeyboardEntryType.letter)
         }
-        else if key == "Delete" {
+        else if key == FunctionImages().delete {
             gameboardVM.keyPressed(key: key, entryType: KeyboardEntryType.delete)
         }
-        else if key == "Enter" {
+        else if key == FunctionImages().enter {
             submitGuess()
         }
     }

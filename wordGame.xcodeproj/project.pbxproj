@@ -196,12 +196,9 @@
 		4B3388BC2BB4C16D00A10A27 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				4B3388BA2BB4C13300A10A27 /* GuessWordModel.swift */,
-				4B3388BD2BB4C1C800A10A27 /* WordsCollection.swift */,
-				4B3388C72BB5F3F900A10A27 /* KeyboardModel.swift */,
+				4BB0BEC12BBF891B003BA895 /* Component Models */,
+				4BB0BEC02BBF8904003BA895 /* Word Models */,
 				4B3388CF2BB6337300A10A27 /* Enums.swift */,
-				4B3388D12BB7583000A10A27 /* WordModel.swift */,
-				4BB0BEB52BBC8ABD003BA895 /* BaseComponenetModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -235,6 +232,25 @@
 				4B3388D52BB7A3F800A10A27 /* GameOver.swift */,
 			);
 			path = "Component Views";
+			sourceTree = "<group>";
+		};
+		4BB0BEC02BBF8904003BA895 /* Word Models */ = {
+			isa = PBXGroup;
+			children = (
+				4B3388D12BB7583000A10A27 /* WordModel.swift */,
+				4B3388BD2BB4C1C800A10A27 /* WordsCollection.swift */,
+				4B3388BA2BB4C13300A10A27 /* GuessWordModel.swift */,
+			);
+			path = "Word Models";
+			sourceTree = "<group>";
+		};
+		4BB0BEC12BBF891B003BA895 /* Component Models */ = {
+			isa = PBXGroup;
+			children = (
+				4BB0BEB52BBC8ABD003BA895 /* BaseComponenetModel.swift */,
+				4B3388C72BB5F3F900A10A27 /* KeyboardModel.swift */,
+			);
+			path = "Component Models";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

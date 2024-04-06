@@ -1,4 +1,5 @@
 import Foundation
+import SwiftUI
 
 class WordGameVM: ObservableObject, KeyboardVMObserver, GameOverVMObserver {
     
@@ -101,10 +102,10 @@ class WordGameVM: ObservableObject, KeyboardVMObserver, GameOverVMObserver {
         if keyboardModel.letters.contains(key) {
             gameboardVM.keyPressed(key: key, entryType: KeyboardEntryType.letter)
         }
-        else if key == FunctionImages().delete {
+        else if key == FunctionImages.delete {
             gameboardVM.keyPressed(key: key, entryType: KeyboardEntryType.delete)
         }
-        else if key == FunctionImages().enter {
+        else if key == FunctionImages.enter {
             submitGuess()
         }
     }

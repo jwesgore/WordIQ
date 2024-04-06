@@ -13,7 +13,6 @@ class Transitions: ObservableObject {
         DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
             self.fadeToWhite(targetView: targetView)
         }
-
     }
     
     /// Fades the current activeView out and replaces it with a targetView having an empty view as a buffer in between
@@ -21,7 +20,7 @@ class Transitions: ObservableObject {
         let animationLength = 0.5
         
         withAnimation(.linear(duration: animationLength)) {
-            activeView = ActiveView.empty
+            activeView = .empty
         }
         
         DispatchQueue.main.asyncAfter(deadline: .now() + animationLength, execute: {

@@ -21,37 +21,37 @@ class KeyboardVM : ObservableObject, WordGameVMObserver {
         
         for letter in keyboardModel.topRowLetters {
             topRow.append(Letter(value: letter,
-                                 backgroundColor: LetterBackgroundColor().standard,
-                                 borderColor: BorderColor().inactive,
+                                 backgroundColor: LetterBackgroundColor.standard,
+                                 borderColor: BorderColor.inactive,
                                  width: letterWidth,
                                  height: height))
         }
         
         for letter in keyboardModel.middleRowLetters {
             middleRow.append(Letter(value: letter,
-                                 backgroundColor: LetterBackgroundColor().standard,
-                                 borderColor: BorderColor().inactive,
+                                 backgroundColor: LetterBackgroundColor.standard,
+                                 borderColor: BorderColor.inactive,
                                  width: letterWidth,
                                  height: height))
         }
         
-        bottomRow.append(Function(value: FunctionImages().enter,
-                                backgroundColor: LetterBackgroundColor().standard,
-                                borderColor: BorderColor().inactive,
+        bottomRow.append(Function(value: FunctionImages.enter,
+                                backgroundColor: LetterBackgroundColor.standard,
+                                borderColor: BorderColor.inactive,
                                 width: funtionWidth,
                                 height: height))
         
         for letter in keyboardModel.bottomRowLetters {
             bottomRow.append(Letter(value: letter,
-                                 backgroundColor: LetterBackgroundColor().standard,
-                                 borderColor: BorderColor().inactive,
+                                 backgroundColor: LetterBackgroundColor.standard,
+                                 borderColor: BorderColor.inactive,
                                  width: letterWidth,
                                  height: height))
         }
         
-        bottomRow.append(Function(value: FunctionImages().delete,
-                                backgroundColor: LetterBackgroundColor().standard,
-                                borderColor: BorderColor().inactive,
+        bottomRow.append(Function(value: FunctionImages.delete,
+                                backgroundColor: LetterBackgroundColor.standard,
+                                borderColor: BorderColor.inactive,
                                 width: funtionWidth,
                                 height: height))
     }
@@ -74,7 +74,7 @@ class KeyboardVM : ObservableObject, WordGameVMObserver {
     // WordGameVM functions
     func gameOver() {
         for row in [topRow, middleRow, bottomRow] {
-            for letter in row {letter.backgroundColor = LetterBackgroundColor().standard}
+            for letter in row {letter.backgroundColor = LetterBackgroundColor.standard}
         }
     }
     
@@ -86,16 +86,16 @@ class KeyboardVM : ObservableObject, WordGameVMObserver {
             if map[letter] == nil {
                 switch comparison {
                 case LetterComparison.samePosition:
-                    map[letter] = LetterBackgroundColor().correct
+                    map[letter] = LetterBackgroundColor.correct
                 case LetterComparison.differentPosition:
-                    map[letter] = LetterBackgroundColor().contains
+                    map[letter] = LetterBackgroundColor.contains
                 case LetterComparison.wrongLetter:
-                    map[letter] = LetterBackgroundColor().incorrect
+                    map[letter] = LetterBackgroundColor.incorrect
                 }
             } 
             else {
-                if map[letter] == LetterBackgroundColor().contains && comparison == LetterComparison.samePosition {
-                    map[letter] = LetterBackgroundColor().correct
+                if map[letter] == LetterBackgroundColor.contains && comparison == LetterComparison.samePosition {
+                    map[letter] = LetterBackgroundColor.correct
                 }
             }
         }
@@ -104,8 +104,8 @@ class KeyboardVM : ObservableObject, WordGameVMObserver {
         for row in [topRow, middleRow, bottomRow] {
             for letter in row {
                 // If key is already green, grayed out, or not even in the guess, just skip it
-                if letter.backgroundColor == LetterBackgroundColor().correct ||
-                    letter.backgroundColor == LetterBackgroundColor().incorrect ||
+                if letter.backgroundColor == LetterBackgroundColor.correct ||
+                    letter.backgroundColor == LetterBackgroundColor.incorrect ||
                     !guess.letters.contains(letter.value.lowercased()) {
                     continue
                 }

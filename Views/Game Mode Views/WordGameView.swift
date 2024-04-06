@@ -10,7 +10,7 @@ struct WordGameFiveLetters: View {
         self._wordGameVM = StateObject(wrappedValue: WordGameVM(boardSize: boardSize, wordLength: wordLength, wordsFile: wordsFile))
         
         self.endGame = endGame
-        self.transitions = Transitions(activeView: ActiveView.wordgame)
+        self.transitions = Transitions(activeView: .wordgame)
     }
    
     var body: some View {
@@ -22,7 +22,7 @@ struct WordGameFiveLetters: View {
                 VStack {
                     HStack{
                         Button(action: {
-                            endGame(ActiveView.tabview)
+                            endGame(.tabview)
                         }, label:{Image(systemName:"chevron.backward")})
                         Spacer()
                     }
@@ -42,11 +42,11 @@ struct WordGameFiveLetters: View {
                 return
             }
             switch targetView {
-            case ActiveView.tabview:
-                endGame(ActiveView.tabview)
-            case ActiveView.wordgame:
+            case .tabview:
+                endGame(.tabview)
+            case .wordgame:
                 transitions.fadeToWhiteDelay(targetView: targetView, delay: 0.25)
-            case ActiveView.gameover:
+            case .gameover:
                 transitions.fadeToWhiteDelay(targetView: targetView, delay: 1.65)
             default:
                 return

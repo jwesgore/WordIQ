@@ -1,29 +1,22 @@
-//
-//  LetterModel.swift
-//  wordGame
-//
-//  Created by Wesley Gore on 4/2/24.
-//
-
 import Foundation
 import SwiftUI
 
-struct BorderColor {
-    let active = Color("BCActive")
-    let inactive = Color("BCInactive")
-    let clear = Color(.clear)
+enum BorderColor {
+    static let active = Color("BCActive")
+    static let inactive = Color("BCInactive")
+    static let clear = Color(.clear)
 }
 
-struct LetterBackgroundColor {
-    let correct = Color("Correct")
-    let incorrect = Color("Incorrect")
-    let contains = Color("Contains")
-    let standard = Color("Standard")
+enum LetterBackgroundColor {
+    static let correct = Color("Correct")
+    static let incorrect = Color("Incorrect")
+    static let contains = Color("Contains")
+    static let standard = Color("Standard")
 }
 
-struct FunctionImages {
-    let delete = "arrow.backward"
-    let enter = "arrow.turn.down.right"
+enum FunctionImages{
+    static let delete = "arrow.backward"
+    static let enter = "arrow.turn.down.right"
 }
 
 /// Superclass used to define common parrameters for base level UI elements such as letter in a word or a key on a keyboard

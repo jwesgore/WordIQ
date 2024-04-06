@@ -18,8 +18,8 @@ class GuessWord: Identifiable, Equatable, ObservableObject {
         self.word = ""
         self.letters = (0..<wordLength).map { _ in
             Letter(value: "",
-                   backgroundColor: LetterBackgroundColor().standard,
-                   borderColor: BorderColor().inactive,
+                   backgroundColor: LetterBackgroundColor.standard,
+                   borderColor: BorderColor.inactive,
                    width: edgeLength,
                    height: edgeLength)
         }
@@ -40,7 +40,7 @@ class GuessWord: Identifiable, Equatable, ObservableObject {
         }
         
         letters[word.count].value = letter
-        letters[word.count].borderColor = BorderColor().active
+        letters[word.count].borderColor = BorderColor.active
         word.append(letter)
         printInfo()
     }
@@ -51,22 +51,22 @@ class GuessWord: Identifiable, Equatable, ObservableObject {
         }
         word.removeLast()
         letters[word.count].value = " "
-        letters[word.count].borderColor = BorderColor().inactive
+        letters[word.count].borderColor = BorderColor.inactive
         printInfo()
     }
     
     func setBackgrounds(letterComparison: [LetterComparison]) {
         for i in 0..<letterComparison.count {
             
-            letters[i].borderColor = BorderColor().clear
+            letters[i].borderColor = BorderColor.clear
             if letterComparison[i] == LetterComparison.differentPosition {
-                letters[i].backgroundColor = LetterBackgroundColor().contains
+                letters[i].backgroundColor = LetterBackgroundColor.contains
             }
             else if letterComparison[i] == LetterComparison.samePosition {
-                letters[i].backgroundColor = LetterBackgroundColor().correct
+                letters[i].backgroundColor = LetterBackgroundColor.correct
             }
             else {
-                letters[i].backgroundColor = LetterBackgroundColor().incorrect
+                letters[i].backgroundColor = LetterBackgroundColor.incorrect
             }
         }
     }

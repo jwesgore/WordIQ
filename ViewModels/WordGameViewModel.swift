@@ -12,6 +12,7 @@ class WordGameVM: ObservableObject, KeyboardVMObserver, GameOverVMObserver {
     var gameOverVM: GameOverVM
     
     @Published var activeView: ActiveView
+    var keyboardActive = true
     
     var wordsCollection: WordsCollection
     let keyboardModel: KeyboardModel
@@ -77,12 +78,14 @@ class WordGameVM: ObservableObject, KeyboardVMObserver, GameOverVMObserver {
         
         // is it the correct word
         if wordsCollection.isCorrectWord(guessWord) {
+            keyboardActive = false
             activeView = ActiveView.gameover
             print("Correct Word!")
             return
         }
         
         if !gameboardVM.nextGuess() {
+            keyboardActive = false
             activeView = ActiveView.gameover
             print("Game Over")
             return
@@ -91,6 +94,9 @@ class WordGameVM: ObservableObject, KeyboardVMObserver, GameOverVMObserver {
     
     // KeyboardVMObserver Functions
     func keyPressed(_ key: String) {
+        if !keyboardActive {
+            return
+        }
         if keyboardModel.letters.contains(key) {
             gameboardVM.keyPressed(key: key, entryType: KeyboardEntryType.letter)
         }
@@ -103,13 +109,11 @@ class WordGameVM: ObservableObject, KeyboardVMObserver, GameOverVMObserver {
     }
     
     // GameOverVMObserver Function
-    func closePressed() {
-        
-    }
-    
-    func buttonPressed() {
+    func playAgain() {
+        activeView = ActiveView.wordgame
         gameOver()
         wordsCollection.updateSelectedWord()
+        keyboardActive = true
     }
 }
 

@@ -17,7 +17,7 @@ struct WordGameFiveLetters: View {
         ZStack{
             switch transitions.activeView {
             case ActiveView.gameover:
-                GameOver(model: wordGameVM.gameOverVM, nextView: transitions.fadeToWhite)
+                GameOver(model: wordGameVM.gameOverVM, mainmenu: endGame, nextView: transitions.fadeToWhite)
             case ActiveView.wordgame:
                 VStack {
                     HStack{
@@ -38,8 +38,12 @@ struct WordGameFiveLetters: View {
             }
         }
         .onReceive(wordGameVM.$activeView) { targetView in
+            var delay = 1.65
+            if targetView == ActiveView.wordgame {
+                delay = 0.25
+            }
             if targetView != transitions.activeView {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1.65) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
                     transitions.fadeToWhite(targetView: targetView)
                 }
             }

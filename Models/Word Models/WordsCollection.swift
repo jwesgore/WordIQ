@@ -1,17 +1,14 @@
-//
-//  WordleWord.swift
-//  testWordle
-//
-//  Created by Wesley Gore on 3/27/24.
-//
-
 import Foundation
 
 class WordsCollection {
     var words = [Word]()
+    var validWords = [Word]()
     var selectedWord: Word
     
     init(wordLength: Int, wordFileName: String) {
+        
+        let allWordsFile = "five_letter_words_hard"
+        
         // read words file and load each word into the "words" array as a Word object
         if let fileURL = Bundle.main.url(forResource: wordFileName, withExtension: "txt") {
             if let fileContents = try? String(contentsOf: fileURL) {
@@ -23,6 +20,19 @@ class WordsCollection {
                 }
             }
         }
+        
+        // read words file and load each word into the "words" array as a Word object
+        if let fileURL = Bundle.main.url(forResource: allWordsFile, withExtension: "txt") {
+            if let fileContents = try? String(contentsOf: fileURL) {
+                for word in fileContents.components(separatedBy: "\n") {
+                    if word.count != wordLength {
+                        continue
+                    }
+                    validWords.append(Word(word))
+                }
+            }
+        }
+        
         self.selectedWord = words.randomElement()!
         print(self.selectedWord.word)
         print(self.selectedWord.letters)
@@ -38,7 +48,7 @@ class WordsCollection {
     // check if the guess is the correct length and in the list of valid words
     func isValidWord(_ guess: Word) -> Bool {
         if selectedWord.word.count == guess.word.count &&
-            words.contains(guess) {
+            validWords.contains(guess) {
             return true
         }
         return false

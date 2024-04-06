@@ -18,8 +18,15 @@ class GameOverVM: ObservableObject {
             observer.playAgain()
         }
     }
+    
+    func mainMenu() {
+        for observer in observers {
+            observer.mainMenu()
+        }
+    }
 }
 
 protocol GameOverVMObserver {
     func playAgain()
+    func mainMenu()
 }

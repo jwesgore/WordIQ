@@ -117,6 +117,11 @@ class WordGameVM: ObservableObject, KeyboardVMObserver, GameOverVMObserver {
         wordsCollection.updateSelectedWord()
         keyboardActive = true
     }
+    
+    /// GameOver Observer Function
+    func mainMenu() {
+        activeView = ActiveView.tabview
+    }
 }
 
 protocol WordGameVMObserver {

@@ -11,6 +11,8 @@ class WordGameVM: ObservableObject, KeyboardVMObserver, GameOverVMObserver {
     var gameboardVM: GameboardVM
     var gameOverVM: GameOverVM
     
+    @Published var activeView: ActiveView
+    
     var wordsCollection: WordsCollection
     let keyboardModel: KeyboardModel
     
@@ -23,6 +25,8 @@ class WordGameVM: ObservableObject, KeyboardVMObserver, GameOverVMObserver {
         self.keyboardModel = KeyboardModel()
         self.keyboardVM = KeyboardVM()
         self.gameOverVM = GameOverVM()
+        
+        self.activeView = ActiveView.wordgame
         
         self.gameboardVM = GameboardVM(boardSize: boardSize, wordLength: wordLength)
         self.wordsCollection = WordsCollection(wordLength: wordLength, wordFileName: wordsFile)
@@ -73,13 +77,13 @@ class WordGameVM: ObservableObject, KeyboardVMObserver, GameOverVMObserver {
         
         // is it the correct word
         if wordsCollection.isCorrectWord(guessWord) {
-            gameOverVM.open()
+            activeView = ActiveView.gameover
             print("Correct Word!")
             return
         }
         
         if !gameboardVM.nextGuess() {
-            gameOverVM.open()
+            activeView = ActiveView.gameover
             print("Game Over")
             return
         }

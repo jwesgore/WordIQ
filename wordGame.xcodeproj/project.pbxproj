@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4B08AA1F2BC0E40400810F22 /* UIScreen Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B08AA1E2BC0E40400810F22 /* UIScreen Extension.swift */; };
 		4B0BEE8E2BB8E6B10007772B /* WordGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0BEE8D2BB8E6B10007772B /* WordGameViewModel.swift */; };
 		4B0BEE932BBB836A0007772B /* five_letter_words_medium.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4B0BEE902BBB836A0007772B /* five_letter_words_medium.txt */; };
 		4B0BEE942BBB836A0007772B /* five_letter_words_hard.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4B0BEE912BBB836A0007772B /* five_letter_words_hard.txt */; };
@@ -54,6 +55,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4B08AA1E2BC0E40400810F22 /* UIScreen Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScreen Extension.swift"; sourceTree = "<group>"; };
 		4B0BEE8D2BB8E6B10007772B /* WordGameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordGameViewModel.swift; sourceTree = "<group>"; };
 		4B0BEE902BBB836A0007772B /* five_letter_words_medium.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = five_letter_words_medium.txt; path = "../../../Downloads/word lists/five_letter_words_medium.txt"; sourceTree = "<group>"; };
 		4B0BEE912BBB836A0007772B /* five_letter_words_hard.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = five_letter_words_hard.txt; path = "../../../Downloads/word lists/five_letter_words_hard.txt"; sourceTree = "<group>"; };
@@ -205,6 +207,7 @@
 				4BB0BEC02BBF8904003BA895 /* Word Models */,
 				4B3388CF2BB6337300A10A27 /* Enums.swift */,
 				4BB0BEC42BC0B4AB003BA895 /* Transitions.swift */,
+				4B08AA1E2BC0E40400810F22 /* UIScreen Extension.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -398,6 +401,7 @@
 				4B0BEE992BBB85F10007772B /* SplashScreenView.swift in Sources */,
 				4B3388C82BB5F3F900A10A27 /* KeyboardModel.swift in Sources */,
 				4BB0BEB62BBC8ABD003BA895 /* BaseComponenetModel.swift in Sources */,
+				4B08AA1F2BC0E40400810F22 /* UIScreen Extension.swift in Sources */,
 				4B3388BE2BB4C1C800A10A27 /* WordsCollection.swift in Sources */,
 				4B3388D02BB6337300A10A27 /* Enums.swift in Sources */,
 				4B3388932BB4B36400A10A27 /* WordGameView.swift in Sources */,

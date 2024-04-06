@@ -1,35 +1,49 @@
 import SwiftUI
 
 struct WordGameFiveLetters: View {
-    var endGame: (ActiveView) -> Void
-    let boardSize: Int
-    let wordLength: Int
-    let wordsFile: String
+    @StateObject var wordGameVM: WordGameVM
+    @ObservedObject var transitions: Transitions
+    
+    let endGame: (ActiveView) -> Void
+    
+    init(endGame: @escaping (ActiveView) -> Void, boardSize: Int, wordLength: Int, wordsFile: String) {
+        self._wordGameVM = StateObject(wrappedValue: WordGameVM(boardSize: boardSize, wordLength: wordLength, wordsFile: wordsFile))
+        
+        self.endGame = endGame
+        self.transitions = Transitions(activeView: ActiveView.wordgame)
+    }
    
     var body: some View {
-        let wordGameVM = WordGameVM(boardSize: self.boardSize, wordLength: self.wordLength, wordsFile: self.wordsFile)
-        
         ZStack{
-            VStack {
-                HStack{
-                    Button(action: {
-                        endGame(ActiveView.tabview)
-                    }, label:{Image(systemName:"chevron.backward")})
-                    Spacer()
-                }
-                .padding()
-                
-                GameBoard(gameViewModel: wordGameVM.gameboardVM)
-                Spacer()
-                KeyboardView (keyboardViewModel: wordGameVM.keyboardVM)
+            switch transitions.activeView {
+            case ActiveView.gameover:
+                GameOver(model: wordGameVM.gameOverVM, nextView: transitions.fadeToWhite)
+            case ActiveView.wordgame:
+                VStack {
+                    HStack{
+                        Button(action: {
+                            endGame(ActiveView.tabview)
+                        }, label:{Image(systemName:"chevron.backward")})
+                        Spacer()
+                    }
                     .padding()
+                    
+                    GameBoard(gameViewModel: wordGameVM.gameboardVM)
+                    Spacer()
+                    KeyboardView (keyboardViewModel: wordGameVM.keyboardVM)
+                        .padding()
+                }
+            default:
+                EmptyView()
             }
-            
-            GameOver(model: wordGameVM.gameOverVM)
-                .zIndex(/*@START_MENU_TOKEN@*/1.0/*@END_MENU_TOKEN@*/)
         }
-        
-        
+        .onReceive(wordGameVM.$activeView) { targetView in
+            if targetView != transitions.activeView {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.65) {
+                    transitions.fadeToWhite(targetView: targetView)
+                }
+            }
+        }
     }
 }
 

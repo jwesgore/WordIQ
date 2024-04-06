@@ -7,7 +7,6 @@ class GameOverVM: ObservableObject {
     @Published var bodyText: String
     @Published var buttonText: String
     @Published var isActive: Bool
-    @Published var offset: CGFloat = 1000
     
     var observers: [GameOverVMObserver]
     
@@ -24,15 +23,8 @@ class GameOverVM: ObservableObject {
         observers.append(observer)
     }
     
-    func open() {
-        withAnimation(.spring(response:0.8, dampingFraction: 0.7)) {
-            offset = 0
-        }
-    }
-    
     func close() {
         withAnimation(.spring(response:1.2).delay(0.2)) {
-            offset = 1000
             isActive = false
         }
     }

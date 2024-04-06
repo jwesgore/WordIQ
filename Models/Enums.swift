@@ -17,6 +17,7 @@ enum LetterComparison{
 enum ActiveView {
     case tabview
     case wordgame
+    case gameover
     case empty
 }
 

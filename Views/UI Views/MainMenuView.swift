@@ -6,8 +6,6 @@ struct MainMenuView: View {
     var body: some View {
         VStack{
         switch transitions.activeView {
-        case ActiveView.empty:
-            EmptyView()
         case ActiveView.wordgame:
             WordGameFiveLetters(endGame: transitions.fadeToWhite, boardSize: 6, wordLength: 5, wordsFile: "five_letter_words_medium")
         case ActiveView.tabview:
@@ -29,7 +27,9 @@ struct MainMenuView: View {
                         Text("Settings")
                     }
                 }// end TabView
-            }// end switch statement
+        default:
+            EmptyView()
+        }// end switch statement
         }// end Zstack
     }
 }

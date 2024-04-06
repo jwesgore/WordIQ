@@ -21,10 +21,10 @@ struct MainMenuView: View {
                         Text("Friends")
                     }
                 
-                Text("Settings")
+                Text("Stats")
                     .tabItem() {
                         Image(systemName: "chart.line.uptrend.xyaxis")
-                        Text("Settings")
+                        Text("Stats")
                     }
                 }// end TabView
         default:

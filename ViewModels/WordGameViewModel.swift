@@ -92,7 +92,8 @@ class WordGameVM: ObservableObject, KeyboardVMObserver, GameOverVMObserver {
         }
     }
     
-    // KeyboardVMObserver Functions
+    /// Keyboard Observer Function
+    ///  Passed the pressed key along to the GameBoardVM if keyboard is in the active state
     func keyPressed(_ key: String) {
         if !keyboardActive {
             return
@@ -108,7 +109,8 @@ class WordGameVM: ObservableObject, KeyboardVMObserver, GameOverVMObserver {
         }
     }
     
-    // GameOverVMObserver Function
+    /// GameOver Observer Function
+    /// Passes along which button was pressed in the GameOverView
     func playAgain() {
         activeView = ActiveView.wordgame
         gameOver()

@@ -11,12 +11,12 @@ struct GameSelectView: View {
             }, label: {
                 Text("Play Game")
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .frame(width: ScreenSize().width! * 0.9, height: ScreenSize().height! * 0.05)
+                    .background(.blue)
+                    .foregroundStyle(.white)
+                    .clipShape(.rect(cornerRadius: 8.0))
             })
-            .frame(width: UIScreen.main.bounds.width * 0.9, height: UIScreen.main.bounds.height * 0.05)
-            .background(.blue)
-            .foregroundStyle(.white)
-            .clipShape(.rect(cornerRadius: 8.0))
-            Spacer().frame(height:UIScreen.main.bounds.height * 0.05)
+            Spacer().frame(height:ScreenSize().height! * 0.05)
         }
     }
 }

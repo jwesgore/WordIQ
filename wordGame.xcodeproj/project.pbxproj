@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4B08AA1F2BC0E40400810F22 /* UIScreen Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B08AA1E2BC0E40400810F22 /* UIScreen Extension.swift */; };
+		4B08AA1F2BC0E40400810F22 /* ScreenSizeUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B08AA1E2BC0E40400810F22 /* ScreenSizeUtility.swift */; };
 		4B0BEE8E2BB8E6B10007772B /* WordGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0BEE8D2BB8E6B10007772B /* WordGameViewModel.swift */; };
 		4B0BEE932BBB836A0007772B /* five_letter_words_medium.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4B0BEE902BBB836A0007772B /* five_letter_words_medium.txt */; };
 		4B0BEE942BBB836A0007772B /* five_letter_words_hard.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4B0BEE912BBB836A0007772B /* five_letter_words_hard.txt */; };
@@ -34,7 +34,7 @@
 		4BA4CF332BB7BAB100B9F36B /* GameOverViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA4CF322BB7BAB100B9F36B /* GameOverViewModel.swift */; };
 		4BB0BEB62BBC8ABD003BA895 /* BaseComponenetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB0BEB52BBC8ABD003BA895 /* BaseComponenetModel.swift */; };
 		4BB0BEC32BBF8D1B003BA895 /* GameSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB0BEC22BBF8D1B003BA895 /* GameSelectView.swift */; };
-		4BB0BEC52BC0B4AB003BA895 /* Transitions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB0BEC42BC0B4AB003BA895 /* Transitions.swift */; };
+		4BB0BEC52BC0B4AB003BA895 /* TransitionsUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB0BEC42BC0B4AB003BA895 /* TransitionsUtility.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,7 +55,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		4B08AA1E2BC0E40400810F22 /* UIScreen Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScreen Extension.swift"; sourceTree = "<group>"; };
+		4B08AA1E2BC0E40400810F22 /* ScreenSizeUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenSizeUtility.swift; sourceTree = "<group>"; };
 		4B0BEE8D2BB8E6B10007772B /* WordGameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordGameViewModel.swift; sourceTree = "<group>"; };
 		4B0BEE902BBB836A0007772B /* five_letter_words_medium.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = five_letter_words_medium.txt; path = "../../../Downloads/word lists/five_letter_words_medium.txt"; sourceTree = "<group>"; };
 		4B0BEE912BBB836A0007772B /* five_letter_words_hard.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = five_letter_words_hard.txt; path = "../../../Downloads/word lists/five_letter_words_hard.txt"; sourceTree = "<group>"; };
@@ -85,7 +85,7 @@
 		4BA4CF322BB7BAB100B9F36B /* GameOverViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverViewModel.swift; sourceTree = "<group>"; };
 		4BB0BEB52BBC8ABD003BA895 /* BaseComponenetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseComponenetModel.swift; sourceTree = "<group>"; };
 		4BB0BEC22BBF8D1B003BA895 /* GameSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSelectView.swift; sourceTree = "<group>"; };
-		4BB0BEC42BC0B4AB003BA895 /* Transitions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transitions.swift; sourceTree = "<group>"; };
+		4BB0BEC42BC0B4AB003BA895 /* TransitionsUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionsUtility.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +113,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4B08AA202BC1EB7E00810F22 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				4B3388CF2BB6337300A10A27 /* Enums.swift */,
+				4BB0BEC42BC0B4AB003BA895 /* TransitionsUtility.swift */,
+				4B08AA1E2BC0E40400810F22 /* ScreenSizeUtility.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		4B0BEE8F2BBB83470007772B /* Word Lists */ = {
 			isa = PBXGroup;
 			children = (
@@ -144,6 +154,7 @@
 		4B3388842BB4B36400A10A27 = {
 			isa = PBXGroup;
 			children = (
+				4B08AA202BC1EB7E00810F22 /* Utilities */,
 				4B0BEE8F2BBB83470007772B /* Word Lists */,
 				4B3388C62BB5F0AF00A10A27 /* ViewModels */,
 				4B3388BF2BB4C4CC00A10A27 /* Views */,
@@ -205,9 +216,6 @@
 			children = (
 				4BB0BEC12BBF891B003BA895 /* Component Models */,
 				4BB0BEC02BBF8904003BA895 /* Word Models */,
-				4B3388CF2BB6337300A10A27 /* Enums.swift */,
-				4BB0BEC42BC0B4AB003BA895 /* Transitions.swift */,
-				4B08AA1E2BC0E40400810F22 /* UIScreen Extension.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -401,7 +409,7 @@
 				4B0BEE992BBB85F10007772B /* SplashScreenView.swift in Sources */,
 				4B3388C82BB5F3F900A10A27 /* KeyboardModel.swift in Sources */,
 				4BB0BEB62BBC8ABD003BA895 /* BaseComponenetModel.swift in Sources */,
-				4B08AA1F2BC0E40400810F22 /* UIScreen Extension.swift in Sources */,
+				4B08AA1F2BC0E40400810F22 /* ScreenSizeUtility.swift in Sources */,
 				4B3388BE2BB4C1C800A10A27 /* WordsCollection.swift in Sources */,
 				4B3388D02BB6337300A10A27 /* Enums.swift in Sources */,
 				4B3388932BB4B36400A10A27 /* WordGameView.swift in Sources */,
@@ -410,7 +418,7 @@
 				4B0BEE9B2BBB86220007772B /* MainMenuView.swift in Sources */,
 				4B0BEE8E2BB8E6B10007772B /* WordGameViewModel.swift in Sources */,
 				4B3388CA2BB5F62700A10A27 /* KeyboardViewModel.swift in Sources */,
-				4BB0BEC52BC0B4AB003BA895 /* Transitions.swift in Sources */,
+				4BB0BEC52BC0B4AB003BA895 /* TransitionsUtility.swift in Sources */,
 				4B3388912BB4B36400A10A27 /* wordPuzzleApp.swift in Sources */,
 				4B3388C32BB4DD9400A10A27 /* KeyboardView.swift in Sources */,
 				4B3388D62BB7A3F800A10A27 /* GameOver.swift in Sources */,
@@ -584,8 +592,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -613,8 +621,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

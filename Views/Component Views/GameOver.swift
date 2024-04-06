@@ -1,10 +1,3 @@
-//
-//  GameOverView.swift
-//  testWordle
-//
-//  Created by Wesley Gore on 3/29/24.
-//
-
 import SwiftUI
 
 struct GameOver: View {

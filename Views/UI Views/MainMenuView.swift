@@ -1,25 +1,18 @@
-//
-//  MenuView.swift
-//  wordGame
-//
-//  Created by Wesley Gore on 4/1/24.
-//
-
 import SwiftUI
 
 struct MainMenuView: View {
-    @State var activeView = ActiveView.tabview
+    @ObservedObject var transitions = Transitions(activeView: ActiveView.tabview)
    
     var body: some View {
         VStack{
-        switch activeView {
+        switch transitions.activeView {
         case ActiveView.empty:
             EmptyView()
         case ActiveView.wordgame:
-            WordGameFiveLetters(boardSize: 6, wordLength: 5, wordsFile: "five_letter_words_medium")
+            WordGameFiveLetters(endGame: transitions.fadeToWhite, boardSize: 6, wordLength: 5, wordsFile: "five_letter_words_medium")
         case ActiveView.tabview:
             TabView {
-                GameSelectView(startGame: gotoView)
+                GameSelectView(startGame: transitions.fadeToWhite)
                     .tabItem() {
                         Image(systemName: "house.fill")
                         Text("Game")
@@ -39,20 +32,6 @@ struct MainMenuView: View {
             }// end switch statement
         }// end Zstack
     }
-    
-    /// Fades the current main menu out and replaces it with a game having an empty view as a buffer
-    func gotoView(view: ActiveView) {
-        withAnimation(.linear(duration: 1.0)) {
-            activeView = ActiveView.empty
-        }
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: {
-            withAnimation(.linear(duration: 1.0)) {
-                activeView = view
-            }
-        })
-    }
-    
 }
 
 #Preview {

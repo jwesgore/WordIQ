@@ -10,6 +10,7 @@ struct GameSelectView: View {
                 startGame(ActiveView.wordgame)
             }, label: {
                 Text("Play Game")
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
             })
             .frame(width: UIScreen.main.bounds.width * 0.9, height: UIScreen.main.bounds.height * 0.05)
             .background(.blue)

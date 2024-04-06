@@ -1,10 +1,3 @@
-//
-//  WordGameViewModel.swift
-//  testWordle
-//
-//  Created by Wesley Gore on 3/30/24.
-//
-
 import Foundation
 
 class WordGameVM: ObservableObject, KeyboardVMObserver, GameOverVMObserver {

@@ -1,10 +1,3 @@
-//
-//  WordleViewModel.swift
-//  testWordle
-//
-//  Created by Wesley Gore on 3/28/24.
-//
-
 import Foundation
 import SwiftUI
 

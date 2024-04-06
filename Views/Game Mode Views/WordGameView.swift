@@ -1,13 +1,7 @@
-//
-//  ContentView.swift
-//  testWordle
-//
-//  Created by Wesley Gore on 3/27/24.
-//
-
 import SwiftUI
 
 struct WordGameFiveLetters: View {
+    var endGame: (ActiveView) -> Void
     let boardSize: Int
     let wordLength: Int
     let wordsFile: String
@@ -17,7 +11,14 @@ struct WordGameFiveLetters: View {
         
         ZStack{
             VStack {
-                Spacer()
+                HStack{
+                    Button(action: {
+                        endGame(ActiveView.tabview)
+                    }, label:{Image(systemName:"chevron.backward")})
+                    Spacer()
+                }
+                .padding()
+                
                 GameBoard(gameViewModel: wordGameVM.gameboardVM)
                 Spacer()
                 KeyboardView (keyboardViewModel: wordGameVM.keyboardVM)
@@ -33,6 +34,6 @@ struct WordGameFiveLetters: View {
 }
 
 #Preview {
-    WordGameFiveLetters(boardSize: 6, wordLength: 5, wordsFile: "five_letter_words_medium")
+    WordGameFiveLetters(endGame: {_ in}, boardSize: 6, wordLength: 5, wordsFile: "five_letter_words_medium")
 }
 

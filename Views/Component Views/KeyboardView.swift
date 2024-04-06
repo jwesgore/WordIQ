@@ -41,10 +41,10 @@ struct KeyboardElement: View {
         }, label: {
             buttonView
                 .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, maxHeight: .infinity)
+                .foregroundStyle(Color("TextColor"))
+                .font(.system(size: key.fontSize))
+                .fontWeight(.semibold)
         })
-        .font(.system(size: key.fontSize))
-        .fontWeight(.semibold)
-        .foregroundColor(.black)
         .padding(1)
         .frame(width: key.width, height: key.height)
         .background(key.backgroundColor)

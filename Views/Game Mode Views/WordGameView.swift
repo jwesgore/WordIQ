@@ -27,7 +27,7 @@ struct WordGameFiveLetters: View {
                         Spacer()
                     }
                     .padding()
-                    
+                    Spacer()
                     GameBoard(gameViewModel: wordGameVM.gameboardVM)
                     Spacer()
                     KeyboardView (keyboardViewModel: wordGameVM.keyboardVM)

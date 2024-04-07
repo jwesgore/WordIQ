@@ -51,8 +51,8 @@ class GameboardVM: ObservableObject, WordGameVMObserver {
         self.guesses = (0..<boardSize).map { _ in GuessWord(wordLength: wordLength) }
     }
     
-    func setBackground(guess: Word, letterComparison: [LetterComparison]) {
-        guesses[currentPosition].setBackgrounds(letterComparison: letterComparison)
+    func setBackground(guess: Word, letterBackgrounds: [Color]) {
+        guesses[currentPosition].setBackgrounds(letterBackgrounds: letterBackgrounds)
         guesses[currentPosition].submitted = true
     }
 }

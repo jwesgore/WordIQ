@@ -54,43 +54,43 @@ class WordGameVM: ObservableObject, KeyboardVMObserver, GameOverVMObserver {
     }
     
     // notify the keyboard and the gameboard that they need to update their components backgrounds
-    func setBackground(guess:Word, letterComparison: [LetterComparison]) {
+    func setBackground(guess:Word, letterBackgrounds: [Color]) {
         for observer in observers {
-            observer.setBackground(guess:guess, letterComparison: letterComparison)
+            observer.setBackground(guess:guess, letterBackgrounds: letterBackgrounds)
         }
     }
     
     // WordsColletions Functions
     // Check currentGuess for validity
-    func submitGuess(){
+    func submitGuess() -> String {
         
         let guess = gameboardVM.getCurrentGuess()
         let guessWord = guess.getWord()
         
         // first validate the word using the WordsCollection
         if !wordsCollection.isValidWord(guessWord) {
-            print("Not a valid word")
-            return
+            guess.invalidWord()
+            return "Not a valid word"
         }
         
         // run the comparison and send it off to the keyboard and gameboard
-        let letterComparison = wordsCollection.isSimilarWord(guessWord)
-        setBackground(guess: guessWord, letterComparison: letterComparison)
+        let letterBackgrounds = wordsCollection.isSimilarWord(guessWord)
+        setBackground(guess: guessWord, letterBackgrounds: letterBackgrounds)
         
         // is it the correct word
         if wordsCollection.isCorrectWord(guessWord) {
             keyboardActive = false
             activeView = ActiveView.gameover
-            print("Correct Word!")
-            return
+            return "Correct Word!"
         }
         
         if !gameboardVM.nextGuess() {
             keyboardActive = false
             activeView = ActiveView.gameover
-            print("Game Over")
-            return
+            return "Game Over"
         }
+        
+        return "Next Guess"
     }
     
     /// Keyboard Observer Function
@@ -106,7 +106,7 @@ class WordGameVM: ObservableObject, KeyboardVMObserver, GameOverVMObserver {
             gameboardVM.keyPressed(key: key, entryType: KeyboardEntryType.delete)
         }
         else if key == FunctionImages.enter {
-            submitGuess()
+            print(submitGuess())
         }
     }
     
@@ -127,5 +127,5 @@ class WordGameVM: ObservableObject, KeyboardVMObserver, GameOverVMObserver {
 
 protocol WordGameVMObserver {
     func gameOver()
-    func setBackground(guess:Word, letterComparison: [LetterComparison])
+    func setBackground(guess:Word, letterBackgrounds: [Color])
 }

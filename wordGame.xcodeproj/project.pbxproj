@@ -31,6 +31,7 @@
 		4B3388D02BB6337300A10A27 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3388CF2BB6337300A10A27 /* Enums.swift */; };
 		4B3388D22BB7583100A10A27 /* WordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3388D12BB7583000A10A27 /* WordModel.swift */; };
 		4B3388D62BB7A3F800A10A27 /* GameOver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3388D52BB7A3F800A10A27 /* GameOver.swift */; };
+		4B8167D72BC324A400E3978D /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8167D62BC324A400E3978D /* SwiftUIView.swift */; };
 		4BA4CF332BB7BAB100B9F36B /* GameOverViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA4CF322BB7BAB100B9F36B /* GameOverViewModel.swift */; };
 		4BB0BEB62BBC8ABD003BA895 /* BaseComponenetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB0BEB52BBC8ABD003BA895 /* BaseComponenetModel.swift */; };
 		4BB0BEC32BBF8D1B003BA895 /* GameSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB0BEC22BBF8D1B003BA895 /* GameSelectView.swift */; };
@@ -82,6 +83,7 @@
 		4B3388CF2BB6337300A10A27 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		4B3388D12BB7583000A10A27 /* WordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordModel.swift; sourceTree = "<group>"; };
 		4B3388D52BB7A3F800A10A27 /* GameOver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOver.swift; sourceTree = "<group>"; };
+		4B8167D62BC324A400E3978D /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
 		4BA4CF322BB7BAB100B9F36B /* GameOverViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverViewModel.swift; sourceTree = "<group>"; };
 		4BB0BEB52BBC8ABD003BA895 /* BaseComponenetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseComponenetModel.swift; sourceTree = "<group>"; };
 		4BB0BEC22BBF8D1B003BA895 /* GameSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSelectView.swift; sourceTree = "<group>"; };
@@ -116,9 +118,10 @@
 		4B08AA202BC1EB7E00810F22 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				4B3388CF2BB6337300A10A27 /* Enums.swift */,
 				4BB0BEC42BC0B4AB003BA895 /* TransitionsUtility.swift */,
+				4B3388CF2BB6337300A10A27 /* Enums.swift */,
 				4B08AA1E2BC0E40400810F22 /* ScreenSizeUtility.swift */,
+				4B8167D62BC324A400E3978D /* SwiftUIView.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -411,6 +414,7 @@
 				4BB0BEB62BBC8ABD003BA895 /* BaseComponenetModel.swift in Sources */,
 				4B08AA1F2BC0E40400810F22 /* ScreenSizeUtility.swift in Sources */,
 				4B3388BE2BB4C1C800A10A27 /* WordsCollection.swift in Sources */,
+				4B8167D72BC324A400E3978D /* SwiftUIView.swift in Sources */,
 				4B3388D02BB6337300A10A27 /* Enums.swift in Sources */,
 				4B3388932BB4B36400A10A27 /* WordGameView.swift in Sources */,
 				4B3388C52BB5ED5300A10A27 /* GameboardViewModel.swift in Sources */,
@@ -511,6 +515,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
@@ -568,6 +573,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;

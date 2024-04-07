@@ -78,23 +78,25 @@ class KeyboardVM : ObservableObject, WordGameVMObserver {
         }
     }
     
-    func setBackground(guess: Word, letterComparison: [LetterComparison]) {
+    func setBackground(guess: Word, letterBackgrounds: [Color]) {
         var map = [String: Color]()
         
         // build map which has a key of the letter and a value of color based on the highest ranking of LetterComparison so far
-        for (letter, comparison) in zip(guess.letters, letterComparison) {
+        for (letter, comparison) in zip(guess.letters, letterBackgrounds) {
             if map[letter] == nil {
                 switch comparison {
-                case LetterComparison.samePosition:
+                case LetterBackgroundColor.correct:
                     map[letter] = LetterBackgroundColor.correct
-                case LetterComparison.differentPosition:
+                case LetterBackgroundColor.contains:
                     map[letter] = LetterBackgroundColor.contains
-                case LetterComparison.wrongLetter:
+                case LetterBackgroundColor.incorrect:
                     map[letter] = LetterBackgroundColor.incorrect
+                default:
+                    map[letter] = LetterBackgroundColor.standard
                 }
             } 
             else {
-                if map[letter] == LetterBackgroundColor.contains && comparison == LetterComparison.samePosition {
+                if map[letter] == LetterBackgroundColor.contains && comparison == LetterBackgroundColor.correct {
                     map[letter] = LetterBackgroundColor.correct
                 }
             }

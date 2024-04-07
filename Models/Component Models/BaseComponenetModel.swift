@@ -12,6 +12,7 @@ enum LetterBackgroundColor {
     static let incorrect = Color("Incorrect")
     static let contains = Color("Contains")
     static let standard = Color("Standard")
+    static let error = Color("Error")
 }
 
 enum FunctionImages{

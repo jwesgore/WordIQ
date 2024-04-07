@@ -8,6 +8,7 @@ class GuessWord: Identifiable, Equatable, ObservableObject {
     var word: String
     @Published var letters: [Letter]
     @Published var submitted = false
+    @Published var shake = false
     
     init(wordLength: Int) {
         let edgeLength = 0.8 * (UIScreen.main.bounds.width / Double(wordLength))
@@ -55,20 +56,27 @@ class GuessWord: Identifiable, Equatable, ObservableObject {
         printInfo()
     }
     
-    func setBackgrounds(letterComparison: [LetterComparison]) {
-        for i in 0..<letterComparison.count {
+    func setBackgrounds(letterBackgrounds: [Color]) {
+        for i in 0..<letterBackgrounds.count {
             
             letters[i].borderColor = BorderColor.clear
-            if letterComparison[i] == LetterComparison.differentPosition {
+            if letterBackgrounds[i] == LetterBackgroundColor.contains {
                 letters[i].backgroundColor = LetterBackgroundColor.contains
             }
-            else if letterComparison[i] == LetterComparison.samePosition {
+            else if letterBackgrounds[i] == LetterBackgroundColor.correct {
                 letters[i].backgroundColor = LetterBackgroundColor.correct
             }
             else {
                 letters[i].backgroundColor = LetterBackgroundColor.incorrect
             }
         }
+    }
+    
+    func invalidWord() {
+        withAnimation(.easeInOut(duration: 0.3)) {
+            shake = true
+        }
+        shake = false
     }
     
     func getWord() -> Word {

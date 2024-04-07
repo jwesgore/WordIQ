@@ -13,7 +13,7 @@ struct GameBoard: View {
     @ObservedObject var gameViewModel: GameboardVM
     
     var body: some View {
-        VStack {
+        VStack(spacing:4) {
             ForEach(gameViewModel.guesses){ guess in
                 GameRow(guess: guess)
             }
@@ -29,12 +29,13 @@ struct GameRow: View {
     let animationDuration: Double = 0.5
     
     var body: some View {
-        HStack {
+        HStack (spacing:4)  {
             ForEach(0..<guess.wordLength, id: \.self) { index in
                 GameSquare(letter: guess.letters[index])
                     .animation(.easeInOut(duration: animationDuration).delay(Double(index) * 0.125), value:guess.submitted)
             }
         }
+        .modifier(ShakeEffect(animatableData: CGFloat(guess.shake ? 1.5 : 0)))
     }
 }
 
@@ -50,10 +51,10 @@ struct GameSquare: View {
             .frame(width:letter.width, height: letter.height)
             .background(letter.backgroundColor)
             .overlay(
-                RoundedRectangle(cornerRadius: letter.cornerRadius)
+                RoundedRectangle(cornerRadius: 2.0)
                     .stroke(letter.borderColor, lineWidth: 4)
             )
-            .clipShape(RoundedRectangle(cornerRadius: letter.cornerRadius))
+            .clipShape(RoundedRectangle(cornerRadius: 1))
     }
 }
 

@@ -1,4 +1,5 @@
 import Foundation
+import SwiftUI
 
 class WordsCollection {
     var words = [Word]()
@@ -63,9 +64,9 @@ class WordsCollection {
     }
     
     // assign colors to all letters
-    func isSimilarWord(_ guess: Word) -> [LetterComparison] {
+    func isSimilarWord(_ guess: Word) -> [Color] {
         
-        var letterComparision = [LetterComparison](repeating: LetterComparison.wrongLetter, count: selectedWord.word.count)
+        var letterBackgroundColors = [Color](repeating: LetterBackgroundColor.incorrect, count: selectedWord.word.count)
         var letterCount = selectedWord.getLetterCount()
         
         // loop through and flag all of the correct letters in the correct position
@@ -74,22 +75,24 @@ class WordsCollection {
             if testingChar != guess.letters[i] {
                 continue
             }
-            letterComparision[i] = LetterComparison.samePosition
+            letterBackgroundColors[i] = LetterBackgroundColor.correct
             letterCount[testingChar]! -= 1
         }
         
          //loop through and flag all of the correct letters in a different position (if applicable)
         for i in 0..<selectedWord.word.count {
             let testingChar = guess.letters[i]
-            if letterComparision[i] == LetterComparison.samePosition ||
+            if letterBackgroundColors[i] == LetterBackgroundColor.correct ||
                 letterCount[testingChar] == 0 ||
                 !selectedWord.word.contains(testingChar) {
                 continue
             }
             
-            letterComparision[i] = LetterComparison.differentPosition
+            letterBackgroundColors[i] = LetterBackgroundColor.contains
             letterCount[testingChar]! -= 1
         }
-        return letterComparision
+        
+        print(letterBackgroundColors)
+        return letterBackgroundColors
     }
 }

@@ -13,26 +13,34 @@ class KeyboardVM : ObservableObject, WordGameVMObserver {
     @Published var topRow = [BaseComponent]()
     @Published var middleRow = [BaseComponent]()
     @Published var bottomRow = [BaseComponent]()
+    
+    @Published var keyboardMap: [String: Letter]
  
     init() {
         let height = UIScreen.main.bounds.height * keyHeightMultiplier
         let letterWidth = UIScreen.main.bounds.width * letterKeyWidthMultiplier
         let funtionWidth = UIScreen.main.bounds.width * funcKeyWidthMultiplier
         
+        keyboardMap = [String: Letter]()
+        
         for letter in keyboardModel.topRowLetters {
-            topRow.append(Letter(value: letter,
+            let _letter = Letter(value: letter,
                                  backgroundColor: LetterBackgroundColor.standard,
                                  borderColor: BorderColor.inactive,
                                  width: letterWidth,
-                                 height: height))
+                                 height: height)
+            topRow.append(_letter)
+            keyboardMap[letter] = _letter
         }
         
         for letter in keyboardModel.middleRowLetters {
-            middleRow.append(Letter(value: letter,
+            let _letter = Letter(value: letter,
                                  backgroundColor: LetterBackgroundColor.standard,
                                  borderColor: BorderColor.inactive,
                                  width: letterWidth,
-                                 height: height))
+                                 height: height)
+            middleRow.append(_letter)
+            keyboardMap[letter] = _letter
         }
         
         bottomRow.append(Function(value: FunctionImages.enter,
@@ -42,11 +50,13 @@ class KeyboardVM : ObservableObject, WordGameVMObserver {
                                 height: height))
         
         for letter in keyboardModel.bottomRowLetters {
-            bottomRow.append(Letter(value: letter,
+            let _letter = Letter(value: letter,
                                  backgroundColor: LetterBackgroundColor.standard,
                                  borderColor: BorderColor.inactive,
                                  width: letterWidth,
-                                 height: height))
+                                 height: height)
+            bottomRow.append(_letter)
+            keyboardMap[letter] = _letter
         }
         
         bottomRow.append(Function(value: FunctionImages.delete,
@@ -73,46 +83,21 @@ class KeyboardVM : ObservableObject, WordGameVMObserver {
     
     // WordGameVM functions
     func gameOver() {
-        for row in [topRow, middleRow, bottomRow] {
-            for letter in row {letter.backgroundColor = LetterBackgroundColor.standard}
+        for letter in keyboardMap {
+            letter.value.backgroundColor = LetterBackgroundColor.standard
         }
     }
     
+    /// Set backgrounds for all of the keyboard characters
     func setBackground(guess: Word, letterBackgrounds: [Color]) {
-        var map = [String: Color]()
-        
-        // build map which has a key of the letter and a value of color based on the highest ranking of LetterComparison so far
-        for (letter, comparison) in zip(guess.letters, letterBackgrounds) {
-            if map[letter] == nil {
-                switch comparison {
-                case LetterBackgroundColor.correct:
-                    map[letter] = LetterBackgroundColor.correct
-                case LetterBackgroundColor.contains:
-                    map[letter] = LetterBackgroundColor.contains
-                case LetterBackgroundColor.incorrect:
-                    map[letter] = LetterBackgroundColor.incorrect
-                default:
-                    map[letter] = LetterBackgroundColor.standard
-                }
-            } 
-            else {
-                if map[letter] == LetterBackgroundColor.contains && comparison == LetterBackgroundColor.correct {
-                    map[letter] = LetterBackgroundColor.correct
-                }
+        for (letter, color) in zip(guess.letters, letterBackgrounds) {
+            let _letter = letter.uppercased()
+            if keyboardMap[_letter]?.backgroundColor == LetterBackgroundColor.correct ||
+                keyboardMap[_letter]?.backgroundColor == LetterBackgroundColor.incorrect &&
+                color == LetterBackgroundColor.incorrect {
+                continue
             }
-        }
-        
-        // itterate through all of the keys and assign a background color if appropriate
-        for row in [topRow, middleRow, bottomRow] {
-            for letter in row {
-                // If key is already green, grayed out, or not even in the guess, just skip it
-                if letter.backgroundColor == LetterBackgroundColor.correct ||
-                    letter.backgroundColor == LetterBackgroundColor.incorrect ||
-                    !guess.letters.contains(letter.value.lowercased()) {
-                    continue
-                }
-                letter.backgroundColor = map[letter.value.lowercased()]!
-            }
+            keyboardMap[_letter]?.backgroundColor = color
         }
     }
 }

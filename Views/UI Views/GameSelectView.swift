@@ -13,8 +13,8 @@ struct GameSelectView: View {
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .frame(width: ScreenSize().width! * 0.9, height: ScreenSize().height! * 0.05)
                     .background(.blue)
-                    .foregroundStyle(.white)
-                    .clipShape(.rect(cornerRadius: 8.0))
+                    .foregroundStyle(Color("TextColoredBackground"))
+                    .clipShape(.rect(cornerRadius: 25.0))
             })
             Spacer().frame(height:ScreenSize().height! * 0.05)
         }

@@ -1,6 +1,14 @@
 import Foundation
 import SwiftUI
 
+enum SystemNames {
+    static let title = "Word Game"
+    static let standardMode = "Standard"
+    static let rushMode = "Rush"
+    static let frenzyMode = "Frenzy"
+    static let zenMode = "Zen"
+}
+
 enum LetterComparison{
     case wrongLetter
     case differentPosition

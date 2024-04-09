@@ -9,7 +9,7 @@ struct ShakeEffect: GeometryEffect {
     }
     
     func effectValue(size: CGSize) -> ProjectionTransform {
-        let transform = ProjectionTransform(CGAffineTransform(translationX: 5 + modifier(animatableData), y: 0))
+        let transform = ProjectionTransform(CGAffineTransform(translationX: modifier(animatableData), y: 0))
         return transform
     }
 }

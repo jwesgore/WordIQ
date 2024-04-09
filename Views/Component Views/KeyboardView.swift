@@ -4,6 +4,7 @@ import SwiftUI
 /// View of the entire keyboard containing a top, middle, and bottom row
 struct KeyboardView: View {
     @ObservedObject var keyboardViewModel: KeyboardVM
+    
     var body: some View{
         VStack{
             KeyboardRow(rowElements: keyboardViewModel.topRow, viewModel: keyboardViewModel)
@@ -38,6 +39,7 @@ struct KeyboardElement: View {
     
         Button (action: {
             viewModel.keyPressed(key: key.value)
+            UIImpactFeedbackGenerator(style: .light).impactOccurred()
         }, label: {
             buttonView
                 .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, maxHeight: .infinity)

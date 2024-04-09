@@ -1,6 +1,6 @@
 //
-//  testWordleApp.swift
-//  testWordle
+//  wordPuzzleApp.swift
+//  wordPuzzleApp
 //
 //  Created by Wesley Gore on 3/27/24.
 //
@@ -12,8 +12,6 @@ struct wordPuzzleApp: App {
     var body: some Scene {
         WindowGroup {
             SplashScreenView()
-            
-            //WordGameFiveLetters()
         }
     }
 }

@@ -1,10 +1,3 @@
-//
-//  SplashScreenView.swift
-//  wordGame
-//
-//  Created by Wesley Gore on 4/1/24.
-//
-
 import SwiftUI
 
 struct SplashScreenView: View {
@@ -19,19 +12,17 @@ struct SplashScreenView: View {
             }
             else {
                 VStack {
-                    Text("Word Game")
+                    Text(SystemNames.title)
                         .font(.system(size: 20))
                         .kerning(3)
                         .fontWeight(.medium)
                         .frame(width: 200, height: 50.0)
-                        .background()
                         .overlay(
                             RoundedRectangle(cornerRadius: 8)
                                 .stroke(Color.gray, lineWidth: 1)
                         )
                         .clipShape(RoundedRectangle(cornerRadius: 8))
                 }
-                
             }
         }
         .onAppear {

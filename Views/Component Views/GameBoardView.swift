@@ -10,15 +10,14 @@ import SwiftUI
 
 /// View of the entire gameboard containing multiple guess words
 struct GameBoard: View {
-    @ObservedObject var gameViewModel: GameboardVM
+    @ObservedObject var gameboardVM: GameboardVM
     
     var body: some View {
         VStack(spacing:4) {
-            ForEach(gameViewModel.guesses){ guess in
+            ForEach(gameboardVM.guesses){ guess in
                 GameRow(guess: guess)
             }
         }
-        .frame(maxWidth: .infinity)
     }
 }
 
@@ -29,7 +28,7 @@ struct GameRow: View {
     let animationDuration: Double = 0.5
     
     var body: some View {
-        HStack (spacing:4)  {
+        HStack ()  {
             ForEach(0..<guess.wordLength, id: \.self) { index in
                 GameSquare(letter: guess.letters[index])
                     .animation(.easeInOut(duration: animationDuration).delay(Double(index) * 0.125), value:guess.submitted)
@@ -51,13 +50,13 @@ struct GameSquare: View {
             .frame(width:letter.width, height: letter.height)
             .background(letter.backgroundColor)
             .overlay(
-                RoundedRectangle(cornerRadius: 2.0)
+                RoundedRectangle(cornerRadius: letter.cornerRadius)
                     .stroke(letter.borderColor, lineWidth: 4)
             )
-            .clipShape(RoundedRectangle(cornerRadius: 1))
+            .clipShape(RoundedRectangle(cornerRadius: letter.cornerRadius))
     }
 }
 
 #Preview{
-    GameBoard(gameViewModel: GameboardVM(boardSize: 6, wordLength: 5))
+    GameBoard(gameboardVM: GameboardVM(boardSize: 6, wordLength: 5))
 }

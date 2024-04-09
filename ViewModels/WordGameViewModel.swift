@@ -51,6 +51,7 @@ class WordGameVM: ObservableObject, KeyboardVMObserver, GameOverVMObserver {
         for observer in observers {
             observer.gameOver()
         }
+        keyboardActive = true
     }
     
     // notify the keyboard and the gameboard that they need to update their components backgrounds
@@ -80,17 +81,37 @@ class WordGameVM: ObservableObject, KeyboardVMObserver, GameOverVMObserver {
         // is it the correct word
         if wordsCollection.isCorrectWord(guessWord) {
             keyboardActive = false
+            addGameOverContents(win: true)
             activeView = ActiveView.gameover
             return "Correct Word!"
         }
         
         if !gameboardVM.nextGuess() {
             keyboardActive = false
+            addGameOverContents(win: false)
             activeView = ActiveView.gameover
             return "Game Over"
         }
         
         return "Next Guess"
+    }
+    
+    
+    func addGameOverContents(win: Bool) {
+        gameOverVM.reset()
+        var numberOfGuesses = gameboardVM.currentPosition
+        if win {
+            numberOfGuesses += 1
+            gameOverVM.addResult(result: "You Win!")
+        } else {
+            gameOverVM.addResult(result: "Game Over")
+        }
+        
+        let row1 = ["image": "pencil.line", "title": "Answer", "value": wordsCollection.selectedWord.word.uppercased()]
+        let row2 = ["image": "number.square", "title": "Guesses", "value": String(numberOfGuesses)]
+        
+        gameOverVM.addContentsRow(row: row1)
+        gameOverVM.addContentsRow(row: row2)
     }
     
     /// Keyboard Observer Function
@@ -116,7 +137,6 @@ class WordGameVM: ObservableObject, KeyboardVMObserver, GameOverVMObserver {
         activeView = ActiveView.wordgame
         gameOver()
         wordsCollection.updateSelectedWord()
-        keyboardActive = true
     }
     
     /// GameOver Observer Function

@@ -15,7 +15,7 @@ enum LetterBackgroundColor {
     static let error = Color("Error")
 }
 
-enum FunctionImages{
+enum FunctionImages {
     static let delete = "arrow.backward"
     static let enter = "arrow.turn.down.right"
 }
@@ -31,15 +31,16 @@ class BaseComponent: ObservableObject {
     @Published var fontSize: CGFloat
     @Published var cornerRadius: CGFloat
     
-    init(backgroundColor: Color, borderColor: Color, width: CGFloat, height: CGFloat, fontSize: CGFloat = 15, cornerRadius: CGFloat = 8) {
+    init(backgroundColor: Color, borderColor: Color, width: CGFloat, height: CGFloat, fontSize: CGFloat = 15, cornerRadius: CGFloat = 8, constraint: CGFloat = 100.0) {
         self.backgroundColor = backgroundColor
         self.borderColor = borderColor
-        self.width = width
-        self.height = height
+        self.width = width > constraint ? constraint : width
+        self.height = height > constraint ? constraint : height
         
         self.fontSize = fontSize
         self.cornerRadius = cornerRadius
     }
+    
 }
 
 /// Subclass of BaseComponent used for holding items that operate as letters such as gameboard or keyboard pieces
@@ -57,9 +58,9 @@ class Letter: BaseComponent {
 class Function: BaseComponent {
     @Published var view: Image
     
-    init(value: String, backgroundColor: Color, borderColor: Color, width: CGFloat, height: CGFloat) {
+    init(value: String, backgroundColor: Color = .clear, borderColor: Color = .clear, width: CGFloat, height: CGFloat, constraint: CGFloat = 100.0) {
         self.view = Image(systemName: value)
-        super.init(backgroundColor: backgroundColor, borderColor: borderColor, width: width, height: height)
+        super.init(backgroundColor: backgroundColor, borderColor: borderColor, width: width, height: height, constraint: constraint)
         super.value = value
     }
 }

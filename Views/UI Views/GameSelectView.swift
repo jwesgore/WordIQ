@@ -9,7 +9,38 @@ struct GameSelectView: View {
             Button( action: {
                 startGame(ActiveView.wordgame)
             }, label: {
-                Text("Play Game")
+                Text("Standard Game")
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .frame(width: ScreenSize().width! * 0.9, height: ScreenSize().height! * 0.05)
+                    .background(.blue)
+                    .foregroundStyle(Color("TextColoredBackground"))
+                    .clipShape(.rect(cornerRadius: 25.0))
+            })
+            Button( action: {
+                startGame(ActiveView.wordgame)
+            }, label: {
+                Text("Rush Game")
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .frame(width: ScreenSize().width! * 0.9, height: ScreenSize().height! * 0.05)
+                    .background(.blue)
+                    .foregroundStyle(Color("TextColoredBackground"))
+                    .clipShape(.rect(cornerRadius: 25.0))
+            })
+            Button( action: {
+                startGame(ActiveView.wordgame)
+            }, label: {
+                Text("Frenzy Game")
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .frame(width: ScreenSize().width! * 0.9, height: ScreenSize().height! * 0.05)
+                    .background(.blue)
+                    .foregroundStyle(Color("TextColoredBackground"))
+                    .clipShape(.rect(cornerRadius: 25.0))
+            })
+
+            Button( action: {
+                startGame(ActiveView.wordgame)
+            }, label: {
+                Text("Zen Game")
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .frame(width: ScreenSize().width! * 0.9, height: ScreenSize().height! * 0.05)
                     .background(.blue)

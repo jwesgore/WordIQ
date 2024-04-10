@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct WordGameFiveLetters: View {
+struct StandardGameView: View {
     @StateObject var wordGameVM: WordGameVM
     @ObservedObject var transitions: Transitions
     
@@ -10,7 +10,7 @@ struct WordGameFiveLetters: View {
         self._wordGameVM = StateObject(wrappedValue: WordGameVM(boardSize: boardSize, wordLength: wordLength, wordsFile: wordsFile))
         
         self.endGame = endGame
-        self.transitions = Transitions(activeView: .wordgame)
+        self.transitions = Transitions(activeView: .standardgame)
     }
    
     var body: some View {
@@ -18,7 +18,7 @@ struct WordGameFiveLetters: View {
             switch transitions.activeView {
             case ActiveView.gameover:
                 GameOver(model: wordGameVM.gameOverVM)
-            case ActiveView.wordgame:
+            case ActiveView.standardgame:
                 VStack {
                     HStack{
                         Button(action: {
@@ -44,7 +44,7 @@ struct WordGameFiveLetters: View {
             switch targetView {
             case .tabview:
                 endGame(.tabview)
-            case .wordgame:
+            case .standardgame:
                 transitions.fadeToWhiteDelay(targetView: targetView, delay: 0.25)
             case .gameover:
                 transitions.fadeToWhiteDelay(targetView: targetView, delay: 1.65)
@@ -52,10 +52,12 @@ struct WordGameFiveLetters: View {
                 return
             }
         }
+        .containerRelativeFrame([.horizontal, .vertical])
+        .background(Color("Standard"))
     }
 }
 
 #Preview {
-    WordGameFiveLetters(endGame: {_ in}, boardSize: 6, wordLength: 5, wordsFile: "five_letter_words_medium")
+    StandardGameView(endGame: {_ in}, boardSize: 6, wordLength: 5, wordsFile: "five_letter_words_medium")
 }
 

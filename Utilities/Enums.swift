@@ -17,9 +17,12 @@ enum LetterComparison{
 
 enum ActiveView {
     case tabview
-    case wordgame
     case gameover
     case empty
+    case standardgame
+    case rushgame
+    case frenzygame
+    case zengame
 }
 
 enum KeyboardEntryType {

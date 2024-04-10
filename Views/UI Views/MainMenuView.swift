@@ -7,9 +7,15 @@ struct MainMenuView: View {
     var body: some View {
         VStack{
         switch transitions.activeView {
-        case ActiveView.wordgame:
-            WordGameFiveLetters(endGame: transitions.fadeToWhite, boardSize: 6, wordLength: 5, wordsFile: "five_letter_words_medium")
-        case ActiveView.tabview:
+        case .standardgame:
+            StandardGameView(endGame: transitions.fadeToWhite, boardSize: 6, wordLength: 5, wordsFile: "five_letter_words_medium")
+        case .rushgame:
+            RushGameView()
+        case .frenzygame:
+            FrenzyGameView()
+        case .zengame:
+            ZenGameView()
+        case .tabview:
             VStack{
                 HStack{
                     Spacer()
@@ -45,6 +51,8 @@ struct MainMenuView: View {
             EmptyView()
         }// end switch statement
         }// end Zstack
+        .containerRelativeFrame([.horizontal, .vertical])
+        .background(Color("Standard"))
     }
 }
 

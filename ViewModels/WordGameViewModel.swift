@@ -28,7 +28,7 @@ class WordGameVM: ObservableObject, KeyboardVMObserver, GameOverVMObserver {
         self.keyboardVM = KeyboardVM()
         self.gameOverVM = GameOverVM()
         
-        self.activeView = ActiveView.wordgame
+        self.activeView = ActiveView.standardgame
         
         self.gameboardVM = GameboardVM(boardSize: boardSize, wordLength: wordLength)
         self.wordsCollection = WordsCollection(wordLength: wordLength, wordFileName: wordsFile)
@@ -134,7 +134,7 @@ class WordGameVM: ObservableObject, KeyboardVMObserver, GameOverVMObserver {
     /// GameOver Observer Function
     /// Passes along which button was pressed in the GameOverView
     func playAgain() {
-        activeView = ActiveView.wordgame
+        activeView = ActiveView.standardgame
         gameOver()
         wordsCollection.updateSelectedWord()
     }

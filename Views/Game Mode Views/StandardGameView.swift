@@ -53,7 +53,7 @@ struct StandardGameView: View {
             }
         }
         .containerRelativeFrame([.horizontal, .vertical])
-        .background(Color("Standard"))
+        .background(Color.standard)
     }
 }
 

@@ -43,7 +43,7 @@ struct KeyboardElement: View {
         }, label: {
             buttonView
                 .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, maxHeight: .infinity)
-                .foregroundStyle(Color("TextColor"))
+                .foregroundStyle(Color.Text.text)
                 .font(.system(size: key.fontSize))
                 .fontWeight(.semibold)
         })

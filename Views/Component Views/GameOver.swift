@@ -31,10 +31,10 @@ struct GameOver: View {
             GameOverButton(buttonText: "Play Again", buttonAction: model.playAgain)
                 .background(.blue)
                 .clipShape(.rect(cornerRadius: 25.0))
-                .foregroundStyle(Color("TextColoredBackground"))
+                .foregroundStyle(Color.Text.textColoredBackground)
             
             GameOverButton(buttonText: "Main Menu", buttonAction: model.mainMenu)
-                .foregroundStyle(Color("TextColor"))
+                .foregroundStyle(Color.Text.text)
         }
         .frame(width:ScreenSize().width! * 0.9)
     }

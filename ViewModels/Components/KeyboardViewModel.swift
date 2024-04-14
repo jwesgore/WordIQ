@@ -1,10 +1,11 @@
 import Foundation
 import SwiftUI
 
-class KeyboardVM : ObservableObject, WordGameVMObserver {
+class KeyboardVM : ObservableObject, WordGameComponentObserver {
     var keyboardModel = KeyboardModel()
     var observers = [KeyboardVMObserver]()
     var pressedKey: String = " "
+    var keyboardActive = true
     
     let letterKeyWidthMultiplier = 0.085
     let funcKeyWidthMultiplier = 0.13
@@ -68,7 +69,9 @@ class KeyboardVM : ObservableObject, WordGameVMObserver {
     
     func keyPressed(key: String) {
         self.pressedKey = key
-        self.notifyObservers()
+        if keyboardActive {
+            self.notifyObservers()
+        }
     }
     
     func addObserver(observer: KeyboardVMObserver) {
@@ -86,6 +89,7 @@ class KeyboardVM : ObservableObject, WordGameVMObserver {
         for letter in keyboardMap {
             letter.value.backgroundColor = LetterBackgroundColor.standard
         }
+        keyboardActive = true
     }
     
     /// Set backgrounds for all of the keyboard characters

@@ -1,13 +1,13 @@
 import SwiftUI
 
 struct ZenGameView: View {
-    @StateObject var wordGameVM: WordGameVM
+    @StateObject var zenGameVM: ZenGameVM
     @ObservedObject var transitions: Transitions
     
     let endGame: (ActiveView) -> Void
     
     init(endGame: @escaping (ActiveView) -> Void, boardSize: Int, wordLength: Int, wordsFile: String) {
-        self._wordGameVM = StateObject(wrappedValue: WordGameVM(boardSize: boardSize, wordLength: wordLength, wordsFile: wordsFile))
+        self._zenGameVM = StateObject(wrappedValue: ZenGameVM(boardSize: boardSize, wordLength: wordLength, wordsFile: wordsFile))
         
         self.endGame = endGame
         self.transitions = Transitions(activeView: .standardgame)
@@ -16,9 +16,9 @@ struct ZenGameView: View {
     var body: some View {
         ZStack{
             switch transitions.activeView {
-            case ActiveView.gameover:
-                GameOver(model: wordGameVM.gameOverVM)
-            case ActiveView.standardgame:
+            case .gameover:
+                GameOver(model: zenGameVM.gameOverVM)
+            case .standardgame:
                 VStack {
                     HStack{
                         Button(action: {
@@ -28,16 +28,16 @@ struct ZenGameView: View {
                     }
                     .padding()
                     Spacer()
-                    GameBoard(gameboardVM: wordGameVM.gameboardVM)
+                    GameBoard(gameboardVM: zenGameVM.gameboardVM)
                     Spacer()
-                    KeyboardView (keyboardViewModel: wordGameVM.keyboardVM)
+                    KeyboardView (keyboardViewModel: zenGameVM.keyboardVM)
                         .padding()
                 }
             default:
                 EmptyView()
             }
         }
-        .onReceive(wordGameVM.$activeView) { targetView in
+        .onReceive(zenGameVM.$activeView) { targetView in
             if targetView == transitions.activeView {
                 return
             }

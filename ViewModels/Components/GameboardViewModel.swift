@@ -1,8 +1,9 @@
 import Foundation
 import SwiftUI
 
-class GameboardVM: ObservableObject, WordGameVMObserver {
+class GameboardVM: ObservableObject, WordGameComponentObserver {
     @Published var guesses: [GuessWord]
+    @Published var hints: [String]
     var currentPosition: Int
     
     var boardSize: Int
@@ -14,6 +15,7 @@ class GameboardVM: ObservableObject, WordGameVMObserver {
         self.wordLength = wordLength
         self.boardSize = boardSize
         self.guesses = (0..<boardSize).map { _ in GuessWord(wordLength: wordLength) }
+        self.hints = [String](repeating: "", count: wordLength)
         
         self.currentPosition = 0
     }
@@ -26,31 +28,38 @@ class GameboardVM: ObservableObject, WordGameVMObserver {
         return guesses[currentPosition]
     }
     
+    /// Goto next guess, returns false if board has been maxed out
     func nextGuess() -> Bool {
         currentPosition += 1
-        if currentPosition == boardSize {
-            return false
-        }
+        if currentPosition == boardSize { return false }
         return true
     }
     
     func keyPressed(key: String, entryType: KeyboardEntryType) {
         switch entryType {
-        case KeyboardEntryType.letter:
+        case .letter:
             guesses[currentPosition].addLetter(letter: key)
-        case KeyboardEntryType.delete:
+        case .delete:
             guesses[currentPosition].removeLetter()
         default:
             return
         }
     }
     
-    // WordGameVM Functions
-    func gameOver() {
+    /// Used to reset the board without clearing the hints
+    func emptyBoard() {
         self.currentPosition = 0
         self.guesses = (0..<boardSize).map { _ in GuessWord(wordLength: wordLength) }
     }
     
+    /// GameboardVM Functions
+    /// Reset all values
+    func gameOver() {
+        self.emptyBoard()
+        self.hints = [String](repeating: "", count: wordLength)
+    }
+    
+    /// Change the backgrounds of all words
     func setBackground(guess: Word, letterBackgrounds: [Color]) {
         guesses[currentPosition].setBackgrounds(letterBackgrounds: letterBackgrounds)
         guesses[currentPosition].submitted = true

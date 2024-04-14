@@ -64,7 +64,7 @@ class WordsCollection {
     // assign colors to all letters
     func isSimilarWord(_ guess: Word) -> [Color] {
         
-        var letterBackgroundColors = [Color](repeating: LetterBackgroundColor.incorrect, count: selectedWord.word.count)
+        var letterBackgroundColors = [Color](repeating: Color.LetterBackground.incorrect, count: selectedWord.word.count)
         var letterCount = selectedWord.getLetterCount()
         
         // loop through and flag all of the correct letters in the correct position
@@ -73,20 +73,20 @@ class WordsCollection {
             if testingChar != guess.letters[i] {
                 continue
             }
-            letterBackgroundColors[i] = LetterBackgroundColor.correct
+            letterBackgroundColors[i] = Color.LetterBackground.correct
             letterCount[testingChar]! -= 1
         }
         
          //loop through and flag all of the correct letters in a different position (if applicable)
         for i in 0..<selectedWord.word.count {
             let testingChar = guess.letters[i]
-            if letterBackgroundColors[i] == LetterBackgroundColor.correct ||
+            if letterBackgroundColors[i] == Color.LetterBackground.correct ||
                 letterCount[testingChar] == 0 ||
                 !selectedWord.word.contains(testingChar) {
                 continue
             }
             
-            letterBackgroundColors[i] = LetterBackgroundColor.contains
+            letterBackgroundColors[i] = Color.LetterBackground.contains
             letterCount[testingChar]! -= 1
         }
         

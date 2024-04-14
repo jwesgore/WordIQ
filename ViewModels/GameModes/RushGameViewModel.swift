@@ -1,7 +1,7 @@
 import Foundation
 import SwiftUI
 
-class ZenGameVM: WordGameVM, WordGameSubclassObserver, GameOverVMObserver {
+class RushGameVM: WordGameVM, WordGameSubclassObserver, GameOverVMObserver {
     @Published var activeView: ActiveView
     
     override init(boardSize: Int, wordLength: Int, wordsFile: String) {

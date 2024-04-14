@@ -26,7 +26,7 @@ class KeyboardVM : ObservableObject, WordGameComponentObserver {
         
         for letter in keyboardModel.topRowLetters {
             let _letter = Letter(value: letter,
-                                 backgroundColor: LetterBackgroundColor.standard,
+                                 backgroundColor: Color.LetterBackground.standard,
                                  borderColor: BorderColor.inactive,
                                  width: letterWidth,
                                  height: height)
@@ -36,7 +36,7 @@ class KeyboardVM : ObservableObject, WordGameComponentObserver {
         
         for letter in keyboardModel.middleRowLetters {
             let _letter = Letter(value: letter,
-                                 backgroundColor: LetterBackgroundColor.standard,
+                                 backgroundColor: Color.LetterBackground.standard,
                                  borderColor: BorderColor.inactive,
                                  width: letterWidth,
                                  height: height)
@@ -45,14 +45,14 @@ class KeyboardVM : ObservableObject, WordGameComponentObserver {
         }
         
         bottomRow.append(Function(value: FunctionImages.enter,
-                                backgroundColor: LetterBackgroundColor.standard,
+                                backgroundColor: Color.LetterBackground.standard,
                                 borderColor: BorderColor.inactive,
                                 width: funtionWidth,
                                 height: height))
         
         for letter in keyboardModel.bottomRowLetters {
             let _letter = Letter(value: letter,
-                                 backgroundColor: LetterBackgroundColor.standard,
+                                 backgroundColor: Color.LetterBackground.standard,
                                  borderColor: BorderColor.inactive,
                                  width: letterWidth,
                                  height: height)
@@ -61,7 +61,7 @@ class KeyboardVM : ObservableObject, WordGameComponentObserver {
         }
         
         bottomRow.append(Function(value: FunctionImages.delete,
-                                backgroundColor: LetterBackgroundColor.standard,
+                                backgroundColor: Color.LetterBackground.standard,
                                 borderColor: BorderColor.inactive,
                                 width: funtionWidth,
                                 height: height))
@@ -87,7 +87,7 @@ class KeyboardVM : ObservableObject, WordGameComponentObserver {
     // WordGameVM functions
     func gameOver() {
         for letter in keyboardMap {
-            letter.value.backgroundColor = LetterBackgroundColor.standard
+            letter.value.backgroundColor = Color.LetterBackground.standard
         }
         keyboardActive = true
     }
@@ -96,9 +96,9 @@ class KeyboardVM : ObservableObject, WordGameComponentObserver {
     func setBackground(guess: Word, letterBackgrounds: [Color]) {
         for (letter, color) in zip(guess.letters, letterBackgrounds) {
             let _letter = letter.uppercased()
-            if keyboardMap[_letter]?.backgroundColor == LetterBackgroundColor.correct ||
-                keyboardMap[_letter]?.backgroundColor == LetterBackgroundColor.incorrect &&
-                color == LetterBackgroundColor.incorrect {
+            if keyboardMap[_letter]?.backgroundColor == Color.LetterBackground.correct ||
+                keyboardMap[_letter]?.backgroundColor == Color.LetterBackground.incorrect &&
+                color == Color.LetterBackground.incorrect {
                 continue
             }
             keyboardMap[_letter]?.backgroundColor = color

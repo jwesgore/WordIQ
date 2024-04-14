@@ -53,7 +53,7 @@ struct ZenGameView: View {
             }
         }
         .containerRelativeFrame([.horizontal, .vertical])
-        .background(Color.standard)
+        .background(Color.LetterBackground.standard)
     }
 }
 

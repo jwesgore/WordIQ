@@ -7,14 +7,6 @@ enum BorderColor {
     static let clear = Color(.clear)
 }
 
-enum LetterBackgroundColor {
-    static let correct = Color("Correct")
-    static let incorrect = Color("Incorrect")
-    static let contains = Color("Contains")
-    static let standard = Color("Standard")
-    static let error = Color("Error")
-}
-
 enum FunctionImages {
     static let delete = "arrow.backward"
     static let enter = "arrow.turn.down.right"
@@ -23,6 +15,7 @@ enum FunctionImages {
 /// Superclass used to define common parrameters for base level UI elements such as letter in a word or a key on a keyboard
 class BaseComponent: ObservableObject {
     @Published var value: String = ""
+    @Published var opacity: Double = 100.0
     @Published var backgroundColor: Color
     @Published var borderColor: Color
     @Published var width: CGFloat

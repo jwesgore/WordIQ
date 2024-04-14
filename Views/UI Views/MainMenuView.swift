@@ -10,9 +10,9 @@ struct MainMenuView: View {
         case .standardgame:
             StandardGameView(endGame: transitions.fadeToWhite, boardSize: 6, wordLength: 5, wordsFile: "five_letter_words_medium")
         case .rushgame:
-            RushGameView()
+            RushGameView(endGame: transitions.fadeToWhite, boardSize: 6, wordLength: 5, wordsFile: "five_letter_words_medium")
         case .frenzygame:
-            FrenzyGameView()
+            FrenzyGameView(endGame: transitions.fadeToWhite, boardSize: 6, wordLength: 5, wordsFile: "five_letter_words_medium")
         case .zengame:
             ZenGameView(endGame: transitions.fadeToWhite, boardSize: 6, wordLength: 5, wordsFile: "five_letter_words_medium")
         case .tabview:

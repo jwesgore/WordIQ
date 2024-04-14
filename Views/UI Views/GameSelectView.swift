@@ -28,7 +28,7 @@ struct GameSelectView: View {
             Button(action: {
                 startGame(.zengame)
             }, label: {
-                GameMode(image: "gamecontroller", modeTitle: "Zen Mode", modeDescription: "No limit, no guess limit. Just play to have fun.")
+                GameMode(image: "gamecontroller", modeTitle: "Zen Mode", modeDescription: "No time limit, no guess limit. Just play to have fun.")
             })
             
             Spacer()

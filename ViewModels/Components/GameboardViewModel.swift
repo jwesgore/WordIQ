@@ -3,7 +3,7 @@ import SwiftUI
 
 class GameboardVM: ObservableObject, WordGameComponentObserver {
     @Published var guesses: [GuessWord]
-    @Published var hints: [String]
+    var hints: [String]
     var currentPosition: Int
     
     var boardSize: Int
@@ -32,6 +32,7 @@ class GameboardVM: ObservableObject, WordGameComponentObserver {
     func nextGuess() -> Bool {
         currentPosition += 1
         if currentPosition == boardSize { return false }
+        guesses[currentPosition].addHints(hints: hints)
         return true
     }
     
@@ -46,10 +47,17 @@ class GameboardVM: ObservableObject, WordGameComponentObserver {
         }
     }
     
+    func loadHints() {
+        for i in 0..<wordLength {
+            guesses[currentPosition].letters[i].value = hints[i]
+        }
+    }
+    
     /// Used to reset the board without clearing the hints
-    func emptyBoard() {
+    func emptyBoard(loadHints: Bool = false) {
         self.currentPosition = 0
         self.guesses = (0..<boardSize).map { _ in GuessWord(wordLength: wordLength) }
+        if loadHints { guesses[0].addHints(hints: hints) }
     }
     
     /// GameboardVM Functions
@@ -63,6 +71,12 @@ class GameboardVM: ObservableObject, WordGameComponentObserver {
     func setBackground(guess: Word, letterBackgrounds: [Color]) {
         guesses[currentPosition].setBackgrounds(letterBackgrounds: letterBackgrounds)
         guesses[currentPosition].submitted = true
+        
+        for i in 0..<wordLength {
+            if letterBackgrounds[i] == Color.LetterBackground.correct {
+                hints[i] = guess.letters[i].uppercased()
+            }
+        }
     }
 }
 

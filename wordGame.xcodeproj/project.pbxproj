@@ -39,6 +39,8 @@
 		4B8167E12BC8B59600E3978D /* ZenGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8167E02BC8B59600E3978D /* ZenGameViewModel.swift */; };
 		4B8167E82BCA0C8300E3978D /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8167E72BCA0C8300E3978D /* TimerView.swift */; };
 		4B8167EA2BCB31E500E3978D /* StandardGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8167E92BCB31E500E3978D /* StandardGameViewModel.swift */; };
+		4B8167EE2BCC59CB00E3978D /* RushGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8167ED2BCC59CB00E3978D /* RushGameViewModel.swift */; };
+		4B8167F02BCC5B1D00E3978D /* FrenzyGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8167EF2BCC5B1D00E3978D /* FrenzyGameViewModel.swift */; };
 		4BA4CF332BB7BAB100B9F36B /* GameOverViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA4CF322BB7BAB100B9F36B /* GameOverViewModel.swift */; };
 		4BB0BEB62BBC8ABD003BA895 /* BaseComponenetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB0BEB52BBC8ABD003BA895 /* BaseComponenetModel.swift */; };
 		4BB0BEC32BBF8D1B003BA895 /* GameSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB0BEC22BBF8D1B003BA895 /* GameSelectView.swift */; };
@@ -98,6 +100,8 @@
 		4B8167E02BC8B59600E3978D /* ZenGameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZenGameViewModel.swift; sourceTree = "<group>"; };
 		4B8167E72BCA0C8300E3978D /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 		4B8167E92BCB31E500E3978D /* StandardGameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardGameViewModel.swift; sourceTree = "<group>"; };
+		4B8167ED2BCC59CB00E3978D /* RushGameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RushGameViewModel.swift; sourceTree = "<group>"; };
+		4B8167EF2BCC5B1D00E3978D /* FrenzyGameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrenzyGameViewModel.swift; sourceTree = "<group>"; };
 		4BA4CF322BB7BAB100B9F36B /* GameOverViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverViewModel.swift; sourceTree = "<group>"; };
 		4BB0BEB52BBC8ABD003BA895 /* BaseComponenetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseComponenetModel.swift; sourceTree = "<group>"; };
 		4BB0BEC22BBF8D1B003BA895 /* GameSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSelectView.swift; sourceTree = "<group>"; };
@@ -266,6 +270,8 @@
 			children = (
 				4B8167E02BC8B59600E3978D /* ZenGameViewModel.swift */,
 				4B8167E92BCB31E500E3978D /* StandardGameViewModel.swift */,
+				4B8167ED2BCC59CB00E3978D /* RushGameViewModel.swift */,
+				4B8167EF2BCC5B1D00E3978D /* FrenzyGameViewModel.swift */,
 			);
 			path = GameModes;
 			sourceTree = "<group>";
@@ -449,6 +455,7 @@
 				4B0BEE992BBB85F10007772B /* SplashScreenView.swift in Sources */,
 				4B3388C82BB5F3F900A10A27 /* KeyboardModel.swift in Sources */,
 				4BB0BEB62BBC8ABD003BA895 /* BaseComponenetModel.swift in Sources */,
+				4B8167F02BCC5B1D00E3978D /* FrenzyGameViewModel.swift in Sources */,
 				4B8167D92BC4F26900E3978D /* FrenzyGameView.swift in Sources */,
 				4B08AA1F2BC0E40400810F22 /* ScreenSizeUtility.swift in Sources */,
 				4B3388BE2BB4C1C800A10A27 /* WordsCollection.swift in Sources */,
@@ -460,6 +467,7 @@
 				4B3388C12BB4C4F600A10A27 /* GameBoardView.swift in Sources */,
 				4B8167DD2BC4F28300E3978D /* ZenGameView.swift in Sources */,
 				4B0BEE9B2BBB86220007772B /* MainMenuView.swift in Sources */,
+				4B8167EE2BCC59CB00E3978D /* RushGameViewModel.swift in Sources */,
 				4B8167E12BC8B59600E3978D /* ZenGameViewModel.swift in Sources */,
 				4B0BEE8E2BB8E6B10007772B /* WordGameViewModel.swift in Sources */,
 				4B8167DF2BC6115A00E3978D /* UIColorExtension.swift in Sources */,

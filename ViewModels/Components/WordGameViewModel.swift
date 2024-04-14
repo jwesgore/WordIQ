@@ -80,15 +80,13 @@ class WordGameVM: ObservableObject, KeyboardVMObserver {
     /// Keyboard Observer Function
     ///  Passed the pressed key along to the GameBoardVM if keyboard is in the active state
     func keyPressed(_ key: String) {
-        if keyboardModel.letters.contains(key) {
-            gameboardVM.keyPressed(key: key, entryType: KeyboardEntryType.letter)
-        }
-        else if key == FunctionImages.delete {
-            gameboardVM.keyPressed(key: key, entryType: KeyboardEntryType.delete)
-        }
-        else if key == FunctionImages.enter {
-            print(gameboardVM.currentPosition)
+        switch key {
+        case FunctionImages.enter:
             notifySubmitGuess()
+        case FunctionImages.delete:
+            gameboardVM.keyPressed(key: key, entryType: KeyboardEntryType.delete)
+        default:
+            gameboardVM.keyPressed(key: key, entryType: KeyboardEntryType.letter)
         }
     }
     

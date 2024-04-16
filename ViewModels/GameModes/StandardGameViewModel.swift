@@ -21,7 +21,7 @@ class StandardGameVM: WordGameVM, WordGameSubclassObserver, GameOverVMObserver {
             buildGameOverScreen(win: true)
             activeView = .gameover
         }
-        if !gameboardVM.nextGuess() {
+        else if !gameboardVM.nextGuess() {
             keyboardVM.keyboardActive = false
             buildGameOverScreen(win: false)
             activeView = .gameover
@@ -30,16 +30,16 @@ class StandardGameVM: WordGameVM, WordGameSubclassObserver, GameOverVMObserver {
     
     func buildGameOverScreen(win: Bool) {
         gameOverVM.reset()
-        var numberOfGuesses = gameboardVM.currentPosition
+        var numberOfGuesses = String(gameboardVM.currentPosition + 1)
         if win {
-            numberOfGuesses += 1
             gameOverVM.addResult(result: "You Win!")
         } else {
             gameOverVM.addResult(result: "Game Over")
+            numberOfGuesses = "DNF"
         }
         
         let row1 = ["image": "pencil.line", "title": "Answer", "value": wordsCollection.selectedWord.word.uppercased()]
-        let row2 = ["image": "number.square", "title": "Guesses", "value": String(numberOfGuesses)]
+        let row2 = ["image": "number.square", "title": "Guesses", "value": numberOfGuesses]
         
         gameOverVM.addContentsRow(row: row1)
         gameOverVM.addContentsRow(row: row2)

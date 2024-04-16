@@ -20,11 +20,24 @@ struct StandardGameView: View {
                 GameOver(model: standardGameVM.gameOverVM)
             case ActiveView.standardgame:
                 VStack {
-                    HStack{
-                        Button(action: {
-                            endGame(.tabview)
-                        }, label:{Image(systemName:"chevron.backward")})
-                        Spacer()
+                    ZStack{
+                        HStack{
+                            Button(action: {
+                                endGame(.tabview)
+                            }, label:{Image(systemName:"chevron.backward")})
+                            Spacer()
+                        }
+                        
+                        Text(SystemNames.standardMode)
+                            .font(.system(size: 20))
+                            .kerning(3)
+                            .fontWeight(.medium)
+                            .frame(width: 200, height: 50.0)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 8)
+                                    .stroke(Color.gray, lineWidth: 1)
+                            )
+                            .clipShape(RoundedRectangle(cornerRadius: 8))
                     }
                     .padding()
                     Spacer()

@@ -17,9 +17,7 @@ struct MainMenuView: View {
             ZenGameView(endGame: transitions.fadeToWhite, boardSize: 6, wordLength: 5, wordsFile: "five_letter_words_medium")
         case .tabview:
             VStack{
-                
-                ZStack{
-
+                ZStack {
                     HStack{
                         Text(SystemNames.title)
                             .font(.system(size: 20))
@@ -35,9 +33,7 @@ struct MainMenuView: View {
                         Button(action: {}, label:{
                             Function(value: "gearshape", width: gearSize, height: gearSize, constraint: 25).view
                                 .font(.system(size: gearSize > 25 ? 25: gearSize))
-                            
                         })
-                        
                     }
                     .padding()
                 }

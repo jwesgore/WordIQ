@@ -68,10 +68,9 @@ class KeyboardVM : ObservableObject, WordGameComponentObserver {
     }
     
     func keyPressed(key: String) {
+        guard keyboardActive else {return}
         self.pressedKey = key
-        if keyboardActive {
-            self.notifyObservers()
-        }
+        self.notifyObservers()
     }
     
     func addObserver(observer: KeyboardVMObserver) {
@@ -95,13 +94,29 @@ class KeyboardVM : ObservableObject, WordGameComponentObserver {
     /// Set backgrounds for all of the keyboard characters
     func setBackground(guess: Word, letterBackgrounds: [Color]) {
         for (letter, color) in zip(guess.letters, letterBackgrounds) {
+            
             let _letter = letter.uppercased()
-            if keyboardMap[_letter]?.backgroundColor == Color.LetterBackground.correct ||
-                keyboardMap[_letter]?.backgroundColor == Color.LetterBackground.incorrect &&
-                color == Color.LetterBackground.incorrect {
+            let currentColorValue = colorValues(color: keyboardMap[_letter]!.backgroundColor)
+            let incommingColorValue = colorValues(color: color)
+            
+            if currentColorValue <= incommingColorValue {
                 continue
+            } else {
+                keyboardMap[_letter]!.backgroundColor = color
             }
-            keyboardMap[_letter]?.backgroundColor = color
+        }
+    }
+    
+    private func colorValues(color: Color) -> Int {
+        switch color {
+        case .LetterBackground.correct:
+            return 0
+        case .LetterBackground.contains:
+            return 1
+        case .LetterBackground.incorrect:
+            return 2
+        default:
+            return 3
         }
     }
 }

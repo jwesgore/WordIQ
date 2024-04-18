@@ -26,6 +26,7 @@ struct FrenzyGameView: View {
                                 endGame(.tabview)
                             }, label:{Image(systemName:"chevron.backward")})
                             Spacer()
+                            TimerView(timerVM: frenzyGameVM.timerVM)
                         }
                         
                         Text(SystemNames.frenzyMode)

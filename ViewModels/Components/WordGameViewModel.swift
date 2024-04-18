@@ -1,7 +1,7 @@
 import Foundation
 import SwiftUI
 
-class WordGameVM: ObservableObject, KeyboardVMObserver {
+class WordGameVM: ObservableObject, KeyboardVMObserver{
     
     // constants
     let boardSize: Int
@@ -11,6 +11,7 @@ class WordGameVM: ObservableObject, KeyboardVMObserver {
     var keyboardVM: KeyboardVM
     var gameboardVM: GameboardVM
     var gameOverVM: GameOverVM
+    var timerVM: TimerVM
     
     var wordsCollection: WordsCollection
     let keyboardModel: KeyboardModel
@@ -25,6 +26,7 @@ class WordGameVM: ObservableObject, KeyboardVMObserver {
         self.keyboardModel = KeyboardModel()
         self.keyboardVM = KeyboardVM()
         self.gameOverVM = GameOverVM()
+        self.timerVM = TimerVM()
         
         self.gameboardVM = GameboardVM(boardSize: boardSize, wordLength: wordLength)
         self.wordsCollection = WordsCollection(wordLength: wordLength, wordFileName: wordsFile)
@@ -80,6 +82,7 @@ class WordGameVM: ObservableObject, KeyboardVMObserver {
     /// Keyboard Observer Function
     ///  Passed the pressed key along to the GameBoardVM if keyboard is in the active state
     func keyPressed(_ key: String) {
+        if !timerVM.active {timerVM.startTimer()}
         switch key {
         case FunctionImages.enter:
             notifySubmitGuess()
@@ -89,7 +92,6 @@ class WordGameVM: ObservableObject, KeyboardVMObserver {
             gameboardVM.keyPressed(key: key, entryType: KeyboardEntryType.letter)
         }
     }
-    
 }
 
 protocol WordGameSubclassObserver {

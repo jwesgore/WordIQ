@@ -8,13 +8,13 @@ struct MainMenuView: View {
         VStack{
         switch transitions.activeView {
         case .standardgame:
-            StandardGameView(endGame: transitions.fadeToWhite, boardSize: 6, wordLength: 5, wordsFile: "five_letter_words_medium")
+            StandardGameView(endGame: transitions.fadeToWhite, boardSize: 6, wordLength: 5, wordsFile: WordLists.fiveMedium)
         case .rushgame:
-            RushGameView(endGame: transitions.fadeToWhite, boardSize: 6, wordLength: 5, wordsFile: "five_letter_words_medium")
+            RushGameView(endGame: transitions.fadeToWhite, boardSize: 6, wordLength: 5, wordsFile: WordLists.fiveMedium)
         case .frenzygame:
-            FrenzyGameView(endGame: transitions.fadeToWhite, boardSize: 6, wordLength: 5, wordsFile: "five_letter_words_medium")
+            FrenzyGameView(endGame: transitions.fadeToWhite, boardSize: 6, wordLength: 5, wordsFile: WordLists.fiveMedium)
         case .zengame:
-            ZenGameView(endGame: transitions.fadeToWhite, boardSize: 6, wordLength: 5, wordsFile: "five_letter_words_medium")
+            ZenGameView(endGame: transitions.fadeToWhite, boardSize: 6, wordLength: 5, wordsFile: WordLists.fiveMedium)
         case .tabview:
             VStack{
                 ZStack {
@@ -69,9 +69,6 @@ struct MainMenuView: View {
             EmptyView()
         }// end switch statement
         }// end Zstack
-        //.containerRelativeFrame([.horizontal, .vertical])
-        //.background(Color.backgroundDefaults)
-        
     }
 }
 

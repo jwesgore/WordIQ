@@ -26,6 +26,7 @@ struct StandardGameView: View {
                                 endGame(.tabview)
                             }, label:{Image(systemName:"chevron.backward")})
                             Spacer()
+                            TimerView(timerVM: standardGameVM.timerVM)
                         }
                         
                         Text(SystemNames.standardMode)

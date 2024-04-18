@@ -1,15 +1,21 @@
 import Foundation
 import SwiftUI
 
-class FrenzyGameVM: WordGameVM, WordGameSubclassObserver, GameOverVMObserver {
+class FrenzyGameVM: WordGameVM, WordGameSubclassObserver, GameOverVMObserver, TimerVMObserver {
     @Published var activeView: ActiveView
+    var correctWords = [Word]()
     
     override init(boardSize: Int, wordLength: Int, wordsFile: String) {
+        let timeLimit = 90
+        
         self.activeView = .standardgame
         
         super.init(boardSize: boardSize, wordLength: wordLength, wordsFile: wordsFile)
         super.addSubclassObserver(observer: self)
         super.gameOverVM.addObserver(observer: self)
+        
+        super.timerVM.postInitSetTotalTime(time: timeLimit)
+        super.timerVM.addObserver(observer: self)
     }
     
     // WordsColletions Functions
@@ -19,21 +25,30 @@ class FrenzyGameVM: WordGameVM, WordGameSubclassObserver, GameOverVMObserver {
         // is it the correct word
         if wordsCollection.isCorrectWord(guessWord) {
             keyboardVM.keyboardActive = false
-            addGameOverContents()
-            activeView = .gameover
+            correctWords.append(guessWord)
+            print(gameboardVM.boardSize - gameboardVM.currentPosition)
+            timerVM.addTime(((gameboardVM.boardSize - gameboardVM.currentPosition) - 1 ) * 10)
+            super.gameOver()
+            wordsCollection.updateSelectedWord()
         } else if !gameboardVM.nextGuess() {
-            gameboardVM.emptyBoard(loadHints: true)
+            keyboardVM.keyboardActive = false
+            timerVM.stopTimer()
+            buildGameOverScreen(timeOver: false)
+            activeView = .gameover
         }
     }
     
-    func addGameOverContents() {
+    func buildGameOverScreen(timeOver: Bool) {
         gameOverVM.reset()
-        var numberOfGuesses = gameboardVM.currentPosition
-
-        gameOverVM.addResult(result: "You Win!")
-
-        let row1 = ["image": "pencil.line", "title": "Answer", "value": wordsCollection.selectedWord.word.uppercased()]
-        let row2 = ["image": "number.square", "title": "Guesses", "value": String(numberOfGuesses)]
+        
+        if timeOver {
+            gameOverVM.addResult(result: "Times Up!")
+        } else {
+            gameOverVM.addResult(result: "You Lose!")
+        }
+    
+        let row1 = ["image": "pencil.line", "title": "Last Word", "value": wordsCollection.selectedWord.word.uppercased()]
+        let row2 = ["image": "number.square", "title": "Correct Words", "value": String(correctWords.count)]
         
         gameOverVM.addContentsRow(row: row1)
         gameOverVM.addContentsRow(row: row2)
@@ -43,12 +58,21 @@ class FrenzyGameVM: WordGameVM, WordGameSubclassObserver, GameOverVMObserver {
     /// Passes along which button was pressed in the GameOverView
     func playAgain() {
         activeView = .standardgame
-        gameOver()
+        super.gameOver()
         wordsCollection.updateSelectedWord()
+        timerVM.resetTimer()
+        correctWords.removeAll()
     }
     
     /// GameOver Observer Function
     func mainMenu() {
         activeView = ActiveView.tabview
+    }
+    
+    /// Timer Observer Function
+    func timeOver() {
+        keyboardVM.keyboardActive = false
+        buildGameOverScreen(timeOver: true)
+        activeView = .gameover
     }
 }

@@ -9,6 +9,12 @@ enum SystemNames {
     static let zenMode = "Zen"
 }
 
+enum WordLists {
+    static let fiveEasy = "five_letter_words_easy"
+    static let fiveMedium = "five_letter_words_medium"
+    static let fiveHard = "five_letter_words_hard"
+}
+
 enum LetterComparison{
     case wrongLetter
     case differentPosition

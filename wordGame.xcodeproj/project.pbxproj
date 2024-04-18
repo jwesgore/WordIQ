@@ -45,6 +45,7 @@
 		4BB0BEB62BBC8ABD003BA895 /* BaseComponenetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB0BEB52BBC8ABD003BA895 /* BaseComponenetModel.swift */; };
 		4BB0BEC32BBF8D1B003BA895 /* GameSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB0BEC22BBF8D1B003BA895 /* GameSelectView.swift */; };
 		4BB0BEC52BC0B4AB003BA895 /* TransitionsUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB0BEC42BC0B4AB003BA895 /* TransitionsUtility.swift */; };
+		4BF6D8EB2BCF3A1E00BEAB39 /* TimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BF6D8EA2BCF3A1E00BEAB39 /* TimerViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,6 +107,7 @@
 		4BB0BEB52BBC8ABD003BA895 /* BaseComponenetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseComponenetModel.swift; sourceTree = "<group>"; };
 		4BB0BEC22BBF8D1B003BA895 /* GameSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSelectView.swift; sourceTree = "<group>"; };
 		4BB0BEC42BC0B4AB003BA895 /* TransitionsUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionsUtility.swift; sourceTree = "<group>"; };
+		4BF6D8EA2BCF3A1E00BEAB39 /* TimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -282,6 +284,7 @@
 				4B3388C42BB5ED5300A10A27 /* GameboardViewModel.swift */,
 				4B3388C92BB5F62700A10A27 /* KeyboardViewModel.swift */,
 				4B0BEE8D2BB8E6B10007772B /* WordGameViewModel.swift */,
+				4BF6D8EA2BCF3A1E00BEAB39 /* TimerViewModel.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -478,6 +481,7 @@
 				4B8167DB2BC4F27800E3978D /* RushGameView.swift in Sources */,
 				4B3388C32BB4DD9400A10A27 /* KeyboardView.swift in Sources */,
 				4B3388D62BB7A3F800A10A27 /* GameOver.swift in Sources */,
+				4BF6D8EB2BCF3A1E00BEAB39 /* TimerViewModel.swift in Sources */,
 				4B3388BB2BB4C13300A10A27 /* GuessWordModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

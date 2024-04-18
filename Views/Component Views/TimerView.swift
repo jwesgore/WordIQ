@@ -2,18 +2,13 @@ import SwiftUI
 
 struct TimerView: View {
     
-    @State var totalTime: Int
-    @State var running: Bool = false
-    
-    let timer = Timer.TimerPublisher(interval: 1, runLoop: .main, mode: .common)
+    @ObservedObject var timerVM: TimerVM
         
     var body: some View {
-        ZStack {
-            
-        }
+        Text(timerVM.currentTimeFormatted)
     }
 }
 
 #Preview {
-    TimerView(totalTime: 60)
+    TimerView(timerVM:TimerVM(60))
 }

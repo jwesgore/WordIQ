@@ -26,6 +26,7 @@ struct RushGameView: View {
                                 endGame(.tabview)
                             }, label:{Image(systemName:"chevron.backward")})
                             Spacer()
+                            TimerView(timerVM: rushGameVM.timerVM)
                         }
                         
                         Text(SystemNames.rushMode)

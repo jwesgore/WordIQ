@@ -10,6 +10,8 @@ class StandardGameVM: WordGameVM, WordGameSubclassObserver, GameOverVMObserver {
         super.init(boardSize: boardSize, wordLength: wordLength, wordsFile: wordsFile)
         super.addSubclassObserver(observer: self)
         super.gameOverVM.addObserver(observer: self)
+        
+        super.timerVM.countUp = true
     }
     
     // Check currentGuess for validity
@@ -18,16 +20,19 @@ class StandardGameVM: WordGameVM, WordGameSubclassObserver, GameOverVMObserver {
         // is it the correct word
         if wordsCollection.isCorrectWord(guessWord) {
             keyboardVM.keyboardActive = false
+            timerVM.stopTimer()
             buildGameOverScreen(win: true)
             activeView = .gameover
         }
         else if !gameboardVM.nextGuess() {
             keyboardVM.keyboardActive = false
+            timerVM.stopTimer()
             buildGameOverScreen(win: false)
             activeView = .gameover
         }
     }
     
+    /// Build contents to display on game over screen
     func buildGameOverScreen(win: Bool) {
         gameOverVM.reset()
         var numberOfGuesses = String(gameboardVM.currentPosition + 1)
@@ -39,10 +44,12 @@ class StandardGameVM: WordGameVM, WordGameSubclassObserver, GameOverVMObserver {
         }
         
         let row1 = ["image": "pencil.line", "title": "Answer", "value": wordsCollection.selectedWord.word.uppercased()]
-        let row2 = ["image": "number.square", "title": "Guesses", "value": numberOfGuesses]
+        let row2 = ["image": "timer", "title": "Time Elapsed", "value": timerVM.timeToString()]
+        let row3 = ["image": "number.square", "title": "Guesses", "value": numberOfGuesses]
         
         gameOverVM.addContentsRow(row: row1)
         gameOverVM.addContentsRow(row: row2)
+        gameOverVM.addContentsRow(row: row3)
     }
     
     /// GameOver Observer Function

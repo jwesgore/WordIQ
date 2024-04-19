@@ -1,31 +1,30 @@
 import SwiftUI
 
 struct GameSelectView: View {
-    var startGame: (ActiveView) -> Void
+    @ObservedObject var gameSelectVM: GameSelectVM
     
     var body: some View {
         VStack {
-            
             Button(action: {
-                startGame(.standardgame)
+                gameSelectVM.startGame(.standardgame)
             }, label: {
                 GameMode(image: "gamecontroller", modeTitle: "Standard Mode", modeDescription: "The classic game you know and love. Six guesses to get the word.")
             })
             
             Button(action: {
-                startGame(.rushgame)
+                gameSelectVM.startGame(.rushgame)
             }, label: {
                 GameMode(image: "gamecontroller", modeTitle: "Rush Mode", modeDescription: "Make as many guesses as you want, but you only have so much time.")
             })
             
             Button(action: {
-                startGame(.frenzygame)
+                gameSelectVM.startGame(.frenzygame)
             }, label: {
                 GameMode(image: "gamecontroller", modeTitle: "Frenzy Mode", modeDescription: "Only six guesses and a time limit. How many words can you get?")
             })
             
             Button(action: {
-                startGame(.zengame)
+                gameSelectVM.startGame(.zengame)
             }, label: {
                 GameMode(image: "gamecontroller", modeTitle: "Zen Mode", modeDescription: "No time limit, no guess limit. Just play to have fun.")
             })
@@ -84,5 +83,5 @@ struct GameMode: View {
 }
 
 #Preview {
-    GameSelectView(startGame:{_ in})
+    GameSelectView(gameSelectVM:GameSelectVM())
 }

@@ -40,7 +40,7 @@ struct MainMenuView: View {
             }
             
             TabView {
-                GameSelectView(startGame: mainMenuVM.fadeToWhite)
+                GameSelectView(gameSelectVM: mainMenuVM.gameSelectVM)
                     .tabItem() {
                         Image(systemName: "house.fill")
                         Text("Game")

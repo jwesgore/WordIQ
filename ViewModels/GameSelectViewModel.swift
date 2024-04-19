@@ -1,26 +1,27 @@
 import Foundation
 
-class GameModeSelectVM: ObservableObject {
+class GameSelectVM: ObservableObject {
     @Published var options: GameModeOptions
-    var observers: [GameModeSelectVMObserver]
+    var observers: [GameSelectVMObserver]
     
     init(options: GameModeOptions = GameModeOptions(wordLength: 5, boardSize: 6, wordList: WordLists.fiveMedium)) {
         self.options = options
         
-        self.observers = [GameModeSelectVMObserver]()
+        self.observers = [GameSelectVMObserver]()
     }
     
-    func addObserver(observer: GameModeSelectVMObserver) {
+    func addObserver(observer: GameSelectVMObserver) {
         observers.append(observer)
     }
     
-    func startGame() {
+    func startGame(_ mode: ActiveView) {
+        options.selectedMode = mode
         for observer in observers {
             observer.startGame(options: options)
         }
     }
 }
 
-protocol GameModeSelectVMObserver {
+protocol GameSelectVMObserver {
     func startGame(options: GameModeOptions)
 }

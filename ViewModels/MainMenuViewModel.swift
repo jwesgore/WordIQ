@@ -1,21 +1,23 @@
 import Foundation
 
-class MainMenuVM: Transitions, GameModeSelectVMObserver {
+class MainMenuVM: Transitions, GameSelectVMObserver {
     
     @Published var options: GameModeOptions
     
-    var gameModeSelectVM: GameModeSelectVM
+    var gameSelectVM: GameSelectVM
     
     init(options: GameModeOptions = GameModeOptions(wordLength: 5, boardSize: 6, wordList: WordLists.fiveMedium)) {
         self.options = options
-        self.gameModeSelectVM = GameModeSelectVM(options: options)
+        self.gameSelectVM = GameSelectVM(options: options)
         
         super.init(activeView: .tabview)
         
-        gameModeSelectVM.addObserver(observer: self)
+        gameSelectVM.addObserver(observer: self)
     }
     
     func startGame(options: GameModeOptions) {
         self.options = options
+        
+        super.fadeToWhite(targetView: options.selectedMode)
     }
 }

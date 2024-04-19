@@ -5,12 +5,12 @@ class RushGameVM: WordGameVM, WordGameSubclassObserver, GameOverVMObserver, Time
     @Published var activeView: ActiveView
     var timerActive = false
     
-    override init(boardSize: Int, wordLength: Int, wordsFile: String) {
+    override init(options: GameModeOptions) {
         let timeLimit = 60
         
         self.activeView = .standardgame
         
-        super.init(boardSize: boardSize, wordLength: wordLength, wordsFile: wordsFile)
+        super.init(options: options)
         super.addSubclassObserver(observer: self)
         super.gameOverVM.addObserver(observer: self)
         

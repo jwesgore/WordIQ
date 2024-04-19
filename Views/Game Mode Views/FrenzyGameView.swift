@@ -6,8 +6,8 @@ struct FrenzyGameView: View {
     
     let endGame: (ActiveView) -> Void
     
-    init(endGame: @escaping (ActiveView) -> Void, boardSize: Int, wordLength: Int, wordsFile: String) {
-        self._frenzyGameVM = StateObject(wrappedValue: FrenzyGameVM(boardSize: boardSize, wordLength: wordLength, wordsFile: wordsFile))
+    init(endGame: @escaping (ActiveView) -> Void, options: GameModeOptions) {
+        self._frenzyGameVM = StateObject(wrappedValue: FrenzyGameVM(options: options))
         
         self.endGame = endGame
         self.transitions = Transitions(activeView: .standardgame)
@@ -73,6 +73,6 @@ struct FrenzyGameView: View {
 }
 
 #Preview {
-    FrenzyGameView(endGame: {_ in}, boardSize: 6, wordLength: 5, wordsFile: "five_letter_words_medium")
+    FrenzyGameView(endGame: {_ in}, options: GameModeOptions(wordLength: 5, boardSize: 6, wordList: WordLists.fiveMedium))
 }
 

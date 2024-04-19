@@ -46,6 +46,7 @@
 		4BB0BEC32BBF8D1B003BA895 /* GameSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB0BEC22BBF8D1B003BA895 /* GameSelectView.swift */; };
 		4BB0BEC52BC0B4AB003BA895 /* TransitionsUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB0BEC42BC0B4AB003BA895 /* TransitionsUtility.swift */; };
 		4BF6D8EB2BCF3A1E00BEAB39 /* TimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BF6D8EA2BCF3A1E00BEAB39 /* TimerViewModel.swift */; };
+		4BF6D8F42BD2161800BEAB39 /* GameModeOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BF6D8F32BD2161800BEAB39 /* GameModeOptions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -108,6 +109,7 @@
 		4BB0BEC22BBF8D1B003BA895 /* GameSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSelectView.swift; sourceTree = "<group>"; };
 		4BB0BEC42BC0B4AB003BA895 /* TransitionsUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionsUtility.swift; sourceTree = "<group>"; };
 		4BF6D8EA2BCF3A1E00BEAB39 /* TimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewModel.swift; sourceTree = "<group>"; };
+		4BF6D8F32BD2161800BEAB39 /* GameModeOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModeOptions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -243,6 +245,7 @@
 			children = (
 				4BB0BEC12BBF891B003BA895 /* Component Models */,
 				4BB0BEC02BBF8904003BA895 /* Word Models */,
+				4BF6D8F32BD2161800BEAB39 /* GameModeOptions.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -479,6 +482,7 @@
 				4BB0BEC52BC0B4AB003BA895 /* TransitionsUtility.swift in Sources */,
 				4B3388912BB4B36400A10A27 /* wordPuzzleApp.swift in Sources */,
 				4B8167DB2BC4F27800E3978D /* RushGameView.swift in Sources */,
+				4BF6D8F42BD2161800BEAB39 /* GameModeOptions.swift in Sources */,
 				4B3388C32BB4DD9400A10A27 /* KeyboardView.swift in Sources */,
 				4B3388D62BB7A3F800A10A27 /* GameOver.swift in Sources */,
 				4BF6D8EB2BCF3A1E00BEAB39 /* TimerViewModel.swift in Sources */,

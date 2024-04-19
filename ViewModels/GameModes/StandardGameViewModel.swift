@@ -4,10 +4,10 @@ class StandardGameVM: WordGameVM, WordGameSubclassObserver, GameOverVMObserver {
     
     @Published var activeView: ActiveView
     
-    override init(boardSize: Int, wordLength: Int, wordsFile: String) {
+    override init(options: GameModeOptions) {
         self.activeView = .standardgame
         
-        super.init(boardSize: boardSize, wordLength: wordLength, wordsFile: wordsFile)
+        super.init(options: options)
         super.addSubclassObserver(observer: self)
         super.gameOverVM.addObserver(observer: self)
         

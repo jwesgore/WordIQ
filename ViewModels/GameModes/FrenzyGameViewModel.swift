@@ -5,12 +5,12 @@ class FrenzyGameVM: WordGameVM, WordGameSubclassObserver, GameOverVMObserver, Ti
     @Published var activeView: ActiveView
     var correctWords = [Word]()
     
-    override init(boardSize: Int, wordLength: Int, wordsFile: String) {
+    override init(options: GameModeOptions) {
         let timeLimit = 90
         
         self.activeView = .standardgame
         
-        super.init(boardSize: boardSize, wordLength: wordLength, wordsFile: wordsFile)
+        super.init(options: options)
         super.addSubclassObserver(observer: self)
         super.gameOverVM.addObserver(observer: self)
         

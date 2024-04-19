@@ -6,8 +6,8 @@ struct ZenGameView: View {
     
     let endGame: (ActiveView) -> Void
     
-    init(endGame: @escaping (ActiveView) -> Void, boardSize: Int, wordLength: Int, wordsFile: String) {
-        self._zenGameVM = StateObject(wrappedValue: ZenGameVM(boardSize: boardSize, wordLength: wordLength, wordsFile: wordsFile))
+    init(endGame: @escaping (ActiveView) -> Void, options: GameModeOptions) {
+        self._zenGameVM = StateObject(wrappedValue: ZenGameVM(options: options))
         
         self.endGame = endGame
         self.transitions = Transitions(activeView: .standardgame)
@@ -72,5 +72,5 @@ struct ZenGameView: View {
 }
 
 #Preview {
-    ZenGameView(endGame: {_ in}, boardSize: 6, wordLength: 5, wordsFile: "five_letter_words_medium")
+    ZenGameView(endGame: {_ in}, options: GameModeOptions(wordLength: 5, boardSize: 6, wordList: WordLists.fiveMedium))
 }

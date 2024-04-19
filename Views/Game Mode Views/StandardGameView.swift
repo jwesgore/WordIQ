@@ -6,8 +6,8 @@ struct StandardGameView: View {
     
     let endGame: (ActiveView) -> Void
     
-    init(endGame: @escaping (ActiveView) -> Void, boardSize: Int, wordLength: Int, wordsFile: String) {
-        self._standardGameVM = StateObject(wrappedValue: StandardGameVM(boardSize: boardSize, wordLength: wordLength, wordsFile: wordsFile))
+    init(endGame: @escaping (ActiveView) -> Void, options: GameModeOptions) {
+        self._standardGameVM = StateObject(wrappedValue: StandardGameVM(options: options))
         
         self.endGame = endGame
         self.transitions = Transitions(activeView: .standardgame)
@@ -72,6 +72,6 @@ struct StandardGameView: View {
 }
 
 #Preview {
-    StandardGameView(endGame: {_ in}, boardSize: 6, wordLength: 5, wordsFile: "five_letter_words_medium")
+    StandardGameView(endGame: {_ in}, options: GameModeOptions(wordLength: 5, boardSize: 6, wordList: WordLists.fiveMedium))
 }
 

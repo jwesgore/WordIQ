@@ -2,19 +2,20 @@ import SwiftUI
 
 struct MainMenuView: View {
     @ObservedObject var transitions = Transitions(activeView: ActiveView.tabview)
+    let options: GameModeOptions = GameModeOptions(wordLength: 5, boardSize: 6, wordList: WordLists.fiveMedium)
     let gearSize = ScreenSize().width! * 0.6
     
     var body: some View {
         VStack{
         switch transitions.activeView {
         case .standardgame:
-            StandardGameView(endGame: transitions.fadeToWhite, boardSize: 6, wordLength: 5, wordsFile: WordLists.fiveMedium)
+            StandardGameView(endGame: transitions.fadeToWhite, options: options)
         case .rushgame:
-            RushGameView(endGame: transitions.fadeToWhite, boardSize: 6, wordLength: 5, wordsFile: WordLists.fiveMedium)
+            RushGameView(endGame: transitions.fadeToWhite, options: options)
         case .frenzygame:
-            FrenzyGameView(endGame: transitions.fadeToWhite, boardSize: 6, wordLength: 5, wordsFile: WordLists.fiveMedium)
+            FrenzyGameView(endGame: transitions.fadeToWhite, options: options)
         case .zengame:
-            ZenGameView(endGame: transitions.fadeToWhite, boardSize: 6, wordLength: 5, wordsFile: WordLists.fiveMedium)
+            ZenGameView(endGame: transitions.fadeToWhite, options: options)
         case .tabview:
             VStack{
                 ZStack {

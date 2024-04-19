@@ -19,9 +19,9 @@ class WordGameVM: ObservableObject, KeyboardVMObserver{
     var componentObservers: [WordGameComponentObserver]
     var subclassObservers: [WordGameSubclassObserver]
     
-    init(boardSize: Int, wordLength: Int, wordsFile: String) {
-        self.boardSize = boardSize
-        self.wordLength = wordLength
+    init(options: GameModeOptions) {
+        self.boardSize = options.boardSize
+        self.wordLength = options.wordLength
         
         self.keyboardModel = KeyboardModel()
         self.keyboardVM = KeyboardVM()
@@ -29,7 +29,7 @@ class WordGameVM: ObservableObject, KeyboardVMObserver{
         self.timerVM = TimerVM()
         
         self.gameboardVM = GameboardVM(boardSize: boardSize, wordLength: wordLength)
-        self.wordsCollection = WordsCollection(wordLength: wordLength, wordFileName: wordsFile)
+        self.wordsCollection = WordsCollection(wordLength: wordLength, wordList: options.wordList)
         
         self.componentObservers = [WordGameComponentObserver]()
         self.subclassObservers = [WordGameSubclassObserver]()

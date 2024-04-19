@@ -6,12 +6,12 @@ class WordsCollection {
     var validWords = [Word]()
     var selectedWord: Word
     
-    init(wordLength: Int, wordFileName: String) {
+    init(wordLength: Int, wordList: String) {
         
         let allWordsFile = "five_letter_words_hard"
         
         // read words file and load each word into the "words" array as a Word object
-        if let fileURL = Bundle.main.url(forResource: wordFileName, withExtension: "txt") {
+        if let fileURL = Bundle.main.url(forResource: wordList, withExtension: "txt") {
             if let fileContents = try? String(contentsOf: fileURL) {
                 for word in fileContents.components(separatedBy: "\n") {
                     if word.count != wordLength {

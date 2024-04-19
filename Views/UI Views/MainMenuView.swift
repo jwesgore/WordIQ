@@ -1,21 +1,20 @@
 import SwiftUI
 
 struct MainMenuView: View {
-    @ObservedObject var transitions = Transitions(activeView: ActiveView.tabview)
-    let options: GameModeOptions = GameModeOptions(wordLength: 5, boardSize: 6, wordList: WordLists.fiveMedium)
+    @ObservedObject var mainMenuVM: MainMenuVM = MainMenuVM()
     let gearSize = ScreenSize().width! * 0.6
     
     var body: some View {
         VStack{
-        switch transitions.activeView {
+        switch mainMenuVM.activeView {
         case .standardgame:
-            StandardGameView(endGame: transitions.fadeToWhite, options: options)
+            StandardGameView(endGame: mainMenuVM.fadeToWhite, options: mainMenuVM.options)
         case .rushgame:
-            RushGameView(endGame: transitions.fadeToWhite, options: options)
+            RushGameView(endGame: mainMenuVM.fadeToWhite, options: mainMenuVM.options)
         case .frenzygame:
-            FrenzyGameView(endGame: transitions.fadeToWhite, options: options)
+            FrenzyGameView(endGame: mainMenuVM.fadeToWhite, options: mainMenuVM.options)
         case .zengame:
-            ZenGameView(endGame: transitions.fadeToWhite, options: options)
+            ZenGameView(endGame: mainMenuVM.fadeToWhite, options: mainMenuVM.options)
         case .tabview:
             VStack{
                 ZStack {
@@ -41,7 +40,7 @@ struct MainMenuView: View {
             }
             
             TabView {
-                GameSelectView(startGame: transitions.fadeToWhite)
+                GameSelectView(startGame: mainMenuVM.fadeToWhite)
                     .tabItem() {
                         Image(systemName: "house.fill")
                         Text("Game")

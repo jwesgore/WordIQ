@@ -6,7 +6,6 @@ struct GameSelectView: View {
     var body: some View {
         VStack {
             
-            
             Button(action: {
                 startGame(.standardgame)
             }, label: {

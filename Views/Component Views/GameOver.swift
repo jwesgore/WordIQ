@@ -27,7 +27,7 @@ struct GameOver: View {
             .clipShape(RoundedRectangle(cornerRadius: 8))
             .padding(.vertical, 20)
             
-            // Buttons
+            // MARK: Buttons
             GameOverButton(buttonText: "Play Again", buttonAction: model.playAgain)
                 .background(.blue)
                 .clipShape(.rect(cornerRadius: 25.0))

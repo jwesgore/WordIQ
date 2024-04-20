@@ -72,6 +72,6 @@ struct StandardGameView: View {
 }
 
 #Preview {
-    StandardGameView(endGame: {_ in}, options: GameModeOptions(wordLength: 5, boardSize: 6, wordList: WordLists.fiveMedium))
+    StandardGameView(endGame: {_ in}, options: GameModeOptions(wordLength: 5, boardSize: 6, timeLimit: 0, wordList: WordLists.fiveMedium))
 }
 

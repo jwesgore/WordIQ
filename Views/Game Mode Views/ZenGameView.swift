@@ -72,5 +72,5 @@ struct ZenGameView: View {
 }
 
 #Preview {
-    ZenGameView(endGame: {_ in}, options: GameModeOptions(wordLength: 5, boardSize: 6, wordList: WordLists.fiveMedium))
+    ZenGameView(endGame: {_ in}, options: GameModeOptions(wordLength: 5, boardSize: 6, timeLimit: 0, wordList: WordLists.fiveMedium))
 }

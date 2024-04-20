@@ -28,7 +28,7 @@ struct GameRow: View {
     let animationDuration: Double = 0.5
     
     var body: some View {
-        HStack ()  {
+        HStack (spacing:4)  {
             ForEach(0..<guess.wordLength, id: \.self) { index in
                 GameSquare(letter: guess.letters[index])
                     .animation(.easeInOut(duration: animationDuration).delay(Double(index) * 0.125), value:guess.submitted)
@@ -47,7 +47,7 @@ struct GameSquare: View {
         Text(letter.value)
             .font(.system(size: letter.width / 2.5))
             .foregroundStyle(.opacity(letter.opacity))
-            .animation(letter.value == "" ? nil : .easeInOut, value: letter.value)
+            .animation(letter.value == "" ? nil : .easeInOut(duration: 0.2), value: letter.value)
             .frame(width:letter.width, height: letter.height)
             .background(letter.backgroundColor)
             .overlay(

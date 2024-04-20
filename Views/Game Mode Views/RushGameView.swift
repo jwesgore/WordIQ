@@ -73,6 +73,6 @@ struct RushGameView: View {
 }
 
 #Preview {
-    RushGameView(endGame: {_ in}, options: GameModeOptions(wordLength: 5, boardSize: 6, wordList: WordLists.fiveMedium))
+    RushGameView(endGame: {_ in}, options: GameModeOptions(wordLength: 5, boardSize: 6, timeLimit: 0, wordList: WordLists.fiveMedium))
 }
 

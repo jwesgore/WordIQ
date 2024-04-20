@@ -73,6 +73,6 @@ struct FrenzyGameView: View {
 }
 
 #Preview {
-    FrenzyGameView(endGame: {_ in}, options: GameModeOptions(wordLength: 5, boardSize: 6, wordList: WordLists.fiveMedium))
+    FrenzyGameView(endGame: {_ in}, options: GameModeOptions(wordLength: 5, boardSize: 6, timeLimit: 0, wordList: WordLists.fiveMedium))
 }
 

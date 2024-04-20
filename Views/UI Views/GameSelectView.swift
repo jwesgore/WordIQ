@@ -2,29 +2,41 @@ import SwiftUI
 
 struct GameSelectView: View {
     @ObservedObject var gameSelectVM: GameSelectVM
-    
+
+    var body: some View {
+        ZStack {
+            GameSelectModeView(gameSelectVM: gameSelectVM)
+                .offset(CGSize(width: gameSelectVM.offset, height: 0.0))
+            GameSelectOptionsView(gameSelectVM: gameSelectVM)
+                .offset(CGSize(width: gameSelectVM.offset + gameSelectVM.offsetAmount, height: 0.0))
+        }
+    }
+}
+
+private struct GameSelectModeView: View {
+    var gameSelectVM: GameSelectVM
     var body: some View {
         VStack {
             Button(action: {
-                gameSelectVM.startGame(.standardgame)
+                gameSelectVM.gotoOptions(.standardgame)
             }, label: {
                 GameMode(image: "gamecontroller", modeTitle: "Standard Mode", modeDescription: "The classic game you know and love. Six guesses to get the word.")
             })
             
             Button(action: {
-                gameSelectVM.startGame(.rushgame)
+                gameSelectVM.gotoOptions(.rushgame)
             }, label: {
                 GameMode(image: "gamecontroller", modeTitle: "Rush Mode", modeDescription: "Make as many guesses as you want, but you only have so much time.")
             })
             
             Button(action: {
-                gameSelectVM.startGame(.frenzygame)
+                gameSelectVM.gotoOptions(.frenzygame)
             }, label: {
                 GameMode(image: "gamecontroller", modeTitle: "Frenzy Mode", modeDescription: "Only six guesses and a time limit. How many words can you get?")
             })
             
             Button(action: {
-                gameSelectVM.startGame(.zengame)
+                gameSelectVM.gotoOptions(.zengame)
             }, label: {
                 GameMode(image: "gamecontroller", modeTitle: "Zen Mode", modeDescription: "No time limit, no guess limit. Just play to have fun.")
             })
@@ -34,7 +46,7 @@ struct GameSelectView: View {
     }
 }
 
-struct GameMode: View {
+private struct GameMode: View {
     let image: String
     let modeTitle: String
     let modeDescription: String
@@ -42,8 +54,7 @@ struct GameMode: View {
     var body: some View {
   
         GeometryReader { geometry in
-            
-
+        
             HStack (spacing: 0){
                 Image(systemName: image)
                     .resizable()
@@ -77,6 +88,7 @@ struct GameMode: View {
             RoundedRectangle(cornerRadius: 25.0)
                 .fill(Color.UIElements.gameSelectButton)
                 .brightness(0.05)
+                .shadow(radius: 5)
         }
         .padding([.top, .bottom], 5)
     }

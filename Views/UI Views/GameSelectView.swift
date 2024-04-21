@@ -83,7 +83,7 @@ private struct GameMode: View {
 
         }
         .foregroundStyle(Color.Text.text)
-        .frame(width: ScreenSize().width! * 0.9, height: ScreenSize().height! * 0.12)
+        .frame(width: ScreenSize.width! * 0.9, height: ScreenSize.height! * 0.12)
         .background {
             RoundedRectangle(cornerRadius: 25.0)
                 .fill(Color.UIElements.gameSelectButton)

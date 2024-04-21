@@ -5,13 +5,17 @@ class GameSelectVM: ObservableObject {
     
     @Published var options: GameModeOptions
     @Published var offset: CGFloat
+    
     var offsetAmount: CGFloat
     var activeView: ActiveView
+    
+    let gameOptionsSelect: GameModeOptionsSelect
     
     var observers: [GameSelectVMObserver]
     
     init(options: GameModeOptions = GameModeOptions(wordLength: 5, boardSize: 6, timeLimit: 0, wordList: WordLists.fiveMedium)) {
         self.options = options
+        self.gameOptionsSelect = GameModeOptionsSelect()
         
         self.offset = 0.0
         self.offsetAmount = 2000.0
@@ -29,7 +33,6 @@ class GameSelectVM: ObservableObject {
     
     /// send the view back to the game mode selection
     func gotoModes() {
-        self.activeView = .empty
         withAnimation (.easeInOut(duration: 0.5)) {
             self.offset = 0.0
         }

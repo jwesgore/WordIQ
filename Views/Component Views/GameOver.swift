@@ -36,7 +36,7 @@ struct GameOver: View {
             GameOverButton(buttonText: "Main Menu", buttonAction: model.mainMenu)
                 .foregroundStyle(Color.Text.text)
         }
-        .frame(width:ScreenSize().width! * 0.9)
+        .frame(width:ScreenSize.width! * 0.9)
     }
 }
 
@@ -65,7 +65,7 @@ private struct GameOverButton: View {
             buttonAction()
         }, label: {
             Text(buttonText)
-                .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, maxHeight: ScreenSize().height! * 0.055)
+                .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, maxHeight: ScreenSize.height! * 0.055)
         })
     }
 }

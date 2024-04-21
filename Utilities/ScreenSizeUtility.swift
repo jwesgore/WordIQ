@@ -2,8 +2,8 @@ import Foundation
 import SwiftUI
 
 struct ScreenSize {
-    let width = UIScreen.current?.bounds.width
-    let height = UIScreen.current?.bounds.height
+    static let width = UIScreen.current?.bounds.width
+    static let height = UIScreen.current?.bounds.height
 }
 
 private extension UIWindow {

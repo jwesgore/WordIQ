@@ -49,7 +49,7 @@ struct MainMenuView: View {
 }
 
 private struct MainMenuTopBar: View {
-    let gearSize = ScreenSize().width! * 0.6
+    let gearSize = ScreenSize.width! * 0.6
     var body: some View {
         VStack{
             ZStack {

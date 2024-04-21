@@ -22,7 +22,10 @@ class ZenGameVM: WordGameVM, WordGameSubclassObserver, GameOverVMObserver {
             addGameOverContents()
             activeView = .gameover
         } else if !gameboardVM.nextGuess() {
-            gameboardVM.emptyBoard(loadHints: true)
+            keyboardVM.keyboardActive = false
+            gameboardVM.emptyBoardWithAnimation() {
+                self.keyboardVM.keyboardActive = true
+            }
         }
     }
     

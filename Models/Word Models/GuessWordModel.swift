@@ -33,6 +33,11 @@ class GuessWord: Identifiable, Equatable, ObservableObject {
         return lhs.word == rhs.word
     }
     
+    /// Returns a Word instance of the GuessWord
+    func getWord() -> Word {
+        return Word(word)
+    }
+    
     func addHints(hints: [String]) {
         self.hints = hints
         for i in 0..<wordLength {
@@ -76,16 +81,26 @@ class GuessWord: Identifiable, Equatable, ObservableObject {
         }
     }
     
-    /// Shakes the row if word is invalid
+    
+    // MARK: Visual Functions
+    // Resets all values in the word
+    func reset(animationLength: Double, speed: Double = 1.0) {
+        var counter = 0
+        for letter in letters.reversed() {
+            DispatchQueue.main.asyncAfter(deadline: .now() + ((animationLength / speed) * Double(counter)), execute: {
+                withAnimation(.linear(duration: animationLength)) {
+                    letter.reset()
+                }
+            })
+            counter += 1
+        }
+    }
+    
+    // Shakes the word if invalid
     func invalidWord() {
         withAnimation(.easeInOut(duration: 0.3)) {
             shake = true
         }
         shake = false
-    }
-    
-    /// Returns a Word instance of the GuessWord
-    func getWord() -> Word {
-        return Word(word)
     }
 }

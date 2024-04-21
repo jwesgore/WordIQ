@@ -45,6 +45,12 @@ class Letter: BaseComponent {
         super.init(backgroundColor: backgroundColor, borderColor: borderColor, width: width, height: height)
         super.value = value
     }
+    
+    func reset() {
+        self.value = ""
+        self.backgroundColor = Color.LetterBackground.standard
+        self.borderColor = BorderColor.inactive
+    }
 }
 
 /// Subclass of BaseComponent used for holding items that operate as Function Keys such as "Enter" and "Delete"

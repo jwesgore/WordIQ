@@ -39,7 +39,6 @@ struct GameSelectOptionsView: View {
             Spacer()
             
             // MARK: Submit and Back Buttons
-            
             VStack {
                 Button(action: {
                     gameSelectVM.startGame(gameSelectVM.activeView)
@@ -114,7 +113,7 @@ private struct GameSelectOptionsDifficulty: View{
         .frame(width: ScreenSize.width! * 0.9, height: ScreenSize.height! * 0.12)
         .background {
             RoundedRectangle(cornerRadius: 25.0)
-                .fill(isSelected ? Color.LetterBackground.correct :Color.UIElements.gameSelectButton)
+                .fill(isSelected ? Color.LetterBackground.correct : Color.UIElements.gameSelectButton)
                 .brightness(0.05)
                 .shadow(radius: 5)
         }
@@ -125,24 +124,37 @@ private struct GameSelectOptionsDifficulty: View{
 
 private struct GameSelectOptionsTime: View {
     
-    var gameSelectVM: GameSelectVM
+    @ObservedObject var gameSelectVM: GameSelectVM
     var times: [String: Int]
     
     var body: some View {
         HStack {
-            ForEach(times.sorted(by: { $0.value < $1.value }), id: \.key) { k, v in
-                Button(action:{
-                    gameSelectVM.setTime(time: v)
-                }, label:{
-                    Text(k)
-                        .frame(width: ScreenSize.width! * 0.3, height: ScreenSize.height! * 0.1)
-                        .frame(maxWidth: 150, maxHeight: 50)
-                })
+            GeometryReader { geometry in
+                HStack (spacing: 8) {
+                    ForEach(times.sorted(by: { $0.value < $1.value }), id: \.key) { k, v in
+                        Button(action:{
+                            gameSelectVM.setTime(time: v)
+                        }, label:{
+                            Text(k)
+                                .frame(maxWidth: geometry.size.width * 0.33, maxHeight: .infinity)
+                                .background(
+                                    RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/)
+                                        .fill(gameSelectVM.options.timeLimit == v ? Color.LetterBackground.correct : Color.UIElements.gameSelectButton)
+                                        .brightness(0.05)
+                                        .shadow(radius: 5)
+                                )
+                                .foregroundStyle(Color.Text.text)
+                        })
+                        .buttonStyle(NoAnimation())
+                    }
+                }
             }
+            .frame(width: ScreenSize.width! * 0.9, height: ScreenSize.height! * 0.07)
         }
+        
     }
 }
 
 #Preview {
-    GameSelectOptionsView(gameSelectVM:GameSelectVM())
+    GameSelectOptionsView(gameSelectVM: GameSelectVM())
 }

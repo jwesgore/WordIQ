@@ -24,12 +24,14 @@ private struct GameSelectModeView: View {
             })
             
             Button(action: {
+                gameSelectVM.options.timeLimit = 60
                 gameSelectVM.gotoOptions(.rushgame)
             }, label: {
                 GameMode(image: "gamecontroller", modeTitle: "Rush Mode", modeDescription: "Make as many guesses as you want, but you only have so much time.")
             })
             
             Button(action: {
+                gameSelectVM.options.timeLimit = 90
                 gameSelectVM.gotoOptions(.frenzygame)
             }, label: {
                 GameMode(image: "gamecontroller", modeTitle: "Frenzy Mode", modeDescription: "Only six guesses and a time limit. How many words can you get?")

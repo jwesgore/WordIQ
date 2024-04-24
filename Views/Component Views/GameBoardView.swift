@@ -29,9 +29,8 @@ struct GameRow: View {
     
     var body: some View {
         HStack (spacing:4)  {
-            ForEach(0..<guess.wordLength, id: \.self) { index in
-                GameSquare(letter: guess.letters[index])
-                    .animation(.easeInOut(duration: animationDuration).delay(Double(index) * 0.125), value:guess.submitted)
+            ForEach(guess.letters) { letter in
+                GameSquare(letter: letter)
             }
         }
         .modifier(ShakeEffect(animatableData: CGFloat(guess.shake ? 1.5 : 0)))

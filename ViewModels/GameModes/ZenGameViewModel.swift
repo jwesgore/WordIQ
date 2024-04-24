@@ -12,17 +12,16 @@ class ZenGameVM: WordGameVM, WordGameSubclassObserver, GameOverVMObserver {
         super.gameOverVM.addObserver(observer: self)
     }
     
-    func addGameOverContents() {
-        gameOverVM.reset()
-        let numberOfGuesses = gameboardVM.currentPosition
-
-        gameOverVM.addResult(result: "You Win!")
-
-        let row1 = ["image": "pencil.line", "title": "Answer", "value": wordsCollection.selectedWord.word.uppercased()]
-        let row2 = ["image": "number.square", "title": "Guesses", "value": String(numberOfGuesses)]
+    func endGame() {
+        super.gameOverVM.clearResults()
         
-        gameOverVM.addContentsRow(row: row1)
-        gameOverVM.addContentsRow(row: row2)
+        let gameOverResults = GameOverModel(gameMode: .zengame,
+                                            timeElapsed: super.timerVM.timeElapsed,
+                                            timeRemaining: super.timerVM.currentTime,
+                                            correctWord: super.wordsCollection.selectedWord.word,
+                                            win: true)
+        
+        super.gameOverVM.setResults(results: gameOverResults)
     }
     
     // MARK: WordsColletions Functions
@@ -32,7 +31,7 @@ class ZenGameVM: WordGameVM, WordGameSubclassObserver, GameOverVMObserver {
         // is it the correct word
         if wordsCollection.isCorrectWord(guessWord) {
             keyboardVM.keyboardActive = false
-            addGameOverContents()
+            endGame()
             activeView = .gameover
         } else if !gameboardVM.nextGuess() {
             keyboardVM.keyboardActive = false

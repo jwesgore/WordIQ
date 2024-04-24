@@ -13,7 +13,7 @@ enum FunctionImages {
 }
 
 /// Superclass used to define common parrameters for base level UI elements such as letter in a word or a key on a keyboard
-class BaseComponent: ObservableObject {
+class BaseComponent: ObservableObject, Identifiable {
     @Published var value: String = ""
     @Published var opacity: Double = 100.0
     @Published var backgroundColor: Color

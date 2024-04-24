@@ -40,12 +40,50 @@ class WordGameVM: ObservableObject, KeyboardVMObserver{
         self.addComponentObserver(observer: gameboardVM)
     }
     
-    func addComponentObserver(observer: WordGameComponentObserver) {
-        componentObservers.append(observer)
+    // Check currentGuess for validity
+    private func isValidWord() {
+        let guess = gameboardVM.getCurrentGuess()
+        let guessWord = guess.getWord()
+        
+        // first validate the word using the WordsCollection
+        if wordsCollection.isValidWord(guessWord) {
+            // run the comparison and send it off to the keyboard and gameboard
+            let letterBackgrounds = wordsCollection.isSimilarWord(guessWord)
+            self.setBackground(guess: guessWord, letterBackgrounds: letterBackgrounds)
+            self.notifySubmitGuess(guessWord)
+        } else {
+            guess.invalidWord()
+        }
     }
     
+    // MARK: Keyboard Observer Function
+    // Passed the pressed key along to the GameBoardVM if keyboard is in the active state
+    func keyPressed(_ key: String) {
+        if !timerVM.active {timerVM.startTimer()}
+        switch key {
+        case FunctionImages.enter:
+            isValidWord()
+        case FunctionImages.delete:
+            gameboardVM.keyPressed(key: key, entryType: KeyboardEntryType.delete)
+        default:
+            gameboardVM.keyPressed(key: key, entryType: KeyboardEntryType.letter)
+        }
+    }
+    
+    // MARK: Subclass Observer Functions
     func addSubclassObserver(observer: WordGameSubclassObserver) {
         subclassObservers.append(observer)
+    }
+    
+    func notifySubmitGuess(_ guess: Word) {
+        for observer in subclassObservers {
+            observer.submitGuess(guess)
+        }
+    }
+    
+    // MARK: Component Observer Functions
+    func addComponentObserver(observer: WordGameComponentObserver) {
+        componentObservers.append(observer)
     }
     
     // notify the keyboard and gameboard that the game has ended and they need to reset their values
@@ -59,37 +97,6 @@ class WordGameVM: ObservableObject, KeyboardVMObserver{
     func setBackground(guess:Word, letterBackgrounds: [Color]) {
         for observer in componentObservers {
             observer.setBackground(guess:guess, letterBackgrounds: letterBackgrounds)
-        }
-    }
-    
-    // Check currentGuess for validity
-    private func notifySubmitGuess() {
-        let guess = gameboardVM.getCurrentGuess()
-        let guessWord = guess.getWord()
-        
-        // first validate the word using the WordsCollection
-        if wordsCollection.isValidWord(guessWord) {
-            // run the comparison and send it off to the keyboard and gameboard
-            let letterBackgrounds = wordsCollection.isSimilarWord(guessWord)
-            setBackground(guess: guessWord, letterBackgrounds: letterBackgrounds)
-            
-            for observer in subclassObservers { observer.submitGuess(guessWord) }
-        } else {
-            guess.invalidWord()
-        }
-    }
-    
-    /// Keyboard Observer Function
-    ///  Passed the pressed key along to the GameBoardVM if keyboard is in the active state
-    func keyPressed(_ key: String) {
-        if !timerVM.active {timerVM.startTimer()}
-        switch key {
-        case FunctionImages.enter:
-            notifySubmitGuess()
-        case FunctionImages.delete:
-            gameboardVM.keyPressed(key: key, entryType: KeyboardEntryType.delete)
-        default:
-            gameboardVM.keyPressed(key: key, entryType: KeyboardEntryType.letter)
         }
     }
 }

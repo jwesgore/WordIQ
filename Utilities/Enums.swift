@@ -15,10 +15,18 @@ enum WordLists {
     static let fiveHard = "five_letter_words_hard"
 }
 
-enum LetterComparison{
+enum LetterComparison {
     case wrongLetter
     case differentPosition
     case samePosition
+}
+
+enum GameModes {
+    case standardgame
+    case rushgame
+    case frenzygame
+    case zengame
+    case empty
 }
 
 enum ActiveView {

@@ -38,22 +38,15 @@ class GuessWord: Identifiable, Equatable, ObservableObject {
         return Word(word)
     }
     
-    func addHints(hints: [String]) {
-        self.hints = hints
-        for i in 0..<wordLength {
-            letters[i].value = hints[i]
-            letters[i].opacity = 0.3
-        }
-    }
-    
     func printInfo() {
         print(word)
         print(letters)
     }
     
+    // MARK: Modify word value
     /// Adds a letter onto the word
     func addLetter(letter: String) {
-        /// Returns if the word is too long or if letter is somehow longer than 1 character
+        // Returns if the word is too long or if letter is somehow longer than 1 character
         if word.count >= wordLength || letter.count > 1 { return }
         
         letters[word.count].value = letter
@@ -64,7 +57,7 @@ class GuessWord: Identifiable, Equatable, ObservableObject {
     
     /// Deletes the last letter from the word
     func removeLetter() {
-        /// Return is word size is 0
+        // Return is word size is 0
         if word.count <= 0 { return }
         
         word.removeLast()
@@ -73,17 +66,24 @@ class GuessWord: Identifiable, Equatable, ObservableObject {
         letters[word.count].opacity = 0.3
     }
     
-    /// Sets the background colors for the row
-    func setBackgrounds(letterBackgrounds: [Color]) {
-        for i in 0..<letterBackgrounds.count {
-            letters[i].borderColor = BorderColor.clear
-            letters[i].backgroundColor = letterBackgrounds[i]
+    func addHints(hints: [String]) {
+        self.hints = hints
+        for i in 0..<wordLength {
+            letters[i].value = hints[i]
+            letters[i].opacity = 0.3
         }
     }
     
+    func setWord(word: Word) {
+        guard word.letters.count == self.wordLength else {return}
+        self.word = word.word
+        for i in 0..<self.wordLength {
+            self.letters[i].value = word.letters[i]
+        }
+    }
     
     // MARK: Visual Functions
-    // Resets all values in the word
+    /// Resets all values in the word
     func reset(animationLength: Double, speed: Double = 1.0) {
         var counter = 0
         for letter in letters.reversed() {
@@ -96,11 +96,33 @@ class GuessWord: Identifiable, Equatable, ObservableObject {
         }
     }
     
-    // Shakes the word if invalid
+    /// Shakes the word if invalid
     func invalidWord() {
         withAnimation(.easeInOut(duration: 0.3)) {
             shake = true
         }
         shake = false
+    }
+    
+    // MARK: Background Functions
+    /// Sets the background colors for the row
+    func setBackgrounds(letterBackgrounds: [Color]) {
+        for i in 0..<letterBackgrounds.count {
+            letters[i].borderColor = BorderColor.clear
+            letters[i].backgroundColor = letterBackgrounds[i]
+        }
+    }
+    
+    /// Sets the background colors for the row
+    func setBackgroundsWithAnimation(letterBackgrounds: [Color]) {
+        for i in 0..<letters.count {
+            DispatchQueue.main.asyncAfter(deadline: .now() + (0.125 * Double(i)), execute: {
+                withAnimation(.easeIn(duration: 0.2)) {
+                    self.letters[i].borderColor = BorderColor.clear
+                    self.letters[i].backgroundColor = letterBackgrounds[i]
+                    print("hi")
+                }
+            })
+        }
     }
 }

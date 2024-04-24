@@ -33,7 +33,7 @@ class TimerVM: ObservableObject {
     func postInitSetTotalTime(time: Int) {
         self.timeTotal = time
         self.currentTime = time
-        self.currentTimeFormatted = timeToString()
+        self.currentTimeFormatted = timeToString(countUp ? self.timeElapsed : self.currentTime)
     }
     
     /// Notify subcribers to Time Observer
@@ -49,13 +49,13 @@ class TimerVM: ObservableObject {
     }
     
     /// Converts the current time to a string representation
-    func timeToString(_ time: Int = -1) -> String {
-        var time = time
-        
-        if time == -1 {
-            time = countUp ? timeElapsed : currentTime
-        }
-        
+    func timeToString(_ time: Int) -> String {
+        let minutes = time / 60
+        let remainingSeconds = time % 60
+        return String(format: "%d:%02d", minutes, remainingSeconds)
+    }
+    
+    static func timeToString(_ time: Int = -1) -> String {
         let minutes = time / 60
         let remainingSeconds = time % 60
         return String(format: "%d:%02d", minutes, remainingSeconds)
@@ -63,9 +63,9 @@ class TimerVM: ObservableObject {
     
     /// Resets the timer to the initial value
     func resetTimer() {
-        currentTime = timeTotal
-        timeElapsed = 0
-        currentTimeFormatted = timeToString()
+        self.currentTime = timeTotal
+        self.timeElapsed = 0
+        self.currentTimeFormatted = self.timeToString(countUp ? self.timeElapsed : self.currentTime)
     }
     
     /// Starts a timer that countd down from the timeTotal unless up=true
@@ -75,7 +75,7 @@ class TimerVM: ObservableObject {
         if countUp {
             timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
                 self.timeElapsed += 1
-                self.currentTimeFormatted = self.timeToString()
+                self.currentTimeFormatted = self.timeToString(self.timeElapsed)
             }
             return
         }
@@ -87,7 +87,7 @@ class TimerVM: ObservableObject {
             } else {
                 self.currentTime -= 1
                 self.timeElapsed += 1
-                self.currentTimeFormatted = self.timeToString()
+                self.currentTimeFormatted = self.timeToString(self.currentTime)
             }
         }
     }

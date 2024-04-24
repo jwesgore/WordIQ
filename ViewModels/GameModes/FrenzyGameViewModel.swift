@@ -4,6 +4,7 @@ import SwiftUI
 class FrenzyGameVM: WordGameVM, WordGameSubclassObserver, GameOverVMObserver, TimerVMObserver {
     @Published var activeView: ActiveView
     var correctWords = [Word]()
+    let timeAddition = 10
     
     override init(options: GameModeOptions) {
         self.activeView = .standardgame
@@ -16,61 +17,59 @@ class FrenzyGameVM: WordGameVM, WordGameSubclassObserver, GameOverVMObserver, Ti
         super.timerVM.addObserver(observer: self)
     }
     
-    // WordsColletions Functions
+    func endGame(timeOver: Bool) {
+        super.gameOverVM.clearResults()
+        
+        let gameOverResults = GameOverModel(gameMode: .frenzygame,
+                                            timeElapsed: super.timerVM.timeElapsed,
+                                            timeRemaining: super.timerVM.currentTime,
+                                            correctWord: super.wordsCollection.selectedWord.word,
+                                            win: timeOver,
+                                            numCorrectWords: self.correctWords.count)
+        
+        super.gameOverVM.setResults(results: gameOverResults)
+    }
+    
+    // MARK: WordsColletions Functions
     // Check currentGuess for validity
     func submitGuess(_ guessWord: Word) {
         
         // is it the correct word
         if wordsCollection.isCorrectWord(guessWord) {
-            keyboardVM.keyboardActive = false
-            correctWords.append(guessWord)
-            print(gameboardVM.boardSize - gameboardVM.currentPosition)
-            timerVM.addTime(((gameboardVM.boardSize - gameboardVM.currentPosition) - 1 ) * 10)
+            super.keyboardVM.keyboardActive = false
+            self.correctWords.append(guessWord)
+            super.timerVM.addTime((gameboardVM.boardSize - gameboardVM.currentPosition - 1 ) * timeAddition)
             super.gameOver()
-            wordsCollection.updateSelectedWord()
+            super.wordsCollection.updateSelectedWord()
         } else if !gameboardVM.nextGuess() {
-            keyboardVM.keyboardActive = false
-            timerVM.stopTimer()
-            buildGameOverScreen(timeOver: false)
-            activeView = .gameover
+            super.keyboardVM.keyboardActive = false
+            super.timerVM.stopTimer()
+            self.endGame(timeOver: false)
+            self.activeView = .gameover
         }
     }
     
-    func buildGameOverScreen(timeOver: Bool) {
-        gameOverVM.reset()
-        
-        if timeOver {
-            gameOverVM.addResult(result: "Times Up!")
-        } else {
-            gameOverVM.addResult(result: "You Lose!")
-        }
-    
-        let row1 = ["image": "pencil.line", "title": "Last Word", "value": wordsCollection.selectedWord.word.uppercased()]
-        let row2 = ["image": "number.square", "title": "Correct Words", "value": String(correctWords.count)]
-        
-        gameOverVM.addContentsRow(row: row1)
-        gameOverVM.addContentsRow(row: row2)
-    }
-    
-    /// GameOver Observer Function
-    /// Passes along which button was pressed in the GameOverView
+    // MARK: GameOver Observer Functions
+    // Passes along which button was pressed in the GameOverView
     func playAgain() {
-        activeView = .standardgame
+        self.activeView = .standardgame
+        self.correctWords.removeAll()
+        
         super.gameOver()
-        wordsCollection.updateSelectedWord()
-        timerVM.resetTimer()
-        correctWords.removeAll()
+        super.wordsCollection.updateSelectedWord()
+        super.timerVM.resetTimer()
     }
     
-    /// GameOver Observer Function
+    // Go to Main Menu
     func mainMenu() {
-        activeView = ActiveView.tabview
+        self.activeView = ActiveView.tabview
     }
     
-    /// Timer Observer Function
+    // MARK: Timer Observer Functions
+    // Game Over due to time out
     func timeOver() {
-        keyboardVM.keyboardActive = false
-        buildGameOverScreen(timeOver: true)
-        activeView = .gameover
+        super.keyboardVM.keyboardActive = false
+        self.endGame(timeOver: true)
+        self.activeView = .gameover
     }
 }

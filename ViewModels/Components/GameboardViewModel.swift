@@ -88,7 +88,7 @@ class GameboardVM: ObservableObject, WordGameComponentObserver {
     
     // Change the backgrounds of all words
     func setBackground(guess: Word, letterBackgrounds: [Color]) {
-        guesses[currentPosition].setBackgrounds(letterBackgrounds: letterBackgrounds)
+        guesses[currentPosition].setBackgroundsWithAnimation(letterBackgrounds: letterBackgrounds)
         guesses[currentPosition].submitted = true
         
         for i in 0..<wordLength {

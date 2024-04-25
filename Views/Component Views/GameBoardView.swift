@@ -46,7 +46,6 @@ struct GameSquare: View {
         Text(letter.value)
             .font(.system(size: letter.width / 2.5))
             .foregroundStyle(.opacity(letter.opacity))
-            .animation(letter.value == "" ? nil : .easeInOut(duration: 0.2), value: letter.value)
             .frame(width:letter.width, height: letter.height)
             .background(letter.backgroundColor)
             .overlay(

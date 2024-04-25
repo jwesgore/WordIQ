@@ -36,7 +36,7 @@ class GameboardVM: ObservableObject, WordGameComponentObserver {
     func keyPressed(key: String, entryType: KeyboardEntryType) {
         switch entryType {
         case .letter:
-            self.guesses[currentPosition].addLetter(letter: key)
+            self.guesses[currentPosition].addLetterWithAnimation(letter: key)
         case .delete:
             self.guesses[currentPosition].removeLetter()
         default:

@@ -66,6 +66,12 @@ class GuessWord: Identifiable, Equatable, ObservableObject {
         letters[word.count].opacity = 0.3
     }
     
+    func addLetterWithAnimation(letter: String) {
+        withAnimation(.easeInOut(duration: 0.1)) {
+            self.addLetter(letter: letter)
+        }
+    }
+    
     func addHints(hints: [String]) {
         self.hints = hints
         for i in 0..<wordLength {

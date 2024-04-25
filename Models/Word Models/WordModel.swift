@@ -7,8 +7,8 @@ class Word: Equatable{
     var letters: [String]
     
     init(_ word: String) {
-        self.word = word.lowercased()
-        self.letters = word.map { String($0).lowercased() }
+        self.word = word.uppercased()
+        self.letters = word.map { String($0).uppercased() }
     }
     
     static func == (_ lhs: Word, _ rhs: Word) -> Bool {

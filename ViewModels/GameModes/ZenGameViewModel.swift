@@ -19,24 +19,25 @@ class ZenGameVM: WordGameVM, WordGameSubclassObserver, GameOverVMObserver {
                                             timeElapsed: super.timerVM.timeElapsed,
                                             timeRemaining: super.timerVM.currentTime,
                                             correctWord: super.wordsCollection.selectedWord.word,
-                                            win: true)
+                                            result: .win)
         
         super.gameOverVM.setResults(results: gameOverResults)
     }
     
     // MARK: WordsColletions Functions
     // Check currentGuess for validity
-    func submitGuess(_ guessWord: Word) {
-        
+    func submitGuess(guessWord: Word, valid: Bool) {
+        guard valid else { return }
+            
         // is it the correct word
         if wordsCollection.isCorrectWord(guessWord) {
-            keyboardVM.keyboardActive = false
-            endGame()
-            activeView = .gameover
+            super.keyboardVM.keyboardActive = false
+            self.endGame()
+            self.activeView = .gameover
         } else if !gameboardVM.nextGuess() {
-            keyboardVM.keyboardActive = false
-            gameboardVM.emptyBoardWithAnimation() {
-                self.keyboardVM.keyboardActive = true
+            super.keyboardVM.keyboardActive = false
+            super.gameboardVM.emptyBoardWithAnimation(loadHints: true, delay: 0.75) {
+                super.keyboardVM.keyboardActive = true
             }
         }
     }
@@ -44,12 +45,12 @@ class ZenGameVM: WordGameVM, WordGameSubclassObserver, GameOverVMObserver {
     // MARK: GameOver Observer Functions
     // Passes along which button was pressed in the GameOverView
     func playAgain() {
-        activeView = .standardgame
-        gameOver()
-        wordsCollection.updateSelectedWord()
+        self.activeView = .standardgame
+        self.gameOver()
+        super.wordsCollection.updateSelectedWord()
     }
     
     func mainMenu() {
-        activeView = ActiveView.tabview
+        self.activeView = ActiveView.tabview
     }
 }

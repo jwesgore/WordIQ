@@ -17,27 +17,31 @@ class RushGameVM: WordGameVM, WordGameSubclassObserver, GameOverVMObserver, Time
     }
     
     // Check currentGuess for validity
-    func submitGuess(_ guessWord: Word) {
+    func submitGuess(guessWord: Word, valid: Bool) {
+        guard valid else { return }
         
         // is it the correct word
         if wordsCollection.isCorrectWord(guessWord) {
             super.keyboardVM.keyboardActive = false
             super.timerVM.stopTimer()
-            self.endGame(win: true)
+            self.endGame(result: .win)
             self.activeView = .gameover
         } else if !gameboardVM.nextGuess() {
-            super.gameboardVM.emptyBoard(loadHints: true)
+            super.keyboardVM.keyboardActive = false
+            super.gameboardVM.emptyBoardWithAnimation(loadHints: true, delay: 0.75) {
+                super.keyboardVM.keyboardActive = true
+            }
         }
     }
     
-    func endGame(win: Bool) {
+    func endGame(result: GameOverResult) {
         super.gameOverVM.clearResults()
         
         let gameOverResults = GameOverModel(gameMode: .rushgame,
                                             timeElapsed: super.timerVM.timeElapsed,
                                             timeRemaining: super.timerVM.currentTime,
                                             correctWord: super.wordsCollection.selectedWord.word,
-                                            win: win)
+                                            result: result)
         
         super.gameOverVM.setResults(results: gameOverResults)
     }
@@ -58,7 +62,7 @@ class RushGameVM: WordGameVM, WordGameSubclassObserver, GameOverVMObserver, Time
     // MARK: Timer Observer Function
     func timeOver() {
         super.keyboardVM.keyboardActive = false
-        self.endGame(win: false)
+        self.endGame(result: .lose)
         self.activeView = .gameover
     }
 }

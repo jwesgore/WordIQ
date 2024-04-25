@@ -44,16 +44,19 @@ class WordGameVM: ObservableObject, KeyboardVMObserver{
     private func isValidWord() {
         let guess = gameboardVM.getCurrentGuess()
         let guessWord = guess.getWord()
+        var valid = false
         
         // first validate the word using the WordsCollection
         if wordsCollection.isValidWord(guessWord) {
             // run the comparison and send it off to the keyboard and gameboard
             let letterBackgrounds = wordsCollection.isSimilarWord(guessWord)
             self.setBackground(guess: guessWord, letterBackgrounds: letterBackgrounds)
-            self.notifySubmitGuess(guessWord)
+            valid = true
         } else {
             guess.invalidWord()
         }
+        
+        self.notifySubmitGuess(guess: guessWord, valid: valid)
     }
     
     // MARK: Keyboard Observer Function
@@ -75,9 +78,9 @@ class WordGameVM: ObservableObject, KeyboardVMObserver{
         subclassObservers.append(observer)
     }
     
-    func notifySubmitGuess(_ guess: Word) {
+    func notifySubmitGuess(guess: Word, valid: Bool) {
         for observer in subclassObservers {
-            observer.submitGuess(guess)
+            observer.submitGuess(guessWord: guess, valid: valid)
         }
     }
     
@@ -102,7 +105,7 @@ class WordGameVM: ObservableObject, KeyboardVMObserver{
 }
 
 protocol WordGameSubclassObserver {
-    func submitGuess(_ guessWord : Word)
+    func submitGuess(guessWord : Word, valid: Bool)
 }
 
 protocol WordGameComponentObserver {

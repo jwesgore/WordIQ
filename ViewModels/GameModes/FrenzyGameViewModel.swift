@@ -5,6 +5,7 @@ class FrenzyGameVM: WordGameVM, WordGameSubclassObserver, GameOverVMObserver, Ti
     @Published var activeView: ActiveView
     var correctWords = [Word]()
     let timeAddition = 10
+    let timePenalty = -5
     
     override init(options: GameModeOptions) {
         self.activeView = .standardgame
@@ -17,14 +18,14 @@ class FrenzyGameVM: WordGameVM, WordGameSubclassObserver, GameOverVMObserver, Ti
         super.timerVM.addObserver(observer: self)
     }
     
-    func endGame(timeOver: Bool) {
+    func endGame() {
         super.gameOverVM.clearResults()
         
         let gameOverResults = GameOverModel(gameMode: .frenzygame,
                                             timeElapsed: super.timerVM.timeElapsed,
                                             timeRemaining: super.timerVM.currentTime,
                                             correctWord: super.wordsCollection.selectedWord.word,
-                                            win: timeOver,
+                                            result: .gameover,
                                             numCorrectWords: self.correctWords.count)
         
         super.gameOverVM.setResults(results: gameOverResults)
@@ -32,19 +33,24 @@ class FrenzyGameVM: WordGameVM, WordGameSubclassObserver, GameOverVMObserver, Ti
     
     // MARK: WordsColletions Functions
     // Check currentGuess for validity
-    func submitGuess(_ guessWord: Word) {
+    func submitGuess(guessWord: Word, valid: Bool) {
+        guard valid else {
+            super.timerVM.addTime(timePenalty)
+            return
+        }
         
         // is it the correct word
         if wordsCollection.isCorrectWord(guessWord) {
             super.keyboardVM.keyboardActive = false
             self.correctWords.append(guessWord)
-            super.timerVM.addTime((gameboardVM.boardSize - gameboardVM.currentPosition - 1 ) * timeAddition)
+            
+            super.timerVM.addTime((gameboardVM.boardSize - gameboardVM.currentPosition - 1) * timeAddition)
             super.gameOver()
             super.wordsCollection.updateSelectedWord()
         } else if !gameboardVM.nextGuess() {
             super.keyboardVM.keyboardActive = false
             super.timerVM.stopTimer()
-            self.endGame(timeOver: false)
+            self.endGame()
             self.activeView = .gameover
         }
     }
@@ -69,7 +75,7 @@ class FrenzyGameVM: WordGameVM, WordGameSubclassObserver, GameOverVMObserver, Ti
     // Game Over due to time out
     func timeOver() {
         super.keyboardVM.keyboardActive = false
-        self.endGame(timeOver: true)
+        self.endGame()
         self.activeView = .gameover
     }
 }

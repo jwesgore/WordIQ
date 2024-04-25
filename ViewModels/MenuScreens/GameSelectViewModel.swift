@@ -54,10 +54,12 @@ class GameSelectVM: ObservableObject {
     }
     
     func startGame(_ mode: ActiveView) {
-        options.selectedMode = mode
+        self.options.selectedMode = mode
         for observer in observers {
             observer.startGame(options: options)
         }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: { self.gotoModes() })
     }
 }
 

@@ -120,7 +120,6 @@ class GuessWord: Identifiable, Equatable, ObservableObject {
                 withAnimation(.easeIn(duration: 0.2)) {
                     self.letters[i].borderColor = BorderColor.clear
                     self.letters[i].backgroundColor = letterBackgrounds[i]
-                    print("hi")
                 }
             })
         }

@@ -1,5 +1,11 @@
 import Foundation
 
+enum GameOverResult {
+    case win
+    case lose
+    case gameover
+}
+
 struct GameOverModel {
     var gameMode: GameModes = .empty
     var numGuesses: Int = 0
@@ -9,7 +15,7 @@ struct GameOverModel {
     var correctWord: String = ""
     var lastGuessedWord: String = ""
     
-    var win: Bool = false
+    var result: GameOverResult = .gameover
     
     var numCorrectWords: Int = 0
 }

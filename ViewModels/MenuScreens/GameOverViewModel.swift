@@ -33,12 +33,26 @@ class GameOverVM: ObservableObject {
     }
     
     func setTitle() {
-        let word: Word = results.win ? Word("YOU WIN!") : Word("YOU LOSE")
-        self.title.setWord(word: word)
+        var title: Word
+        
+        switch results.result {
+        case .gameover: title = Word("GAMEOVER")
+        case .win: title = Word("YOU WIN!")
+        case .lose: title = Word("YOU LOSE")
+        }
+    
+        self.title.setWord(word: title)
     }
     
     func setTitleBackground() {
-        let background = results.win ? [Color](repeating: Color.LetterBackground.correct, count: 8) : [Color](repeating: Color.LetterBackground.incorrect, count: 8)
+        let background: [Color]
+        
+        switch results.result {
+        case .gameover: background = [Color](repeating: Color.LetterBackground.contains, count: 8)
+        case .win: background = [Color](repeating: Color.LetterBackground.correct, count: 8)
+        case .lose: background = [Color](repeating: Color.LetterBackground.incorrect, count: 8)
+        }
+        
         self.title.setBackgroundsWithAnimation(letterBackgrounds: background)
     }
     

@@ -9,13 +9,24 @@ struct GameOver: View {
     var body: some View {
         VStack{
             
+            
             // MARK: Title
             GameOverTitleView(model: model)
             
             // MARK: Statistical contents
-            ForEach(model.bodyContents.indices, id:\.self) {
-                GameOverStatView(gameOverStat: model.bodyContents[$0])
+            VStack {
+                ForEach(model.bodyContents.indices, id:\.self) {
+                    GameOverStatView(gameOverStat: model.bodyContents[$0])
+                }
             }
+            .frame(maxWidth: ScreenSize.width! * 0.9)
+            .background (
+                RoundedRectangle(cornerRadius: 25.0)
+                    .fill(.white)
+                    .shadow(radius: 4)
+            )
+            .padding([.top, .bottom])
+            
             
             // MARK: Buttons
             GameOverButtonView(buttonText: "Play Again", buttonAction: model.playAgain)
@@ -59,7 +70,7 @@ private struct GameOverStatView: View{
             Spacer()
             Text(gameOverStat.value)
         }
-        .padding(.vertical)
+        .padding()
     }
 }
 

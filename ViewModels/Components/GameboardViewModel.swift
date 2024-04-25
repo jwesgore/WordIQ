@@ -26,18 +26,19 @@ class GameboardVM: ObservableObject, WordGameComponentObserver {
     
     /// Goto next guess, returns false if board has been maxed out
     func nextGuess() -> Bool {
-        currentPosition += 1
-        if currentPosition == boardSize { return false }
-        guesses[currentPosition].addHints(hints: hints)
+        self.currentPosition += 1
+        if boardSize == currentPosition { return false }
+        
+        self.guesses[currentPosition].addHints(hints: hints)
         return true
     }
     
     func keyPressed(key: String, entryType: KeyboardEntryType) {
         switch entryType {
         case .letter:
-            guesses[currentPosition].addLetter(letter: key)
+            self.guesses[currentPosition].addLetter(letter: key)
         case .delete:
-            guesses[currentPosition].removeLetter()
+            self.guesses[currentPosition].removeLetter()
         default:
             return
         }
@@ -59,17 +60,17 @@ class GameboardVM: ObservableObject, WordGameComponentObserver {
     }
     
     // Resets the board with a sweeping upwards animation
-    func emptyBoardWithAnimation(loadHints:Bool = false, animationLength: Double = 0.25, speed: Double = 4.0, done: @escaping () -> Void) {
+    func emptyBoardWithAnimation(loadHints:Bool = false, animationLength: Double = 0.25, speed: Double = 4.0, delay: Double = 0.0, done: @escaping () -> Void) {
         var counter = 0.0
         
         for guess in guesses.reversed() {
-            DispatchQueue.main.asyncAfter(deadline: .now() + ((animationLength / 2.5 ) * counter), execute: {
+            DispatchQueue.main.asyncAfter(deadline: .now() + ((animationLength / 2.5 ) * counter) + delay, execute: {
                 guess.reset(animationLength: animationLength, speed: speed)
             })
             counter += 1
         }
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + ((animationLength / 2.5) * (counter + speed)), execute: {
+        DispatchQueue.main.asyncAfter(deadline: .now() + ((animationLength / 2.5) * (counter + speed)) + delay, execute: {
             self.emptyBoard(loadHints: loadHints)
             done()
         })

@@ -28,7 +28,7 @@ struct ZenGameView: View {
                             Spacer()
                         }
                         
-                        Text(SystemNames.zenMode)
+                        Text(SystemNames.zen)
                             .font(.system(size: 20))
                             .kerning(3)
                             .fontWeight(.medium)

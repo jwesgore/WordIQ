@@ -29,7 +29,7 @@ struct FrenzyGameView: View {
                             TimerView(timerVM: frenzyGameVM.timerVM)
                         }
                         
-                        Text(SystemNames.frenzyMode)
+                        Text(SystemNames.frenzy)
                             .font(.system(size: 20))
                             .kerning(3)
                             .fontWeight(.medium)

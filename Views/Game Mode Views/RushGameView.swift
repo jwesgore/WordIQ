@@ -29,7 +29,7 @@ struct RushGameView: View {
                             TimerView(timerVM: rushGameVM.timerVM)
                         }
                         
-                        Text(SystemNames.rushMode)
+                        Text(SystemNames.rush)
                             .font(.system(size: 20))
                             .kerning(3)
                             .fontWeight(.medium)

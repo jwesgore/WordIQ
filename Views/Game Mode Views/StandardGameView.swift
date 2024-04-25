@@ -29,7 +29,7 @@ struct StandardGameView: View {
                             TimerView(timerVM: standardGameVM.timerVM)
                         }
                         
-                        Text(SystemNames.standardMode)
+                        Text(SystemNames.standard)
                             .font(.system(size: 20))
                             .kerning(3)
                             .fontWeight(.medium)

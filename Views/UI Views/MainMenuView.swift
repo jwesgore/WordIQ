@@ -19,24 +19,24 @@ struct MainMenuView: View {
             TabView {
                 GameSelectView(gameSelectVM: mainMenuVM.gameSelectVM)
                     .tabItem() {
-                        Image(systemName: "house.fill")
-                        Text("Game")
+                        Image(systemName: SFAssets.home )
+                        Text(SystemNames.game)
                     }
                     .toolbarBackground(Color.UIElements.tabView, for:.tabBar)
                     .toolbarBackground(.visible, for: .tabBar)
                 
                 Text("Friends")
                     .tabItem() {
-                        Image(systemName: "person.fill")
-                        Text("Friends")
+                        Image(systemName: SFAssets.friends)
+                        Text(SystemNames.friends)
                     }
                     .toolbarBackground(Color.UIElements.tabView, for:.tabBar)
                     .toolbarBackground(.visible, for: .tabBar)
                 
                 Text("Stats")
                     .tabItem() {
-                        Image(systemName: "chart.line.uptrend.xyaxis")
-                        Text("Stats")
+                        Image(systemName: SFAssets.stats)
+                        Text(SystemNames.stats)
                     }
                     .toolbarBackground(Color.UIElements.tabView, for:.tabBar)
                     .toolbarBackground(.visible, for: .tabBar)
@@ -66,7 +66,7 @@ private struct MainMenuTopBar: View {
                         .clipShape(RoundedRectangle(cornerRadius: 8))
                     Spacer()
                     Button(action: {}, label:{
-                        Function(value: "gearshape", width: gearSize, height: gearSize, constraint: 25).view
+                        Function(value: SFAssets.settings, width: gearSize, height: gearSize, constraint: 25).view
                             .font(.system(size: gearSize > 25 ? 25: gearSize))
                     })
                 }

@@ -20,27 +20,27 @@ private struct GameSelectModeView: View {
             Button(action: {
                 gameSelectVM.gotoOptions(.standardgame)
             }, label: {
-                GameMode(image: "gamecontroller", modeTitle: "Standard Mode", modeDescription: "The classic game you know and love. Six guesses to get the word.")
+                GameMode(image: SFAssets.gameController, modeTitle: SystemNames.standardMode, modeDescription: Descriptions.standardMode)
             })
             
             Button(action: {
                 gameSelectVM.options.timeLimit = 60
                 gameSelectVM.gotoOptions(.rushgame)
             }, label: {
-                GameMode(image: "gamecontroller", modeTitle: "Rush Mode", modeDescription: "Make as many guesses as you want, but you only have so much time.")
+                GameMode(image: SFAssets.gameController, modeTitle: SystemNames.rushMode, modeDescription: Descriptions.rushMode)
             })
             
             Button(action: {
                 gameSelectVM.options.timeLimit = 90
                 gameSelectVM.gotoOptions(.frenzygame)
             }, label: {
-                GameMode(image: "gamecontroller", modeTitle: "Frenzy Mode", modeDescription: "Only six guesses and a time limit. How many words can you get?")
+                GameMode(image: SFAssets.gameController, modeTitle: SystemNames.frenzyMode, modeDescription: Descriptions.frenzyMode)
             })
             
             Button(action: {
                 gameSelectVM.gotoOptions(.zengame)
             }, label: {
-                GameMode(image: "gamecontroller", modeTitle: "Zen Mode", modeDescription: "No time limit, no guess limit. Just play to have fun.")
+                GameMode(image: SFAssets.gameController, modeTitle: SystemNames.zenMode, modeDescription: Descriptions.zenMode)
             })
             
             Spacer()

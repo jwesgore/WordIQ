@@ -9,3 +9,9 @@ class KeyboardModel {
     let middleRowLetters = ["A","S","D","F","G","H","J","K","L"]
     let bottomRowLetters = ["Z","X","C","V","B","N","M"]
 }
+
+enum KeyboardEntryType {
+    case enter
+    case delete
+    case letter
+}

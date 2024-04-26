@@ -43,10 +43,11 @@ class FrenzyGameVM: WordGameVM, WordGameSubclassObserver, GameOverVMObserver, Ti
         if wordsCollection.isCorrectWord(guessWord) {
             super.keyboardVM.keyboardActive = false
             self.correctWords.append(guessWord)
-            
             super.timerVM.addTime((gameboardVM.boardSize - gameboardVM.currentPosition - 1) * timeAddition)
-            super.gameOver()
-            super.wordsCollection.updateSelectedWord()
+            super.gameboardVM.emptyBoardWithAnimation(delay: 0.75) {
+                super.gameOver()
+                super.wordsCollection.updateSelectedWord()
+            }
         } else if !gameboardVM.nextGuess() {
             super.keyboardVM.keyboardActive = false
             super.timerVM.stopTimer()

@@ -25,3 +25,9 @@ enum Descriptions {
     static let frenzyMode = "Only six guesses and a time limit. How many words can you get?"
     static let zenMode = "No time limit, no guess limit. Just play to have fun."
 }
+
+enum WordLists {
+    static let fiveEasy = "five_letter_words_easy"
+    static let fiveMedium = "five_letter_words_medium"
+    static let fiveHard = "five_letter_words_hard"
+}

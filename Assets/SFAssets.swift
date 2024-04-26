@@ -1,5 +1,4 @@
 /// An enum defining many of the SF symbols used in this app
-
 enum SFAssets {
     // MARK: Tabview icons
     static let home = "house.fill"

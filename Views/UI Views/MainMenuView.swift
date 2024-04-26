@@ -16,35 +16,44 @@ struct MainMenuView: View {
             ZenGameView(endGame: mainMenuVM.fadeToWhite, options: mainMenuVM.options)
         case .tabview:
             MainMenuTopBar()
-            TabView {
-                GameSelectView(gameSelectVM: mainMenuVM.gameSelectVM)
-                    .tabItem() {
-                        Image(systemName: SFAssets.home )
-                        Text(SystemNames.game)
-                    }
-                    .toolbarBackground(Color.UIElements.tabView, for:.tabBar)
-                    .toolbarBackground(.visible, for: .tabBar)
-                
-                Text("Friends")
-                    .tabItem() {
-                        Image(systemName: SFAssets.friends)
-                        Text(SystemNames.friends)
-                    }
-                    .toolbarBackground(Color.UIElements.tabView, for:.tabBar)
-                    .toolbarBackground(.visible, for: .tabBar)
-                
-                Text("Stats")
-                    .tabItem() {
-                        Image(systemName: SFAssets.stats)
-                        Text(SystemNames.stats)
-                    }
-                    .toolbarBackground(Color.UIElements.tabView, for:.tabBar)
-                    .toolbarBackground(.visible, for: .tabBar)
-                }// end TabView
+            MainMenuBody(mainMenuVM: mainMenuVM)
         default:
             EmptyView()
         }// end switch statement
         }// end Zstack
+    }
+}
+
+private struct MainMenuBody: View {
+    
+    @ObservedObject var mainMenuVM: MainMenuVM
+    
+    var body: some View {
+        TabView {
+            GameSelectView(gameSelectVM: mainMenuVM.gameSelectVM)
+                .tabItem() {
+                    Image(systemName: SFAssets.home )
+                    Text(SystemNames.game)
+                }
+                .toolbarBackground(Color.UIElements.tabView, for:.tabBar)
+                .toolbarBackground(.visible, for: .tabBar)
+            
+            Text("Friends")
+                .tabItem() {
+                    Image(systemName: SFAssets.friends)
+                    Text(SystemNames.friends)
+                }
+                .toolbarBackground(Color.UIElements.tabView, for:.tabBar)
+                .toolbarBackground(.visible, for: .tabBar)
+            
+            Text("Stats")
+                .tabItem() {
+                    Image(systemName: SFAssets.stats)
+                    Text(SystemNames.stats)
+                }
+                .toolbarBackground(Color.UIElements.tabView, for:.tabBar)
+                .toolbarBackground(.visible, for: .tabBar)
+            }// end TabView
     }
 }
 

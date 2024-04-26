@@ -24,7 +24,7 @@ struct ZenGameView: View {
                         HStack{
                             Button(action: {
                                 endGame(.tabview)
-                            }, label:{Image(systemName:"chevron.backward")})
+                            }, label:{Image(systemName:SFAssets.backArrow)})
                             Spacer()
                         }
                         
@@ -66,8 +66,6 @@ struct ZenGameView: View {
                 return
             }
         }
-        .containerRelativeFrame([.horizontal, .vertical])
-        .background(Color.LetterBackground.standard)
     }
 }
 

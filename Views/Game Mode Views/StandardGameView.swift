@@ -24,7 +24,7 @@ struct StandardGameView: View {
                         HStack{
                             Button(action: {
                                 endGame(.tabview)
-                            }, label:{Image(systemName:"chevron.backward")})
+                            }, label:{Image(systemName:SFAssets.backArrow)})
                             Spacer()
                             TimerView(timerVM: standardGameVM.timerVM)
                         }
@@ -66,8 +66,6 @@ struct StandardGameView: View {
                 return
             }
         }
-        .containerRelativeFrame([.horizontal, .vertical])
-        .background(Color.LetterBackground.standard)
     }
 }
 

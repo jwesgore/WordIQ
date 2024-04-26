@@ -8,4 +8,5 @@ enum SFAssets {
     
     static let settings = "gearshape"
     static let gameController = "gamecontroller"
+    static let backArrow = "chevron.backward"
 }

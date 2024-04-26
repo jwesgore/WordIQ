@@ -22,8 +22,7 @@ struct GameOver: View {
             .frame(maxWidth: ScreenSize.width! * 0.9)
             .background (
                 RoundedRectangle(cornerRadius: 25.0)
-                    .fill(.white)
-                    .shadow(radius: 4)
+                    .fill(Color.UIElements.gameSelectButton)
             )
             .padding([.top, .bottom])
             

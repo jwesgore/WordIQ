@@ -44,7 +44,8 @@ class GameSelectVM: ObservableObject {
     }
     
     /// set the word list in the options
-    func setList(wordList: String) {
+    func setDifficulty(wordList: String, difficulty: GameDifficulty) {
+        options.gameDifficulty = difficulty
         options.wordList = wordList
     }
     

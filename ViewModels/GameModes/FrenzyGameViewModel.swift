@@ -21,12 +21,22 @@ class FrenzyGameVM: WordGameVM, WordGameSubclassObserver, GameOverVMObserver, Ti
     func endGame() {
         super.gameOverVM.clearResults()
         
-        let gameOverResults = GameOverModel(gameMode: .frenzygame,
-                                            timeElapsed: super.timerVM.timeElapsed,
-                                            timeRemaining: super.timerVM.currentTime,
-                                            correctWord: super.wordsCollection.selectedWord.word,
-                                            result: .gameover,
-                                            numCorrectWords: self.correctWords.count)
+        let gameOverResults = GameOverModel(
+            gameMode: .frenzygame,
+            gameResult: .gameover,
+            gameDifficulty: super.difficulty,
+            
+            numCorrectWords: self.correctWords.count,
+            numValidGuesses: super.numValidGuesses,
+            numInvalidGuesses: super.numInvalidGuesses,
+            
+            timeLimit: super.timerVM.timeLimit,
+            timeElapsed: super.timerVM.timeElapsed,
+            timeRemaining: super.timerVM.timeRemaining,
+            
+            correctWord: super.wordsCollection.selectedWord.word,
+            lastGuessedWord: super.wordsCollection.selectedWord.word
+        )
         
         super.gameOverVM.setResults(results: gameOverResults)
     }

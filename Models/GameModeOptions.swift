@@ -7,6 +7,7 @@ struct GameModeOptions {
     var timeLimit: Int
     
     var wordList: String
+    var gameDifficulty: GameDifficulty = .null
     var selectedMode: ActiveView = ActiveView.empty
 }
 

@@ -37,12 +37,23 @@ class StandardGameVM: WordGameVM, WordGameSubclassObserver, GameOverVMObserver {
     func endGame(result: GameOverResult) {
         super.gameOverVM.clearResults()
         
-        let gameOverResults = GameOverModel(gameMode: .standardgame,
-                                            timeElapsed: super.timerVM.timeElapsed,
-                                            timeRemaining: super.timerVM.currentTime,
-                                            correctWord: super.wordsCollection.selectedWord.word,
-                                            result: result)
-        
+        let gameOverResults = GameOverModel(
+            gameMode: .standardgame,
+            gameResult: result,
+            gameDifficulty: super.difficulty,
+            
+            numCorrectWords: 1,
+            numValidGuesses: super.numValidGuesses,
+            numInvalidGuesses: super.numInvalidGuesses,
+            
+            timeLimit: nil,
+            timeElapsed: super.timerVM.timeElapsed,
+            timeRemaining: nil,
+            
+            correctWord: super.wordsCollection.selectedWord.word,
+            lastGuessedWord: super.wordsCollection.selectedWord.word
+        )
+
         super.gameOverVM.setResults(results: gameOverResults)
     }
     

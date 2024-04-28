@@ -15,11 +15,22 @@ class ZenGameVM: WordGameVM, WordGameSubclassObserver, GameOverVMObserver {
     func endGame() {
         super.gameOverVM.clearResults()
         
-        let gameOverResults = GameOverModel(gameMode: .zengame,
-                                            timeElapsed: super.timerVM.timeElapsed,
-                                            timeRemaining: super.timerVM.currentTime,
-                                            correctWord: super.wordsCollection.selectedWord.word,
-                                            result: .win)
+        let gameOverResults = GameOverModel(
+            gameMode: .zengame,
+            gameResult: .win,
+            gameDifficulty: super.difficulty,
+            
+            numCorrectWords: 1,
+            numValidGuesses: super.numValidGuesses,
+            numInvalidGuesses: super.numInvalidGuesses,
+            
+            timeLimit: nil,
+            timeElapsed: super.timerVM.timeElapsed,
+            timeRemaining: nil,
+            
+            correctWord: super.wordsCollection.selectedWord.word,
+            lastGuessedWord: super.wordsCollection.selectedWord.word
+        )
         
         super.gameOverVM.setResults(results: gameOverResults)
     }

@@ -19,12 +19,7 @@ class GameOverVM: ObservableObject {
     }
     
     func saveData() -> GameData{
-        
-        let gameData: GameData
-        
-        gameData = GameData(gameResult: results.result, gameMode: GameMode.standardgame, difficulty: GameDifficulty.normal, score: results.numGuesses, invalidGuessScore: 0, timeElapsed: results.timeElapsed)
-        
-        return gameData
+        return GameData(gameOverModel: results)
     }
     
     // MARK: Modify results
@@ -45,10 +40,10 @@ class GameOverVM: ObservableObject {
     func setTitle() {
         var title: Word
         
-        switch results.result {
-        case .gameover: title = Word("GAMEOVER")
+        switch results.gameResult {
         case .win: title = Word("YOU WIN!")
         case .lose: title = Word("YOU LOSE")
+        default: title = Word("GAMEOVER")
         }
     
         self.title.setWord(word: title)
@@ -57,10 +52,10 @@ class GameOverVM: ObservableObject {
     func setTitleBackground() {
         let background: [Color]
         
-        switch results.result {
-        case .gameover: background = [Color](repeating: Color.LetterBackground.contains, count: 8)
+        switch results.gameResult {
         case .win: background = [Color](repeating: Color.LetterBackground.correct, count: 8)
         case .lose: background = [Color](repeating: Color.LetterBackground.incorrect, count: 8)
+        default: background = [Color](repeating: Color.LetterBackground.contains, count: 8)
         }
         
         self.title.setBackgroundsWithAnimation(letterBackgrounds: background)
@@ -87,15 +82,15 @@ class GameOverVM: ObservableObject {
     
     private func loadStandard() {
         let timeElapsedStat = GameOverStat(image: "timer", label: "Time Elapsed", value: TimerVM.timeToString(results.timeElapsed))
-        let numGuessesStat = GameOverStat(image: "number", label: "Number of Guesses", value: String(results.numGuesses))
+        let numGuessesStat = GameOverStat(image: "number", label: "Number of Guesses", value: String(results.numValidGuesses))
         
         self.bodyContents.append(timeElapsedStat)
         self.bodyContents.append(numGuessesStat)
     }
     
     private func loadRush() {
-        let timeRemainingStat = GameOverStat(image: "timer", label: "Time Remaining", value: TimerVM.timeToString(results.timeRemaining))
-        let numGuessesStat = GameOverStat(image: "number", label: "Number of Guesses", value: String(results.numGuesses))
+        let timeRemainingStat = GameOverStat(image: "timer", label: "Time Remaining", value: TimerVM.timeToString(results.timeRemaining!))
+        let numGuessesStat = GameOverStat(image: "number", label: "Number of Guesses", value: String(results.numValidGuesses))
         
         self.bodyContents.append(timeRemainingStat)
         self.bodyContents.append(numGuessesStat)
@@ -111,7 +106,7 @@ class GameOverVM: ObservableObject {
     
     private func loadZen() {
         let timeElapsedStat = GameOverStat(image: "timer", label: "Time Elapsed", value: TimerVM.timeToString(results.timeElapsed))
-        let numGuessesStat = GameOverStat(image: "number", label: "Number of Guesses", value: String(results.numGuesses))
+        let numGuessesStat = GameOverStat(image: "number", label: "Number of Guesses", value: String(results.numValidGuesses))
         
         self.bodyContents.append(timeElapsedStat)
         self.bodyContents.append(numGuessesStat)

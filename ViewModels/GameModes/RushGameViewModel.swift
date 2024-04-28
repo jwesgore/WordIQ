@@ -37,11 +37,22 @@ class RushGameVM: WordGameVM, WordGameSubclassObserver, GameOverVMObserver, Time
     func endGame(result: GameOverResult) {
         super.gameOverVM.clearResults()
         
-        let gameOverResults = GameOverModel(gameMode: .rushgame,
-                                            timeElapsed: super.timerVM.timeElapsed,
-                                            timeRemaining: super.timerVM.currentTime,
-                                            correctWord: super.wordsCollection.selectedWord.word,
-                                            result: result)
+        let gameOverResults = GameOverModel(
+            gameMode: .rushgame,
+            gameResult: result,
+            gameDifficulty: super.difficulty,
+            
+            numCorrectWords: 1,
+            numValidGuesses: super.numValidGuesses,
+            numInvalidGuesses: super.numInvalidGuesses,
+            
+            timeLimit: super.timerVM.timeLimit,
+            timeElapsed: super.timerVM.timeElapsed,
+            timeRemaining: super.timerVM.timeRemaining,
+            
+            correctWord: super.wordsCollection.selectedWord.word,
+            lastGuessedWord: super.wordsCollection.selectedWord.word
+        )
         
         super.gameOverVM.setResults(results: gameOverResults)
     }

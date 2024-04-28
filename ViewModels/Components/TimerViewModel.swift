@@ -3,10 +3,11 @@ import SwiftUI
 
 class TimerVM: ObservableObject {
     
-    @Published var timeTotal: Int
-    @Published var currentTime: Int
+    @Published var timeRemaining: Int
     @Published var timeElapsed: Int
     @Published var currentTimeFormatted: String
+    
+    private(set) var timeLimit: Int
     
     var countUp = false
     var active = false
@@ -15,8 +16,8 @@ class TimerVM: ObservableObject {
     private var timer: Timer?
     
     init(_ timeTotal: Int = 0) {
-        self.timeTotal = timeTotal
-        self.currentTime = timeTotal
+        self.timeLimit = timeTotal
+        self.timeRemaining = timeTotal
         self.timeElapsed = 0
         self.observers = [TimerVMObserver]()
         
@@ -25,27 +26,17 @@ class TimerVM: ObservableObject {
         self.currentTimeFormatted = String(format: "%d:%02d", minutes, remainingSeconds)
     }
     
-    func addObserver(observer: TimerVMObserver) {
-        observers.append(observer)
-    }
-    
     /// set time values after init
     func postInitSetTotalTime(time: Int) {
-        self.timeTotal = time
-        self.currentTime = time
-        self.currentTimeFormatted = timeToString(countUp ? self.timeElapsed : self.currentTime)
+        self.timeLimit = time
+        self.timeRemaining = time
+        self.currentTimeFormatted = timeToString(countUp ? self.timeElapsed : self.timeRemaining)
     }
     
-    /// Notify subcribers to Time Observer
-    func timeOver() {
-        for observer in observers {
-            observer.timeOver()
-        }
-    }
     
     /// Add some amount of time onto the current time
     func addTime(_ seconds: Int) {
-        currentTime += seconds
+        timeRemaining += seconds
     }
     
     /// Converts the current time to a string representation
@@ -61,11 +52,12 @@ class TimerVM: ObservableObject {
         return String(format: "%d:%02d", minutes, remainingSeconds)
     }
     
+    // MARK: Operate timer functions
     /// Resets the timer to the initial value
     func resetTimer() {
-        self.currentTime = timeTotal
+        self.timeRemaining = timeLimit
         self.timeElapsed = 0
-        self.currentTimeFormatted = self.timeToString(countUp ? self.timeElapsed : self.currentTime)
+        self.currentTimeFormatted = self.timeToString(countUp ? self.timeElapsed : self.timeRemaining)
     }
     
     /// Starts a timer that countd down from the timeTotal unless up=true
@@ -81,13 +73,13 @@ class TimerVM: ObservableObject {
         }
   
         timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
-            if self.currentTime <= 0 {
+            if self.timeRemaining <= 0 {
                 self.stopTimer()
                 self.timeOver()
             } else {
-                self.currentTime -= 1
+                self.timeRemaining -= 1
                 self.timeElapsed += 1
-                self.currentTimeFormatted = self.timeToString(self.currentTime)
+                self.currentTimeFormatted = self.timeToString(self.timeRemaining)
             }
         }
     }
@@ -96,6 +88,18 @@ class TimerVM: ObservableObject {
     func stopTimer() {
         active = false
         timer?.invalidate()
+    }
+    
+    // MARK: Observer Functions
+    func addObserver(observer: TimerVMObserver) {
+        observers.append(observer)
+    }
+    
+    /// Notify subcribers to Time Observer
+    func timeOver() {
+        for observer in observers {
+            observer.timeOver()
+        }
     }
 }
 

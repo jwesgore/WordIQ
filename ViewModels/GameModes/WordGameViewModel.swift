@@ -6,33 +6,30 @@ class WordGameVM: ObservableObject, KeyboardVMObserver{
     // constants
     let boardSize: Int
     let wordLength: Int
+    let difficulty: GameDifficulty
     
     // Instances of other ViewModels
-    var keyboardVM: KeyboardVM
+    var keyboardVM: KeyboardVM = KeyboardVM()
     var gameboardVM: GameboardVM
-    var gameOverVM: GameOverVM
-    var timerVM: TimerVM
+    var gameOverVM: GameOverVM = GameOverVM()
+    var timerVM: TimerVM = TimerVM()
+    
+    var numValidGuesses: Int = 0
+    var numInvalidGuesses: Int = 0
     
     var wordsCollection: WordsCollection
-    let keyboardModel: KeyboardModel
+    let keyboardModel: KeyboardModel = KeyboardModel()
     
-    var componentObservers: [WordGameComponentObserver]
-    var subclassObservers: [WordGameSubclassObserver]
+    var componentObservers = [WordGameComponentObserver]()
+    var subclassObservers = [WordGameSubclassObserver]()
     
     init(options: GameModeOptions) {
         self.boardSize = options.boardSize
         self.wordLength = options.wordLength
-        
-        self.keyboardModel = KeyboardModel()
-        self.keyboardVM = KeyboardVM()
-        self.gameOverVM = GameOverVM()
-        self.timerVM = TimerVM()
+        self.difficulty = options.gameDifficulty
         
         self.gameboardVM = GameboardVM(boardSize: boardSize, wordLength: wordLength)
         self.wordsCollection = WordsCollection(wordLength: wordLength, wordList: options.wordList)
-        
-        self.componentObservers = [WordGameComponentObserver]()
-        self.subclassObservers = [WordGameSubclassObserver]()
         
         // add self as an observer
         self.keyboardVM.addObserver(observer: self)
@@ -46,13 +43,17 @@ class WordGameVM: ObservableObject, KeyboardVMObserver{
         let guessWord = guess.getWord()
         var valid = false
         
+        guard guess.word.count == self.wordLength else { return }
+        
         // first validate the word using the WordsCollection
         if wordsCollection.isValidWord(guessWord) {
             // run the comparison and send it off to the keyboard and gameboard
             let letterBackgrounds = wordsCollection.isSimilarWord(guessWord)
             self.setBackground(guess: guessWord, letterBackgrounds: letterBackgrounds)
+            self.numValidGuesses += 1
             valid = true
         } else {
+            self.numInvalidGuesses += 1
             guess.invalidWord()
         }
         
@@ -65,11 +66,11 @@ class WordGameVM: ObservableObject, KeyboardVMObserver{
         if !timerVM.active {timerVM.startTimer()}
         switch key {
         case FunctionImages.enter:
-            isValidWord()
+            self.isValidWord()
         case FunctionImages.delete:
-            gameboardVM.keyPressed(key: key, entryType: KeyboardEntryType.delete)
+            self.gameboardVM.keyPressed(key: key, entryType: KeyboardEntryType.delete)
         default:
-            gameboardVM.keyPressed(key: key, entryType: KeyboardEntryType.letter)
+            self.gameboardVM.keyPressed(key: key, entryType: KeyboardEntryType.letter)
         }
     }
     
@@ -86,11 +87,14 @@ class WordGameVM: ObservableObject, KeyboardVMObserver{
     
     // MARK: Component Observer Functions
     func addComponentObserver(observer: WordGameComponentObserver) {
-        componentObservers.append(observer)
+        self.componentObservers.append(observer)
     }
     
     // notify the keyboard and gameboard that the game has ended and they need to reset their values
     func gameOver() {
+        self.numValidGuesses = 0
+        self.numInvalidGuesses = 0
+        
         for observer in componentObservers {
             observer.gameOver()
         }

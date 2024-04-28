@@ -20,27 +20,27 @@ private struct GameSelectModeView: View {
             Button(action: {
                 gameSelectVM.gotoOptions(.standardgame)
             }, label: {
-                GameMode(image: SFAssets.gameController, modeTitle: SystemNames.standardMode, modeDescription: Descriptions.standardMode)
+                GameModeView(image: SFAssets.gameController, modeTitle: SystemNames.standardMode, modeDescription: Descriptions.standardMode)
             })
             
             Button(action: {
                 gameSelectVM.options.timeLimit = 60
                 gameSelectVM.gotoOptions(.rushgame)
             }, label: {
-                GameMode(image: SFAssets.gameController, modeTitle: SystemNames.rushMode, modeDescription: Descriptions.rushMode)
+                GameModeView(image: SFAssets.gameController, modeTitle: SystemNames.rushMode, modeDescription: Descriptions.rushMode)
             })
             
             Button(action: {
                 gameSelectVM.options.timeLimit = 90
                 gameSelectVM.gotoOptions(.frenzygame)
             }, label: {
-                GameMode(image: SFAssets.gameController, modeTitle: SystemNames.frenzyMode, modeDescription: Descriptions.frenzyMode)
+                GameModeView(image: SFAssets.gameController, modeTitle: SystemNames.frenzyMode, modeDescription: Descriptions.frenzyMode)
             })
             
             Button(action: {
                 gameSelectVM.gotoOptions(.zengame)
             }, label: {
-                GameMode(image: SFAssets.gameController, modeTitle: SystemNames.zenMode, modeDescription: Descriptions.zenMode)
+                GameModeView(image: SFAssets.gameController, modeTitle: SystemNames.zenMode, modeDescription: Descriptions.zenMode)
             })
             
             Spacer()
@@ -48,7 +48,7 @@ private struct GameSelectModeView: View {
     }
 }
 
-private struct GameMode: View {
+private struct GameModeView: View {
     let image: String
     let modeTitle: String
     let modeDescription: String

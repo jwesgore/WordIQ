@@ -9,21 +9,21 @@ struct GameSelectOptionsView: View {
             
             // MARK: Game Difficulty Buttons
             Button(action: {
-                gameSelectVM.setList(wordList: WordLists.fiveEasy)
+                gameSelectVM.setDifficulty(wordList: WordLists.fiveEasy, difficulty: .easy)
             }, label: {
                 GameSelectOptionsDifficulty(modeTitle: gameSelectVM.gameOptionsSelect.easy, modeDescription: gameSelectVM.gameOptionsSelect.easyDescription, isSelected: gameSelectVM.options.wordList == WordLists.fiveEasy)
             })
             .buttonStyle(NoAnimation())
             
             Button(action: {
-                gameSelectVM.setList(wordList: WordLists.fiveMedium)
+                gameSelectVM.setDifficulty(wordList: WordLists.fiveMedium, difficulty: .normal)
             }, label: {
                 GameSelectOptionsDifficulty(modeTitle: gameSelectVM.gameOptionsSelect.medium, modeDescription: gameSelectVM.gameOptionsSelect.mediumDescription, isSelected: gameSelectVM.options.wordList == WordLists.fiveMedium)
             })
             .buttonStyle(NoAnimation())
             
             Button(action: {
-                gameSelectVM.setList(wordList: WordLists.fiveHard)
+                gameSelectVM.setDifficulty(wordList: WordLists.fiveHard, difficulty: .hard)
             }, label: {
                 GameSelectOptionsDifficulty(modeTitle: gameSelectVM.gameOptionsSelect.hard, modeDescription: gameSelectVM.gameOptionsSelect.hardDescription, isSelected: gameSelectVM.options.wordList == WordLists.fiveHard)
             })
@@ -43,13 +43,13 @@ struct GameSelectOptionsView: View {
                 Button(action: {
                     gameSelectVM.startGame(gameSelectVM.activeView)
                 }, label: {
-                    GameSelectOptionsNavButtons(text: "Start Game", backgroundColor: .blue, foregroundColor: Color.Text.textColoredBackground)
+                    GameSelectOptionsNavButtons(text: SystemNames.startGame, backgroundColor: .blue, foregroundColor: Color.Text.textColoredBackground)
                 })
                 
                 Button(action: {
                     gameSelectVM.gotoModes()
                 }, label: {
-                    GameSelectOptionsNavButtons(text: "Back", backgroundColor: .clear, foregroundColor: Color.Text.text)
+                    GameSelectOptionsNavButtons(text: SystemNames.back, backgroundColor: .clear, foregroundColor: Color.Text.text)
                 })
             }
             .frame(maxWidth: ScreenSize.width! * 0.9)

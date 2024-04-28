@@ -18,6 +18,10 @@ enum SystemNames {
     static let game = "Game"
     static let friends = "Friends"
     static let stats = "Stats"
+    
+    // MARK: Misc
+    static let startGame = "Start Game"
+    static let back = "Back"
 }
 
 enum Descriptions {

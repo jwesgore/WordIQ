@@ -89,6 +89,7 @@ private struct GameMode: View {
         .background {
             RoundedRectangle(cornerRadius: 25.0)
                 .fill(Color.UIElements.gameSelectButton)
+                .stroke(Color.Border.bcInactive, lineWidth: 1)
                 
         }
         .padding([.top, .bottom], 5)

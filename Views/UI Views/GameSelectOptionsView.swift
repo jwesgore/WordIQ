@@ -114,6 +114,7 @@ private struct GameSelectOptionsDifficulty: View{
         .background {
             RoundedRectangle(cornerRadius: 25.0)
                 .fill(isSelected ? Color.LetterBackground.correct : Color.UIElements.gameSelectButton)
+                .stroke(Color.Border.bcInactive, lineWidth: 1)
         }
         .padding([.top, .bottom], 5)
         
@@ -138,6 +139,7 @@ private struct GameSelectOptionsTime: View {
                                 .background(
                                     RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/)
                                         .fill(gameSelectVM.options.timeLimit == v ? Color.LetterBackground.correct : Color.UIElements.gameSelectButton)
+                                        .stroke(Color.Border.bcInactive, lineWidth: 1)
                                 )
                                 .foregroundStyle(Color.Text.text)
                         })

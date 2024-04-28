@@ -46,7 +46,7 @@ private struct MainMenuBody: View {
                 .toolbarBackground(Color.UIElements.tabView, for:.tabBar)
                 .toolbarBackground(.visible, for: .tabBar)
             
-            Text("Stats")
+            StatsView()
                 .tabItem() {
                     Image(systemName: SFAssets.stats)
                     Text(SystemNames.stats)

@@ -27,7 +27,7 @@ class KeyboardVM : ObservableObject, WordGameComponentObserver {
         for letter in keyboardModel.topRowLetters {
             let _letter = Letter(value: letter,
                                  backgroundColor: Color.LetterBackground.standard,
-                                 borderColor: BorderColor.inactive,
+                                 borderColor: Color.Border.bcInactive,
                                  width: letterWidth,
                                  height: height)
             topRow.append(_letter)
@@ -37,7 +37,7 @@ class KeyboardVM : ObservableObject, WordGameComponentObserver {
         for letter in keyboardModel.middleRowLetters {
             let _letter = Letter(value: letter,
                                  backgroundColor: Color.LetterBackground.standard,
-                                 borderColor: BorderColor.inactive,
+                                 borderColor: Color.Border.bcInactive,
                                  width: letterWidth,
                                  height: height)
             middleRow.append(_letter)
@@ -46,14 +46,14 @@ class KeyboardVM : ObservableObject, WordGameComponentObserver {
         
         bottomRow.append(Function(value: FunctionImages.enter,
                                 backgroundColor: Color.LetterBackground.standard,
-                                borderColor: BorderColor.inactive,
+                                borderColor: Color.Border.bcInactive,
                                 width: funtionWidth,
                                 height: height))
         
         for letter in keyboardModel.bottomRowLetters {
             let _letter = Letter(value: letter,
                                  backgroundColor: Color.LetterBackground.standard,
-                                 borderColor: BorderColor.inactive,
+                                 borderColor: Color.Border.bcInactive,
                                  width: letterWidth,
                                  height: height)
             bottomRow.append(_letter)
@@ -62,7 +62,7 @@ class KeyboardVM : ObservableObject, WordGameComponentObserver {
         
         bottomRow.append(Function(value: FunctionImages.delete,
                                 backgroundColor: Color.LetterBackground.standard,
-                                borderColor: BorderColor.inactive,
+                                borderColor: Color.Border.bcInactive,
                                 width: funtionWidth,
                                 height: height))
     }

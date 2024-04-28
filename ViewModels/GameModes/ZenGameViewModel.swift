@@ -28,7 +28,7 @@ class ZenGameVM: WordGameVM, WordGameSubclassObserver, GameOverVMObserver {
     // Check currentGuess for validity
     func submitGuess(guessWord: Word, valid: Bool) {
         guard valid else { return }
-            
+        
         // is it the correct word
         if wordsCollection.isCorrectWord(guessWord) {
             super.keyboardVM.keyboardActive = false

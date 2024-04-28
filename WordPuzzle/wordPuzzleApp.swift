@@ -13,5 +13,6 @@ struct wordPuzzleApp: App {
         WindowGroup {
             SplashScreenView()
         }
+        .modelContainer(for: GameData.self)
     }
 }

@@ -1,7 +1,7 @@
 import Foundation
 import SwiftUI
 
-class Word: Equatable{
+class Word: Equatable {
     
     var word: String
     var letters: [String]

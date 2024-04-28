@@ -1,4 +1,5 @@
-/// An enum defining many of the SF symbols used in this app
+/// Enums defining many of the SF symbols used in this app
+
 enum SFAssets {
     // MARK: Tabview icons
     static let home = "house.fill"
@@ -8,4 +9,9 @@ enum SFAssets {
     static let settings = "gearshape"
     static let gameController = "gamecontroller"
     static let backArrow = "chevron.backward"
+}
+
+enum FunctionImages {
+    static let delete = "arrow.backward"
+    static let enter = "arrow.turn.down.right"
 }

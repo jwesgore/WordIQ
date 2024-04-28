@@ -1,17 +1,6 @@
 import Foundation
 import SwiftUI
 
-enum BorderColor {
-    static let active = Color("BCActive")
-    static let inactive = Color("BCInactive")
-    static let clear = Color(.clear)
-}
-
-enum FunctionImages {
-    static let delete = "arrow.backward"
-    static let enter = "arrow.turn.down.right"
-}
-
 /// Superclass used to define common parrameters for base level UI elements such as letter in a word or a key on a keyboard
 class BaseComponent: ObservableObject, Identifiable {
     @Published var value: String = ""
@@ -49,7 +38,7 @@ class Letter: BaseComponent {
     func reset() {
         self.value = ""
         self.backgroundColor = Color.LetterBackground.standard
-        self.borderColor = BorderColor.inactive
+        self.borderColor = Color.Border.bcInactive
     }
 }
 

@@ -1,5 +1,6 @@
 import Foundation
 import SwiftUI
+import SwiftData
 
 class GameOverVM: ObservableObject {
 
@@ -15,6 +16,15 @@ class GameOverVM: ObservableObject {
         self.title = GuessWord(wordLength: 8)
         
         self.bodyContents = [GameOverStat]()
+    }
+    
+    func saveData() -> GameData{
+        
+        let gameData: GameData
+        
+        gameData = GameData(gameResult: results.result, gameMode: GameMode.standardgame, difficulty: GameDifficulty.normal, score: results.numGuesses, invalidGuessScore: 0, timeElapsed: results.timeElapsed)
+        
+        return gameData
     }
     
     // MARK: Modify results

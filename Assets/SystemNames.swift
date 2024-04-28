@@ -1,4 +1,5 @@
 /// An enum holding common system strings
+
 enum SystemNames {
     static let title = "Word Game"
     

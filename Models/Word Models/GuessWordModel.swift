@@ -23,7 +23,7 @@ class GuessWord: Identifiable, Equatable, ObservableObject {
         self.letters = (0..<wordLength).map { _ in
             Letter(value: "",
                    backgroundColor: Color.LetterBackground.standard,
-                   borderColor: BorderColor.inactive,
+                   borderColor: Color.Border.bcInactive,
                    width: edgeLength,
                    height: edgeLength)
         }
@@ -50,7 +50,7 @@ class GuessWord: Identifiable, Equatable, ObservableObject {
         if word.count >= wordLength || letter.count > 1 { return }
         
         letters[word.count].value = letter
-        letters[word.count].borderColor = BorderColor.active
+        letters[word.count].borderColor = Color.Border.bcActive
         letters[word.count].opacity = 100.0
         word.append(letter)
     }
@@ -62,7 +62,7 @@ class GuessWord: Identifiable, Equatable, ObservableObject {
         
         word.removeLast()
         letters[word.count].value = hints[word.count]
-        letters[word.count].borderColor = BorderColor.inactive
+        letters[word.count].borderColor = Color.Border.bcInactive
         letters[word.count].opacity = 0.3
     }
     
@@ -114,7 +114,7 @@ class GuessWord: Identifiable, Equatable, ObservableObject {
     /// Sets the background colors for the row
     func setBackgrounds(letterBackgrounds: [Color]) {
         for i in 0..<letterBackgrounds.count {
-            letters[i].borderColor = BorderColor.clear
+            letters[i].borderColor = Color.clear
             letters[i].backgroundColor = letterBackgrounds[i]
         }
     }
@@ -124,7 +124,7 @@ class GuessWord: Identifiable, Equatable, ObservableObject {
         for i in 0..<letters.count {
             DispatchQueue.main.asyncAfter(deadline: .now() + (0.125 * Double(i)), execute: {
                 withAnimation(.easeIn(duration: 0.2)) {
-                    self.letters[i].borderColor = BorderColor.clear
+                    self.letters[i].borderColor = Color.clear
                     self.letters[i].backgroundColor = letterBackgrounds[i]
                 }
             })

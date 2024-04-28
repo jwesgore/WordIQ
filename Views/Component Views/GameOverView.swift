@@ -1,15 +1,15 @@
 import SwiftUI
+import SwiftData
 
 struct GameOver: View {
     
+    @Environment(\.modelContext) private var context
     @ObservedObject var model: GameOverVM
     
     let cornerRadius: CGFloat = 20
     
     var body: some View {
         VStack{
-            
-            
             // MARK: Title
             GameOverTitleView(model: model)
             
@@ -37,6 +37,10 @@ struct GameOver: View {
                 .foregroundStyle(Color.Text.text)
         }
         .frame(width:ScreenSize.width! * 0.9)
+        .onAppear {
+            let data = model.saveData()
+            context.insert(data)
+        }
     }
 }
 

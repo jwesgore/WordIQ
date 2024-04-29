@@ -6,7 +6,7 @@ class MainMenuVM: Transitions, GameSelectVMObserver {
     
     var gameSelectVM: GameSelectVM
     
-    init(options: GameModeOptions = GameModeOptions(wordLength: 5, boardSize: 6, timeLimit: 0, wordList: WordLists.fiveMedium)) {
+    init(options: GameModeOptions = GameModeOptions(wordLength: 5, boardSize: 6, timeLimit: 0, wordList: WordLists.fiveMedium, gameDifficulty: .normal)) {
         self.options = options
         self.gameSelectVM = GameSelectVM(options: options)
         

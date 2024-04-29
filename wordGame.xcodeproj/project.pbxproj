@@ -201,6 +201,16 @@
 			path = "UI Views";
 			sourceTree = "<group>";
 		};
+		4B1426BF2BDF1E6900C10659 /* Settings Models */ = {
+			isa = PBXGroup;
+			children = (
+				4BF6D8F32BD2161800BEAB39 /* GameModeOptions.swift */,
+				4BFD3E812BD626B700C0741F /* GameOverModel.swift */,
+				4BFD3E882BDB568A00C0741F /* SaveDataModel.swift */,
+			);
+			path = "Settings Models";
+			sourceTree = "<group>";
+		};
 		4B3388842BB4B36400A10A27 = {
 			isa = PBXGroup;
 			children = (
@@ -245,11 +255,9 @@
 		4B3388BC2BB4C16D00A10A27 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				4B1426BF2BDF1E6900C10659 /* Settings Models */,
 				4BB0BEC12BBF891B003BA895 /* Component Models */,
 				4BB0BEC02BBF8904003BA895 /* Word Models */,
-				4BF6D8F32BD2161800BEAB39 /* GameModeOptions.swift */,
-				4BFD3E812BD626B700C0741F /* GameOverModel.swift */,
-				4BFD3E882BDB568A00C0741F /* SaveDataModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";

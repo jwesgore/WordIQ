@@ -9,8 +9,11 @@ struct StatsView: View {
             ForEach(items) { item in
                 Text(item.date.formatted())
                 Text(String(item.timeElapsed))
-                Text(item.gameDifficulty)
-                Text(item.gameMode)
+                Text("Game Difficulty" + item.gameDifficulty)
+                Text("Game Mode" + item.gameMode)
+                Text("Game Result" + item.gameResult)
+                Text("Invalid guesses:" + String(item.numInvalidGuesses))
+                Text("Valid guesses:" + String(item.numValidGuesses))
             }
         }
     }

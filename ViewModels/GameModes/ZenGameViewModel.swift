@@ -10,6 +10,8 @@ class ZenGameVM: WordGameVM, WordGameSubclassObserver, GameOverVMObserver {
         super.init(options: options)
         super.addSubclassObserver(observer: self)
         super.gameOverVM.addObserver(observer: self)
+        
+        super.timerVM.countUp = true
     }
     
     func endGame() {

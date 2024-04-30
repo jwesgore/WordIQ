@@ -15,6 +15,7 @@
 		4B0BEE992BBB85F10007772B /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0BEE982BBB85F10007772B /* SplashScreenView.swift */; };
 		4B0BEE9B2BBB86220007772B /* MainMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0BEE9A2BBB86220007772B /* MainMenuView.swift */; };
 		4B1426C12BDF405500C10659 /* StatsFilterEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1426C02BDF405500C10659 /* StatsFilterEnum.swift */; };
+		4B1426C42BE08DBB00C10659 /* Overview Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1426C32BE08DBB00C10659 /* Overview Model.swift */; };
 		4B3388912BB4B36400A10A27 /* wordPuzzleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3388902BB4B36400A10A27 /* wordPuzzleApp.swift */; };
 		4B3388932BB4B36400A10A27 /* StandardGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3388922BB4B36400A10A27 /* StandardGameView.swift */; };
 		4B3388952BB4B36600A10A27 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B3388942BB4B36600A10A27 /* Assets.xcassets */; };
@@ -86,6 +87,7 @@
 		4B0BEE982BBB85F10007772B /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
 		4B0BEE9A2BBB86220007772B /* MainMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuView.swift; sourceTree = "<group>"; };
 		4B1426C02BDF405500C10659 /* StatsFilterEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsFilterEnum.swift; sourceTree = "<group>"; };
+		4B1426C32BE08DBB00C10659 /* Overview Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Overview Model.swift"; sourceTree = "<group>"; };
 		4B33888D2BB4B36400A10A27 /* wordGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = wordGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B3388902BB4B36400A10A27 /* wordPuzzleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = wordPuzzleApp.swift; sourceTree = "<group>"; };
 		4B3388922BB4B36400A10A27 /* StandardGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardGameView.swift; sourceTree = "<group>"; };
@@ -212,6 +214,14 @@
 			path = "Settings Models";
 			sourceTree = "<group>";
 		};
+		4B1426C22BE08D9E00C10659 /* Stats Models */ = {
+			isa = PBXGroup;
+			children = (
+				4B1426C32BE08DBB00C10659 /* Overview Model.swift */,
+			);
+			path = "Stats Models";
+			sourceTree = "<group>";
+		};
 		4B3388842BB4B36400A10A27 = {
 			isa = PBXGroup;
 			children = (
@@ -256,6 +266,7 @@
 		4B3388BC2BB4C16D00A10A27 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				4B1426C22BE08D9E00C10659 /* Stats Models */,
 				4B1426BF2BDF1E6900C10659 /* Settings Models */,
 				4BB0BEC12BBF891B003BA895 /* Component Models */,
 				4BB0BEC02BBF8904003BA895 /* Word Models */,
@@ -521,6 +532,7 @@
 				4B3388C82BB5F3F900A10A27 /* KeyboardModel.swift in Sources */,
 				4BB0BEB62BBC8ABD003BA895 /* BaseComponenetModel.swift in Sources */,
 				4B8167F02BCC5B1D00E3978D /* FrenzyGameViewModel.swift in Sources */,
+				4B1426C42BE08DBB00C10659 /* Overview Model.swift in Sources */,
 				4B8167D92BC4F26900E3978D /* FrenzyGameView.swift in Sources */,
 				4BF6D8F62BD22F7800BEAB39 /* MainMenuViewModel.swift in Sources */,
 				4B08AA1F2BC0E40400810F22 /* ScreenSizeUtility.swift in Sources */,

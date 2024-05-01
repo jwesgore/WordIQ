@@ -60,7 +60,7 @@ struct GameSelectOptionsView: View {
 }
 
 /// Removes animation from button
-private struct NoAnimation: ButtonStyle {
+struct NoAnimation: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
     }

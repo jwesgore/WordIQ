@@ -23,22 +23,10 @@ struct StatsItem: View {
     var body: some View {
         GeometryReader { geo in
             ZStack {
-                HStack {
-                    Spacer()
-                    
-                    Text(value)
-                        .fontWeight(.semibold)
-                        .font(.title2)
-                        .kerning(2)
-                    
-                    Spacer()
-                        .frame(width: geo.size.width * 0.05)
-                }
-                .frame(height: geo.size.height * 0.5)
                 
                 HStack {
                     Spacer()
-                        .frame(width: geo.size.width * 0.05)
+                        .frame(width: 15)
                     
                     Text(label)
                         .fontWeight(.bold)
@@ -48,6 +36,19 @@ struct StatsItem: View {
                     
                     Spacer()
                 }
+                
+                HStack {
+                    Spacer()
+                    
+                    Text(value)
+                        .fontWeight(.semibold)
+                        .font(.title2)
+                        .kerning(2)
+                    
+                    Spacer()
+                        .frame(width: 15)
+                }
+                .frame(height: geo.size.height * 0.5)
             }
             .frame(width: geo.size.width, height: geo.size.height)
         }

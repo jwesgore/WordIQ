@@ -16,32 +16,25 @@ struct GameSelectView: View {
 private struct GameSelectModeView: View {
     var gameSelectVM: GameSelectVM
     var body: some View {
-        VStack {
-            Button(action: {
-                gameSelectVM.gotoOptions(.standardgame)
-            }, label: {
-                GameModeView(image: SFAssets.gameController, modeTitle: SystemNames.standardMode, modeDescription: Descriptions.standardMode)
-            })
+        VStack (spacing: 15) {
             
-            Button(action: {
+            GameModeView(image: SFAssets.gameController, modeTitle: SystemNames.standardMode, modeDescription: Descriptions.standardMode) {
+                gameSelectVM.gotoOptions(.standardgame)
+            }
+ 
+            GameModeView(image: SFAssets.gameController, modeTitle: SystemNames.rushMode, modeDescription: Descriptions.rushMode) {
                 gameSelectVM.options.timeLimit = 60
                 gameSelectVM.gotoOptions(.rushgame)
-            }, label: {
-                GameModeView(image: SFAssets.gameController, modeTitle: SystemNames.rushMode, modeDescription: Descriptions.rushMode)
-            })
+            }
             
-            Button(action: {
+            GameModeView(image: SFAssets.gameController, modeTitle: SystemNames.frenzyMode, modeDescription: Descriptions.frenzyMode) {
                 gameSelectVM.options.timeLimit = 90
                 gameSelectVM.gotoOptions(.frenzygame)
-            }, label: {
-                GameModeView(image: SFAssets.gameController, modeTitle: SystemNames.frenzyMode, modeDescription: Descriptions.frenzyMode)
-            })
+            }
             
-            Button(action: {
+            GameModeView(image: SFAssets.gameController, modeTitle: SystemNames.zenMode, modeDescription: Descriptions.zenMode) {
                 gameSelectVM.gotoOptions(.zengame)
-            }, label: {
-                GameModeView(image: SFAssets.gameController, modeTitle: SystemNames.zenMode, modeDescription: Descriptions.zenMode)
-            })
+            }
             
             Spacer()
         }
@@ -49,50 +42,98 @@ private struct GameSelectModeView: View {
 }
 
 private struct GameModeView: View {
+    @State var isPressed: Bool = false
+    
     let image: String
     let modeTitle: String
     let modeDescription: String
+    let action: () -> Void
     
     var body: some View {
-  
-        GeometryReader { geometry in
-        
-            HStack (spacing: 0){
-                Image(systemName: image)
-                    .resizable()
-                    .scaledToFit()
-                    .padding(10)
-                    .frame(width: geometry.size.width * 0.2)
-                    
-                VStack {
-                    HStack {
-                        Text(modeTitle)
-                            .font(.title3)
-                        Spacer()
-                    }
-                    HStack {
-                        Text(modeDescription)
-                            .font(.caption)
-                            .multilineTextAlignment(/*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/)
-                        Spacer()
-                    }
+        Button(
+            action: {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    self.action()
                 }
-                .padding(.leading)
-                .frame(width: geometry.size.width * 0.75)
-                
-            }
-            .frame(maxWidth: geometry.size.width , maxHeight: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
+            }, label: {
+                ZStack {
+                    // MARK: Top layer
+                    ZStack {
+                        // MARK: Title
+                        VStack {
+                            Spacer()
+                                .frame(height: 20)
+                            
+                            HStack{
+                                Spacer()
+                                    .frame(width: 20)
+                                
+                                Text(modeTitle)
+                                    .font(.title2)
+                                    .fontWeight(.semibold)
+                                    .foregroundStyle(Color.Text.text)
+                                    .opacity(0.8)
+                                
+                                Spacer()
+                            }
+                            
+                            Spacer()
+                        }
+                        .frame(width: ScreenSize.width! * 0.9, height: ScreenSize.height! * 0.12)
+                        
+                        // MARK: Body
+                        VStack {
+                            Spacer()
+                                .frame(height: 5 + ScreenSize.height! * 0.06)
+                            
+                            HStack{
+                                Text(modeDescription)
+                                    .font(.caption)
+                                    .fontWeight(.semibold)
+                                    .foregroundStyle(Color.Text.text)
+                                    .multilineTextAlignment(/*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/)
+                                    .opacity(0.5)
+                                
+                                Spacer()
+                            }
+                            .padding(.horizontal, 20)
+                            
+                            Spacer()
+                        }
+                        .frame(width: ScreenSize.width! * 0.9, height: ScreenSize.height! * 0.12)
 
-        }
-        .foregroundStyle(Color.Text.text)
-        .frame(width: ScreenSize.width! * 0.9, height: ScreenSize.height! * 0.12)
-        .background {
-            RoundedRectangle(cornerRadius: 25.0)
-                .fill(Color.UIElements.gameSelectButton)
-                .stroke(Color.Border.bcInactive, lineWidth: 1)
-                
-        }
-        .padding([.top, .bottom], 5)
+                    }
+                    .background(
+                        RoundedRectangle(cornerRadius: 25.0)
+                            .fill(Color.Buttons.gameModeSelect)
+                            .stroke(Color.Border.bcGameModeSelect, lineWidth: 1)
+                            .frame(width: ScreenSize.width! * 0.9, height: ScreenSize.height! * 0.12)
+                    )
+                    .offset(CGSize(width: 0.0, height: self.isPressed ? 5.0 : 0.0))
+                    .zIndex(/*@START_MENU_TOKEN@*/1.0/*@END_MENU_TOKEN@*/)
+                    
+                    RoundedRectangle(cornerRadius: 25.0)
+                        .fill(Color.Border.bcGameModeSelect)
+                        .stroke(Color.Border.bcGameModeSelect, lineWidth: 1)
+                        .frame(width: ScreenSize.width! * 0.9, height: ScreenSize.height! * 0.12)
+                        .offset(CGSize(width: 0.0, height: 5.0))
+                        .zIndex(0.0)
+                }
+            }
+        )
+        .buttonStyle(PlainButtonStyle())
+        .simultaneousGesture(DragGesture(minimumDistance: 0)
+            .onChanged { _ in
+                withAnimation(.easeInOut(duration: 0.2)) {
+                    self.isPressed = true
+                }
+            }
+            .onEnded { _ in
+                withAnimation(.easeInOut(duration: 0.2)) {
+                    self.isPressed = false
+                }
+            }
+        )
     }
 }
 

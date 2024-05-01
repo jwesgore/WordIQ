@@ -8,26 +8,18 @@ struct GameSelectOptionsView: View {
         VStack {
             
             // MARK: Game Difficulty Buttons
-            Button(action: {
-                gameSelectVM.setDifficulty(wordList: WordLists.fiveEasy, difficulty: .easy)
-            }, label: {
-                GameSelectOptionsDifficulty(modeTitle: gameSelectVM.gameOptionsSelect.easy, modeDescription: gameSelectVM.gameOptionsSelect.easyDescription, isSelected: gameSelectVM.options.wordList == WordLists.fiveEasy)
-            })
-            .buttonStyle(NoAnimation())
             
-            Button(action: {
+            GameSelectOptionsDifficulty(diffParams: gameSelectVM.gameOptionsSelect.easy, list: gameSelectVM.options.wordList) {
+                    gameSelectVM.setDifficulty(wordList: WordLists.fiveEasy, difficulty: .easy)
+                }
+            
+            GameSelectOptionsDifficulty(diffParams: gameSelectVM.gameOptionsSelect.medium, list: gameSelectVM.options.wordList) {
                 gameSelectVM.setDifficulty(wordList: WordLists.fiveMedium, difficulty: .normal)
-            }, label: {
-                GameSelectOptionsDifficulty(modeTitle: gameSelectVM.gameOptionsSelect.medium, modeDescription: gameSelectVM.gameOptionsSelect.mediumDescription, isSelected: gameSelectVM.options.wordList == WordLists.fiveMedium)
-            })
-            .buttonStyle(NoAnimation())
+            }
             
-            Button(action: {
+            GameSelectOptionsDifficulty(diffParams: gameSelectVM.gameOptionsSelect.hard, list: gameSelectVM.options.wordList) {
                 gameSelectVM.setDifficulty(wordList: WordLists.fiveHard, difficulty: .hard)
-            }, label: {
-                GameSelectOptionsDifficulty(modeTitle: gameSelectVM.gameOptionsSelect.hard, modeDescription: gameSelectVM.gameOptionsSelect.hardDescription, isSelected: gameSelectVM.options.wordList == WordLists.fiveHard)
-            })
-            .buttonStyle(NoAnimation())
+            }
             
             // MARK: Game Time Buttons
             if gameSelectVM.activeView == .rushgame {
@@ -59,13 +51,6 @@ struct GameSelectOptionsView: View {
     }
 }
 
-/// Removes animation from button
-struct NoAnimation: ButtonStyle {
-    func makeBody(configuration: Configuration) -> some View {
-        configuration.label
-    }
-}
-
 private struct GameSelectOptionsNavButtons: View {
     var text: String
     var backgroundColor: Color
@@ -82,42 +67,62 @@ private struct GameSelectOptionsNavButtons: View {
 
 private struct GameSelectOptionsDifficulty: View{
     
-    let modeTitle: String
-    let modeDescription: String
-    let isSelected: Bool
+    let diffParams: DifficultyParams
+    let list: String
+    let action: () -> Void
+    
+    let height: CGFloat = ScreenSize.height! * 0.12
+    let width: CGFloat = ScreenSize.width! * 0.9
+    let delay: Double = 0.2
     
     var body: some View {
-        GeometryReader { geometry in
-            HStack (spacing: 0){
-                VStack(spacing:8) {
-                    HStack {
-                        Text(modeTitle)
-                            .font(.title2)
-                            .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                        Spacer()
-                    }
-                    HStack {
-                        Text(modeDescription)
-                            .font(.caption)
-                            .multilineTextAlignment(/*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/)
-                        Spacer()
-                    }
-                }
-                .padding(.leading)
-                .frame(width: geometry.size.width)
-                
-            }
-            .frame(maxWidth: geometry.size.width , maxHeight: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
-        }
-        .foregroundStyle(Color.Text.text)
-        .frame(width: ScreenSize.width! * 0.9, height: ScreenSize.height! * 0.12)
-        .background {
-            RoundedRectangle(cornerRadius: 25.0)
-                .fill(isSelected ? Color.LetterBackground.correct : Color.UIElements.gameSelectButton)
-                .stroke(Color.Border.bcInactive, lineWidth: 1)
-        }
-        .padding([.top, .bottom], 5)
         
+        ThreeDButton(height: height, width: width, delay: delay, isPressed: list == diffParams.list, radio: true, action: action, contents: AnyView(
+            ZStack {
+                // MARK: Title
+                VStack {
+                    Spacer()
+                        .frame(height: 20)
+                    
+                    HStack{
+                        Spacer()
+                            .frame(width: 20)
+                        
+                        Text(diffParams.label)
+                            .font(.title2)
+                            .fontWeight(.semibold)
+                            .foregroundStyle(Color.Text.text)
+                            .opacity(0.8)
+                        
+                        Spacer()
+                    }
+                    
+                    Spacer()
+                }
+                .frame(width: width, height: height)
+                
+                // MARK: Body
+                VStack {
+                    Spacer()
+                        .frame(height: 5 + height / 2)
+                    
+                    HStack{
+                        Text(diffParams.description)
+                            .font(.caption)
+                            .fontWeight(.semibold)
+                            .foregroundStyle(Color.Text.text)
+                            .multilineTextAlignment(/*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/)
+                            .opacity(0.5)
+                        
+                        Spacer()
+                    }
+                    .padding(.horizontal, 20)
+                    
+                    Spacer()
+                }
+                .frame(width: width, height: height)
+            }
+        ))
     }
 }
 

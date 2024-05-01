@@ -1,7 +1,11 @@
 import SwiftUI
 
 struct ThreeDButton: View {
-    @State var isPressed: Bool = false
+    var isPressed: Bool
+    @State private var offset = 0.0
+    
+    var radio: Bool
+    
     let delay: Double
     
     let height: CGFloat
@@ -10,10 +14,13 @@ struct ThreeDButton: View {
     let action: () -> Void
     let contents: AnyView
     
-    init(height: CGFloat, width: CGFloat, delay: Double = 0.5, action: @escaping () -> Void, contents: AnyView) {
+    init(height: CGFloat, width: CGFloat, delay: Double = 0.5, isPressed: Bool = false, radio: Bool = false, action: @escaping () -> Void, contents: AnyView) {
         self.height = height
         self.width = width
         self.delay = delay
+        self.isPressed = isPressed
+        self.radio = radio
+        
         self.action = action
         self.contents = contents
     }
@@ -36,7 +43,7 @@ struct ThreeDButton: View {
                             .stroke(Color.Border.bcGameModeSelect, lineWidth: 1)
                             .frame(width: width, height: height)
                     )
-                    .offset(CGSize(width: 0.0, height: self.isPressed ? 5.0 : 0.0))
+                    .offset(CGSize(width: 0.0, height: offset))
                     .zIndex(/*@START_MENU_TOKEN@*/1.0/*@END_MENU_TOKEN@*/)
                     
                     // MARK: Bottom layer
@@ -52,16 +59,36 @@ struct ThreeDButton: View {
         .buttonStyle(NoAnimation())
         .simultaneousGesture(DragGesture(minimumDistance: 0)
             .onChanged { _ in
+                guard !radio else { return }
                 withAnimation(.easeInOut(duration: 0.1)) {
-                    self.isPressed = true
+                    self.offset = 5.0
                 }
             }
             .onEnded { _ in
+                guard !radio else { return }
                 withAnimation(.easeInOut(duration: 0.1)) {
-                    self.isPressed = false
+                    self.offset = 0.0
                 }
             }
         )
+        .onAppear{
+            guard radio else { return }
+            self.offset = self.isPressed ? 5.0 : 0.0
+        }
+        .onChange(of: self.isPressed) {
+            guard radio else { return }
+            withAnimation(.easeInOut(duration: 0.1)) {
+                self.offset = self.isPressed ? 5.0 : 0.0
+            }
+        }
+        
+    }
+}
+
+/// Removes animation from button
+struct NoAnimation: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
     }
 }
 

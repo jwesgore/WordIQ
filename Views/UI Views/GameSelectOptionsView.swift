@@ -5,10 +5,9 @@ struct GameSelectOptionsView: View {
     @State var timedMode: Bool = false
     
     var body: some View {
-        VStack {
+        VStack (spacing: 15) {
             
             // MARK: Game Difficulty Buttons
-            
             GameSelectOptionsDifficulty(diffParams: gameSelectVM.gameOptionsSelect.easy, list: gameSelectVM.options.wordList) {
                     gameSelectVM.setDifficulty(wordList: WordLists.fiveEasy, difficulty: .easy)
                 }
@@ -73,7 +72,7 @@ private struct GameSelectOptionsDifficulty: View{
     
     let height: CGFloat = ScreenSize.height! * 0.12
     let width: CGFloat = ScreenSize.width! * 0.9
-    let delay: Double = 0.2
+    let delay: Double = 0.0
     
     var body: some View {
         
@@ -131,30 +130,21 @@ private struct GameSelectOptionsTime: View {
     @ObservedObject var gameSelectVM: GameSelectVM
     var times: [String: Int]
     
+    let delay: Double = 0.0
+    
     var body: some View {
-        HStack {
-            GeometryReader { geometry in
-                HStack (spacing: 8) {
-                    ForEach(times.sorted(by: { $0.value < $1.value }), id: \.key) { k, v in
-                        Button(action:{
-                            gameSelectVM.setTime(time: v)
-                        }, label:{
-                            Text(k)
-                                .frame(maxWidth: geometry.size.width * 0.33, maxHeight: .infinity)
-                                .background(
-                                    RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/)
-                                        .fill(gameSelectVM.options.timeLimit == v ? Color.LetterBackground.correct : Color.UIElements.gameSelectButton)
-                                        .stroke(Color.Border.bcInactive, lineWidth: 1)
-                                )
-                                .foregroundStyle(Color.Text.text)
-                        })
-                        .buttonStyle(NoAnimation())
-                    }
-                }
-            }
-            .frame(width: ScreenSize.width! * 0.9, height: ScreenSize.height! * 0.07)
-        }
         
+        HStack {
+            ForEach(times.sorted(by: { $0.value < $1.value }), id: \.key) { k, v in
+                ThreeDButton(height: .infinity, width: .infinity, delay: delay, isPressed: gameSelectVM.options.timeLimit == v, radio: true, action: {gameSelectVM.setTime(time: v)}, contents: AnyView(
+                    ZStack {
+                        Text(k)
+                            .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    }
+                ))
+            }
+        }
+        .frame(width: ScreenSize.width! * 0.9, height: ScreenSize.height! * 0.07)
     }
 }
 

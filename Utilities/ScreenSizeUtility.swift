@@ -6,6 +6,14 @@ struct ScreenSize {
     static let height = UIScreen.current?.bounds.height
 }
 
+struct UISize {
+    struct stats {
+        static let itemMaxWidth = CGFloat(500)
+        static let sectionBottomPadding = CGFloat(30)
+        static let sectionSidePadding = ScreenSize.width! * 0.05
+    }
+}
+
 private extension UIWindow {
     static var current: UIWindow? {
         for scene in UIApplication.shared.connectedScenes {

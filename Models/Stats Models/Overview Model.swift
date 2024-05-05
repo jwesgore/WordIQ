@@ -19,6 +19,8 @@ struct StatsStandardModel {
     
     var totalTime: String = ""
     var averageTime: String = ""
+    
+    var guessMap: [Int: Int] = [Int:Int]()
 }
 
 struct StatsRushModel {
@@ -66,4 +68,22 @@ struct StatsZenModel {
     
     var totalTime: String = ""
     var averageTime: String = ""
+}
+
+struct DisplayData: Identifiable, Equatable {
+    var id: String {label}
+    
+    var label: String
+    var value: String
+    
+    var image: String?
+}
+
+struct ChartData: Identifiable, Equatable {
+    var id: String {label}
+    
+    var label: String
+    var value: Int
+    
+    var image: String?
 }

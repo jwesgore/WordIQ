@@ -64,6 +64,8 @@ class StatsVM: ObservableObject {
         
         self.standardItems.totalGames = self.standardGames.count.formatted()
         self.standardItems.averageScore = self.getAverage(values: modeItems.map{ $0.numValidGuesses }).formatted()
+        
+        self.standardItems.guessMap = self.getDistribution(modeItems: modeItems)
     }
     
     private func loadRushItems(modeItems: [GameData]) {
@@ -155,5 +157,28 @@ class StatsVM: ObservableObject {
         case hard: return GameDifficulty.hard.rawValue.capitalized
         default: return "----"
         }
+    }
+    
+    func getDistribution(modeItems: [GameData]) -> [Int: Int]{
+        
+        var guessMap = [Int: Int]()
+        
+        guessMap[1] = 0
+        guessMap[2] = 0
+        guessMap[3] = 0
+        guessMap[4] = 0
+        guessMap[5] = 0
+        guessMap[6] = 0
+        guessMap[7] = 0
+        
+        for item in modeItems {
+            if item.gameResult == GameOverResult.win.rawValue {
+                guessMap[item.numValidGuesses]? += 1
+            } else {
+                guessMap[7]? += 1
+            }
+        }
+        
+        return guessMap
     }
 }

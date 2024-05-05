@@ -2,72 +2,91 @@ import SwiftUI
 import SwiftData
 
 struct StatsView: View {
-    @Query private var items: [GameData]
     @StateObject var statsVM: StatsVM = StatsVM()
+    @Query private var items: [GameData]
     
     var body: some View {
         
         VStack {
             ScrollView {
-                VStack {
-                    Section {
-                        StatsItem(value: statsVM.overviewItems.totalGames, label: StatsItemLabel.totalGames)
-                        StatsItem(value: statsVM.overviewItems.totalTime, label: StatsItemLabel.totalTime)
-                        StatsItem(value: statsVM.overviewItems.favMode, label: StatsItemLabel.favoriteMode)
-                        StatsItem(value: statsVM.overviewItems.favDiff, label: StatsItemLabel.favoriteDiff)
-                    } header: {
-                        StatsHeader(header: StatsFilter.overall.rawValue.capitalized)
-                    }
-                }
-                .padding(.bottom, 30)
+                // MARK: Overview Stats
+                StatsSection(header: AnyView(
+                    StatsHeader(header: StatsFilter.overall.rawValue.capitalized)
+                ), contents: AnyView(
+                    VStack {
+                        StatsItem(data: DisplayData(label: StatsItemLabel.totalGames, value: statsVM.overviewItems.totalGames, image: SFAssets.gameController))
+         
+                        StatsItem(data: DisplayData(label: StatsItemLabel.totalTime, value: statsVM.overviewItems.totalTime, image: SFAssets.timer))
                 
-                VStack {
-                    Section {
-                        StatsItem(value: statsVM.standardItems.totalGames, label: StatsItemLabel.totalGames)
-                        StatsItem(value: statsVM.standardItems.totalTime, label: StatsItemLabel.totalTime)
-                        StatsItem(value: statsVM.standardItems.averageTime, label: StatsItemLabel.averageTimeElapsed)
-                        StatsItem(value: statsVM.standardItems.averageScore, label: StatsItemLabel.averageScore)
-                    } header: {
-                        StatsHeader(header: StatsFilter.standard.rawValue.capitalized)
+                        StatsItem(data: DisplayData(label: StatsItemLabel.favoriteMode, value: statsVM.overviewItems.favMode, image: SFAssets.star))
+                  
+                        StatsItem(data: DisplayData(label: StatsItemLabel.favoriteDiff, value: statsVM.overviewItems.favDiff, image: SFAssets.star))
                     }
-                }
-                .padding(.bottom, 30)
+                ))
                 
-                VStack {
-                    Section {
-                        StatsItem(value: statsVM.rushItems.totalGames, label: StatsItemLabel.totalGames)
-                        StatsItem(value: statsVM.rushItems.totalTime, label: StatsItemLabel.totalTime)
-                        StatsItem(value: statsVM.rushItems.averageTime, label: StatsItemLabel.averageTimeElapsed)
-                        StatsItem(value: statsVM.rushItems.averageScore, label: StatsItemLabel.averageScore)
-                    } header: {
-                        StatsHeader(header: StatsFilter.rush.rawValue.capitalized)
+                // MARK: Standard Game Stats
+                StatsSection(header: AnyView(
+                    StatsHeader(header: StatsFilter.standard.rawValue.capitalized)
+                ), contents: AnyView(
+                    VStack {
+                        StatsItem(data: DisplayData(label: StatsItemLabel.totalGames, value: statsVM.standardItems.totalGames, image: SFAssets.gameController))
+                        
+                        StatsItem(data: DisplayData(label: StatsItemLabel.totalTime, value: statsVM.standardItems.totalTime, image: SFAssets.timer))
+                        
+                        StatsItem(data: DisplayData(label: StatsItemLabel.averageTimeElapsed, value: statsVM.standardItems.averageTime, image: SFAssets.timer))
+                        
+                        StatsItem(data: DisplayData(label: StatsItemLabel.averageScore, value: statsVM.standardItems.averageScore, image: SFAssets.star))
+                        
+                        StatsChart(statsVM: statsVM)
+                            .frame(minHeight: 250)
+                            .frame(maxHeight: 500)
                     }
-                }
-                .padding(.bottom, 30)
+                ))
                 
-                VStack {
-                    Section {
-                        StatsItem(value: statsVM.frenzyItems.totalGames, label: StatsItemLabel.totalGames)
-                        StatsItem(value: statsVM.frenzyItems.totalTime, label: StatsItemLabel.totalTime)
-                        StatsItem(value: statsVM.frenzyItems.averageTime, label: StatsItemLabel.averageTimeElapsed)
-                        StatsItem(value: statsVM.frenzyItems.averageScore, label: StatsItemLabel.averageScore)
-                    } header: {
-                        StatsHeader(header: StatsFilter.frenzy.rawValue.capitalized)
+                // MARK: Rush Game Stats
+                StatsSection(header: AnyView(
+                    StatsHeader(header: StatsFilter.rush.rawValue.capitalized)
+                ), contents: AnyView(
+                    VStack {
+                        StatsItem(data: DisplayData(label: StatsItemLabel.totalGames, value: statsVM.rushItems.totalGames, image: SFAssets.gameController))
+
+                        StatsItem(data: DisplayData(label: StatsItemLabel.totalTime, value: statsVM.rushItems.totalTime, image: SFAssets.timer))
+
+                        StatsItem(data: DisplayData(label: StatsItemLabel.averageTimeElapsed, value: statsVM.rushItems.averageTime, image: SFAssets.timer))
+
+                        StatsItem(data: DisplayData(label: StatsItemLabel.averageScore, value: statsVM.rushItems.averageScore, image: SFAssets.star))
                     }
-                }
-                .padding(.bottom, 30)
+                ))
                 
-                VStack {
-                    Section {
-                        StatsItem(value: statsVM.zenItems.totalGames, label: StatsItemLabel.totalGames)
-                        StatsItem(value: statsVM.zenItems.totalTime, label: StatsItemLabel.totalTime)
-                        StatsItem(value: statsVM.zenItems.averageTime, label: StatsItemLabel.averageTimeElapsed)
-                        StatsItem(value: statsVM.zenItems.averageScore, label: StatsItemLabel.averageScore)
-                    } header: {
-                        StatsHeader(header: StatsFilter.zen.rawValue.capitalized)
+                // MARK: Frenzy Game Stats
+                StatsSection(header: AnyView(
+                    StatsHeader(header: StatsFilter.frenzy.rawValue.capitalized)
+                ), contents: AnyView(
+                    VStack {
+                        StatsItem(data: DisplayData(label: StatsItemLabel.totalGames, value: statsVM.frenzyItems.totalGames, image: SFAssets.gameController))
+
+                        StatsItem(data: DisplayData(label: StatsItemLabel.totalTime, value: statsVM.frenzyItems.totalTime, image: SFAssets.timer))
+
+                        StatsItem(data: DisplayData(label: StatsItemLabel.averageTimeElapsed, value: statsVM.frenzyItems.averageTime, image: SFAssets.timer))
+
+                        StatsItem(data: DisplayData(label: StatsItemLabel.averageScore, value: statsVM.frenzyItems.averageScore, image: SFAssets.star))
                     }
-                }
-                .padding(.bottom, 30)
+                ))
+                
+                // MARK: Zen Game Stats
+                StatsSection(header: AnyView(
+                    StatsHeader(header: StatsFilter.zen.rawValue.capitalized)
+                ), contents: AnyView(
+                    VStack {
+                        StatsItem(data: DisplayData(label: StatsItemLabel.totalGames, value: statsVM.zenItems.totalGames, image: SFAssets.gameController))
+                        
+                        StatsItem(data: DisplayData(label: StatsItemLabel.totalTime, value: statsVM.zenItems.totalTime, image: SFAssets.timer))
+
+                        StatsItem(data: DisplayData(label: StatsItemLabel.averageTimeElapsed, value: statsVM.zenItems.averageTime, image: SFAssets.timer))
+
+                        StatsItem(data: DisplayData(label: StatsItemLabel.averageScore, value: statsVM.zenItems.averageScore, image: SFAssets.star))
+                    }
+                ))
             }
         }
         .onAppear{
@@ -80,6 +99,8 @@ struct StatsView: View {
         }
     }
 }
+
+
 
 #Preview {
     StatsView()

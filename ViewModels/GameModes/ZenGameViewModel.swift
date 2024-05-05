@@ -61,6 +61,7 @@ class ZenGameVM: WordGameVM, WordGameSubclassObserver, GameOverVMObserver {
         self.activeView = .standardgame
         self.gameOver()
         super.wordsCollection.updateSelectedWord()
+        super.timerVM.resetTimer()
     }
     
     func mainMenu() {

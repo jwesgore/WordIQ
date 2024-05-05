@@ -9,6 +9,9 @@ enum SFAssets {
     static let settings = "gearshape"
     static let gameController = "gamecontroller"
     static let backArrow = "chevron.backward"
+    
+    static let timer = "timer"
+    static let star = "star"
 }
 
 enum FunctionImages {

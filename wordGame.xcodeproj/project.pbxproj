@@ -47,6 +47,11 @@
 		4B8167EA2BCB31E500E3978D /* StandardGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8167E92BCB31E500E3978D /* StandardGameViewModel.swift */; };
 		4B8167EE2BCC59CB00E3978D /* RushGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8167ED2BCC59CB00E3978D /* RushGameViewModel.swift */; };
 		4B8167F02BCC5B1D00E3978D /* FrenzyGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8167EF2BCC5B1D00E3978D /* FrenzyGameViewModel.swift */; };
+		4B9D37B12BE97FD0007E6F8E /* BaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B9D37B02BE97FD0007E6F8E /* BaseProtocol.swift */; };
+		4B9D37B42BE981E7007E6F8E /* StandardSaveModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B9D37B32BE981E7007E6F8E /* StandardSaveModel.swift */; };
+		4B9D37B62BE9832E007E6F8E /* RushSaveModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B9D37B52BE9832E007E6F8E /* RushSaveModel.swift */; };
+		4B9D37B82BE9836F007E6F8E /* FrenzySaveModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B9D37B72BE9836F007E6F8E /* FrenzySaveModel.swift */; };
+		4B9D37BA2BE983C0007E6F8E /* ZenSaveModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B9D37B92BE983C0007E6F8E /* ZenSaveModel.swift */; };
 		4BA4CF332BB7BAB100B9F36B /* GameOverViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA4CF322BB7BAB100B9F36B /* GameOverViewModel.swift */; };
 		4BB0BEB62BBC8ABD003BA895 /* BaseComponenetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB0BEB52BBC8ABD003BA895 /* BaseComponenetModel.swift */; };
 		4BB0BEC32BBF8D1B003BA895 /* GameSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB0BEC22BBF8D1B003BA895 /* GameSelectView.swift */; };
@@ -106,6 +111,11 @@
 		4B8167E92BCB31E500E3978D /* StandardGameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardGameViewModel.swift; sourceTree = "<group>"; };
 		4B8167ED2BCC59CB00E3978D /* RushGameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RushGameViewModel.swift; sourceTree = "<group>"; };
 		4B8167EF2BCC5B1D00E3978D /* FrenzyGameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrenzyGameViewModel.swift; sourceTree = "<group>"; };
+		4B9D37B02BE97FD0007E6F8E /* BaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseProtocol.swift; sourceTree = "<group>"; };
+		4B9D37B32BE981E7007E6F8E /* StandardSaveModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardSaveModel.swift; sourceTree = "<group>"; };
+		4B9D37B52BE9832E007E6F8E /* RushSaveModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RushSaveModel.swift; sourceTree = "<group>"; };
+		4B9D37B72BE9836F007E6F8E /* FrenzySaveModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrenzySaveModel.swift; sourceTree = "<group>"; };
+		4B9D37B92BE983C0007E6F8E /* ZenSaveModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZenSaveModel.swift; sourceTree = "<group>"; };
 		4BA4CF322BB7BAB100B9F36B /* GameOverViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverViewModel.swift; sourceTree = "<group>"; };
 		4BB0BEB52BBC8ABD003BA895 /* BaseComponenetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseComponenetModel.swift; sourceTree = "<group>"; };
 		4BB0BEC22BBF8D1B003BA895 /* GameSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSelectView.swift; sourceTree = "<group>"; };
@@ -237,6 +247,7 @@
 		4B3388BC2BB4C16D00A10A27 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				4B9D37B22BE981AF007E6F8E /* Save Models */,
 				4B1426C22BE08D9E00C10659 /* Stats Models */,
 				4B1426BF2BDF1E6900C10659 /* Settings Models */,
 				4BB0BEC12BBF891B003BA895 /* Component Models */,
@@ -310,6 +321,18 @@
 				4BF6D8EA2BCF3A1E00BEAB39 /* TimerViewModel.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		4B9D37B22BE981AF007E6F8E /* Save Models */ = {
+			isa = PBXGroup;
+			children = (
+				4B9D37B02BE97FD0007E6F8E /* BaseProtocol.swift */,
+				4B9D37B32BE981E7007E6F8E /* StandardSaveModel.swift */,
+				4B9D37B52BE9832E007E6F8E /* RushSaveModel.swift */,
+				4B9D37B72BE9836F007E6F8E /* FrenzySaveModel.swift */,
+				4B9D37B92BE983C0007E6F8E /* ZenSaveModel.swift */,
+			);
+			path = "Save Models";
 			sourceTree = "<group>";
 		};
 		4BA4CF342BB8E4BD00B9F36B /* Component Views */ = {
@@ -452,9 +475,11 @@
 				4BF6D8F62BD22F7800BEAB39 /* MainMenuViewModel.swift in Sources */,
 				4B08AA1F2BC0E40400810F22 /* ScreenSizeUtility.swift in Sources */,
 				4B3388BE2BB4C1C800A10A27 /* WordsCollection.swift in Sources */,
+				4B9D37B42BE981E7007E6F8E /* StandardSaveModel.swift in Sources */,
 				4B6808742BDB60E100E8FE34 /* KeyboardEntryTypeEnum.swift in Sources */,
 				4B8167E82BCA0C8300E3978D /* TimerView.swift in Sources */,
 				4BFD3E8B2BDB5A9500C0741F /* GameSettingEnums.swift in Sources */,
+				4B9D37BA2BE983C0007E6F8E /* ZenSaveModel.swift in Sources */,
 				4B8167D72BC324A400E3978D /* ShakeEffect.swift in Sources */,
 				4B3388D02BB6337300A10A27 /* LetterComparisonEnum.swift in Sources */,
 				4B3388932BB4B36400A10A27 /* StandardGameView.swift in Sources */,
@@ -478,14 +503,17 @@
 				4B5DE8992BE2D9A60020F690 /* ThreeDButtonView.swift in Sources */,
 				4B8167DB2BC4F27800E3978D /* RushGameView.swift in Sources */,
 				4BF6D8F42BD2161800BEAB39 /* GameModeOptions.swift in Sources */,
+				4B9D37B12BE97FD0007E6F8E /* BaseProtocol.swift in Sources */,
 				4B3388C32BB4DD9400A10A27 /* KeyboardView.swift in Sources */,
 				4BFD3E822BD626B700C0741F /* GameOverModel.swift in Sources */,
 				4B3388D62BB7A3F800A10A27 /* GameOverView.swift in Sources */,
 				4BFD3E842BDB157D00C0741F /* SFAssets.swift in Sources */,
 				4B68087B2BDC7AA500E8FE34 /* StatsViewModel.swift in Sources */,
+				4B9D37B62BE9832E007E6F8E /* RushSaveModel.swift in Sources */,
 				4BF6D8EB2BCF3A1E00BEAB39 /* TimerViewModel.swift in Sources */,
 				4BFD3E872BDB167300C0741F /* SystemNames.swift in Sources */,
 				4BF6D8FB2BD2FE2300BEAB39 /* GameSelectOptionsView.swift in Sources */,
+				4B9D37B82BE9836F007E6F8E /* FrenzySaveModel.swift in Sources */,
 				4B3388BB2BB4C13300A10A27 /* GuessWordModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

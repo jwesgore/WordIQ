@@ -43,7 +43,7 @@ class StandardGameVM: WordGameVM, WordGameSubclassObserver, GameOverVMObserver {
             gameDifficulty: super.difficulty,
             
             numCorrectWords: 1,
-            numValidGuesses: super.numValidGuesses,
+            numValidGuesses: result == .win ? super.numValidGuesses : 7,
             numInvalidGuesses: super.numInvalidGuesses,
             
             timeLimit: nil,

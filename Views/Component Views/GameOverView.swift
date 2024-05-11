@@ -2,8 +2,7 @@ import SwiftUI
 import SwiftData
 
 struct GameOver: View {
-    
-    @Environment(\.modelContext) private var context
+    @Environment(\.modelContext) private var modelContext
     @ObservedObject var model: GameOverVM
     
     let cornerRadius: CGFloat = 20
@@ -38,8 +37,22 @@ struct GameOver: View {
         }
         .frame(width:ScreenSize.width! * 0.9)
         .onAppear {
-            let data = model.saveData()
-            context.insert(data)
+            switch model.results.gameMode {
+            case .standardgame:
+                let initmodel = StandardSaveModel(model: model.results)
+                modelContext.insert(initmodel)
+            case .rushgame:
+                let initmodel = RushSaveModel(model: model.results)
+                modelContext.insert(initmodel)
+            case .frenzygame:
+                let initmodel = FrenzySaveModel(model: model.results)
+                modelContext.insert(initmodel)
+            case .zengame:
+                let initmodel = ZenSaveModel(model: model.results)
+                modelContext.insert(initmodel)
+            default:
+                return
+            }
         }
     }
 }

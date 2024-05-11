@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4B066F0C2BEC1404000B0CC1 /* DonutChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B066F0B2BEC1404000B0CC1 /* DonutChart.swift */; };
+		4B066F0F2BEC4009000B0CC1 /* StandardStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B066F0E2BEC4009000B0CC1 /* StandardStats.swift */; };
+		4B066F112BEC403D000B0CC1 /* RushStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B066F102BEC403D000B0CC1 /* RushStats.swift */; };
+		4B066F132BEC407F000B0CC1 /* FrenzyStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B066F122BEC407F000B0CC1 /* FrenzyStats.swift */; };
+		4B066F152BEC40BC000B0CC1 /* ZenStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B066F142BEC40BC000B0CC1 /* ZenStats.swift */; };
+		4B066F172BEC40F9000B0CC1 /* OverviewStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B066F162BEC40F9000B0CC1 /* OverviewStats.swift */; };
+		4B066F1C2BEC4193000B0CC1 /* DisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B066F1B2BEC4193000B0CC1 /* DisplayData.swift */; };
+		4B066F1E2BEC41C6000B0CC1 /* ChartData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B066F1D2BEC41C6000B0CC1 /* ChartData.swift */; };
 		4B08AA1F2BC0E40400810F22 /* ScreenSizeUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B08AA1E2BC0E40400810F22 /* ScreenSizeUtility.swift */; };
 		4B0BEE8E2BB8E6B10007772B /* WordGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0BEE8D2BB8E6B10007772B /* WordGameViewModel.swift */; };
 		4B0BEE932BBB836A0007772B /* five_letter_words_medium.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4B0BEE902BBB836A0007772B /* five_letter_words_medium.txt */; };
@@ -15,7 +23,6 @@
 		4B0BEE992BBB85F10007772B /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0BEE982BBB85F10007772B /* SplashScreenView.swift */; };
 		4B0BEE9B2BBB86220007772B /* MainMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0BEE9A2BBB86220007772B /* MainMenuView.swift */; };
 		4B1426C12BDF405500C10659 /* StatsFilterEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1426C02BDF405500C10659 /* StatsFilterEnum.swift */; };
-		4B1426C42BE08DBB00C10659 /* Overview Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1426C32BE08DBB00C10659 /* Overview Model.swift */; };
 		4B3388912BB4B36400A10A27 /* wordPuzzleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3388902BB4B36400A10A27 /* wordPuzzleApp.swift */; };
 		4B3388932BB4B36400A10A27 /* StandardGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3388922BB4B36400A10A27 /* StandardGameView.swift */; };
 		4B3388952BB4B36600A10A27 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B3388942BB4B36600A10A27 /* Assets.xcassets */; };
@@ -30,12 +37,18 @@
 		4B3388D02BB6337300A10A27 /* LetterComparisonEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3388CF2BB6337300A10A27 /* LetterComparisonEnum.swift */; };
 		4B3388D22BB7583100A10A27 /* WordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3388D12BB7583000A10A27 /* WordModel.swift */; };
 		4B3388D62BB7A3F800A10A27 /* GameOverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3388D52BB7A3F800A10A27 /* GameOverView.swift */; };
+		4B4FCEB02BEC7633005FC154 /* StatsTextItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4FCEAF2BEC7633005FC154 /* StatsTextItem.swift */; };
+		4B4FCEB32BEEEC8C005FC154 /* OverviewStatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4FCEB22BEEEC8C005FC154 /* OverviewStatsView.swift */; };
+		4B4FCEB52BEEED83005FC154 /* StandardStatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4FCEB42BEEED83005FC154 /* StandardStatsView.swift */; };
+		4B4FCEB72BEEEE3E005FC154 /* RushStatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4FCEB62BEEEE3E005FC154 /* RushStatsView.swift */; };
+		4B4FCEB92BEEEF6D005FC154 /* FrenzyStatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4FCEB82BEEEF6D005FC154 /* FrenzyStatsView.swift */; };
+		4B4FCEBB2BEEEF90005FC154 /* ZenStatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4FCEBA2BEEEF90005FC154 /* ZenStatsView.swift */; };
 		4B5DE8992BE2D9A60020F690 /* ThreeDButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5DE8982BE2D9A50020F690 /* ThreeDButtonView.swift */; };
-		4B5DE89B2BE352BA0020F690 /* StatsChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5DE89A2BE352BA0020F690 /* StatsChart.swift */; };
+		4B5DE89B2BE352BA0020F690 /* GuessDistributionBarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5DE89A2BE352BA0020F690 /* GuessDistributionBarChart.swift */; };
 		4B5DE89D2BE6E5CD0020F690 /* StatsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5DE89C2BE6E5CD0020F690 /* StatsSection.swift */; };
 		4B6808742BDB60E100E8FE34 /* KeyboardEntryTypeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6808732BDB60E100E8FE34 /* KeyboardEntryTypeEnum.swift */; };
 		4B6808762BDB6B2A00E8FE34 /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6808752BDB6B2A00E8FE34 /* StatsView.swift */; };
-		4B6808792BDC6E9200E8FE34 /* StatsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6808782BDC6E9200E8FE34 /* StatsItem.swift */; };
+		4B6808792BDC6E9200E8FE34 /* StatsValueItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6808782BDC6E9200E8FE34 /* StatsValueItem.swift */; };
 		4B68087B2BDC7AA500E8FE34 /* StatsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B68087A2BDC7AA500E8FE34 /* StatsViewModel.swift */; };
 		4B8167D72BC324A400E3978D /* ShakeEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8167D62BC324A400E3978D /* ShakeEffect.swift */; };
 		4B8167D92BC4F26900E3978D /* FrenzyGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8167D82BC4F26900E3978D /* FrenzyGameView.swift */; };
@@ -70,6 +83,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4B066F0B2BEC1404000B0CC1 /* DonutChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonutChart.swift; sourceTree = "<group>"; };
+		4B066F0E2BEC4009000B0CC1 /* StandardStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardStats.swift; sourceTree = "<group>"; };
+		4B066F102BEC403D000B0CC1 /* RushStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RushStats.swift; sourceTree = "<group>"; };
+		4B066F122BEC407F000B0CC1 /* FrenzyStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrenzyStats.swift; sourceTree = "<group>"; };
+		4B066F142BEC40BC000B0CC1 /* ZenStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZenStats.swift; sourceTree = "<group>"; };
+		4B066F162BEC40F9000B0CC1 /* OverviewStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewStats.swift; sourceTree = "<group>"; };
+		4B066F1B2BEC4193000B0CC1 /* DisplayData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayData.swift; sourceTree = "<group>"; };
+		4B066F1D2BEC41C6000B0CC1 /* ChartData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartData.swift; sourceTree = "<group>"; };
 		4B08AA1E2BC0E40400810F22 /* ScreenSizeUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenSizeUtility.swift; sourceTree = "<group>"; };
 		4B0BEE8D2BB8E6B10007772B /* WordGameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordGameViewModel.swift; sourceTree = "<group>"; };
 		4B0BEE902BBB836A0007772B /* five_letter_words_medium.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = five_letter_words_medium.txt; path = "../../../Downloads/word lists/five_letter_words_medium.txt"; sourceTree = "<group>"; };
@@ -78,7 +99,6 @@
 		4B0BEE982BBB85F10007772B /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
 		4B0BEE9A2BBB86220007772B /* MainMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuView.swift; sourceTree = "<group>"; };
 		4B1426C02BDF405500C10659 /* StatsFilterEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsFilterEnum.swift; sourceTree = "<group>"; };
-		4B1426C32BE08DBB00C10659 /* Overview Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Overview Model.swift"; sourceTree = "<group>"; };
 		4B33888D2BB4B36400A10A27 /* wordGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = wordGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B3388902BB4B36400A10A27 /* wordPuzzleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = wordPuzzleApp.swift; sourceTree = "<group>"; };
 		4B3388922BB4B36400A10A27 /* StandardGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardGameView.swift; sourceTree = "<group>"; };
@@ -94,12 +114,18 @@
 		4B3388CF2BB6337300A10A27 /* LetterComparisonEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetterComparisonEnum.swift; sourceTree = "<group>"; };
 		4B3388D12BB7583000A10A27 /* WordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordModel.swift; sourceTree = "<group>"; };
 		4B3388D52BB7A3F800A10A27 /* GameOverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverView.swift; sourceTree = "<group>"; };
+		4B4FCEAF2BEC7633005FC154 /* StatsTextItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsTextItem.swift; sourceTree = "<group>"; };
+		4B4FCEB22BEEEC8C005FC154 /* OverviewStatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewStatsView.swift; sourceTree = "<group>"; };
+		4B4FCEB42BEEED83005FC154 /* StandardStatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardStatsView.swift; sourceTree = "<group>"; };
+		4B4FCEB62BEEEE3E005FC154 /* RushStatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RushStatsView.swift; sourceTree = "<group>"; };
+		4B4FCEB82BEEEF6D005FC154 /* FrenzyStatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrenzyStatsView.swift; sourceTree = "<group>"; };
+		4B4FCEBA2BEEEF90005FC154 /* ZenStatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZenStatsView.swift; sourceTree = "<group>"; };
 		4B5DE8982BE2D9A50020F690 /* ThreeDButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreeDButtonView.swift; sourceTree = "<group>"; };
-		4B5DE89A2BE352BA0020F690 /* StatsChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsChart.swift; sourceTree = "<group>"; };
+		4B5DE89A2BE352BA0020F690 /* GuessDistributionBarChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuessDistributionBarChart.swift; sourceTree = "<group>"; };
 		4B5DE89C2BE6E5CD0020F690 /* StatsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsSection.swift; sourceTree = "<group>"; };
 		4B6808732BDB60E100E8FE34 /* KeyboardEntryTypeEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardEntryTypeEnum.swift; sourceTree = "<group>"; };
 		4B6808752BDB6B2A00E8FE34 /* StatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsView.swift; sourceTree = "<group>"; };
-		4B6808782BDC6E9200E8FE34 /* StatsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsItem.swift; sourceTree = "<group>"; };
+		4B6808782BDC6E9200E8FE34 /* StatsValueItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsValueItem.swift; sourceTree = "<group>"; };
 		4B68087A2BDC7AA500E8FE34 /* StatsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsViewModel.swift; sourceTree = "<group>"; };
 		4B8167D62BC324A400E3978D /* ShakeEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeEffect.swift; sourceTree = "<group>"; };
 		4B8167D82BC4F26900E3978D /* FrenzyGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrenzyGameView.swift; sourceTree = "<group>"; };
@@ -144,6 +170,46 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4B066F0D2BEC3FD0000B0CC1 /* Stats and Charts */ = {
+			isa = PBXGroup;
+			children = (
+				4B68087A2BDC7AA500E8FE34 /* StatsViewModel.swift */,
+				4B6808772BDC6E6300E8FE34 /* Views */,
+				4B066F1A2BEC417B000B0CC1 /* Charts */,
+				4B066F182BEC4111000B0CC1 /* Stats Models */,
+			);
+			path = "Stats and Charts";
+			sourceTree = "<group>";
+		};
+		4B066F182BEC4111000B0CC1 /* Stats Models */ = {
+			isa = PBXGroup;
+			children = (
+				4B066F0E2BEC4009000B0CC1 /* StandardStats.swift */,
+				4B066F102BEC403D000B0CC1 /* RushStats.swift */,
+				4B066F122BEC407F000B0CC1 /* FrenzyStats.swift */,
+				4B066F142BEC40BC000B0CC1 /* ZenStats.swift */,
+				4B066F162BEC40F9000B0CC1 /* OverviewStats.swift */,
+			);
+			path = "Stats Models";
+			sourceTree = "<group>";
+		};
+		4B066F192BEC4127000B0CC1 /* Swift Data */ = {
+			isa = PBXGroup;
+			children = (
+				4B9D37B22BE981AF007E6F8E /* Save Models */,
+			);
+			path = "Swift Data";
+			sourceTree = "<group>";
+		};
+		4B066F1A2BEC417B000B0CC1 /* Charts */ = {
+			isa = PBXGroup;
+			children = (
+				4B066F1B2BEC4193000B0CC1 /* DisplayData.swift */,
+				4B066F1D2BEC41C6000B0CC1 /* ChartData.swift */,
+			);
+			path = Charts;
+			sourceTree = "<group>";
+		};
 		4B08AA202BC1EB7E00810F22 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
@@ -197,17 +263,11 @@
 			path = "Settings Models";
 			sourceTree = "<group>";
 		};
-		4B1426C22BE08D9E00C10659 /* Stats Models */ = {
-			isa = PBXGroup;
-			children = (
-				4B1426C32BE08DBB00C10659 /* Overview Model.swift */,
-			);
-			path = "Stats Models";
-			sourceTree = "<group>";
-		};
 		4B3388842BB4B36400A10A27 = {
 			isa = PBXGroup;
 			children = (
+				4B066F192BEC4127000B0CC1 /* Swift Data */,
+				4B066F0D2BEC3FD0000B0CC1 /* Stats and Charts */,
 				4BFD3E852BDB163F00C0741F /* Assets */,
 				4B08AA202BC1EB7E00810F22 /* Utilities */,
 				4B0BEE8F2BBB83470007772B /* Word Lists */,
@@ -247,8 +307,6 @@
 		4B3388BC2BB4C16D00A10A27 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				4B9D37B22BE981AF007E6F8E /* Save Models */,
-				4B1426C22BE08D9E00C10659 /* Stats Models */,
 				4B1426BF2BDF1E6900C10659 /* Settings Models */,
 				4BB0BEC12BBF891B003BA895 /* Component Models */,
 				4BB0BEC02BBF8904003BA895 /* Word Models */,
@@ -259,7 +317,6 @@
 		4B3388BF2BB4C4CC00A10A27 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				4B6808772BDC6E6300E8FE34 /* Stats Widgets */,
 				4B0BEE972BBB85CF0007772B /* UI Views */,
 				4B0BEE962BBB85BD0007772B /* Game Mode Views */,
 				4BA4CF342BB8E4BD00B9F36B /* Component Views */,
@@ -273,9 +330,20 @@
 				4BF6D8F92BD236FA00BEAB39 /* MenuScreens */,
 				4B8167EC2BCB63DC00E3978D /* Components */,
 				4B8167EB2BCB63CB00E3978D /* GameModes */,
-				4B68087A2BDC7AA500E8FE34 /* StatsViewModel.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		4B4FCEB12BEEEC64005FC154 /* Stats Sections */ = {
+			isa = PBXGroup;
+			children = (
+				4B4FCEB22BEEEC8C005FC154 /* OverviewStatsView.swift */,
+				4B4FCEB42BEEED83005FC154 /* StandardStatsView.swift */,
+				4B4FCEB62BEEEE3E005FC154 /* RushStatsView.swift */,
+				4B4FCEB82BEEEF6D005FC154 /* FrenzyStatsView.swift */,
+				4B4FCEBA2BEEEF90005FC154 /* ZenStatsView.swift */,
+			);
+			path = "Stats Sections";
 			sourceTree = "<group>";
 		};
 		4B6808722BDB60A200E8FE34 /* Enums */ = {
@@ -290,15 +358,18 @@
 			path = Enums;
 			sourceTree = "<group>";
 		};
-		4B6808772BDC6E6300E8FE34 /* Stats Widgets */ = {
+		4B6808772BDC6E6300E8FE34 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				4B4FCEB12BEEEC64005FC154 /* Stats Sections */,
 				4B6808752BDB6B2A00E8FE34 /* StatsView.swift */,
-				4B6808782BDC6E9200E8FE34 /* StatsItem.swift */,
-				4B5DE89A2BE352BA0020F690 /* StatsChart.swift */,
+				4B6808782BDC6E9200E8FE34 /* StatsValueItem.swift */,
+				4B5DE89A2BE352BA0020F690 /* GuessDistributionBarChart.swift */,
 				4B5DE89C2BE6E5CD0020F690 /* StatsSection.swift */,
+				4B066F0B2BEC1404000B0CC1 /* DonutChart.swift */,
+				4B4FCEAF2BEC7633005FC154 /* StatsTextItem.swift */,
 			);
-			path = "Stats Widgets";
+			path = Views;
 			sourceTree = "<group>";
 		};
 		4B8167EB2BCB63CB00E3978D /* GameModes */ = {
@@ -462,24 +533,30 @@
 			files = (
 				4B6808762BDB6B2A00E8FE34 /* StatsView.swift in Sources */,
 				4BA4CF332BB7BAB100B9F36B /* GameOverViewModel.swift in Sources */,
+				4B4FCEB72BEEEE3E005FC154 /* RushStatsView.swift in Sources */,
 				4B3388D22BB7583100A10A27 /* WordModel.swift in Sources */,
 				4BB0BEC32BBF8D1B003BA895 /* GameSelectView.swift in Sources */,
 				4BF6D8F82BD22FA500BEAB39 /* GameSelectViewModel.swift in Sources */,
 				4B0BEE992BBB85F10007772B /* SplashScreenView.swift in Sources */,
+				4B066F1E2BEC41C6000B0CC1 /* ChartData.swift in Sources */,
 				4B3388C82BB5F3F900A10A27 /* KeyboardModel.swift in Sources */,
 				4BB0BEB62BBC8ABD003BA895 /* BaseComponenetModel.swift in Sources */,
+				4B4FCEB92BEEEF6D005FC154 /* FrenzyStatsView.swift in Sources */,
 				4B8167F02BCC5B1D00E3978D /* FrenzyGameViewModel.swift in Sources */,
 				4B5DE89D2BE6E5CD0020F690 /* StatsSection.swift in Sources */,
-				4B1426C42BE08DBB00C10659 /* Overview Model.swift in Sources */,
+				4B066F0F2BEC4009000B0CC1 /* StandardStats.swift in Sources */,
 				4B8167D92BC4F26900E3978D /* FrenzyGameView.swift in Sources */,
 				4BF6D8F62BD22F7800BEAB39 /* MainMenuViewModel.swift in Sources */,
 				4B08AA1F2BC0E40400810F22 /* ScreenSizeUtility.swift in Sources */,
+				4B066F172BEC40F9000B0CC1 /* OverviewStats.swift in Sources */,
 				4B3388BE2BB4C1C800A10A27 /* WordsCollection.swift in Sources */,
+				4B4FCEB02BEC7633005FC154 /* StatsTextItem.swift in Sources */,
 				4B9D37B42BE981E7007E6F8E /* StandardSaveModel.swift in Sources */,
 				4B6808742BDB60E100E8FE34 /* KeyboardEntryTypeEnum.swift in Sources */,
 				4B8167E82BCA0C8300E3978D /* TimerView.swift in Sources */,
 				4BFD3E8B2BDB5A9500C0741F /* GameSettingEnums.swift in Sources */,
 				4B9D37BA2BE983C0007E6F8E /* ZenSaveModel.swift in Sources */,
+				4B066F152BEC40BC000B0CC1 /* ZenStats.swift in Sources */,
 				4B8167D72BC324A400E3978D /* ShakeEffect.swift in Sources */,
 				4B3388D02BB6337300A10A27 /* LetterComparisonEnum.swift in Sources */,
 				4B3388932BB4B36400A10A27 /* StandardGameView.swift in Sources */,
@@ -489,20 +566,27 @@
 				4B0BEE9B2BBB86220007772B /* MainMenuView.swift in Sources */,
 				4BFD3E892BDB568A00C0741F /* SaveDataModel.swift in Sources */,
 				4B1426C12BDF405500C10659 /* StatsFilterEnum.swift in Sources */,
-				4B6808792BDC6E9200E8FE34 /* StatsItem.swift in Sources */,
+				4B6808792BDC6E9200E8FE34 /* StatsValueItem.swift in Sources */,
 				4B8167EE2BCC59CB00E3978D /* RushGameViewModel.swift in Sources */,
+				4B066F0C2BEC1404000B0CC1 /* DonutChart.swift in Sources */,
 				4B8167E12BC8B59600E3978D /* ZenGameViewModel.swift in Sources */,
+				4B4FCEB52BEEED83005FC154 /* StandardStatsView.swift in Sources */,
 				4B0BEE8E2BB8E6B10007772B /* WordGameViewModel.swift in Sources */,
+				4B066F112BEC403D000B0CC1 /* RushStats.swift in Sources */,
 				4B8167DF2BC6115A00E3978D /* UIColorExtension.swift in Sources */,
+				4B066F132BEC407F000B0CC1 /* FrenzyStats.swift in Sources */,
+				4B066F1C2BEC4193000B0CC1 /* DisplayData.swift in Sources */,
 				4BFD3E8D2BDB5AEF00C0741F /* ActiveViewEnum.swift in Sources */,
 				4B3388CA2BB5F62700A10A27 /* KeyboardViewModel.swift in Sources */,
 				4B8167EA2BCB31E500E3978D /* StandardGameViewModel.swift in Sources */,
 				4BB0BEC52BC0B4AB003BA895 /* TransitionsUtility.swift in Sources */,
 				4B3388912BB4B36400A10A27 /* wordPuzzleApp.swift in Sources */,
-				4B5DE89B2BE352BA0020F690 /* StatsChart.swift in Sources */,
+				4B5DE89B2BE352BA0020F690 /* GuessDistributionBarChart.swift in Sources */,
 				4B5DE8992BE2D9A60020F690 /* ThreeDButtonView.swift in Sources */,
+				4B4FCEBB2BEEEF90005FC154 /* ZenStatsView.swift in Sources */,
 				4B8167DB2BC4F27800E3978D /* RushGameView.swift in Sources */,
 				4BF6D8F42BD2161800BEAB39 /* GameModeOptions.swift in Sources */,
+				4B4FCEB32BEEEC8C005FC154 /* OverviewStatsView.swift in Sources */,
 				4B9D37B12BE97FD0007E6F8E /* BaseProtocol.swift in Sources */,
 				4B3388C32BB4DD9400A10A27 /* KeyboardView.swift in Sources */,
 				4BFD3E822BD626B700C0741F /* GameOverModel.swift in Sources */,

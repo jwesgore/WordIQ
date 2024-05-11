@@ -6,6 +6,16 @@ enum GameMode: String, Codable {
     case frenzygame
     case zengame
     case null
+    
+    var value: String {
+        switch self {
+        case .standardgame: return "Standard"
+        case .rushgame: return "Rush"
+        case .frenzygame: return "Frenzy"
+        case .zengame: return "Zen"
+        default: return ""
+        }
+    }
 }
 
 enum GameDifficulty: String, Codable {
@@ -13,6 +23,15 @@ enum GameDifficulty: String, Codable {
     case normal
     case hard
     case null
+    
+    var value: String {
+        switch self {
+        case .easy: return "Easy"
+        case .normal: return "Normal"
+        case .hard: return "Hard"
+        default: return ""
+        }
+    }
 }
 
 enum GameOverResult: String, Codable {

@@ -10,6 +10,7 @@ struct GameOverModel {
     var timeLimit: Int?
     var timeElapsed: Int = 0
     var timeRemaining: Int?
+    var xp: Int = 0
     
     var correctWord: String = ""
     var lastGuessedWord: String = ""

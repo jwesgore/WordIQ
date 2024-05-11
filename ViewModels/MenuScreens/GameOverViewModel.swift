@@ -18,9 +18,9 @@ class GameOverVM: ObservableObject {
         self.bodyContents = [GameOverStat]()
     }
     
-    func saveData() -> GameData{
-        return GameData(gameOverModel: results)
-    }
+//    func saveData() -> GameData{
+//        return GameData(gameOverModel: results)
+//    }
     
     // MARK: Modify results
     // Reset all data in view

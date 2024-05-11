@@ -13,7 +13,7 @@ struct StatsHeader: View {
     }
 }
 
-struct StatsItem: View {
+struct StatsValueItem: View {
     var data: DisplayData
     
     var body: some View {
@@ -40,6 +40,6 @@ struct StatsItem: View {
 #Preview {
     VStack{
         StatsHeader(header: "Test")
-        StatsItem(data: DisplayData(label: "Test Label", value: "51"))
+        StatsValueItem(data: DisplayData(label: "Test Label", value: "51"))
     }
 }

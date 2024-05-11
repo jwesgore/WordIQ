@@ -52,6 +52,22 @@ class TimerVM: ObservableObject {
         return String(format: "%d:%02d", minutes, remainingSeconds)
     }
     
+    static func timeToLongString(_ time: Int = -1) -> String {
+        var timeString = ""
+        
+        
+        let days = time / 86400
+        let hours = (time / 3600) % 24
+        let minutes = (time / 60) % 60
+        let remainingSeconds = time % 60
+        
+        if days > 0 {timeString += days.formatted() + " days "}
+        if hours > 0 {timeString += hours.formatted() + " hours "}
+        if minutes > 0 {timeString += minutes.formatted() + " minutes "}
+        timeString += remainingSeconds.formatted() + " seconds"
+        return timeString
+    }
+    
     // MARK: Operate timer functions
     /// Resets the timer to the initial value
     func resetTimer() {

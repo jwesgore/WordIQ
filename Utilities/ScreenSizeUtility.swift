@@ -12,6 +12,13 @@ struct UISize {
         static let sectionBottomPadding = CGFloat(30)
         static let sectionSidePadding = ScreenSize.width! * 0.05
     }
+    struct keyboard {
+        static let maxWidth = CGFloat(500)
+        static let maxHeight = CGFloat(300)
+    }
+    struct main {
+        static let maxWidth = CGFloat(500)
+    }
 }
 
 private extension UIWindow {

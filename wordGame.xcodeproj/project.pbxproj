@@ -346,6 +346,15 @@
 			path = "Stats Sections";
 			sourceTree = "<group>";
 		};
+		4B4FCEBC2BEEF818005FC154 /* Charts */ = {
+			isa = PBXGroup;
+			children = (
+				4B5DE89A2BE352BA0020F690 /* GuessDistributionBarChart.swift */,
+				4B066F0B2BEC1404000B0CC1 /* DonutChart.swift */,
+			);
+			path = Charts;
+			sourceTree = "<group>";
+		};
 		4B6808722BDB60A200E8FE34 /* Enums */ = {
 			isa = PBXGroup;
 			children = (
@@ -361,12 +370,11 @@
 		4B6808772BDC6E6300E8FE34 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				4B4FCEBC2BEEF818005FC154 /* Charts */,
 				4B4FCEB12BEEEC64005FC154 /* Stats Sections */,
 				4B6808752BDB6B2A00E8FE34 /* StatsView.swift */,
 				4B6808782BDC6E9200E8FE34 /* StatsValueItem.swift */,
-				4B5DE89A2BE352BA0020F690 /* GuessDistributionBarChart.swift */,
 				4B5DE89C2BE6E5CD0020F690 /* StatsSection.swift */,
-				4B066F0B2BEC1404000B0CC1 /* DonutChart.swift */,
 				4B4FCEAF2BEC7633005FC154 /* StatsTextItem.swift */,
 			);
 			path = Views;

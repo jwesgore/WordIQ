@@ -6,6 +6,7 @@ struct ThreeDButton: View {
     var isPressed: Bool
     var radio: Bool
     let delay: Double
+    let speed: Double
     let height: CGFloat
     let width: CGFloat
     let action: () -> Void
@@ -49,13 +50,13 @@ struct ThreeDButton: View {
         .simultaneousGesture(DragGesture(minimumDistance: 0)
             .onChanged { _ in
                 guard !radio else { return }
-                withAnimation(.easeInOut(duration: 0.1)) {
+                withAnimation(.easeInOut(duration: speed)) {
                     self.offset = 5.0
                 }
             }
             .onEnded { _ in
                 guard !radio else { return }
-                withAnimation(.easeInOut(duration: 0.1)) {
+                withAnimation(.easeInOut(duration: speed)) {
                     self.offset = 0.0
                 }
             }
@@ -68,7 +69,7 @@ struct ThreeDButton: View {
         }
         .onChange(of: self.isPressed) {
             guard radio else { return }
-            withAnimation(.easeInOut(duration: 0.1)) {
+            withAnimation(.easeInOut(duration: speed)) {
                 self.offset = self.isPressed ? 5.0 : 0.0
             }
         }
@@ -80,6 +81,7 @@ struct ThreeDButton: View {
          radioBackgroundColor: Color = Color.Buttons.radioActive,
          borderColor: Color = Color.Border.bcGameModeSelect,
          delay: Double = 0.5,
+         speed: Double = 0.1,
          isPressed: Bool = false,
          radio: Bool = false,
          action: @escaping () -> Void,
@@ -91,6 +93,7 @@ struct ThreeDButton: View {
         self.borderColor = borderColor
         
         self.delay = delay
+        self.speed = speed
         self.isPressed = isPressed
         self.radio = radio
         

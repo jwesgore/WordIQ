@@ -11,6 +11,7 @@ struct KeyboardView: View {
             KeyboardRow(rowElements: keyboardViewModel.middleRow, viewModel: keyboardViewModel)
             KeyboardRow(rowElements: keyboardViewModel.bottomRow, viewModel: keyboardViewModel)
         }
+        .frame(maxWidth: UISize.keyboard.maxWidth, maxHeight: UISize.keyboard.maxHeight)
     }
 }
 
@@ -36,7 +37,7 @@ struct KeyboardElement: View {
     
     var body: some View {
         let buttonView = ImageOrText(component: key)
-    
+
         Button (action: {
             viewModel.keyPressed(key: key.value)
             UIImpactFeedbackGenerator(style: .light).impactOccurred()

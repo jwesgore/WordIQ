@@ -45,7 +45,7 @@ struct StandardGameView: View {
                     GameBoard(gameboardVM: standardGameVM.gameboardVM)
                     Spacer()
                     KeyboardView (keyboardViewModel: standardGameVM.keyboardVM)
-                        .padding()
+                        .padding(.horizontal)
                 }
             default:
                 EmptyView()

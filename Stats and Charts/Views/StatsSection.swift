@@ -30,7 +30,3 @@ struct StatsSection: View {
         }
     }
 }
-
-//#Preview {
-//    StatsSection()
-//}

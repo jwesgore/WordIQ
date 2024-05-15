@@ -38,6 +38,7 @@ private struct GameSelectModeView: View {
             
             Spacer()
         }
+        
     }
 }
 
@@ -52,7 +53,7 @@ private struct GameModeView: View {
     let delay: Double = 0.2
     
     var body: some View {
-        ThreeDButton(height: height, width: width, delay: delay, action: action, contents: AnyView(
+        ThreeDButton(height: height, width: width, delay: delay, speed: 0.25, action: action, contents: AnyView(
             ZStack {
                 // MARK: Title
                 VStack {

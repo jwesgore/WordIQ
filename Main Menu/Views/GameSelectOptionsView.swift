@@ -7,6 +7,11 @@ struct GameSelectOptionsView: View {
     var body: some View {
         VStack (spacing: 15) {
             
+            // MARK: Info Box
+            GameSelectModeInfo(mode: gameSelectVM.activeView.toGameMode)
+                .frame(width: ScreenSize.width! * 0.9)
+            //GameSelectModeInfo(mode: .standardgame)
+            
             // MARK: Game Difficulty Buttons
             GameSelectOptionsDifficulty(diffParams: gameSelectVM.gameOptionsSelect.easy, list: gameSelectVM.options.wordList) {
                     gameSelectVM.setDifficulty(wordList: WordLists.fiveEasy, difficulty: .easy)
@@ -31,11 +36,34 @@ struct GameSelectOptionsView: View {
             
             // MARK: Submit and Back Buttons
             VStack {
-                Button(action: {
+                ThreeDButton(
+                 height: ScreenSize.height! * 0.055, 
+                 width: .infinity,
+                 backgroundColor: .blue,
+                 borderColor: Color(.blue).opacity(0.6),
+                 delay: 0.1,
+                 speed: 0.05,
+                 action: {
                     gameSelectVM.startGame(gameSelectVM.activeView)
-                }, label: {
-                    GameSelectOptionsNavButtons(text: SystemNames.startGame, backgroundColor: .blue, foregroundColor: Color.Text.textColoredBackground)
-                })
+                }, contents:
+                AnyView(
+                    ZStack {
+                        HStack {
+                            Spacer()
+                            Text(SystemNames.startGame)
+                                .font(.custom(UIFonts.RobotoSlab.regular, size: CGFloat(UIFonts.Size.headline)))
+                                .foregroundStyle(Color.Text.textColoredBackground)
+                            Spacer()
+                        }
+                    }
+                    .frame(height: ScreenSize.height! * 0.055)
+                ))
+                
+//                Button(action: {
+//                    gameSelectVM.startGame(gameSelectVM.activeView)
+//                }, label: {
+//                    GameSelectOptionsNavButtons(text: SystemNames.startGame, backgroundColor: .blue, foregroundColor: Color.Text.textColoredBackground)
+//                })
                 
                 Button(action: {
                     gameSelectVM.gotoModes()
@@ -50,6 +78,32 @@ struct GameSelectOptionsView: View {
     }
 }
 
+private struct GameSelectModeInfo: View {
+    
+    let mode: String
+    let description: String
+    
+    var body: some View {
+        GroupBox {
+            VStack {
+                Text(mode)
+                    .font(.custom(UIFonts.RobotoSlab.bold, size: CGFloat(UIFonts.Size.title)))
+                    .padding(.bottom, 10)
+                HStack {
+                    Text(description)
+                        .font(.custom(UIFonts.RobotoSlab.regular, size: CGFloat(UIFonts.Size.headline)))
+                    Spacer()
+                }
+            }
+        }
+    }
+    
+    init(mode: GameMode) {
+        self.mode = mode.value
+        self.description = mode.description
+    }
+}
+
 private struct GameSelectOptionsNavButtons: View {
     var text: String
     var backgroundColor: Color
@@ -57,7 +111,8 @@ private struct GameSelectOptionsNavButtons: View {
     
     var body: some View {
         Text(text)
-            .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, maxHeight: ScreenSize.height! * 0.055)
+            .font(.custom(UIFonts.RobotoSlab.regular, size: CGFloat(UIFonts.Size.headline)))
+            .frame(maxWidth: .infinity, maxHeight: ScreenSize.height! * 0.055)
             .background(backgroundColor)
             .clipShape(.rect(cornerRadius: 25.0))
             .foregroundStyle(foregroundColor)
@@ -70,7 +125,7 @@ private struct GameSelectOptionsDifficulty: View{
     let list: String
     let action: () -> Void
     
-    let height: CGFloat = ScreenSize.height! * 0.12
+    let height: CGFloat = ScreenSize.height! * 0.06
     let width: CGFloat = ScreenSize.width! * 0.9
     let delay: Double = 0.0
     
@@ -80,44 +135,17 @@ private struct GameSelectOptionsDifficulty: View{
             ZStack {
                 // MARK: Title
                 VStack {
-                    Spacer()
-                        .frame(height: 20)
-                    
                     HStack{
                         Spacer()
                             .frame(width: 20)
                         
                         Text(diffParams.label)
-                            .font(.title2)
-                            .fontWeight(.semibold)
+                            .font(.custom(UIFonts.RobotoSlab.semiBold, size: CGFloat(UIFonts.Size.title2)))
                             .foregroundStyle(Color.Text.text)
                             .opacity(0.8)
                         
                         Spacer()
                     }
-                    
-                    Spacer()
-                }
-                .frame(width: width, height: height)
-                
-                // MARK: Body
-                VStack {
-                    Spacer()
-                        .frame(height: 5 + height / 2)
-                    
-                    HStack{
-                        Text(diffParams.description)
-                            .font(.caption)
-                            .fontWeight(.semibold)
-                            .foregroundStyle(Color.Text.text)
-                            .multilineTextAlignment(/*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/)
-                            .opacity(0.5)
-                        
-                        Spacer()
-                    }
-                    .padding(.horizontal, 20)
-                    
-                    Spacer()
                 }
                 .frame(width: width, height: height)
             }
@@ -144,7 +172,7 @@ private struct GameSelectOptionsTime: View {
                 ))
             }
         }
-        .frame(width: ScreenSize.width! * 0.9, height: ScreenSize.height! * 0.07)
+        .frame(width: ScreenSize.width! * 0.9, height: ScreenSize.height! * 0.06)
     }
 }
 

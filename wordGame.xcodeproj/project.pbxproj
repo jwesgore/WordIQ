@@ -23,6 +23,19 @@
 		4B0BEE992BBB85F10007772B /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0BEE982BBB85F10007772B /* SplashScreenView.swift */; };
 		4B0BEE9B2BBB86220007772B /* MainMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0BEE9A2BBB86220007772B /* MainMenuView.swift */; };
 		4B1426C12BDF405500C10659 /* StatsFilterEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1426C02BDF405500C10659 /* StatsFilterEnum.swift */; };
+		4B14518E2BF5923A00AC667A /* RobotoSlab-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4B1451802BF5923A00AC667A /* RobotoSlab-Black.ttf */; };
+		4B14518F2BF5923A00AC667A /* RobotoSlab-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4B1451812BF5923A00AC667A /* RobotoSlab-Bold.ttf */; };
+		4B1451902BF5923A00AC667A /* RobotoSlab-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4B1451822BF5923A00AC667A /* RobotoSlab-ExtraBold.ttf */; };
+		4B1451912BF5923A00AC667A /* RobotoSlab-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4B1451832BF5923A00AC667A /* RobotoSlab-ExtraLight.ttf */; };
+		4B1451922BF5923A00AC667A /* RobotoSlab-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4B1451842BF5923A00AC667A /* RobotoSlab-Light.ttf */; };
+		4B1451932BF5923A00AC667A /* RobotoSlab-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4B1451852BF5923A00AC667A /* RobotoSlab-Medium.ttf */; };
+		4B1451942BF5923A00AC667A /* RobotoSlab-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4B1451862BF5923A00AC667A /* RobotoSlab-Regular.ttf */; };
+		4B1451952BF5923A00AC667A /* RobotoSlab-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4B1451872BF5923A00AC667A /* RobotoSlab-SemiBold.ttf */; };
+		4B1451962BF5923A00AC667A /* RobotoSlab-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4B1451882BF5923A00AC667A /* RobotoSlab-Thin.ttf */; };
+		4B1451972BF5923A00AC667A /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4B14518A2BF5923A00AC667A /* LICENSE.txt */; };
+		4B1451982BF5923A00AC667A /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4B14518B2BF5923A00AC667A /* README.txt */; };
+		4B1451992BF5923A00AC667A /* RobotoSlab-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4B14518C2BF5923A00AC667A /* RobotoSlab-VariableFont_wght.ttf */; };
+		4B14519C2BF5987800AC667A /* FontNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B14519B2BF5987800AC667A /* FontNames.swift */; };
 		4B3388912BB4B36400A10A27 /* wordPuzzleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3388902BB4B36400A10A27 /* wordPuzzleApp.swift */; };
 		4B3388932BB4B36400A10A27 /* StandardGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3388922BB4B36400A10A27 /* StandardGameView.swift */; };
 		4B3388952BB4B36600A10A27 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B3388942BB4B36600A10A27 /* Assets.xcassets */; };
@@ -99,6 +112,20 @@
 		4B0BEE982BBB85F10007772B /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
 		4B0BEE9A2BBB86220007772B /* MainMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuView.swift; sourceTree = "<group>"; };
 		4B1426C02BDF405500C10659 /* StatsFilterEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsFilterEnum.swift; sourceTree = "<group>"; };
+		4B1451802BF5923A00AC667A /* RobotoSlab-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoSlab-Black.ttf"; sourceTree = "<group>"; };
+		4B1451812BF5923A00AC667A /* RobotoSlab-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoSlab-Bold.ttf"; sourceTree = "<group>"; };
+		4B1451822BF5923A00AC667A /* RobotoSlab-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoSlab-ExtraBold.ttf"; sourceTree = "<group>"; };
+		4B1451832BF5923A00AC667A /* RobotoSlab-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoSlab-ExtraLight.ttf"; sourceTree = "<group>"; };
+		4B1451842BF5923A00AC667A /* RobotoSlab-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoSlab-Light.ttf"; sourceTree = "<group>"; };
+		4B1451852BF5923A00AC667A /* RobotoSlab-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoSlab-Medium.ttf"; sourceTree = "<group>"; };
+		4B1451862BF5923A00AC667A /* RobotoSlab-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoSlab-Regular.ttf"; sourceTree = "<group>"; };
+		4B1451872BF5923A00AC667A /* RobotoSlab-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoSlab-SemiBold.ttf"; sourceTree = "<group>"; };
+		4B1451882BF5923A00AC667A /* RobotoSlab-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoSlab-Thin.ttf"; sourceTree = "<group>"; };
+		4B14518A2BF5923A00AC667A /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
+		4B14518B2BF5923A00AC667A /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
+		4B14518C2BF5923A00AC667A /* RobotoSlab-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoSlab-VariableFont_wght.ttf"; sourceTree = "<group>"; };
+		4B14519A2BF5949500AC667A /* wordGame-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "wordGame-Info.plist"; sourceTree = "<group>"; };
+		4B14519B2BF5987800AC667A /* FontNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontNames.swift; sourceTree = "<group>"; };
 		4B33888D2BB4B36400A10A27 /* wordGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = wordGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B3388902BB4B36400A10A27 /* wordPuzzleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = wordPuzzleApp.swift; sourceTree = "<group>"; };
 		4B3388922BB4B36400A10A27 /* StandardGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardGameView.swift; sourceTree = "<group>"; };
@@ -246,9 +273,6 @@
 			isa = PBXGroup;
 			children = (
 				4B0BEE982BBB85F10007772B /* SplashScreenView.swift */,
-				4B0BEE9A2BBB86220007772B /* MainMenuView.swift */,
-				4BB0BEC22BBF8D1B003BA895 /* GameSelectView.swift */,
-				4BF6D8FA2BD2FE2300BEAB39 /* GameSelectOptionsView.swift */,
 			);
 			path = "UI Views";
 			sourceTree = "<group>";
@@ -263,9 +287,39 @@
 			path = "Settings Models";
 			sourceTree = "<group>";
 		};
+		4B1451892BF5923A00AC667A /* static */ = {
+			isa = PBXGroup;
+			children = (
+				4B1451802BF5923A00AC667A /* RobotoSlab-Black.ttf */,
+				4B1451812BF5923A00AC667A /* RobotoSlab-Bold.ttf */,
+				4B1451822BF5923A00AC667A /* RobotoSlab-ExtraBold.ttf */,
+				4B1451832BF5923A00AC667A /* RobotoSlab-ExtraLight.ttf */,
+				4B1451842BF5923A00AC667A /* RobotoSlab-Light.ttf */,
+				4B1451852BF5923A00AC667A /* RobotoSlab-Medium.ttf */,
+				4B1451862BF5923A00AC667A /* RobotoSlab-Regular.ttf */,
+				4B1451872BF5923A00AC667A /* RobotoSlab-SemiBold.ttf */,
+				4B1451882BF5923A00AC667A /* RobotoSlab-Thin.ttf */,
+			);
+			path = static;
+			sourceTree = "<group>";
+		};
+		4B14518D2BF5923A00AC667A /* Roboto_Slab */ = {
+			isa = PBXGroup;
+			children = (
+				4B1451892BF5923A00AC667A /* static */,
+				4B14518A2BF5923A00AC667A /* LICENSE.txt */,
+				4B14518B2BF5923A00AC667A /* README.txt */,
+				4B14518C2BF5923A00AC667A /* RobotoSlab-VariableFont_wght.ttf */,
+			);
+			path = Roboto_Slab;
+			sourceTree = "<group>";
+		};
 		4B3388842BB4B36400A10A27 = {
 			isa = PBXGroup;
 			children = (
+				4B14519A2BF5949500AC667A /* wordGame-Info.plist */,
+				4B14518D2BF5923A00AC667A /* Roboto_Slab */,
+				4B4FCEBD2BF576F9005FC154 /* Main Menu */,
 				4B066F192BEC4127000B0CC1 /* Swift Data */,
 				4B066F0D2BEC3FD0000B0CC1 /* Stats and Charts */,
 				4BFD3E852BDB163F00C0741F /* Assets */,
@@ -353,6 +407,34 @@
 				4B066F0B2BEC1404000B0CC1 /* DonutChart.swift */,
 			);
 			path = Charts;
+			sourceTree = "<group>";
+		};
+		4B4FCEBD2BF576F9005FC154 /* Main Menu */ = {
+			isa = PBXGroup;
+			children = (
+				4B4FCEBF2BF57732005FC154 /* Views */,
+				4B4FCEBE2BF57724005FC154 /* View Models */,
+			);
+			path = "Main Menu";
+			sourceTree = "<group>";
+		};
+		4B4FCEBE2BF57724005FC154 /* View Models */ = {
+			isa = PBXGroup;
+			children = (
+				4BF6D8F52BD22F7800BEAB39 /* MainMenuViewModel.swift */,
+				4BF6D8F72BD22FA500BEAB39 /* GameSelectViewModel.swift */,
+			);
+			path = "View Models";
+			sourceTree = "<group>";
+		};
+		4B4FCEBF2BF57732005FC154 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4B0BEE9A2BBB86220007772B /* MainMenuView.swift */,
+				4BB0BEC22BBF8D1B003BA895 /* GameSelectView.swift */,
+				4BF6D8FA2BD2FE2300BEAB39 /* GameSelectOptionsView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		4B6808722BDB60A200E8FE34 /* Enums */ = {
@@ -449,8 +531,6 @@
 			isa = PBXGroup;
 			children = (
 				4BA4CF322BB7BAB100B9F36B /* GameOverViewModel.swift */,
-				4BF6D8F52BD22F7800BEAB39 /* MainMenuViewModel.swift */,
-				4BF6D8F72BD22FA500BEAB39 /* GameSelectViewModel.swift */,
 			);
 			path = MenuScreens;
 			sourceTree = "<group>";
@@ -462,6 +542,7 @@
 				4B3388942BB4B36600A10A27 /* Assets.xcassets */,
 				4BFD3E832BDB157D00C0741F /* SFAssets.swift */,
 				4BFD3E862BDB167300C0741F /* SystemNames.swift */,
+				4B14519B2BF5987800AC667A /* FontNames.swift */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -524,10 +605,22 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B1451942BF5923A00AC667A /* RobotoSlab-Regular.ttf in Resources */,
+				4B1451932BF5923A00AC667A /* RobotoSlab-Medium.ttf in Resources */,
+				4B1451962BF5923A00AC667A /* RobotoSlab-Thin.ttf in Resources */,
+				4B1451972BF5923A00AC667A /* LICENSE.txt in Resources */,
 				4B0BEE942BBB836A0007772B /* five_letter_words_hard.txt in Resources */,
+				4B14518E2BF5923A00AC667A /* RobotoSlab-Black.ttf in Resources */,
+				4B1451982BF5923A00AC667A /* README.txt in Resources */,
+				4B14518F2BF5923A00AC667A /* RobotoSlab-Bold.ttf in Resources */,
 				4B0BEE932BBB836A0007772B /* five_letter_words_medium.txt in Resources */,
+				4B1451992BF5923A00AC667A /* RobotoSlab-VariableFont_wght.ttf in Resources */,
 				4B3388982BB4B36600A10A27 /* Preview Assets.xcassets in Resources */,
+				4B1451902BF5923A00AC667A /* RobotoSlab-ExtraBold.ttf in Resources */,
+				4B1451922BF5923A00AC667A /* RobotoSlab-Light.ttf in Resources */,
+				4B1451912BF5923A00AC667A /* RobotoSlab-ExtraLight.ttf in Resources */,
 				4B0BEE952BBB836A0007772B /* five_letter_words_easy.txt in Resources */,
+				4B1451952BF5923A00AC667A /* RobotoSlab-SemiBold.ttf in Resources */,
 				4B3388952BB4B36600A10A27 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -580,6 +673,7 @@
 				4B8167E12BC8B59600E3978D /* ZenGameViewModel.swift in Sources */,
 				4B4FCEB52BEEED83005FC154 /* StandardStatsView.swift in Sources */,
 				4B0BEE8E2BB8E6B10007772B /* WordGameViewModel.swift in Sources */,
+				4B14519C2BF5987800AC667A /* FontNames.swift in Sources */,
 				4B066F112BEC403D000B0CC1 /* RushStats.swift in Sources */,
 				4B8167DF2BC6115A00E3978D /* UIColorExtension.swift in Sources */,
 				4B066F132BEC407F000B0CC1 /* FrenzyStats.swift in Sources */,
@@ -745,11 +839,13 @@
 				DEVELOPMENT_TEAM = WZ6NWM775D;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "wordGame-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Wordl;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.word-games";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
@@ -777,11 +873,13 @@
 				DEVELOPMENT_TEAM = WZ6NWM775D;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "wordGame-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Wordl;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.word-games";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;

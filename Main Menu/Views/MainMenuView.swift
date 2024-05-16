@@ -85,6 +85,14 @@ private struct MainMenuTopBar: View {
     }
 }
 
+private struct WordlTitle: View {
+    var body: some View{
+        ZStack {
+            
+        }
+    }
+}
+
 #Preview {
     MainMenuView()
 }

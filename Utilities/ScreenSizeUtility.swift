@@ -14,10 +14,11 @@ struct UISize {
     }
     struct keyboard {
         static let maxWidth = CGFloat(500)
-        static let maxHeight = CGFloat(300)
+        static let maxHeight = CGFloat(200)
     }
     struct main {
-        static let maxWidth = CGFloat(500)
+        static let maxWidth = CGFloat(700)
+        static let sectionSidePadding = ScreenSize.width! * 0.05
     }
 }
 

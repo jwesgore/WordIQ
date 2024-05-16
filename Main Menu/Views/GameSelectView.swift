@@ -16,89 +16,141 @@ struct GameSelectView: View {
 private struct GameSelectModeView: View {
     var gameSelectVM: GameSelectVM
     var body: some View {
-        VStack (spacing: 15) {
-            
-            GameModeView(image: SFAssets.gameController, modeTitle: SystemNames.standardMode, modeDescription: Descriptions.standardMode) {
-                gameSelectVM.gotoOptions(.standardgame)
+        ScrollView {
+            VStack (spacing: 20) {
+                
+                GameSelectInfoBox()
+                
+                GameModeView(image: SFAssets.gameController, modeTitle: SystemNames.standardMode) {
+                    gameSelectVM.gotoOptions(.standardgame)
+                } quickplay: {
+                    gameSelectVM.quickplay(.standardgame)
+                }
+                
+                GameModeView(image: SFAssets.gameController, modeTitle: SystemNames.rushMode) {
+                    gameSelectVM.options.timeLimit = 60
+                    gameSelectVM.gotoOptions(.rushgame)
+                } quickplay: {
+                    gameSelectVM.quickplay(.rushgame)
+                }
+                
+                GameModeView(image: SFAssets.gameController, modeTitle: SystemNames.frenzyMode) {
+                    gameSelectVM.options.timeLimit = 90
+                    gameSelectVM.gotoOptions(.frenzygame)
+                } quickplay: {
+                    gameSelectVM.quickplay(.frenzygame)
+                }
+                
+                GameModeView(image: SFAssets.gameController, modeTitle: SystemNames.zenMode) {
+                    gameSelectVM.gotoOptions(.zengame)
+                } quickplay: {
+                    gameSelectVM.quickplay(.zengame)
+                }
+                
+                Spacer()
             }
- 
-            GameModeView(image: SFAssets.gameController, modeTitle: SystemNames.rushMode, modeDescription: Descriptions.rushMode) {
-                gameSelectVM.options.timeLimit = 60
-                gameSelectVM.gotoOptions(.rushgame)
-            }
-            
-            GameModeView(image: SFAssets.gameController, modeTitle: SystemNames.frenzyMode, modeDescription: Descriptions.frenzyMode) {
-                gameSelectVM.options.timeLimit = 90
-                gameSelectVM.gotoOptions(.frenzygame)
-            }
-            
-            GameModeView(image: SFAssets.gameController, modeTitle: SystemNames.zenMode, modeDescription: Descriptions.zenMode) {
-                gameSelectVM.gotoOptions(.zengame)
-            }
-            
-            Spacer()
+            .frame(maxWidth: UISize.main.maxWidth)
+            .padding(.horizontal, UISize.main.sectionSidePadding)
         }
-        
+    }
+}
+
+private struct GameSelectInfoBox: View {
+    
+    var body: some View {
+        GroupBox {
+            VStack {
+                HStack {
+                    Text("Message board placeholder")
+                        .font(.custom(UIFonts.RobotoSlab.bold, size: CGFloat(UIFonts.Size.title)))
+                        .multilineTextAlignment(.center)
+                }
+                .padding(.bottom, 10)
+                HStack {
+                    Spacer()
+                    VStack {
+                        Text("1234")
+                            .font(.custom(UIFonts.RobotoSlab.regular, size: CGFloat(UIFonts.Size.title3)))
+                        Text("Placeholder")
+                            .font(.custom(UIFonts.RobotoSlab.regular, size: CGFloat(UIFonts.Size.subheading)))
+                    }
+                    Spacer()
+                    VStack {
+                        Text("1234")
+                            .font(.custom(UIFonts.RobotoSlab.regular, size: CGFloat(UIFonts.Size.title3)))
+                        Text("Placeholder")
+                            .font(.custom(UIFonts.RobotoSlab.regular, size: CGFloat(UIFonts.Size.subheading)))
+                    }
+                    Spacer()
+                    VStack {
+                        Text("1234")
+                            .font(.custom(UIFonts.RobotoSlab.regular, size: CGFloat(UIFonts.Size.title3)))
+                        Text("Placeholder")
+                            .font(.custom(UIFonts.RobotoSlab.regular, size: CGFloat(UIFonts.Size.subheading)))
+                    }
+                    Spacer()
+                }
+            }
+        }
     }
 }
 
 private struct GameModeView: View {
     let image: String
     let modeTitle: String
-    let modeDescription: String
     let action: () -> Void
+    let quickplay: () -> Void
     
-    let height: CGFloat = ScreenSize.height! * 0.12
-    let width: CGFloat = ScreenSize.width! * 0.9
+    let height: CGFloat = ScreenSize.height! * 0.06
+    let modeWidth: CGFloat = ScreenSize.width!
     let delay: Double = 0.2
     
     var body: some View {
-        ThreeDButton(height: height, width: width, delay: delay, speed: 0.25, action: action, contents: AnyView(
-            ZStack {
-                // MARK: Title
-                VStack {
-                    Spacer()
-                        .frame(height: 20)
-                    
-                    HStack{
+        HStack {
+            // MARK: Mode Select
+            ThreeDButton(height: height, width: .infinity, delay: delay, speed: 0.1, action: action, contents: AnyView(
+                ZStack {
+                    // MARK: Title
+                    VStack {
                         Spacer()
-                            .frame(width: 20)
                         
-                        Text(modeTitle)
-                            .font(.title2)
-                            .fontWeight(.semibold)
-                            .foregroundStyle(Color.Text.text)
-                            .opacity(0.8)
-                        
-                        Spacer()
-                    }
-                    
-                    Spacer()
-                }
-                .frame(width: width, height: height)
-                
-                // MARK: Body
-                VStack {
-                    Spacer()
-                        .frame(height: 5 + height / 2)
-                    
-                    HStack{
-                        Text(modeDescription)
-                            .font(.caption)
-                            .fontWeight(.semibold)
-                            .foregroundStyle(Color.Text.text)
-                            .multilineTextAlignment(/*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/)
-                            .opacity(0.5)
+                        HStack{
+                            Spacer()
+                                .frame(width: 20)
+                            
+                            Text(modeTitle)
+                                .font(.custom(UIFonts.RobotoSlab.semiBold, size: CGFloat(UIFonts.Size.title2)))
+                                .fontWeight(.semibold)
+                                .foregroundStyle(Color.Text.text)
+                                .opacity(0.8)
+                            
+                            Spacer()
+                        }
                         
                         Spacer()
                     }
-                    .padding(.horizontal, 20)
-                    
-                    Spacer()
+                    .frame(width: .infinity, height: height)
                 }
-                .frame(width: width, height: height)
-            }
-        ))
+            ))
+            .padding(.trailing, 5)
+            
+            // MARK: Quickplay
+            ThreeDButton(height: height, width: height, delay: delay, speed: 0.1, action: quickplay, contents: AnyView(
+                ZStack {
+                    // MARK: Title
+                    VStack {
+                        HStack{
+                            Image(systemName: SFAssets.playCircle)
+                                .font(.title2)
+                                .fontWeight(.semibold)
+                                .foregroundStyle(Color.Text.text)
+                                .opacity(0.8)
+                        }
+                    }
+                    .frame(width: height, height: height)
+                }
+            ))
+        }
     }
 }
 

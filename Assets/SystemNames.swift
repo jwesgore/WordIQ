@@ -24,13 +24,6 @@ enum SystemNames {
     static let back = "Back"
 }
 
-enum Descriptions {
-    static let standardMode = "The classic game you know and love. Six guesses to get the word."
-    static let rushMode = "Make as many guesses as you want, but you only have so much time."
-    static let frenzyMode = "Only six guesses and a time limit. How many words can you get?"
-    static let zenMode = "No time limit, no guess limit. Just play to have fun."
-}
-
 enum WordLists {
     static let fiveEasy = "five_letter_words_easy"
     static let fiveMedium = "five_letter_words_medium"

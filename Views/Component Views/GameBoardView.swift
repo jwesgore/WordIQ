@@ -44,7 +44,7 @@ struct GameSquare: View {
     
     var body: some View {
         Text(letter.value)
-            .font(.system(size: letter.width / 2.5))
+            .font(.custom(UIFonts.RobotoSlab.semiBold, size: CGFloat(UIFonts.Size.title2)))
             .fontWeight(.semibold)
             .foregroundStyle(.opacity(letter.opacity))
             .frame(width:letter.width, height: letter.height)

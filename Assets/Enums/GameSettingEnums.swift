@@ -16,6 +16,16 @@ enum GameMode: String, Codable {
         default: return ""
         }
     }
+    
+    var description: String {
+        switch self {
+        case .standardgame: return "The classic game you know and love. Six guesses to get the word."
+        case .rushgame: return "Make as many guesses as you want, but you only have so much time."
+        case .frenzygame: return "Only six guesses and a time limit. How many words can you get?"
+        case .zengame: return "No time limit, no guess limit. Just play to have fun."
+        default: return ""
+        }
+    }
 }
 
 enum GameDifficulty: String, Codable {

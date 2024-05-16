@@ -12,6 +12,7 @@ enum SFAssets {
     
     static let timer = "timer"
     static let star = "star"
+    static let playCircle = "play.circle"
 }
 
 enum FunctionImages {

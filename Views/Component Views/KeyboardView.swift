@@ -43,6 +43,7 @@ struct KeyboardElement: View {
             UIImpactFeedbackGenerator(style: .light).impactOccurred()
         }, label: {
             buttonView
+                .font(.custom(UIFonts.RobotoSlab.regular, size: CGFloat(UIFonts.Size.headline)))
                 .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, maxHeight: .infinity)
                 .foregroundStyle(Color.Text.text)
                 .font(.system(size: key.fontSize))

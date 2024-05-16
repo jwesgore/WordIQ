@@ -31,6 +31,28 @@ class GameSelectVM: ObservableObject {
         }
     }
     
+    func quickplay(_ targetView: ActiveView) {
+        options.gameDifficulty = .normal
+        options.wordList = WordLists.fiveMedium
+        
+        switch targetView {
+        case .standardgame:
+            options.selectedMode = .standardgame
+        case .rushgame:
+            options.selectedMode = .rushgame
+            options.timeLimit = 60
+        case .frenzygame:
+            options.selectedMode = .frenzygame
+            options.timeLimit = 90
+        case .zengame:
+            options.selectedMode = .zengame
+        default:
+            return
+        }
+        
+        self.startGame(targetView)
+    }
+    
     /// send the view back to the game mode selection
     func gotoModes() {
         withAnimation (.easeInOut(duration: 0.5)) {

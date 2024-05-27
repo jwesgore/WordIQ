@@ -25,15 +25,20 @@ struct GameOver: View {
             )
             .padding([.top, .bottom])
             
-            
             // MARK: Buttons
-            GameOverButtonView(buttonText: "Play Again", buttonAction: model.playAgain)
-                .background(.blue)
-                .clipShape(.rect(cornerRadius: 25.0))
-                .foregroundStyle(Color.Text.textColoredBackground)
+            GameOverButtonView(text: SystemNames.playAgain,
+                    backgroundColor: Color.Buttons.blueFunction,
+                    borderColor: Color.Border.blueFunction ,
+                    foregroundColor: Color.Text.textColoredBackground,
+                    action: model.playAgain)
+            .padding(.bottom)
             
-            GameOverButtonView(buttonText: "Main Menu", buttonAction: model.mainMenu)
-                .foregroundStyle(Color.Text.text)
+            GameOverButtonView(text: SystemNames.mainMenu,
+                backgroundColor: Color.Buttons.gameModeSelect,
+                borderColor: Color.Border.bcGameModeSelect,
+                foregroundColor: Color.Text.text,
+                action: model.mainMenu)
+            .padding(.bottom)
         }
         .frame(width:ScreenSize.width! * 0.9)
         .onAppear {
@@ -91,16 +96,32 @@ private struct GameOverStatView: View{
 }
 
 private struct GameOverButtonView: View {
-    let buttonText: String
-    let buttonAction: () -> Void
+    var text: String
+    var backgroundColor: Color
+    var borderColor: Color
+    var foregroundColor: Color
+    var action: () -> Void
     
     var body: some View {
-        Button( action: {
-            buttonAction()
-        }, label: {
-            Text(buttonText)
-                .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, maxHeight: ScreenSize.height! * 0.055)
-        })
+        ThreeDButton(
+         height: 50,
+         width: 500,
+         backgroundColor: backgroundColor,
+         borderColor: borderColor,
+         delay: 0.0,
+         speed: 0.025,
+         action: {action()},
+         contents:
+        AnyView(
+            VStack {
+                HStack {
+                    Text(text)
+                        .font(.custom(UIFonts.RobotoSlab.regular, size: CGFloat(UIFonts.Size.headline)))
+                        .foregroundStyle(foregroundColor)
+                }
+            }
+        ))
+        .frame(maxHeight: ScreenSize.height! * 0.06)
     }
 }
 

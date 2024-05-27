@@ -44,10 +44,11 @@ struct GameSquare: View {
     
     var body: some View {
         Text(letter.value)
-            .font(.custom(UIFonts.RobotoSlab.semiBold, size: CGFloat(UIFonts.Size.title2)))
+            .font(.custom(UIFonts.RobotoSlab.semiBold, size: CGFloat(UIFonts.Size.title)))
             .fontWeight(.semibold)
             .foregroundStyle(.opacity(letter.opacity))
-            .frame(width:letter.width, height: letter.height)
+            .frame(maxWidth:letter.width, maxHeight: letter.height)
+            .aspectRatio(1.0, contentMode: .fit)
             .background(letter.backgroundColor)
             .overlay(
                 RoundedRectangle(cornerRadius: letter.cornerRadius)

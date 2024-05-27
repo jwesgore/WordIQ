@@ -13,8 +13,9 @@ class GuessWord: Identifiable, Equatable, ObservableObject {
     var word: String
     
     init(wordLength: Int) {
-        let edgeLength = 0.8 * (ScreenSize.width! / Double(wordLength))
+        //let edgeLength = 0.8 * (ScreenSize.width! / Double(wordLength))
         
+        let edgeLength = 100.0
         self.id = UUID()
         
         self.wordLength = wordLength

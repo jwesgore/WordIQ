@@ -14,7 +14,7 @@ struct UISize {
     }
     struct keyboard {
         static let maxWidth = CGFloat(500)
-        static let maxHeight = CGFloat(200)
+        static let maxHeight = CGFloat(180)
     }
     struct main {
         static let maxWidth = CGFloat(700)

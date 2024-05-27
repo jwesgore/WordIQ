@@ -6,6 +6,7 @@ enum ActiveView {
     case rushgame
     case frenzygame
     case zengame
+    case pause
     
     var toGameMode: GameMode {
         switch self {

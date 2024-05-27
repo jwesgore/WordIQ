@@ -11,7 +11,6 @@ struct KeyboardView: View {
             KeyboardRow(rowElements: keyboardViewModel.middleRow, viewModel: keyboardViewModel)
             KeyboardRow(rowElements: keyboardViewModel.bottomRow, viewModel: keyboardViewModel)
         }
-        .frame(maxWidth: UISize.keyboard.maxWidth, maxHeight: UISize.keyboard.maxHeight)
     }
 }
 

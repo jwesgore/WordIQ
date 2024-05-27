@@ -14,6 +14,10 @@ enum SystemNames {
     static let frenzyMode = "Frenzy Mode"
     static let zenMode = "Zen Mode"
     
+    // MARK: Game Over
+    static let mainMenu = "Main Menu"
+    static let playAgain = "Play Again"
+    
     // MARK: Tabview icons
     static let game = "Game"
     static let friends = "Friends"

@@ -16,6 +16,8 @@ class WordGameVM: ObservableObject, KeyboardVMObserver{
     
     var numValidGuesses: Int = 0
     var numInvalidGuesses: Int = 0
+    @Published var exp: Int = 0
+    @Published var activeView: ActiveView
     
     var wordsCollection: WordsCollection
     let keyboardModel: KeyboardModel = KeyboardModel()
@@ -30,6 +32,7 @@ class WordGameVM: ObservableObject, KeyboardVMObserver{
         
         self.gameboardVM = GameboardVM(boardSize: boardSize, wordLength: wordLength)
         self.wordsCollection = WordsCollection(wordLength: wordLength, wordList: options.wordList)
+        self.activeView = options.selectedMode
         
         // add self as an observer
         self.keyboardVM.addObserver(observer: self)
@@ -58,6 +61,10 @@ class WordGameVM: ObservableObject, KeyboardVMObserver{
         }
         
         self.notifySubmitGuess(guess: guessWord, valid: valid)
+    }
+    
+    func pause() {
+        self.activeView = .pause
     }
     
     // MARK: Keyboard Observer Function
@@ -94,6 +101,7 @@ class WordGameVM: ObservableObject, KeyboardVMObserver{
     func gameOver() {
         self.numValidGuesses = 0
         self.numInvalidGuesses = 0
+        self.exp = 0
         
         for observer in componentObservers {
             observer.gameOver()

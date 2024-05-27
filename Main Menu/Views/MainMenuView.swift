@@ -6,14 +6,8 @@ struct MainMenuView: View {
     var body: some View {
         VStack{
         switch mainMenuVM.activeView {
-        case .standardgame:
-            StandardGameView(endGame: mainMenuVM.fadeToWhite, options: mainMenuVM.options)
-        case .rushgame:
-            RushGameView(endGame: mainMenuVM.fadeToWhite, options: mainMenuVM.options)
-        case .frenzygame:
-            FrenzyGameView(endGame: mainMenuVM.fadeToWhite, options: mainMenuVM.options)
-        case .zengame:
-            ZenGameView(endGame: mainMenuVM.fadeToWhite, options: mainMenuVM.options)
+        case .standardgame, .rushgame, .frenzygame, .zengame :
+            GameModeView(endGame: mainMenuVM.fadeToWhite, options: mainMenuVM.options)
         case .tabview:
             MainMenuTopBar()
             MainMenuBody(mainMenuVM: mainMenuVM)

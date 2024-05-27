@@ -1,0 +1,8 @@
+class GameDialogueVM {
+    
+    
+    
+    func goBack() {
+        
+    }
+}

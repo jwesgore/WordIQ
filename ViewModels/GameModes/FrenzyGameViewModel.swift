@@ -2,13 +2,11 @@ import Foundation
 import SwiftUI
 
 class FrenzyGameVM: WordGameVM, WordGameSubclassObserver, GameOverVMObserver, TimerVMObserver {
-    @Published var activeView: ActiveView
     var correctWords = [Word]()
     let timeAddition = 10
     let timePenalty = -5
     
     override init(options: GameModeOptions) {
-        self.activeView = .standardgame
         
         super.init(options: options)
         super.addSubclassObserver(observer: self)

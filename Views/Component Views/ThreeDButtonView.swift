@@ -26,12 +26,12 @@ struct ThreeDButton: View {
                     // MARK: Top layer
                     ZStack {
                         contents
+                            .frame(maxWidth: width, maxHeight: height)
                     }
                     .background(
                         RoundedRectangle(cornerRadius: 25.0)
                             .fill(isPressed && radio ? radioBackgroundColor : backgroundColor)
                             .stroke(borderColor, lineWidth: 1)
-                            .frame(maxWidth: width, maxHeight: height)
                     )
                     .offset(CGSize(width: 0.0, height: offset))
                     .zIndex(/*@START_MENU_TOKEN@*/1.0/*@END_MENU_TOKEN@*/)
@@ -110,5 +110,5 @@ struct NoAnimation: ButtonStyle {
 }
 
 #Preview {
-    ThreeDButton(height: 100, width: 200, action: {}, contents: AnyView(Text("Preview").frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, maxHeight: .infinity)))
+    ThreeDButton(height: 100, width: 200, action: {}, contents: AnyView(Text("Preview")))
 }

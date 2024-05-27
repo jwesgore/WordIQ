@@ -7,8 +7,10 @@ struct GameSelectView: View {
         ZStack {
             GameSelectModeView(gameSelectVM: gameSelectVM)
                 .offset(CGSize(width: gameSelectVM.offset, height: 0.0))
+            
             GameSelectOptionsView(gameSelectVM: gameSelectVM)
                 .offset(CGSize(width: gameSelectVM.offset + gameSelectVM.offsetAmount, height: 0.0))
+            
         }
     }
 }
@@ -21,27 +23,27 @@ private struct GameSelectModeView: View {
                 
                 GameSelectInfoBox()
                 
-                GameModeView(image: SFAssets.gameController, modeTitle: SystemNames.standardMode) {
+                GameModeButtonView(image: SFAssets.gameController, modeTitle: SystemNames.standardMode) {
                     gameSelectVM.gotoOptions(.standardgame)
                 } quickplay: {
                     gameSelectVM.quickplay(.standardgame)
                 }
                 
-                GameModeView(image: SFAssets.gameController, modeTitle: SystemNames.rushMode) {
+                GameModeButtonView(image: SFAssets.gameController, modeTitle: SystemNames.rushMode) {
                     gameSelectVM.options.timeLimit = 60
                     gameSelectVM.gotoOptions(.rushgame)
                 } quickplay: {
                     gameSelectVM.quickplay(.rushgame)
                 }
                 
-                GameModeView(image: SFAssets.gameController, modeTitle: SystemNames.frenzyMode) {
+                GameModeButtonView(image: SFAssets.gameController, modeTitle: SystemNames.frenzyMode) {
                     gameSelectVM.options.timeLimit = 90
                     gameSelectVM.gotoOptions(.frenzygame)
                 } quickplay: {
                     gameSelectVM.quickplay(.frenzygame)
                 }
                 
-                GameModeView(image: SFAssets.gameController, modeTitle: SystemNames.zenMode) {
+                GameModeButtonView(image: SFAssets.gameController, modeTitle: SystemNames.zenMode) {
                     gameSelectVM.gotoOptions(.zengame)
                 } quickplay: {
                     gameSelectVM.quickplay(.zengame)
@@ -95,7 +97,7 @@ private struct GameSelectInfoBox: View {
     }
 }
 
-private struct GameModeView: View {
+private struct GameModeButtonView: View {
     let image: String
     let modeTitle: String
     let action: () -> Void
@@ -108,7 +110,12 @@ private struct GameModeView: View {
     var body: some View {
         HStack {
             // MARK: Mode Select
-            ThreeDButton(height: height, width: .infinity, delay: delay, speed: 0.1, action: action, contents: AnyView(
+            ThreeDButton(height: height, 
+                         width: UISize.main.maxWidth,
+                         delay: delay, speed: 0.025,
+                         action: action,
+                         contents:
+            AnyView(
                 ZStack {
                     // MARK: Title
                     VStack {
@@ -129,7 +136,6 @@ private struct GameModeView: View {
                         
                         Spacer()
                     }
-                    .frame(width: .infinity, height: height)
                 }
             ))
             .padding(.trailing, 5)

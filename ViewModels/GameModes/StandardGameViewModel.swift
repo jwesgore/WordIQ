@@ -1,11 +1,8 @@
 import Foundation
 
 class StandardGameVM: WordGameVM, WordGameSubclassObserver, GameOverVMObserver {
-    
-    @Published var activeView: ActiveView
-    
+
     override init(options: GameModeOptions) {
-        self.activeView = .standardgame
         
         super.init(options: options)
         super.addSubclassObserver(observer: self)
@@ -60,14 +57,14 @@ class StandardGameVM: WordGameVM, WordGameSubclassObserver, GameOverVMObserver {
     // MARK: GameOver Observer Function
     // Passes along which button was pressed in the GameOverView
     func playAgain() {
-        self.activeView = .standardgame
+        super.activeView = .standardgame
         super.gameOver()
         super.wordsCollection.updateSelectedWord()
         super.timerVM.resetTimer()
     }
     
     func mainMenu() {
-        self.activeView = .tabview
+        super.activeView = .tabview
     }
     
 }

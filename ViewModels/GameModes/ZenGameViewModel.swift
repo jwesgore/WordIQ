@@ -2,11 +2,8 @@ import Foundation
 import SwiftUI
 
 class ZenGameVM: WordGameVM, WordGameSubclassObserver, GameOverVMObserver {
-    @Published var activeView: ActiveView
     
     override init(options: GameModeOptions) {
-        self.activeView = .standardgame
-        
         super.init(options: options)
         super.addSubclassObserver(observer: self)
         super.gameOverVM.addObserver(observer: self)

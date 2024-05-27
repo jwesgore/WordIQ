@@ -2,12 +2,9 @@ import Foundation
 import SwiftUI
 
 class RushGameVM: WordGameVM, WordGameSubclassObserver, GameOverVMObserver, TimerVMObserver {
-    @Published var activeView: ActiveView
     var timerActive = false
     
     override init(options: GameModeOptions) {
-        self.activeView = .standardgame
-        
         super.init(options: options)
         super.addSubclassObserver(observer: self)
         super.gameOverVM.addObserver(observer: self)

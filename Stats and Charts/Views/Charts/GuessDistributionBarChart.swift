@@ -20,8 +20,8 @@ struct GuessDistributionBarChart: View {
         let yaxis = ""
         
         GroupBox (label: 
-                    Label("Guess Distribution", systemImage: SFAssets.stats)
-                        .opacity(0.7)
+            Label("Guess Distribution", systemImage: SFAssets.stats)
+                .opacity(0.7)
         ) {
             GroupBox {
             Chart {

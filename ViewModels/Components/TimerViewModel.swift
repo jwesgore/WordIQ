@@ -78,6 +78,7 @@ class TimerVM: ObservableObject {
     
     /// Starts a timer that countd down from the timeTotal unless up=true
     func startTimer() {
+        guard !active else { return }
         active = true
         
         if countUp {
@@ -98,6 +99,16 @@ class TimerVM: ObservableObject {
                 self.currentTimeFormatted = self.timeToString(self.timeRemaining)
             }
         }
+    }
+    
+    func pauseTimer() {
+        active = false
+        timer?.invalidate()
+    }
+    
+    func resumeTimer() {
+        guard !active else { return }
+        self.startTimer()
     }
     
     /// Stops the timer from running

@@ -6,6 +6,8 @@ class RushGameVM: WordGameVM, WordGameSubclassObserver, GameOverVMObserver, Time
     
     override init(options: GameModeOptions) {
         super.init(options: options)
+        super.pauseVM.quitFunction = self.quitGame
+        super.pauseVM.backFunction = self.back
         super.addSubclassObserver(observer: self)
         super.gameOverVM.addObserver(observer: self)
         
@@ -29,6 +31,10 @@ class RushGameVM: WordGameVM, WordGameSubclassObserver, GameOverVMObserver, Time
                 super.keyboardVM.keyboardActive = true
             }
         }
+    }
+    
+    override func quitGame() {
+        self.timeOver()
     }
     
     func endGame(result: GameOverResult) {

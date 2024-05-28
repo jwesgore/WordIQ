@@ -5,6 +5,8 @@ class ZenGameVM: WordGameVM, WordGameSubclassObserver, GameOverVMObserver {
     
     override init(options: GameModeOptions) {
         super.init(options: options)
+        super.pauseVM.quitFunction = self.quitGame
+        super.pauseVM.backFunction = self.back
         super.addSubclassObserver(observer: self)
         super.gameOverVM.addObserver(observer: self)
         
@@ -50,6 +52,12 @@ class ZenGameVM: WordGameVM, WordGameSubclassObserver, GameOverVMObserver {
                 super.keyboardVM.keyboardActive = true
             }
         }
+    }
+    
+    override func quitGame() {
+        super.keyboardVM.keyboardActive = false
+        self.endGame()
+        self.activeView = .gameover
     }
     
     // MARK: GameOver Observer Functions

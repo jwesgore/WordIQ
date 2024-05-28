@@ -2,6 +2,8 @@ import SwiftUI
 
 struct PauseMenuView: View {
     
+    var model: PauseVM
+    
     var body: some View {
         ZStack {
             VStack {
@@ -34,7 +36,7 @@ struct PauseMenuView: View {
                 
                 ThreeDButton(height: 50.0,
                              width: 500.0,
-                             action: {},
+                             action: {model.quitGame()},
                              contents: AnyView(
                                 Text("End Game")
                                     .font(.custom(UIFonts.RobotoSlab.regular, size: CGFloat(UIFonts.Size.title3)))
@@ -43,7 +45,7 @@ struct PauseMenuView: View {
                 
                 ThreeDButton(height: 50.0,
                              width: 500.0,
-                             action: {},
+                             action: {model.back()},
                              contents: AnyView(
                                 Text("Cancel")
                                     .font(.custom(UIFonts.RobotoSlab.regular, size: CGFloat(UIFonts.Size.title3)))
@@ -69,5 +71,5 @@ private struct PauseMenuElement: View {
 }
 
 #Preview {
-    PauseMenuView()
+    PauseMenuView(model: PauseVM())
 }

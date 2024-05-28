@@ -1,9 +1,10 @@
 import Foundation
 import SwiftUI
 
-class WordGameVM: ObservableObject, KeyboardVMObserver{
+class WordGameVM: ObservableObject, KeyboardVMObserver, PauseMenuFunctions {
     
     // constants
+    let mode: ActiveView
     let boardSize: Int
     let wordLength: Int
     let difficulty: GameDifficulty
@@ -13,6 +14,7 @@ class WordGameVM: ObservableObject, KeyboardVMObserver{
     var gameboardVM: GameboardVM
     var gameOverVM: GameOverVM = GameOverVM()
     var timerVM: TimerVM = TimerVM()
+    var pauseVM: PauseVM = PauseVM()
     
     var numValidGuesses: Int = 0
     var numInvalidGuesses: Int = 0
@@ -32,6 +34,9 @@ class WordGameVM: ObservableObject, KeyboardVMObserver{
         
         self.gameboardVM = GameboardVM(boardSize: boardSize, wordLength: wordLength)
         self.wordsCollection = WordsCollection(wordLength: wordLength, wordList: options.wordList)
+        self.pauseVM = PauseVM()
+        
+        self.mode = options.selectedMode
         self.activeView = options.selectedMode
         
         // add self as an observer
@@ -63,8 +68,19 @@ class WordGameVM: ObservableObject, KeyboardVMObserver{
         self.notifySubmitGuess(guess: guessWord, valid: valid)
     }
     
+    // MARK: Pause Menu Functions
     func pause() {
         self.activeView = .pause
+        self.timerVM.pauseTimer()
+    }
+    
+    func quitGame() {
+        fatalError("Subclasses must override 'quitGame'")
+    }
+    
+    func back() {
+        self.activeView = mode
+        self.timerVM.resumeTimer()
     }
     
     // MARK: Keyboard Observer Function
@@ -118,6 +134,12 @@ class WordGameVM: ObservableObject, KeyboardVMObserver{
 
 protocol WordGameSubclassObserver {
     func submitGuess(guessWord : Word, valid: Bool)
+}
+
+protocol PauseMenuFunctions {
+    func pause()
+    func quitGame()
+    func back()
 }
 
 protocol WordGameComponentObserver {

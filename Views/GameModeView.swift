@@ -3,12 +3,13 @@ import SwiftUI
 struct GameModeView: View {
     @StateObject var model: WordGameVM
     @ObservedObject var transitions: Transitions
+    @State var gameOverDelay: Double
     
-    let endGame: (ActiveView) -> Void
+    let endGame: (ActiveView, Double) -> Void
     let title: String
     let options: GameModeOptions
     
-    init(endGame: @escaping (ActiveView) -> Void, options: GameModeOptions) {
+    init(endGame: @escaping (ActiveView, Double) -> Void, options: GameModeOptions) {
         
         switch(options.selectedMode) {
         case .standardgame:
@@ -28,6 +29,7 @@ struct GameModeView: View {
             self.title = GameMode.standardgame.value
         }
         
+        self.gameOverDelay = 1.65
         self.options = options
         self.endGame = endGame
         self.transitions = Transitions(activeView: options.selectedMode)
@@ -39,7 +41,7 @@ struct GameModeView: View {
             case .gameover:
                 GameOver(model: model.gameOverVM)
             case .pause:
-                PauseMenuView()
+                PauseMenuView(model: model.pauseVM)
             case .standardgame, .rushgame, .frenzygame, .zengame:
                 VStack {
                     Spacer()
@@ -95,13 +97,13 @@ struct GameModeView: View {
             }
             switch targetView {
             case .tabview:
-                endGame(.tabview)
+                endGame(.tabview, 0.5)
             case .pause:
-                transitions.fadeToWhiteDelay(targetView: targetView, delay: 0.25)
+                transitions.fadeToWhiteDelay(targetView: targetView, delay: 0.25, animationLength: 0.1)
             case .gameover:
-                transitions.fadeToWhiteDelay(targetView: targetView, delay: 1.65)
+                transitions.fadeToWhiteDelay(targetView: targetView, delay: gameOverDelay, animationLength: 0.1)
             case .standardgame, .rushgame, .frenzygame, .zengame:
-                transitions.fadeToWhiteDelay(targetView: targetView, delay: 0.25)
+                transitions.fadeToWhiteDelay(targetView: targetView, delay: 0.25, animationLength: 0.1)
             default:
                 return
             }
@@ -110,6 +112,6 @@ struct GameModeView: View {
 }
 
 #Preview {
-    GameModeView(endGame: {_ in}, options: GameModeOptions(wordLength: 5, boardSize: 6, timeLimit: 0, wordList: WordLists.fiveMedium))
+    GameModeView(endGame: {_,_  in}, options: GameModeOptions(wordLength: 5, boardSize: 6, timeLimit: 0, wordList: WordLists.fiveMedium))
 }
 

@@ -17,7 +17,7 @@
 		4B066F1E2BEC41C6000B0CC1 /* ChartData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B066F1D2BEC41C6000B0CC1 /* ChartData.swift */; };
 		4B08AA1F2BC0E40400810F22 /* ScreenSizeUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B08AA1E2BC0E40400810F22 /* ScreenSizeUtility.swift */; };
 		4B092FD02BFEAF0C0005E866 /* GameDialogueViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B092FCF2BFEAF0C0005E866 /* GameDialogueViewModel.swift */; };
-		4B092FD22BFEB1160005E866 /* GameDialogueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B092FD12BFEB1160005E866 /* GameDialogueView.swift */; };
+		4B092FD22BFEB1160005E866 /* PauseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B092FD12BFEB1160005E866 /* PauseView.swift */; };
 		4B0BEE8E2BB8E6B10007772B /* WordGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0BEE8D2BB8E6B10007772B /* WordGameViewModel.swift */; };
 		4B0BEE932BBB836A0007772B /* five_letter_words_medium.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4B0BEE902BBB836A0007772B /* five_letter_words_medium.txt */; };
 		4B0BEE942BBB836A0007772B /* five_letter_words_hard.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4B0BEE912BBB836A0007772B /* five_letter_words_hard.txt */; };
@@ -105,7 +105,7 @@
 		4B066F1D2BEC41C6000B0CC1 /* ChartData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartData.swift; sourceTree = "<group>"; };
 		4B08AA1E2BC0E40400810F22 /* ScreenSizeUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenSizeUtility.swift; sourceTree = "<group>"; };
 		4B092FCF2BFEAF0C0005E866 /* GameDialogueViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDialogueViewModel.swift; sourceTree = "<group>"; };
-		4B092FD12BFEB1160005E866 /* GameDialogueView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDialogueView.swift; sourceTree = "<group>"; };
+		4B092FD12BFEB1160005E866 /* PauseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseView.swift; sourceTree = "<group>"; };
 		4B0BEE8D2BB8E6B10007772B /* WordGameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordGameViewModel.swift; sourceTree = "<group>"; };
 		4B0BEE902BBB836A0007772B /* five_letter_words_medium.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = five_letter_words_medium.txt; path = "../../../Downloads/word lists/five_letter_words_medium.txt"; sourceTree = "<group>"; };
 		4B0BEE912BBB836A0007772B /* five_letter_words_hard.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = five_letter_words_hard.txt; path = "../../../Downloads/word lists/five_letter_words_hard.txt"; sourceTree = "<group>"; };
@@ -350,7 +350,7 @@
 		4B3388BF2BB4C4CC00A10A27 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				4B092FD12BFEB1160005E866 /* GameDialogueView.swift */,
+				4B092FD12BFEB1160005E866 /* PauseView.swift */,
 				4B0BEE982BBB85F10007772B /* SplashScreenView.swift */,
 				4B3388922BB4B36400A10A27 /* GameModeView.swift */,
 				4BA4CF342BB8E4BD00B9F36B /* Component Views */,
@@ -635,7 +635,7 @@
 				4B9D37B42BE981E7007E6F8E /* StandardSaveModel.swift in Sources */,
 				4B6808742BDB60E100E8FE34 /* KeyboardEntryTypeEnum.swift in Sources */,
 				4B8167E82BCA0C8300E3978D /* TimerView.swift in Sources */,
-				4B092FD22BFEB1160005E866 /* GameDialogueView.swift in Sources */,
+				4B092FD22BFEB1160005E866 /* PauseView.swift in Sources */,
 				4BFD3E8B2BDB5A9500C0741F /* GameSettingEnums.swift in Sources */,
 				4B9D37BA2BE983C0007E6F8E /* ZenSaveModel.swift in Sources */,
 				4B066F152BEC40BC000B0CC1 /* ZenStats.swift in Sources */,

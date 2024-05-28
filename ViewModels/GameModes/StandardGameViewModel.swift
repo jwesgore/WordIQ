@@ -5,12 +5,15 @@ class StandardGameVM: WordGameVM, WordGameSubclassObserver, GameOverVMObserver {
     override init(options: GameModeOptions) {
         
         super.init(options: options)
+        super.pauseVM.quitFunction = self.quitGame
+        super.pauseVM.backFunction = self.back
         super.addSubclassObserver(observer: self)
         super.gameOverVM.addObserver(observer: self)
         
         super.timerVM.countUp = true
     }
     
+    // MARK: WordGameSubclassObserver Functions
     // Check currentGuess for validity
     func submitGuess(guessWord: Word, valid: Bool) {
         guard valid else { return }
@@ -28,6 +31,14 @@ class StandardGameVM: WordGameVM, WordGameSubclassObserver, GameOverVMObserver {
             self.endGame(result: .lose)
             self.activeView = .gameover
         }
+    }
+    
+    override func quitGame() {
+        print("in override")
+        super.keyboardVM.keyboardActive = false
+        super.timerVM.stopTimer()
+        self.endGame(result: .lose)
+        self.activeView = .gameover
     }
     
     /// Build contents to display on game over screen

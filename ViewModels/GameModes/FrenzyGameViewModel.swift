@@ -9,6 +9,8 @@ class FrenzyGameVM: WordGameVM, WordGameSubclassObserver, GameOverVMObserver, Ti
     override init(options: GameModeOptions) {
         
         super.init(options: options)
+        super.pauseVM.quitFunction = self.quitGame
+        super.pauseVM.backFunction = self.back
         super.addSubclassObserver(observer: self)
         super.gameOverVM.addObserver(observer: self)
         
@@ -62,6 +64,10 @@ class FrenzyGameVM: WordGameVM, WordGameSubclassObserver, GameOverVMObserver, Ti
             self.endGame()
             self.activeView = .gameover
         }
+    }
+    
+    override func quitGame() {
+        self.timeOver()
     }
     
     // MARK: GameOver Observer Functions

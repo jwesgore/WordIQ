@@ -8,22 +8,21 @@ struct GameOver: View {
     let cornerRadius: CGFloat = 20
     
     var body: some View {
-        VStack{
+        VStack(spacing: 4) {
             // MARK: Title
             GameOverTitleView(model: model)
             
             // MARK: Statistical contents
-            VStack {
-                ForEach(model.bodyContents.indices, id:\.self) {
-                    GameOverStatView(gameOverStat: model.bodyContents[$0])
+            GroupBox {
+                ForEach(model.bodyContents.indices, id:\.self) { index in
+                    GameOverStatView(gameOverStat: model.bodyContents[index])
+                        .font(.custom(UIFonts.RobotoSlab.regular, size: CGFloat(UIFonts.Size.headline)))
+                    if index < model.bodyContents.indices.last! {
+                        Divider()
+                    }
                 }
             }
-            .frame(maxWidth: ScreenSize.width! * 0.9)
-            .background (
-                RoundedRectangle(cornerRadius: 25.0)
-                    .fill(Color.UIElements.gameSelectButton)
-            )
-            .padding([.top, .bottom])
+            .padding(.vertical, 4)
             
             // MARK: Buttons
             GameOverButtonView(text: SystemNames.playAgain,
@@ -31,16 +30,15 @@ struct GameOver: View {
                     borderColor: Color.Border.blueFunction ,
                     foregroundColor: Color.Text.textColoredBackground,
                     action: model.playAgain)
-            .padding(.bottom)
             
             GameOverButtonView(text: SystemNames.mainMenu,
                 backgroundColor: Color.Buttons.gameModeSelect,
                 borderColor: Color.Border.bcGameModeSelect,
                 foregroundColor: Color.Text.text,
                 action: model.mainMenu)
-            .padding(.bottom)
         }
-        .frame(width:ScreenSize.width! * 0.9)
+        .frame(maxWidth: UISize.gameover.maxWidth)
+        .padding(.horizontal, UISize.main.sectionSidePadding)
         .onAppear {
             switch model.results.gameMode {
             case .standardgame:
@@ -66,8 +64,7 @@ private struct GameOverTitleView: View {
     @ObservedObject var model: GameOverVM
     
     var body: some View {
-     
-        HStack(spacing: 4){
+        HStack {
             ForEach(model.title.letters) {
                 GameSquare(letter: $0)
             }
@@ -83,7 +80,6 @@ private struct GameOverTitleView: View {
 
 private struct GameOverStatView: View{
     let gameOverStat: GameOverStat
-    
     var body: some View {
         HStack {
             Image(systemName: gameOverStat.image)
@@ -91,7 +87,6 @@ private struct GameOverStatView: View{
             Spacer()
             Text(gameOverStat.value)
         }
-        .padding()
     }
 }
 
@@ -105,7 +100,7 @@ private struct GameOverButtonView: View {
     var body: some View {
         ThreeDButton(
          height: 50,
-         width: 500,
+         width: UISize.gameover.maxWidth,
          backgroundColor: backgroundColor,
          borderColor: borderColor,
          delay: 0.0,
@@ -121,7 +116,8 @@ private struct GameOverButtonView: View {
                 }
             }
         ))
-        .frame(maxHeight: ScreenSize.height! * 0.06)
+        .frame(maxHeight: 50)
+        .padding(.vertical, 5)
     }
 }
 

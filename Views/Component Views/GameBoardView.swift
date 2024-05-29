@@ -43,18 +43,24 @@ struct GameSquare: View {
     @ObservedObject var letter: Letter
     
     var body: some View {
-        Text(letter.value)
-            .font(.custom(UIFonts.RobotoSlab.semiBold, size: CGFloat(UIFonts.Size.title)))
-            .fontWeight(.semibold)
-            .foregroundStyle(.opacity(letter.opacity))
-            .frame(maxWidth:letter.width, maxHeight: letter.height)
-            .aspectRatio(1.0, contentMode: .fit)
-            .background(letter.backgroundColor)
-            .overlay(
-                RoundedRectangle(cornerRadius: letter.cornerRadius)
-                    .stroke(letter.borderColor, lineWidth: 4)
-            )
-            .clipShape(RoundedRectangle(cornerRadius: letter.cornerRadius))
+        GeometryReader { geometry in
+            ZStack {
+                Text(letter.value)
+                    .font(.custom(UIFonts.RobotoSlab.semiBold, size: min(geometry.size.width, geometry.size.height) * 0.5))
+                    .fontWeight(.semibold)
+                    .foregroundStyle(letter.submitted ? Color.white : Color.Text.text.opacity(letter.opacity))
+                    .shadow(color: letter.submitted ? .black.opacity(0.2) : .clear, radius: 0.5)
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+        }
+        .frame(maxWidth:letter.width, maxHeight: letter.height)
+        .aspectRatio(1.0, contentMode: .fit)
+        .background(letter.backgroundColor)
+        .overlay(
+            RoundedRectangle(cornerRadius: letter.cornerRadius)
+                .stroke(letter.borderColor, lineWidth: 4)
+        )
+        .clipShape(RoundedRectangle(cornerRadius: letter.cornerRadius))
     }
 }
 

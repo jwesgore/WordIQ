@@ -17,7 +17,11 @@ struct UISize {
         static let maxHeight = CGFloat(180)
     }
     struct main {
-        static let maxWidth = CGFloat(700)
+        static let maxWidth = CGFloat(600)
+        static let sectionSidePadding = ScreenSize.width! * 0.05
+    }
+    struct gameover {
+        static let maxWidth = CGFloat(600)
         static let sectionSidePadding = ScreenSize.width! * 0.05
     }
 }

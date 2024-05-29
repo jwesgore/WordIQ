@@ -115,8 +115,9 @@ class GuessWord: Identifiable, Equatable, ObservableObject {
     /// Sets the background colors for the row
     func setBackgrounds(letterBackgrounds: [Color]) {
         for i in 0..<letterBackgrounds.count {
-            letters[i].borderColor = Color.clear
-            letters[i].backgroundColor = letterBackgrounds[i]
+            self.letters[i].submitted = true
+            self.letters[i].borderColor = Color.clear
+            self.letters[i].backgroundColor = letterBackgrounds[i]
         }
     }
     
@@ -125,6 +126,7 @@ class GuessWord: Identifiable, Equatable, ObservableObject {
         for i in 0..<letters.count {
             DispatchQueue.main.asyncAfter(deadline: .now() + (0.125 * Double(i)), execute: {
                 withAnimation(.easeIn(duration: 0.2)) {
+                    self.letters[i].submitted = true
                     self.letters[i].borderColor = Color.clear
                     self.letters[i].backgroundColor = letterBackgrounds[i]
                 }

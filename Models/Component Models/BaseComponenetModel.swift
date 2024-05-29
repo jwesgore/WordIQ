@@ -28,9 +28,11 @@ class BaseComponent: ObservableObject, Identifiable {
 /// Subclass of BaseComponent used for holding items that operate as letters such as gameboard or keyboard pieces
 class Letter: BaseComponent {
     @Published var view: Text
+    @Published var submitted: Bool
     
-    init(value: String, backgroundColor: Color, borderColor: Color, width: CGFloat, height: CGFloat) {
+    init(value: String, backgroundColor: Color, borderColor: Color, width: CGFloat, height: CGFloat, submitted: Bool = false) {
         self.view = Text(value)
+        self.submitted = submitted
         super.init(backgroundColor: backgroundColor, borderColor: borderColor, width: width, height: height)
         super.value = value
     }

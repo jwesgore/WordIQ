@@ -38,6 +38,8 @@
 		4B1451982BF5923A00AC667A /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4B14518B2BF5923A00AC667A /* README.txt */; };
 		4B1451992BF5923A00AC667A /* RobotoSlab-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4B14518C2BF5923A00AC667A /* RobotoSlab-VariableFont_wght.ttf */; };
 		4B14519C2BF5987800AC667A /* FontNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B14519B2BF5987800AC667A /* FontNames.swift */; };
+		4B1CD6422C0C1541005B8F0A /* DailyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1CD6412C0C1541005B8F0A /* DailyViewModel.swift */; };
+		4B1CD6442C0FEAA3005B8F0A /* DailySaveModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1CD6432C0FEAA3005B8F0A /* DailySaveModel.swift */; };
 		4B3388912BB4B36400A10A27 /* wordPuzzleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3388902BB4B36400A10A27 /* wordPuzzleApp.swift */; };
 		4B3388932BB4B36400A10A27 /* GameModeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3388922BB4B36400A10A27 /* GameModeView.swift */; };
 		4B3388952BB4B36600A10A27 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B3388942BB4B36600A10A27 /* Assets.xcassets */; };
@@ -127,6 +129,8 @@
 		4B14518C2BF5923A00AC667A /* RobotoSlab-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoSlab-VariableFont_wght.ttf"; sourceTree = "<group>"; };
 		4B14519A2BF5949500AC667A /* wordGame-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "wordGame-Info.plist"; sourceTree = "<group>"; };
 		4B14519B2BF5987800AC667A /* FontNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontNames.swift; sourceTree = "<group>"; };
+		4B1CD6412C0C1541005B8F0A /* DailyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyViewModel.swift; sourceTree = "<group>"; };
+		4B1CD6432C0FEAA3005B8F0A /* DailySaveModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailySaveModel.swift; sourceTree = "<group>"; };
 		4B33888D2BB4B36400A10A27 /* wordGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = wordGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B3388902BB4B36400A10A27 /* wordPuzzleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = wordPuzzleApp.swift; sourceTree = "<group>"; };
 		4B3388922BB4B36400A10A27 /* GameModeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModeView.swift; sourceTree = "<group>"; };
@@ -451,6 +455,7 @@
 				4B8167E92BCB31E500E3978D /* StandardGameViewModel.swift */,
 				4B8167ED2BCC59CB00E3978D /* RushGameViewModel.swift */,
 				4B8167EF2BCC5B1D00E3978D /* FrenzyGameViewModel.swift */,
+				4B1CD6412C0C1541005B8F0A /* DailyViewModel.swift */,
 			);
 			path = GameModes;
 			sourceTree = "<group>";
@@ -473,6 +478,7 @@
 				4B9D37B52BE9832E007E6F8E /* RushSaveModel.swift */,
 				4B9D37B72BE9836F007E6F8E /* FrenzySaveModel.swift */,
 				4B9D37B92BE983C0007E6F8E /* ZenSaveModel.swift */,
+				4B1CD6432C0FEAA3005B8F0A /* DailySaveModel.swift */,
 			);
 			path = "Save Models";
 			sourceTree = "<group>";
@@ -637,6 +643,7 @@
 				4B8167E82BCA0C8300E3978D /* TimerView.swift in Sources */,
 				4B092FD22BFEB1160005E866 /* PauseView.swift in Sources */,
 				4BFD3E8B2BDB5A9500C0741F /* GameSettingEnums.swift in Sources */,
+				4B1CD6442C0FEAA3005B8F0A /* DailySaveModel.swift in Sources */,
 				4B9D37BA2BE983C0007E6F8E /* ZenSaveModel.swift in Sources */,
 				4B066F152BEC40BC000B0CC1 /* ZenStats.swift in Sources */,
 				4B8167D72BC324A400E3978D /* ShakeEffect.swift in Sources */,
@@ -657,6 +664,7 @@
 				4B14519C2BF5987800AC667A /* FontNames.swift in Sources */,
 				4B066F112BEC403D000B0CC1 /* RushStats.swift in Sources */,
 				4B8167DF2BC6115A00E3978D /* UIColorExtension.swift in Sources */,
+				4B1CD6422C0C1541005B8F0A /* DailyViewModel.swift in Sources */,
 				4B066F132BEC407F000B0CC1 /* FrenzyStats.swift in Sources */,
 				4B066F1C2BEC4193000B0CC1 /* DisplayData.swift in Sources */,
 				4BFD3E8D2BDB5AEF00C0741F /* ActiveViewEnum.swift in Sources */,
@@ -820,7 +828,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "wordGame-Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = Wordl;
+				INFOPLIST_KEY_CFBundleDisplayName = WordIQ;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.word-games";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -833,7 +841,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1.2;
+				MARKETING_VERSION = 0.1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = capygames.wordGame;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -854,7 +862,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "wordGame-Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = Wordl;
+				INFOPLIST_KEY_CFBundleDisplayName = WordIQ;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.word-games";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -867,7 +875,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1.2;
+				MARKETING_VERSION = 0.1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = capygames.wordGame;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

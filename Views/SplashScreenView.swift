@@ -12,16 +12,11 @@ struct SplashScreenView: View {
             }
             else {
                 VStack {
-                    Text(SystemNames.title)
-                        .font(.system(size: 20))
-                        .kerning(3)
-                        .fontWeight(.medium)
-                        .frame(width: 200, height: 50.0)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 8)
-                                .stroke(Color.gray, lineWidth: 1)
-                        )
-                        .clipShape(RoundedRectangle(cornerRadius: 8))
+                    Text(SystemNames.Title.title)
+                        .font(.custom(UIFonts.RobotoSlab.bold, size: CGFloat(UIFonts.Size.title)))
+                    Text(SystemNames.Title.caption)
+                        .font(.custom(UIFonts.RobotoSlab.bold, size: CGFloat(UIFonts.Size.caption)))
+                        .opacity(0.7)
                 }
             }
         }
@@ -31,12 +26,12 @@ struct SplashScreenView: View {
                     self.isActive = true
                 }
             }
-            for family in UIFont.familyNames {
-                print("\(family)")
-                for name in UIFont.fontNames(forFamilyName: family) {
-                    print("  \(name)")
-                }
-            }
+//            for family in UIFont.familyNames {
+//                print("\(family)")
+//                for name in UIFont.fontNames(forFamilyName: family) {
+//                    print("  \(name)")
+//                }
+//            }
         }
     }
 }

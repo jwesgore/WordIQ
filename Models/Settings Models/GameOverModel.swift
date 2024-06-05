@@ -1,3 +1,5 @@
+import Foundation
+
 struct GameOverModel {
     var gameMode: GameMode = .null
     var gameResult: GameOverResult = .null
@@ -7,6 +9,7 @@ struct GameOverModel {
     var numValidGuesses: Int = 0
     var numInvalidGuesses: Int = 0
     
+    var date: Date?
     var timeLimit: Int?
     var timeElapsed: Int = 0
     var timeRemaining: Int?

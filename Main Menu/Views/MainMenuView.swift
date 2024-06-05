@@ -26,7 +26,7 @@ private struct MainMenuBody: View {
         TabView {
             GameSelectView(gameSelectVM: mainMenuVM.gameSelectVM)
                 .tabItem() {
-                    Image(systemName: SFAssets.home )
+                    Image(systemName: SFAssets.home)
                     Text(SystemNames.game)
                 }
                 .toolbarBackground(Color.UIElements.tabView, for:.tabBar)
@@ -52,28 +52,21 @@ private struct MainMenuBody: View {
 }
 
 private struct MainMenuTopBar: View {
-    let gearSize = ScreenSize.width! * 0.6
+    let gearSize = 50.0
     var body: some View {
         VStack{
             ZStack {
                 HStack{
-                    Text(SystemNames.title)
-                        .font(.system(size: 20))
-                        .kerning(3)
-                        .fontWeight(.medium)
-                        .frame(width: 200, height: 50.0)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 8)
-                                .stroke(Color.gray, lineWidth: 1)
-                        )
-                        .clipShape(RoundedRectangle(cornerRadius: 8))
+                    Text(SystemNames.Title.title)
+                        .font(.custom(UIFonts.RobotoSlab.bold, size: CGFloat(UIFonts.Size.title2)))
+
                     Spacer()
                     Button(action: {}, label:{
                         Function(value: SFAssets.settings, width: gearSize, height: gearSize, constraint: 25).view
                             .font(.system(size: gearSize > 25 ? 25: gearSize))
                     })
                 }
-                .padding()
+                .padding(.horizontal)
             }
         }
     }

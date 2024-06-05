@@ -8,6 +8,7 @@ class WordGameVM: ObservableObject, KeyboardVMObserver, PauseMenuFunctions {
     let boardSize: Int
     let wordLength: Int
     let difficulty: GameDifficulty
+    let date: Date
     
     // Instances of other ViewModels
     var keyboardVM: KeyboardVM = KeyboardVM()
@@ -31,6 +32,7 @@ class WordGameVM: ObservableObject, KeyboardVMObserver, PauseMenuFunctions {
         self.boardSize = options.boardSize
         self.wordLength = options.wordLength
         self.difficulty = options.gameDifficulty
+        self.date = Date.now
         
         self.gameboardVM = GameboardVM(boardSize: boardSize, wordLength: wordLength)
         self.wordsCollection = WordsCollection(wordLength: wordLength, wordList: options.wordList)

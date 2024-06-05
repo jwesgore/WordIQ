@@ -41,7 +41,7 @@ struct ThreeDButton: View {
                         .fill(borderColor)
                         .stroke(borderColor, lineWidth: 1)
                         .frame(maxWidth: width, maxHeight: height)
-                        .offset(CGSize(width: 0.0, height: 5.0))
+                        .offset(CGSize(width: 0.0, height: 4.0))
                         .zIndex(0.0)
                 }
             }
@@ -51,7 +51,7 @@ struct ThreeDButton: View {
             .onChanged { _ in
                 guard !radio else { return }
                 withAnimation(.easeInOut(duration: speed)) {
-                    self.offset = 5.0
+                    self.offset = 4.0
                 }
             }
             .onEnded { _ in
@@ -64,13 +64,13 @@ struct ThreeDButton: View {
         .onAppear{
             guard radio else { return }
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
-                self.offset = self.isPressed ? 5.0 : 0.0
+                self.offset = self.isPressed ? 4.0 : 0.0
             }
         }
         .onChange(of: self.isPressed) {
             guard radio else { return }
             withAnimation(.easeInOut(duration: speed)) {
-                self.offset = self.isPressed ? 5.0 : 0.0
+                self.offset = self.isPressed ? 4.0 : 0.0
             }
         }
         

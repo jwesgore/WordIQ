@@ -7,8 +7,8 @@ struct GameSelectOptionsView: View {
     var body: some View {
         VStack (spacing: 15) {
             // MARK: Mode Info
-            GameSelectModeInfo(mode: .standardgame)
-            //GameSelectModeInfo(mode: gameSelectVM.activeView.toGameMode)
+            // GameSelectModeInfo(mode: .standardgame)
+            GameSelectModeInfo(mode: gameSelectVM.activeView.toGameMode)
             
             // MARK: Game Difficulty Buttons
             GameSelectOptionsDifficulty(diffParams: gameSelectVM.gameOptionsSelect.easy, list: gameSelectVM.options.wordList) {

@@ -18,42 +18,55 @@ struct GameSelectView: View {
 private struct GameSelectModeView: View {
     var gameSelectVM: GameSelectVM
     var body: some View {
-        ScrollView {
-            VStack (spacing: 20) {
-                
-                GameSelectInfoBox()
-                
-                GameModeButtonView(image: SFAssets.gameController, modeTitle: SystemNames.standardMode) {
+     
+        VStack (spacing: 10) {
+            
+            // GameSelectInfoBox()
+            Spacer()
+            
+            HStack {
+                GameModeButtonView(mode: .daily) {
                     gameSelectVM.gotoOptions(.standardgame)
-                } quickplay: {
-                    gameSelectVM.quickplay(.standardgame)
                 }
+                .aspectRatio(3.0, contentMode: .fit)
                 
-                GameModeButtonView(image: SFAssets.gameController, modeTitle: SystemNames.rushMode) {
+                GameModeButtonView(mode: .quickplay) {
                     gameSelectVM.options.timeLimit = 60
                     gameSelectVM.gotoOptions(.rushgame)
-                } quickplay: {
-                    gameSelectVM.quickplay(.rushgame)
                 }
+                .aspectRatio(3.0, contentMode: .fit)
+            }
+            
+   
+                GameModeButtonView(mode: .standardgame) {
+                    gameSelectVM.gotoOptions(.standardgame)
+                }
+                .aspectRatio(5.0, contentMode: .fit)
                 
-                GameModeButtonView(image: SFAssets.gameController, modeTitle: SystemNames.frenzyMode) {
+                GameModeButtonView(mode: .rushgame) {
+                    gameSelectVM.options.timeLimit = 60
+                    gameSelectVM.gotoOptions(.rushgame)
+                }
+                .aspectRatio(5.0, contentMode: .fit)
+            
+
+                GameModeButtonView(mode: .frenzygame) {
                     gameSelectVM.options.timeLimit = 90
                     gameSelectVM.gotoOptions(.frenzygame)
-                } quickplay: {
-                    gameSelectVM.quickplay(.frenzygame)
                 }
+                .aspectRatio(5.0, contentMode: .fit)
                 
-                GameModeButtonView(image: SFAssets.gameController, modeTitle: SystemNames.zenMode) {
+                GameModeButtonView(mode: .zengame) {
                     gameSelectVM.gotoOptions(.zengame)
-                } quickplay: {
-                    gameSelectVM.quickplay(.zengame)
                 }
-                
-                Spacer()
-            }
-            .frame(maxWidth: UISize.main.maxWidth)
-            .padding(.horizontal, UISize.main.sectionSidePadding)
+                .aspectRatio(5.0, contentMode: .fit)
+            
+            
+            Spacer()
         }
+        .frame(maxWidth: UISize.main.maxWidth)
+        .padding(.horizontal, UISize.main.sectionSidePadding)
+        
     }
 }
 
@@ -98,12 +111,10 @@ private struct GameSelectInfoBox: View {
 }
 
 private struct GameModeButtonView: View {
-    let image: String
-    let modeTitle: String
+    let mode: GameMode
     let action: () -> Void
-    let quickplay: () -> Void
     
-    let height: CGFloat = ScreenSize.height! * 0.06
+    let height: CGFloat = 200
     let modeWidth: CGFloat = ScreenSize.width!
     let delay: Double = 0.2
     
@@ -119,41 +130,15 @@ private struct GameModeButtonView: View {
                 ZStack {
                     // MARK: Title
                     VStack {
-                        Spacer()
+                        Text(mode.value)
+                            .font(.custom(UIFonts.RobotoSlab.bold, size: CGFloat(UIFonts.Size.title2)))
+                            .foregroundStyle(Color.Text.text)
                         
-                        HStack{
-                            Spacer()
-                                .frame(width: 20)
-                            
-                            Text(modeTitle)
-                                .font(.custom(UIFonts.RobotoSlab.semiBold, size: CGFloat(UIFonts.Size.title2)))
-                                .fontWeight(.semibold)
-                                .foregroundStyle(Color.Text.text)
-                                .opacity(0.8)
-                            
-                            Spacer()
-                        }
-                        
-                        Spacer()
+                        Text(mode.caption)
+                            .font(.custom(UIFonts.RobotoSlab.regular, size: CGFloat(UIFonts.Size.caption)))
+                            .foregroundStyle(Color.Text.text)
+                            .opacity(0.6)
                     }
-                }
-            ))
-            .padding(.trailing, 5)
-            
-            // MARK: Quickplay
-            ThreeDButton(height: height, width: height, delay: delay, speed: 0.1, action: quickplay, contents: AnyView(
-                ZStack {
-                    // MARK: Title
-                    VStack {
-                        HStack{
-                            Image(systemName: SFAssets.playCircle)
-                                .font(.title2)
-                                .fontWeight(.semibold)
-                                .foregroundStyle(Color.Text.text)
-                                .opacity(0.8)
-                        }
-                    }
-                    .frame(width: height, height: height)
                 }
             ))
         }

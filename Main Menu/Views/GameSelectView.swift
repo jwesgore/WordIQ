@@ -1,7 +1,10 @@
 import SwiftUI
+import SwiftData
 
 struct GameSelectView: View {
+    @AppStorage("playedDaily") private var playedDaily = false
     @ObservedObject var gameSelectVM: GameSelectVM
+    @Query var dailyData: [DailySaveModel]
 
     var body: some View {
         ZStack {
@@ -10,8 +13,25 @@ struct GameSelectView: View {
             
             GameSelectOptionsView(gameSelectVM: gameSelectVM)
                 .offset(CGSize(width: gameSelectVM.offset + gameSelectVM.offsetAmount, height: 0.0))
-            
         }
+        .onAppear {
+            self.playedDaily = hasPlayedDaily()
+        }
+    }
+    
+    /// returns whether or not a date matching todays date is in the DailyGames table
+    func hasPlayedDaily() -> Bool {
+        let today = Date.now
+        for datum in dailyData {
+            if isSameDay(datum.date, today) { return true }
+        }
+        return false
+    }
+    
+    /// returns whether or not two dates match
+    func isSameDay(_ date1: Date, _ date2: Date) -> Bool {
+        let calendar = Calendar.current
+        return calendar.isDate(date1, inSameDayAs: date2)
     }
 }
 

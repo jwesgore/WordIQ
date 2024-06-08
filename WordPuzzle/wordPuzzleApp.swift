@@ -13,6 +13,6 @@ struct wordPuzzleApp: App {
         WindowGroup {
             SplashScreenView()
         }
-        .modelContainer(for: [StandardSaveModel.self, RushSaveModel.self, FrenzySaveModel.self, ZenSaveModel.self])
+        .modelContainer(for: [StandardSaveModel.self, RushSaveModel.self, FrenzySaveModel.self, ZenSaveModel.self, DailySaveModel.self])
     }
 }

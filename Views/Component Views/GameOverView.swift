@@ -14,6 +14,9 @@ struct GameOver: View {
             
             // MARK: Statistical contents
             GroupBox {
+                // MARK:
+                
+                // MARK: Stats
                 ForEach(model.bodyContents.indices, id:\.self) { index in
                     GameOverStatView(gameOverStat: model.bodyContents[index])
                         .font(.custom(UIFonts.RobotoSlab.regular, size: CGFloat(UIFonts.Size.headline)))
@@ -53,6 +56,9 @@ struct GameOver: View {
             case .zengame:
                 let initmodel = ZenSaveModel(model: model.results)
                 modelContext.insert(initmodel)
+//            case .daily:
+//                let initmodel = DailySaveModel(model: model.results)
+//                modelContext.insert(initmodel)
             default:
                 return
             }
